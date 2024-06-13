@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+/*************************************************** 전체 폰트 설정 ***************************************************/
+
+* {
+    font-family: 'NanumSquareNeo';
+    /*font-family: 'NanumSquareNeoLight';
+    font-family: 'NanumSquareNeoBold';
+    font-family: 'NanumSquareNeoExtraBold';
+    font-family: 'NanumSquareNeoHeavy';
+    */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*************************************************** 전체 폰트 설정 ****************************************************/
+
+
+/*************************************************** 헤더 (최상단) ****************************************************/
+.app-header {
+    background: lightgray;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*************************************************** 헤더 (최상단) ****************************************************/
+
+
+
+
+/*************************************************** 컨텐츠 (메인화면) ************************************************/
+
+.app-Content {
+    margin: 0 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-Content-div {
+    padding: 10px !important;
+    min-height: 100% !important;
+    background: gray;
 }
 
-.App-link {
-  color: #61dafb;
+.Main-Top-Info-Row {
+    background-color: bisque;
+    width: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Main-Top-Info1,
+.Main-Top-Info2,
+.Main-Top-Info3,
+.Main-Top-Info4 {
+    background-color: beige;
+    height: 120px;
 }
+
+.Main-Top-Info1-Col1,
+.Main-Top-Info2-Col1,
+.Main-Top-Info3-Col1,
+.Main-Top-Info4-Col1 {
+    height: 100%;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    padding-left: 10px !important;
+}
+
+.Main-Top-Info1-span,
+.Main-Top-Info2-span,
+.Main-Top-Info3-span,
+.Main-Top-Info4-span {
+    font-family: 'NanumSquareNeoBold';
+    font-size: 17px;
+}
+
+.Main-Top-Info1-p,
+.Main-Top-Info2-p,
+.Main-Top-Info3-p,
+.Main-Top-Info4-p {
+    font-size: 16px;
+}
+
+.Main-Top-Info1-h1{
+    color: green;
+}
+.Main-Top-Info2-h1{
+    color: green;
+}
+.Main-Top-Info3-h1{
+    color: green;
+}
+.Main-Top-Info4-h1{
+    color: green;
+}
+
+
+.Card1,
+.Card2,
+.Card3,
+.Card4,
+.Card5{
+    width: 100%;
+    height: 100%;
+}
+
+.Main-Top-Info1-Col2,
+.Main-Top-Info2-Col2,
+.Main-Top-Info3-Col2,
+.Main-Top-Info4-Col2 {
+    background: rgb(255, 255, 255);
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px !important;
+}
+
+.Main-Center-Content-Row {
+    padding-top: 10px;
+}
+
+.Main-Center-Content1,
+.Main-Center-Content2,
+.Main-Center-Content3 {
+    background-color: bisque;
+    height: 500px;
+}
+
+.Main-Bottom-Content-Row {
+    padding-top: 10px;
+}
+
+.Main-Bottom-Content1,
+.Main-Bottom-Content2,
+.Main-Bottom-Content3 {
+    background-color: bisque;
+    height: 500px;
+}
+
+/*************************************************** 컨텐츠 (메인화면) *************************************************/
+
+
+
+
+/*************************************************** 푸터 (최하단) ****************************************************/
+
+.app-footer {
+    text-align: center;
+}
+
+/*************************************************** 푸터 (최하단) ****************************************************/
