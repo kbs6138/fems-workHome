@@ -18,7 +18,7 @@ const RightChart1 = () => {
         axisLabel: {
           fontWeight: 'bold', // X축 레이블 텍스트 굵기 설정
           color: isDarkMode ? '#fff' : 'black',
-          fontSize: '14.5px',
+          fontSize: '14px',
           fontFamily: 'NanumSquareNeo'
         }
       },

@@ -17,7 +17,7 @@ const RightChart2 = () => {
                 axisLabel: {
                     fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
-                    fontSize: '15px',
+                    fontSize: '14px',
                     fontFamily: 'NanumSquareNeo'
                 }
             },

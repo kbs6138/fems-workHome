@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Tabs } from 'antd';
 import MechanicInfo from '../../MechanicInfo/MechanicInfo';
+import PhaseQuarterlyInfo from '../../PhaseQuarterlyInfo/PhaseQuarterlyInfo';
 import { ThemeContext } from '../../ThemeContext';
 import './Tabs.css';
 
@@ -22,7 +23,7 @@ const items = [
     {
         key: '3',
         label: '단상분기정보',
-        children: 'Content of Tab Pane 3',
+        children: <PhaseQuarterlyInfo/>,
     },
     {
         key: '4',

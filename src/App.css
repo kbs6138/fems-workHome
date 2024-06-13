@@ -8,7 +8,7 @@
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
-    font-size: 15.5px;
+
 }
 
 /*************************************************** 전체 폰트 설정 ****************************************************/
@@ -226,31 +226,38 @@ span p {
 /*************************************************** 컴포넌트들  ****************************************************/
 
 
-.table1 td,
-.table2 td,
-.table3 td {
-    padding-bottom: 15px;
-    font-size: 14px;
-}
-
 .table1 th,
 td,
 .table2 th,
 td,
 .table3 th,
 td {
-    padding-left: 15px;
-    /* 원하는 간격으로 조정 */
-    font-size: 14px;
+  padding-left: 15px;
+  /* 원하는 간격으로 조정 */
 }
 
 .table1 th,
 .table2 th,
 .table3 th {
-    padding-bottom: 5px;
-    font-size: 14px;
-
+  padding-bottom: 5px;
 }
+
+.table1 td,
+.table2 td,
+.table3 td {
+  padding-bottom: 15px;
+}
+
+.ant-table-thead th {
+  text-align: center !important;
+}
+
+.ant-table-cell {
+  padding: 5px 5px !important;
+  font-size: 13px !important;
+  text-align: center;
+}
+
 
 
 
