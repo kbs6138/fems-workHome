@@ -139,8 +139,8 @@
 .Card3-top,
 .Card3-middle,
 .Card3-bottom {
-    height: 175px;
-    border: 1px solid black;
+    height: 180px;
+  border-radius: 6px;
     width: 100%;
 }
 
@@ -170,6 +170,13 @@ span p {
 .Card3-grid-Percent-value    {
     font-size: 30px;
     font-family: 'NanumSquareNeoExtraBold';
+}
+
+.Card1-grid-text,
+.Card2-grid-text,
+.Card3-grid-text{
+    padding-left:10px;
+    padding-top: 30px;
 }
 
 .Card1-grid-Percent-Near-text,

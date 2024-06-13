@@ -4,6 +4,7 @@ import { Layout, Col, Row, Card } from 'antd';
 import RightBottomMainTabs from '../../Components/Tabs/MainTabs/Right-Bottom-MainTabs';
 import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
+import RightChart1 from '../../Components/Charts/RightChart1';
 import './Main.css';
 
 const { Content } = Layout;
@@ -113,11 +114,10 @@ const AppMain = () => {
 
                 <Col className="gutter-row" span={8} >
 
-                    <Card className={` Card3 ${TxtTheme} ${BgTheme}`}  >
                         <div className={` Card3-top ${TxtTheme} ${BgTheme}`}  >
                             <Row gutter={[16, 12]}>
                                 <Col span={12}>
-                                    <div >
+                                    <div  className="Card1-grid-text" >
                                         <h3>전일 사용량 대비</h3>
                                         <span className="Card1-grid-Percent-text">
                                             <span className="Card1-grid-Percent-value">20.65%</span>
@@ -126,17 +126,16 @@ const AppMain = () => {
                                     </div>
                                 </Col>
                                 <Col span={12}>
-                                    <div className="Card3-grid-chart">
-                                        <h3>Grid 2</h3>
-                                    </div>
+                                        <RightChart1/>
+                                  
                                 </Col>
                             </Row>
                         </div>
-
+                        <br/>
                         <div className={` Card3-middle ${TxtTheme} ${BgTheme}`}  >
                             <Row gutter={[16, 12]}>
                                 <Col span={12}>
-                                    <div>
+                                <div  className="Card2-grid-text" >
                                         <h3>전일 사용량 대비</h3>
                                         <span className="Card2-grid-Percent-text">
                                             <span className="Card2-grid-Percent-value">12%</span>
@@ -151,11 +150,13 @@ const AppMain = () => {
                                 </Col>
                             </Row>
                         </div>
+                        
+                        <br/>
 
                         <div className={` Card3-bottom ${TxtTheme} ${BgTheme}`}  >
                             <Row gutter={[16, 12]}>
                                 <Col span={12}>
-                                    <div>
+                                    <div  className="Card3-grid-text" >
                                         <h3>전일 사용량 대비</h3>
                                         <span className="Card3-grid-Percent-text">
                                             <span className="Card3-grid-Percent-value">20.65%</span>
@@ -171,7 +172,6 @@ const AppMain = () => {
                                 </Col>
                             </Row>
                         </div>
-                    </Card>
                 </Col>
             </Row>
 
