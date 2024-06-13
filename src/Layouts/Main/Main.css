@@ -12,7 +12,7 @@
   }
   
   .bg-light {
-    background-color: #fcfcfc;
+    background-color: #f8f8f8;
   }
   
   /* 다크 모드일 때 ant-tabs-tab 스타일 */
@@ -20,3 +20,6 @@
     color: #fff ;
   }
   
+  .ant-layout{
+    background-color: rgb(182, 182, 182);
+  }

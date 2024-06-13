@@ -5,6 +5,9 @@ import RightBottomMainTabs from '../../Components/Tabs/MainTabs/Right-Bottom-Mai
 import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
 import RightChart1 from '../../Components/Charts/RightChart1';
+import RightChart2 from '../../Components/Charts/RightChart2';
+import PeekChart from '../../Components/Charts/PeekChart';
+
 import './Main.css';
 
 const { Content } = Layout;
@@ -98,6 +101,7 @@ const AppMain = () => {
                     <div className='Main-Center-Content1'>
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
                             <h8>Peek Monitor</h8>
+                            <PeekChart/>
                         </Card>
                     </div>
                 </Col>
@@ -136,7 +140,7 @@ const AppMain = () => {
                             <Row gutter={[16, 12]}>
                                 <Col span={12}>
                                 <div  className="Card2-grid-text" >
-                                        <h3>전일 사용량 대비</h3>
+                                        <h3>전일 역률 대비</h3>
                                         <span className="Card2-grid-Percent-text">
                                             <span className="Card2-grid-Percent-value">12%</span>
                                             <p className="Card2-grid-Percent-Near-text">감소</p>
@@ -145,7 +149,7 @@ const AppMain = () => {
                                 </Col>
                                 <Col span={12}>
                                     <div className="Card3-grid-chart">
-                                        <h3>Grid 2</h3>
+                                        <RightChart2/>
                                     </div>
                                 </Col>
                             </Row>
@@ -157,12 +161,11 @@ const AppMain = () => {
                             <Row gutter={[16, 12]}>
                                 <Col span={12}>
                                     <div  className="Card3-grid-text" >
-                                        <h3>전일 사용량 대비</h3>
+                                        <h3>온도계</h3>
                                         <span className="Card3-grid-Percent-text">
-                                            <span className="Card3-grid-Percent-value">20.65%</span>
-                                            <p className="Card3-grid-Percent-Near-text">증가</p>
+                                            <span className="Card3-grid-Percent-value">대체할 것</span>
+                                            <p className="Card3-grid-Percent-Near-text">찾아야함</p>
                                         </span>
-
                                     </div>
                                 </Col>
                                 <Col span={12}>

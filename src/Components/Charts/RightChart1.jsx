@@ -17,7 +17,7 @@ const RightChart1 = () => {
         axisLabel: {
           fontWeight: 'bold', // X축 레이블 텍스트 굵기 설정
           color: isDarkMode ? '#fff' : 'black',
-          fontSize: '13.5px',
+          fontSize: '15px',
           fontFamily: 'NanumSquareNeo'
         }
       },
@@ -52,7 +52,8 @@ const RightChart1 = () => {
             formatter: (params) => `${params.value.toLocaleString()} Kw`,
             fontWeight: 'bold', // 텍스트 굵기 설정
             fontSize: '15px',
-            fontFamily: 'NanumSquareNeo'
+            fontFamily: 'NanumSquareNeo',
+            color:'white'
           }
         }
       ]
@@ -69,7 +70,7 @@ const RightChart1 = () => {
     <div
       id="RightChart1"
       className="RightChart1"
-      style={{ width: '250px', height: '250px', marginTop:'-30px' }} // 인라인 스타일로 부모 요소의 크기에 맞게 설정
+      style={{ width: '250px', height: '250px',position:'absolute', top:'85%', left:'50%', transform:'translate(-50%, -50%)' }} // 인라인 스타일로 부모 요소의 크기에 맞게 설정
     ></div>
   );
 };
