@@ -4,7 +4,6 @@ import {
   DesktopOutlined,
 
   PieChartOutlined,
-  TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 
