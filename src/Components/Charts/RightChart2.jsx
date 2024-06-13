@@ -15,7 +15,7 @@ const RightChart2 = () => {
                 type: 'category',
                 data: ['전일 역률', '금일 역률'],
                 axisLabel: {
-                    fontWeight: 'bold', // X축 레이블 텍스트 굵기 설정
+                    fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
                     fontSize: '15px',
                     fontFamily: 'NanumSquareNeo'
@@ -50,10 +50,10 @@ const RightChart2 = () => {
                         show: true,
                         position: 'top',
                         formatter: (params) => `${params.value.toLocaleString()} Kw`,
-                        fontWeight: 'bold', // 텍스트 굵기 설정
+                        fontWeight: 'bold',
                         fontSize: '15px',
                         fontFamily: 'NanumSquareNeo',
-                        color: 'white'
+                        color: isDarkMode ? 'white' : 'black'
                     },
                     markLine: {
                         data: [
@@ -61,11 +61,11 @@ const RightChart2 = () => {
                                 yAxis: 100,
                                 label: {
                                     formatter: 'max : 100%',
-                                    position: 'insideEndTop', // 레이블 위치를 그래프 안쪽으로 이동
-                                    fontWeight: 'bold', // 텍스트 굵기 설정
+                                    position: 'insideEndTop',
+                                    fontWeight: 'bold',
                                     fontSize: '12px',
                                     fontFamily: 'NanumSquareNeo',
-                                    color: 'white'
+                                    color: isDarkMode ? 'white' : 'black'
                                 }
                             }
                         ],
@@ -89,7 +89,7 @@ const RightChart2 = () => {
         <div
             id="RightChart2"
             className="RightChart2"
-            style={{ width: '250px', height: '250px', position: 'absolute', top: '85%', left: '50%', transform: 'translate(-50%, -50%)' }} // 인라인 스타일로 부모 요소의 크기에 맞게 설정
+            style={{ width: '250px', height: '250px', position: 'absolute', top: '85%', left: '50%', transform: 'translate(-50%, -50%)' }}
         ></div>
     );
 };

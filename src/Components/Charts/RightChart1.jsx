@@ -11,6 +11,7 @@ const RightChart1 = () => {
     const myChart = echarts.init(chartDom);
 
     const option = {
+      // backgroundColor: isDarkMode ? '#333' : '#fff', // 이 줄을 제거합니다.
       xAxis: {
         type: 'category',
         data: ['전일 사용량', '금일 사용량'],
@@ -35,6 +36,9 @@ const RightChart1 = () => {
           ],
           type: 'bar',
           showBackground: true,
+          backgroundStyle: {
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', // 배경 색상 설정
+          },
           itemStyle: {
             color: (params) => params.name === '전일 사용량'
               ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -53,7 +57,7 @@ const RightChart1 = () => {
             fontWeight: 'bold', // 텍스트 굵기 설정
             fontSize: '15px',
             fontFamily: 'NanumSquareNeo',
-            color:'white'
+            color: isDarkMode ? '#fff' : 'black' // 텍스트 색상 설정
           }
         }
       ]
@@ -70,7 +74,7 @@ const RightChart1 = () => {
     <div
       id="RightChart1"
       className="RightChart1"
-      style={{ width: '250px', height: '250px',position:'absolute', top:'85%', left:'50%', transform:'translate(-50%, -50%)' }} // 인라인 스타일로 부모 요소의 크기에 맞게 설정
+      style={{ width: '250px', height: '250px', position: 'absolute', top: '85%', left: '50%', transform: 'translate(-50%, -50%)' }} // 인라인 스타일로 부모 요소의 크기에 맞게 설정
     ></div>
   );
 };

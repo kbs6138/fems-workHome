@@ -40,12 +40,14 @@ const PeekChart = () => {
       const textColor = getTextColor();
 
       option = {
+        /*
         title: {
           text: 'Dynamic Data & Time Axis',
           textStyle: {
             color: textColor
           }
         },
+        */
         tooltip: {
           trigger: 'axis',
           formatter: function (params) {
