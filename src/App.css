@@ -45,6 +45,7 @@
 .Main-Top-Info4 {
     background-color: beige;
     height: 120px;
+    display: flex;
 }
 
 .Main-Top-Info1-Col1,
@@ -52,7 +53,6 @@
 .Main-Top-Info3-Col1,
 .Main-Top-Info4-Col1 {
     height: 100%;
-    background: rgb(255, 255, 255);
     padding: 30px;
     padding-left: 10px !important;
 }
@@ -72,17 +72,24 @@
     font-size: 16px;
 }
 
-.Main-Top-Info1-h1{
-    color: green;
+.Main-Top-Info1-h1 {
+    color: #667EFE;
 }
-.Main-Top-Info2-h1{
-    color: green;
+
+.Main-Top-Info2-h1 {
+    color: #FDC06E;
 }
-.Main-Top-Info3-h1{
-    color: green;
+
+.Main-Top-Info3-h1 {
+    color: #FC3EA5;
 }
-.Main-Top-Info4-h1{
-    color: green;
+
+.Main-Top-Info4-h1 {
+    color: #72D1C8;
+}
+
+.Main-Center-Content3-Col {
+    height: 145px;
 }
 
 
@@ -90,7 +97,7 @@
 .Card2,
 .Card3,
 .Card4,
-.Card5{
+.Card5 {
     width: 100%;
     height: 100%;
 }
@@ -99,7 +106,6 @@
 .Main-Top-Info2-Col2,
 .Main-Top-Info3-Col2,
 .Main-Top-Info4-Col2 {
-    background: rgb(255, 255, 255);
     height: 100%;
     display: flex;
     justify-content: flex-end;
@@ -115,7 +121,7 @@
 .Main-Center-Content2,
 .Main-Center-Content3 {
     background-color: bisque;
-    height: 500px;
+    height: 580px;
 }
 
 .Main-Bottom-Content-Row {
@@ -127,6 +133,50 @@
 .Main-Bottom-Content3 {
     background-color: bisque;
     height: 500px;
+}
+
+
+.Card3-top,
+.Card3-middle,
+.Card3-bottom {
+    height: 175px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+span {
+    display: flex;
+    align-items: center;
+}
+
+span p {
+    margin: 5px 0 0 5px;
+    /* 필요에 따라 간격 조정 */
+}
+
+.Card1-grid-Percent-value {
+    color: #FC323C;
+}
+
+.Card2-grid-Percent-value {
+    color: #7373ff;
+}
+
+.Card1-grid-Percent-text,
+.Card2-grid-Percent-text,
+.Card3-grid-Percent-text,
+.Card1-grid-Percent-value,
+.Card2-grid-Percent-value,
+.Card3-grid-Percent-value    {
+    font-size: 30px;
+    font-family: 'NanumSquareNeoExtraBold';
+}
+
+.Card1-grid-Percent-Near-text,
+.Card2-grid-Percent-Near-text,
+.Card3-grid-Percent-Near-text {
+    font-size: 20px;
+
 }
 
 /*************************************************** 컨텐츠 (메인화면) *************************************************/
@@ -141,3 +191,38 @@
 }
 
 /*************************************************** 푸터 (최하단) ****************************************************/
+
+
+
+/*************************************************** 컴포넌트들  ****************************************************/
+
+
+.table1 td,
+.table2 td,
+.table3 td {
+    padding-bottom: 15px;
+}
+
+.table1 th,
+td,
+.table2 th,
+td,
+.table3 th,
+td {
+    padding-left: 15px;
+    /* 원하는 간격으로 조정 */
+}
+
+.table1 th,
+.table2 th,
+.table3 th {
+    padding-bottom: 5px;
+}
+
+.table1 td,
+.table2 td,
+.table3 td {
+    padding-bottom: 15px;
+}
+
+/*************************************************** 컴포넌트들  ****************************************************/

@@ -1,0 +1,22 @@
+/* AppMain.css */
+.text-dark {
+    color: #ffffff;
+  }
+  
+  .text-light {
+    color: #000000;
+  }
+  
+  .bg-dark {
+    background-color: #333333;
+  }
+  
+  .bg-light {
+    background-color: #fcfcfc;
+  }
+  
+  /* 다크 모드일 때 ant-tabs-tab 스타일 */
+  .ant-tabs-tab-dark {
+    color: #fff ;
+  }
+  

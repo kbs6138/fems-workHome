@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Tabs } from 'antd';
+import MechanicInfo from '../../MechanicInfo/MechanicInfo';
+import { ThemeContext } from '../../ThemeContext';
+import './Tabs.css';
 
 const onChange = (key) => {
     console.log(key);
@@ -14,7 +17,7 @@ const items = [
     {
         key: '2',
         label: '분전반 정보',
-        children: 'Content of Tab Pane 2',
+        children: <MechanicInfo />,
     },
     {
         key: '3',
@@ -33,6 +36,13 @@ const items = [
     },
 ];
 
-const RightBottomMainTabs = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+const RightBottomMainTabs = () => {
+    const { isDarkMode } = useContext(ThemeContext);
+    const TabsTheme = isDarkMode ? 'ant-tabs-tab-dark' : '';
+
+    return (
+        <Tabs className={TabsTheme} defaultActiveKey="1" items={items} onChange={onChange} />
+    );
+};
 
 export default RightBottomMainTabs;

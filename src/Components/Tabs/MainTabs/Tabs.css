@@ -1,0 +1,11 @@
+.ant-tabs-tab-btn{
+    color: #000000;
+  }
+  .ant-tabs-tab-dark {
+    color: #fff;
+  }
+
+  /* Tabs.css */
+.ant-tabs-tab-dark .ant-tabs-tab-btn {
+  color: #fff !important;
+}
