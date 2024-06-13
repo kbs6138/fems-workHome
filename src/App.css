@@ -1,12 +1,14 @@
 /*************************************************** 전체 폰트 설정 ***************************************************/
 
 * {
-    font-family: 'NanumSquareNeo';
-    /*font-family: 'NanumSquareNeoLight';
     font-family: 'NanumSquareNeoBold';
+   
+    /*font-family: 'NanumSquareNeoLight';
+     font-family: 'NanumSquareNeo';
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
+    font-size: 15.5px;
 }
 
 /*************************************************** 전체 폰트 설정 ****************************************************/
@@ -26,6 +28,10 @@
 
 .app-Content {
     margin: 0 16px;
+    padding: 10px 0 10px 0;
+}
+.ant-card-body{
+    background: transparent !important;
 }
 
 .app-Content-div {
@@ -35,7 +41,6 @@
 }
 
 .Main-Top-Info-Row {
-    background-color: bisque;
     width: auto;
 }
 
@@ -43,7 +48,7 @@
 .Main-Top-Info2,
 .Main-Top-Info3,
 .Main-Top-Info4 {
-    background-color: beige;
+ 
     height: 120px;
     display: flex;
 }
@@ -61,16 +66,27 @@
 .Main-Top-Info2-span,
 .Main-Top-Info3-span,
 .Main-Top-Info4-span {
-    font-family: 'NanumSquareNeoBold';
-    font-size: 17px;
+    font-family: 'NanumSquareNeoExtraBold';
+    font-size: 17.5px !important;
 }
 
 .Main-Top-Info1-p,
 .Main-Top-Info2-p,
 .Main-Top-Info3-p,
 .Main-Top-Info4-p {
-    font-size: 16px;
+    font-size: 15px;
+    font-family: 'NanumSquareNeo';
+
 }
+
+
+.Main-Top-Info1-h1,
+.Main-Top-Info2-h1,
+.Main-Top-Info3-h1,
+.Main-Top-Info4-h1{
+    font-size: 29px !important;
+}
+
 
 .Main-Top-Info1-h1 {
     color: #667EFE;
@@ -120,7 +136,7 @@
 .Main-Center-Content1,
 .Main-Center-Content2,
 .Main-Center-Content3 {
-    background-color: bisque;
+    background-color: transparent;
     height: 580px;
 }
 
@@ -131,8 +147,8 @@
 .Main-Bottom-Content1,
 .Main-Bottom-Content2,
 .Main-Bottom-Content3 {
-    background-color: bisque;
-    height: 500px;
+    background-color: transparent;
+    height: 450px;
 }
 
 
@@ -140,7 +156,7 @@
 .Card3-middle,
 .Card3-bottom {
     height: 180px;
-  border-radius: 6px;
+    border-radius: 6px;
     width: 100%;
 }
 
@@ -167,23 +183,29 @@ span p {
 .Card3-grid-Percent-text,
 .Card1-grid-Percent-value,
 .Card2-grid-Percent-value,
-.Card3-grid-Percent-value    {
+.Card3-grid-Percent-value {
     font-size: 30px;
     font-family: 'NanumSquareNeoExtraBold';
 }
 
 .Card1-grid-text,
 .Card2-grid-text,
-.Card3-grid-text{
-    padding-left:10px;
-    padding-top: 30px;
+.Card3-grid-text {
+    padding-left: 20px;
+    margin-top: 40px;
+}
+.Card1-grid-Title-text,
+.Card2-grid-Title-text{
+    font-size: 17px;
+    font-family: 'NanumSquareNeoBold';
+
 }
 
 .Card1-grid-Percent-Near-text,
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
     font-size: 20px;
-
+    font-family: 'NanumSquareNeoExtraBold';
 }
 
 /*************************************************** 컨텐츠 (메인화면) *************************************************/
@@ -208,6 +230,7 @@ span p {
 .table2 td,
 .table3 td {
     padding-bottom: 15px;
+    font-size: 14px;
 }
 
 .table1 th,
@@ -218,18 +241,17 @@ td,
 td {
     padding-left: 15px;
     /* 원하는 간격으로 조정 */
+    font-size: 14px;
 }
 
 .table1 th,
 .table2 th,
 .table3 th {
     padding-bottom: 5px;
+    font-size: 14px;
+
 }
 
-.table1 td,
-.table2 td,
-.table3 td {
-    padding-bottom: 15px;
-}
+
 
 /*************************************************** 컴포넌트들  ****************************************************/

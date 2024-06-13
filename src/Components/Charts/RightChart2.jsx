@@ -89,7 +89,7 @@ const RightChart2 = () => {
         <div
             id="RightChart2"
             className="RightChart2"
-            style={{ width: '250px', height: '250px', position: 'absolute', top: '85%', left: '50%', transform: 'translate(-50%, -50%)' }}
+            style={{ width: '250px', height: '250px', position: 'absolute', top: '65%', left: '40%', transform: 'translate(-50%, -50%)' }}
         ></div>
     );
 };

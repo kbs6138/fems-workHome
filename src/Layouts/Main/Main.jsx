@@ -106,7 +106,7 @@ const AppMain = () => {
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content2' >
                         <Card className={`Card2 ${TxtTheme} ${BgTheme}`}>
                             <h8> Trend Analysis Monitor</h8>
@@ -116,12 +116,13 @@ const AppMain = () => {
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={8} >
+                <Col className="gutter-row" span={7} >
 
                         <div className={` Card3-top ${TxtTheme} ${BgTheme}`}  >
                             <Row gutter={[16, 12]}>
-                                <Col span={12}>
+                                <Col span={13}>
                                     <div  className="Card1-grid-text" >
+                                    <p className="Card1-grid-Title-text">금일 사용량</p>
                                         <h3>전일 사용량 대비</h3>
                                         <span className="Card1-grid-Percent-text">
                                             <span className="Card1-grid-Percent-value">20.65%</span>
@@ -129,7 +130,7 @@ const AppMain = () => {
                                         </span>
                                     </div>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={11}>
                                         <RightChart1/>
                                   
                                 </Col>
@@ -138,8 +139,9 @@ const AppMain = () => {
                         <br/>
                         <div className={` Card3-middle ${TxtTheme} ${BgTheme}`}  >
                             <Row gutter={[16, 12]}>
-                                <Col span={12}>
+                                <Col span={13}>
                                 <div  className="Card2-grid-text" >
+                                <p className="Card2-grid-Title-text">금일 역률 평균</p>
                                         <h3>전일 역률 대비</h3>
                                         <span className="Card2-grid-Percent-text">
                                             <span className="Card2-grid-Percent-value">12%</span>
@@ -147,7 +149,7 @@ const AppMain = () => {
                                         </span>
                                     </div>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={11}>
                                     <div className="Card3-grid-chart">
                                         <RightChart2/>
                                     </div>
@@ -188,7 +190,7 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" span={8}>
                     <div className='Main-Bottom-Content1' >
                         <Card className={`Card4 ${TxtTheme} ${BgTheme}`}  >
                             <h8>Electric Diagram</h8>
@@ -197,7 +199,7 @@ const AppMain = () => {
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" span={16}>
                     <div className='Main-Bottom-Content2'>
                         <Card className={`Card5 ${TxtTheme} ${BgTheme}`}  >
                             <RightBottomMainTabs />

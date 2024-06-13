@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Tabs } from 'antd';
 import { ThemeContext } from '../../ThemeContext';  // ThemeContext 경로는 프로젝트 구조에 맞게 수정
+import GaugeChart from '../../Charts/Gauge';
 import './Tabs.css';
 
 const onChange = (key) => {
@@ -11,7 +12,7 @@ const items = [
     {
         key: '1',
         label: '수전 용량',
-        children: 'Content of Tab Pane 1',
+        children: <GaugeChart/>
     },
     {
         key: '2',
