@@ -13,7 +13,7 @@ const RightChart2 = () => {
         const option = {
             xAxis: {
                 type: 'category',
-                data: ['전일 역률', '금일 역률'],
+                data: ['전일 역률', '당일 역률'],
                 axisLabel: {
                     fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
@@ -31,7 +31,7 @@ const RightChart2 = () => {
                 {
                     data: [
                         { value: 90, name: '전일 역률' },
-                        { value: 75, name: '금일 역률' }
+                        { value: 75, name: '당일 역률' }
                     ],
                     type: 'bar',
                     showBackground: true,
@@ -89,7 +89,7 @@ const RightChart2 = () => {
         <div
             id="RightChart2"
             className="RightChart2"
-            style={{ width: '250px', height: '250px', position: 'absolute', top: '65%', left: '40%', transform: 'translate(-50%, -50%)' }}
+            style={{ width: '300px', height: '250px', position: 'absolute', top: '65%', left: '40%', transform: 'translate(-50%, -50%)' }}
         ></div>
     );
 };

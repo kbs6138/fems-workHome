@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Tabs } from 'antd';
 import { ThemeContext } from '../../ThemeContext';  // ThemeContext 경로는 프로젝트 구조에 맞게 수정
 import GaugeChart from '../../Charts/Gauge';
+import UsedMonthly from '../../Charts/UsedMonthly';
+import PowerFactor from '../../Charts/PowerFactor';
 import './Tabs.css';
 
 const onChange = (key) => {
@@ -17,12 +19,12 @@ const items = [
     {
         key: '2',
         label: '월별 사용량',
-        children: ''
+        children: <UsedMonthly/>
     },
     {
         key: '3',
         label: '월별 평균역률',
-        children: 'Content of Tab Pane 3',
+        children: <PowerFactor/>,
     }
 ];
 

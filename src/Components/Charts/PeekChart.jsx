@@ -24,7 +24,7 @@ const PeekChart = () => {
     }
 
     let data = [];
-    let now = new Date(1997, 9, 3);
+    let now = new Date(2024, 1, 1);
     let oneDay = 24 * 3600 * 1000;
     let value = Math.random() * 1000;
 
@@ -78,7 +78,7 @@ const PeekChart = () => {
         },
         yAxis: {
           type: 'value',
-          boundaryGap: [0, '100%'],
+          boundaryGap: [0, '10%'],
           splitLine: {
             show: true,
             lineStyle: {
@@ -91,10 +91,25 @@ const PeekChart = () => {
         },
         series: [
           {
-            name: 'Fake Data',
+          
             type: 'line',
             showSymbol: false,
-            data: data
+            data: data,
+            markLine: {
+              data: [
+                {
+                  yAxis: 1000, // 기준선의 y값 설정
+                  label: {
+                    formatter: 'Max : 1000',
+                    color: textColor
+                  },
+                  lineStyle: {
+                    color: isDarkMode ? '#ff0000' : '#ff0000',
+                    type: 'solid'
+                  }
+                }
+              ]
+            }
           }
         ]
       };
@@ -116,7 +131,7 @@ const PeekChart = () => {
           }
         ]
       });
-    }, 1000);
+    }, 100);
 
     const handleResize = () => {
       myChart.resize();

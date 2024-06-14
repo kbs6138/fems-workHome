@@ -137,7 +137,7 @@
 .Main-Center-Content2,
 .Main-Center-Content3 {
     background-color: transparent;
-    height: 580px;
+    height: 645px;
 }
 
 .Main-Bottom-Content-Row {
@@ -158,6 +158,10 @@
     height: 180px;
     border-radius: 6px;
     width: 100%;
+}
+
+.Card3-bottom {
+    height: 245px !important;
 }
 
 span {

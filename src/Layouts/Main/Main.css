@@ -8,7 +8,7 @@
   }
   
   .bg-dark {
-    background-color: #333333;
+    background-color: #343434;
   }
   
   .bg-light {
@@ -16,9 +16,7 @@
   }
   
   /* 다크 모드일 때 ant-tabs-tab 스타일 */
-  .ant-tabs-tab-dark {
-    color: #fff ;
-  }
+
   
   .ant-layout{
     background-color: rgb(182, 182, 182);
