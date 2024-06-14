@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Table } from 'antd';
+import './PhaseQuarterlyInfo.css';
+import { ThemeContext } from '../../Components/ThemeContext';
 
 const columns = [
   {
@@ -177,22 +179,23 @@ const data = [
 const defaultCheckedList = columns.map((item) => item.key);
 
 const PhaseQuarterlyInfo = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   const [checkedList] = useState(defaultCheckedList);
 
   const newColumns = columns.filter((item) => checkedList.includes(item.key));
 
   return (
-    <>
+    <div className={isDarkMode ? 'dark-mode' : ''}>
       <Table
         columns={newColumns}
         dataSource={data}
         style={{
           marginTop: 24,
           padding: '0 15px 0 15px',
-          height:'400px'
+          height: '400px',
         }}
       />
-    </>
+    </div>
   );
 };
 
