@@ -100,7 +100,7 @@ const PeekChart = () => {
                 {
                   yAxis: 1000, // 기준선의 y값 설정
                   label: {
-                    formatter: 'Max : 1000',
+                    formatter: 'Max',
                     color: textColor
                   },
                   lineStyle: {

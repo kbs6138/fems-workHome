@@ -30,11 +30,13 @@ const items = [
         label: '전류 / 과전류',
         children: 'Content of Tab Pane 4',
     },
+    /*
     {
         key: '5',
         label: '개발 중 입니다.',
         children: 'Content of Tab Pane 5',
     },
+    */
 ];
 
 const RightBottomMainTabs = () => {

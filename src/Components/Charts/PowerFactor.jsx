@@ -22,7 +22,7 @@ function PowerFactor() {
         data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
       }],
       chart: {
-        height: 350,
+        height: 500,
         type: 'line',
         stacked: false,
       },
@@ -71,7 +71,7 @@ function PowerFactor() {
       }
     };
 
-    var chart = new ApexCharts(document.querySelector("#used-monthly-chart"), options);
+    var chart = new ApexCharts(document.querySelector("#PowerFactor"), options);
     chart.render();
 
     // 다크 모드 변경 시 차트 옵션 업데이트
@@ -106,7 +106,7 @@ function PowerFactor() {
   }, [isDarkMode]);
 
   return (
-    <div id="used-monthly-chart"></div>
+    <div id="PowerFactor"></div>
   );
 }
 

@@ -71,7 +71,7 @@ const RightChart1 = () => {
         <div
             id="RightChart1"
             className="RightChart1"
-            style={{ width: '300px', height: '250px', position: 'absolute', top: '65%', left: '40%', transform: 'translate(-50%, -50%)' }}
+            style={{ width: '300px', height: '240px', position: 'absolute', transform: 'translate(-30%, -50%)' , left:'30px' }}
         ></div>
     );
 };

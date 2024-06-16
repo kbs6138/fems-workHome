@@ -29,21 +29,44 @@ const GaugeChart = () => {
                         detail: {
                             formatter: function (value) {
                                 let statusText = '';
+                                let statusColor = '';
                                 if (value < 70) {
                                     statusText = '안전';
+                                    statusColor = 'safe';
                                 } else if (value < 80) {
                                     statusText = '주의';
+                                    statusColor = 'caution';
                                 } else {
                                     statusText = '위험';
+                                    statusColor = 'danger';
                                 }
-                                return `${statusText}\n${value}%`;
+                                return `{${statusColor}|${statusText}}\n${value}%`;
                             },
                             fontSize: 20,
-                            color: textColor, // 텍스트 색상 설정
+                            color: textColor, // 기본 텍스트 색상 설정
+                            fontFamily: 'NanumSquareNeoBold',
+                            rich: {
+                                safe: {
+                                    color: '#33cc33',
+                                    fontSize: 25, // 폰트 크기 설정
+                                    fontFamily: 'NanumSquareNeoBold',
+
+                                },
+                                caution: {
+                                    color: '#ffcc00',
+                                    fontSize: 25, // 폰트 크기 설정
+                                    fontFamily: 'NanumSquareNeoBold',
+                                },
+                                danger: {
+                                    color: '#ff3300',
+                                    fontSize: 25, // 폰트 크기 설정
+                                    fontFamily: 'NanumSquareNeoBold',
+                                }
+                            }
                         },
                         data: [
                             {
-                                value: 60,
+                                value: 50,
                                 name: ''  // name은 formatter에서 설정
                             }
                         ],
@@ -60,12 +83,7 @@ const GaugeChart = () => {
                         axisLabel: {
                             color: axisLineColor, // 축 라벨 색상 설정
                         },
-                        title: {
-                            show: true,
-                            offsetCenter: [0, '70%'],
-                            fontSize: 20,
-                            color: textColor, // 제목 색상 설정
-                        }
+
                     }
                 ]
             };

@@ -13,7 +13,7 @@
   .gauge {
     width: 100%;
     max-width: 600px; /* 최대 크기 설정 */
-    height: 450px;
+    height: 600px;
   }
 
 
@@ -28,15 +28,30 @@
 
 
   .Peekchart {
-    width: 100%;
-    height: 500px;
+    width: 99%;
+    height: 550px;
   }
   
   @media (max-width: 768px) {
     .Peekchart {
       height: 200px;
-      width: 100%;
+      width: 99%;
     }
   }
+
+
+
+  #RightChart3 {
+    border: 1px solid black;
+    height: 300px;
+
+  }
+  #RightChart3 svg {
+    left: 100px !important;
+
+    height: 200px !important;
+  }
+  
+  
   
   
