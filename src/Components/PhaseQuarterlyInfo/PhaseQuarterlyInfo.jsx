@@ -190,9 +190,7 @@ const PhaseQuarterlyInfo = () => {
         columns={newColumns}
         dataSource={data}
         style={{
-          marginTop: 24,
-          padding: '0 15px 0 15px',
-          height: '400px',
+          padding: '0 10px 0 10px',
         }}
       />
     </div>

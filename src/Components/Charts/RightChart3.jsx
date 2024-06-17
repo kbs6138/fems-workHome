@@ -20,8 +20,8 @@ const RightChart3 = () => {
             { text: 'L2' },
             { text: 'L3' }
           ],
-          center: ['25%', '50%'],
-          radius: 120,
+          center: ['50%', '50%'],
+          radius: 60,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -65,17 +65,16 @@ const RightChart3 = () => {
             {
               value: [60, 5,  1500],
               name: 'Data B',
-
             },
             {
               value: [200, 40,  2500],
               name: 'Data C',
-
             }
           ]
         },
-
       ]
+
+      
     };
 
     if (option && typeof option === 'object') {
@@ -95,7 +94,7 @@ const RightChart3 = () => {
   }, []);
 
   return (
-    <div id="RightChart3" style={{ width: '600px', height: '200px' }}></div>
+    <div id="RightChart3" style={{ width: '100%', height: '230px' }}></div>
   );
 };
 

@@ -78,7 +78,7 @@
 .Main-Top-Info2-h1,
 .Main-Top-Info3-h1,
 .Main-Top-Info4-h1 {
-    font-size: 29px !important;
+    font-size: 25px !important;
 }
 
 
@@ -131,8 +131,7 @@
 .Main-Center-Content1,
 .Main-Center-Content2,
 .Main-Center-Content3 {
-
-    height: 645px;
+    height: 430px;
 }
 
 .Main-Bottom-Content-Row {
@@ -141,8 +140,7 @@
 
 .Main-Bottom-Content1,
 .Main-Bottom-Content2 {
-
-    height: 455px;
+    height: 430px;
     max-height: 100% !important;
 }
 
@@ -150,8 +148,16 @@
 .Card3-top,
 .Card3-middle,
 .Card3-bottom {
-    height: 208px;
     border-radius: 6px;
+}
+
+.Card3-bottom{
+    height: 149px !important;
+}
+
+.Card3-top,
+.Card3-middle{
+    height: 130px !important;
 }
 
 .card-container {
@@ -159,10 +165,6 @@
     /* 원하는 여백 크기로 변경 가능 */
 }
 
-
-.Card3-bottom {
-    height: 210px !important;
-}
 
 span {
     display: flex;
@@ -195,20 +197,19 @@ span p {
 
 .Card1-grid-Title-text,
 .Card2-grid-Title-text {
-    font-size: 20px;
-    font-family: 'NanumSquareNeoBold';
+    font-size: 15px;
 }
 
 .Card1-grid-SubTitle-text,
 .Card2-grid-SubTitle-text {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .Card1-grid-Percent-Near-text,
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
     font-size: 20px;
-    font-family: 'NanumSquareNeoExtraBold';
+
 }
 
 /*************************************************** 컨텐츠 (메인화면) *************************************************/
@@ -222,6 +223,7 @@ span p {
     text-align: center;
     background-color: #001528;
     color: white;
+
 }
 
 /*************************************************** 푸터 (최하단) ****************************************************/

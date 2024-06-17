@@ -15,10 +15,9 @@ const RightChart2 = () => {
                 type: 'category',
                 data: ['전일 역률', '당일 역률'],
                 axisLabel: {
-                    fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
                     fontSize: '13.5px',
-                    fontFamily: 'NanumSquareNeo'
+                    fontFamily: 'NanumSquareNeoBold'
                 }
             },
             yAxis: {
@@ -50,9 +49,8 @@ const RightChart2 = () => {
                         show: true,
                         position: 'top',
                         formatter: (params) => `${params.value.toLocaleString()} %`,
-                        fontWeight: 'bold',
                         fontSize: '15px',
-                        fontFamily: 'NanumSquareNeo',
+                        fontFamily: 'NanumSquareNeoBold',
                         color: isDarkMode ? 'white' : 'black'
                     },
                     markLine: {
@@ -62,9 +60,8 @@ const RightChart2 = () => {
                                 label: {
                                     formatter: 'max : 100%',
                                     position: 'insideEndTop',
-                                    fontWeight: 'bold',
                                     fontSize: '12px',
-                                    fontFamily: 'NanumSquareNeo',
+                                    fontFamily: 'NanumSquareNeoBold',
                                     color: isDarkMode ? 'white' : 'black'
                                 }
                             }
@@ -77,19 +74,16 @@ const RightChart2 = () => {
                 }
             ]
         };
-
         myChart.setOption(option);
-
         return () => {
             myChart.dispose();
         };
     }, [isDarkMode]);
-
     return (
         <div
             id="RightChart2"
-            className="RightChart2"
-            style={{ width: '220px', height: '230px', position: 'absolute', transform: 'translate(10%, -50%)' , right:'0' }}
+            className="right-chart-2"
+            style={{ width: '220px', height: '210px', position: 'absolute', transform: 'translate(10%, -58%)', right: '0' }}
         ></div>
     );
 };

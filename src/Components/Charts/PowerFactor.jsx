@@ -22,7 +22,7 @@ function PowerFactor() {
         data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
       }],
       chart: {
-        height: 500,
+        height: 300,
         type: 'line',
         stacked: false,
       },

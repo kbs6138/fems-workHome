@@ -1,24 +1,25 @@
 import React, { useEffect, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../ThemeContext'; // ThemeContext 경로는 프로젝트 구조에 맞게 수정
-import './Charts.css';  // 필요한 CSS 파일을 import
+import { ThemeContext } from '../ThemeContext';
+import './Charts.css';
 
 const RightChart1 = () => {
     const { isDarkMode } = useContext(ThemeContext);
 
     useEffect(() => {
         const chartDom = document.getElementById('RightChart1');
-        const myChart = echarts.init(chartDom);
+
+
+        const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
 
         const option = {
             xAxis: {
                 type: 'category',
                 data: ['전일 사용', '당일 사용'],
                 axisLabel: {
-                    fontWeight: 'bold',
-                    color: isDarkMode ? '#fff' : 'black',
-                    fontSize: '13.5px',
-                    fontFamily: 'NanumSquareNeo'
+                    color: isDarkMode ? '#fff' : '#000',
+                    fontSize: '14px',
+                    fontFamily: 'NanumSquareNeoBold'
                 }
             },
             yAxis: {
@@ -38,24 +39,22 @@ const RightChart1 = () => {
                     itemStyle: {
                         color: (params) => params.name === '전일 사용'
                             ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                              { offset: 1, color: 'rgba(75, 115, 225, 0.5)' },
-                              { offset: 0, color: 'rgba(88, 226, 193, 0.5)' }
-                            ])
+                                { offset: 1, color: 'rgba(75, 115, 225, 0.5)' },
+                                { offset: 0, color: 'rgba(88, 226, 193, 0.5)' }
+                              ])
                             : new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                              { offset: 1, color: 'rgba(75, 115, 225, 1)' },
-                              { offset: 0, color: 'rgba(88, 226, 193, 1)' }
-                            ])
+                                { offset: 1, color: 'rgba(75, 115, 225, 1)' },
+                                { offset: 0, color: 'rgba(88, 226, 193, 1)' }
+                              ])
                     },
                     label: {
                         show: true,
                         position: 'top',
                         formatter: (params) => `${params.value.toLocaleString()} Kw`,
-                        fontWeight: 'bold',
                         fontSize: '15px',
-                        fontFamily: 'NanumSquareNeo',
-                        color: isDarkMode ? 'white' : 'black'
-                    },
-
+                        fontFamily: 'NanumSquareNeoBold',
+                        color: isDarkMode ? '#fff' : '#000'
+                    }
                 }
             ]
         };
@@ -70,8 +69,8 @@ const RightChart1 = () => {
     return (
         <div
             id="RightChart1"
-            className="RightChart1"
-            style={{ width: '220px', height: '230px', position: 'absolute', transform: 'translate(10%, -50%)' , right:'0' }}
+            className="right-chart-1"
+            style={{ width: '225px', height: '210px', position: 'absolute', transform: 'translate(10%, -58%)', right: '0' }}
         ></div>
     );
 };

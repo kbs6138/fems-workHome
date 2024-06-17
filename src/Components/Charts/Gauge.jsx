@@ -42,24 +42,24 @@ const GaugeChart = () => {
                                 }
                                 return `{${statusColor}|${statusText}}\n${value}%`;
                             },
-                            fontSize: 20,
+                            fontSize: 17,
                             color: textColor, // 기본 텍스트 색상 설정
                             fontFamily: 'NanumSquareNeoBold',
                             rich: {
                                 safe: {
                                     color: '#33cc33',
-                                    fontSize: 25, // 폰트 크기 설정
+                                    fontSize: 20, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
 
                                 },
                                 caution: {
                                     color: '#ffcc00',
-                                    fontSize: 25, // 폰트 크기 설정
+                                    fontSize: 20, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 danger: {
                                     color: '#ff3300',
-                                    fontSize: 25, // 폰트 크기 설정
+                                    fontSize: 20, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
                                 }
                             }
@@ -106,9 +106,7 @@ const GaugeChart = () => {
     }, [isDarkMode]);
 
     return (
-        <div className="gauge-container">
-            <div id="gauge" ref={chartRef} className="gauge" />
-        </div>
+        <div id="gauge" ref={chartRef} className="gauge" />
     );
 };
 

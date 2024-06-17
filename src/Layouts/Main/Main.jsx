@@ -92,18 +92,18 @@ const AppMain = () => {
             >
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content1'>
+                 
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
-                            <h8>Peek Monitor</h8>
-                            <PeekChart />
+                        <span>Peek Monitor</span>
+                        <PeekChart />
                         </Card>
                     </div>
                 </Col>
 
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content2' >
-                        <Card className={`Card2 ${TxtTheme} ${BgTheme}`}>
-                            <h8> Trend Analysis Monitor</h8>
-                            <br />
+                        <Card size='medium' className={`Card2 ${TxtTheme} ${BgTheme}`}>
+                            <span> Trend Analysis Monitor</span>
                             <CenterMainTabs />
                         </Card>
                     </div>
@@ -115,7 +115,7 @@ const AppMain = () => {
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={12}>
                                     <div className="Card1-grid-text">
-                                        <p className="Card1-grid-Title-text">당일 사용량</p>
+                                        <span className="Card1-grid-Title-text">당일 사용량</span>
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
                                         <span className="Card1-grid-Percent-text">
                                             <span className="Card1-grid-Percent-value">20.65%</span>
@@ -135,7 +135,7 @@ const AppMain = () => {
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={12}>
                                     <div className="Card2-grid-text">
-                                        <p className="Card2-grid-Title-text">당일 역률 평균</p>
+                                        <span className="Card2-grid-Title-text">당일 역률 평균</span>
                                         <p className="Card2-grid-SubTitle-text">전일 역률 대비
                                             <span className="Card2-grid-Percent-text">
                                                 <span className="Card2-grid-Percent-value">12%</span>
