@@ -2,7 +2,7 @@
 
 * {
     font-family: 'NanumSquareNeoBold';
-   
+
     /*font-family: 'NanumSquareNeoLight';
      font-family: 'NanumSquareNeo';
     font-family: 'NanumSquareNeoExtraBold';
@@ -30,7 +30,8 @@
     margin: 0 16px;
     padding: 10px 0 10px 0;
 }
-.ant-card-body{
+
+.ant-card-body {
     background: transparent !important;
 }
 
@@ -44,8 +45,7 @@
 .Main-Top-Info2,
 .Main-Top-Info3,
 .Main-Top-Info4 {
- 
-    height: 120px;
+    height: 60px;
     display: flex;
 }
 
@@ -54,7 +54,6 @@
 .Main-Top-Info3-Col1,
 .Main-Top-Info4-Col1 {
     height: 100%;
-    padding: 30px;
     padding-left: 10px !important;
 }
 
@@ -72,14 +71,13 @@
 .Main-Top-Info4-p {
     font-size: 15px;
     font-family: 'NanumSquareNeo';
-
 }
 
 
 .Main-Top-Info1-h1,
 .Main-Top-Info2-h1,
 .Main-Top-Info3-h1,
-.Main-Top-Info4-h1{
+.Main-Top-Info4-h1 {
     font-size: 29px !important;
 }
 
@@ -142,9 +140,9 @@
 }
 
 .Main-Bottom-Content1,
-.Main-Bottom-Content2{
+.Main-Bottom-Content2 {
 
-    height: 500px;
+    height: 455px;
     max-height: 100% !important;
 }
 
@@ -152,12 +150,13 @@
 .Card3-top,
 .Card3-middle,
 .Card3-bottom {
-    height: 205px;
+    height: 208px;
     border-radius: 6px;
 }
 
 .card-container {
-    margin-bottom: 12px; /* 원하는 여백 크기로 변경 가능 */
+    margin-bottom: 10px;
+    /* 원하는 여백 크기로 변경 가능 */
 }
 
 
@@ -189,25 +188,26 @@ span p {
 .Card1-grid-Percent-value,
 .Card2-grid-Percent-value,
 .Card3-grid-Percent-value {
-    font-size: 30px;
-    font-family: 'NanumSquareNeoExtraBold';
+    font-size: 25px;
+    font-family: 'NanumSquareNeoBold';
 }
 
 
 .Card1-grid-Title-text,
-.Card2-grid-Title-text{
-    font-size: 23px;
+.Card2-grid-Title-text {
+    font-size: 20px;
     font-family: 'NanumSquareNeoBold';
 }
+
 .Card1-grid-SubTitle-text,
-.Card2-grid-SubTitle-text{
+.Card2-grid-SubTitle-text {
     font-size: 18px;
 }
 
 .Card1-grid-Percent-Near-text,
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'NanumSquareNeoExtraBold';
 }
 
@@ -237,30 +237,30 @@ td,
 td,
 .table3 th,
 td {
-  padding-left: 15px;
-  /* 원하는 간격으로 조정 */
+    padding-left: 15px;
+    /* 원하는 간격으로 조정 */
 }
 
 .table1 th,
 .table2 th,
 .table3 th {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .table1 td,
 .table2 td,
 .table3 td {
-  padding-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .ant-table-thead th {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 .ant-table-cell {
-  padding: 5px 5px !important;
-  font-size: 13px !important;
-  text-align: center;
+    padding: 5px 5px !important;
+    font-size: 13px !important;
+    text-align: center;
 }
 
 

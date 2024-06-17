@@ -17,7 +17,7 @@ const RightChart2 = () => {
                 axisLabel: {
                     fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
-                    fontSize: '14px',
+                    fontSize: '13.5px',
                     fontFamily: 'NanumSquareNeo'
                 }
             },
@@ -49,7 +49,7 @@ const RightChart2 = () => {
                     label: {
                         show: true,
                         position: 'top',
-                        formatter: (params) => `${params.value.toLocaleString()} Kw`,
+                        formatter: (params) => `${params.value.toLocaleString()} %`,
                         fontWeight: 'bold',
                         fontSize: '15px',
                         fontFamily: 'NanumSquareNeo',
@@ -89,7 +89,7 @@ const RightChart2 = () => {
         <div
             id="RightChart2"
             className="RightChart2"
-            style={{ width: '300px', height: '240px', position: 'absolute', transform: 'translate(-30%, -50%)' , left:'30px' }}
+            style={{ width: '220px', height: '230px', position: 'absolute', transform: 'translate(10%, -50%)' , right:'0' }}
         ></div>
     );
 };

@@ -17,7 +17,7 @@ const RightChart1 = () => {
                 axisLabel: {
                     fontWeight: 'bold',
                     color: isDarkMode ? '#fff' : 'black',
-                    fontSize: '14px',
+                    fontSize: '13.5px',
                     fontFamily: 'NanumSquareNeo'
                 }
             },
@@ -71,7 +71,7 @@ const RightChart1 = () => {
         <div
             id="RightChart1"
             className="RightChart1"
-            style={{ width: '300px', height: '240px', position: 'absolute', transform: 'translate(-30%, -50%)' , left:'30px' }}
+            style={{ width: '220px', height: '230px', position: 'absolute', transform: 'translate(10%, -50%)' , right:'0' }}
         ></div>
     );
 };

@@ -16,8 +16,8 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
+  getItem('통합 모니터링', '1', <DesktopOutlined />),
+  getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />),
   getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
     getItem('관리자', '3'),
     getItem('사용자', '4'),

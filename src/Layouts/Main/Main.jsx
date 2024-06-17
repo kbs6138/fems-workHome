@@ -90,7 +90,7 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content1'>
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
                             <h8>Peek Monitor</h8>
@@ -109,7 +109,7 @@ const AppMain = () => {
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={7}>
+                <Col className="gutter-row" span={6}>
                     <div className="card-container">
                         <Card className={`Card3-top ${TxtTheme} ${BgTheme}`}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
