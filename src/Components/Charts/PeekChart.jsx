@@ -13,7 +13,7 @@ const PeekChart = () => {
 
     function randomData() {
       now = new Date(+now + oneDay);
-      value = value + Math.random() * 21 - 10;
+      value = value + Math.random() * 20 - 10;  // 범위 조정
       return {
         name: now.toString(),
         value: [
@@ -26,9 +26,9 @@ const PeekChart = () => {
     let data = [];
     let now = new Date(2024, 1, 1);
     let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 1000;
+    let value = Math.random() * 1000;  // 초기값 조정
 
-    for (var i = 0; i < 1000; i++) {
+    for (let i = 0; i < 1500; i++) {
       data.push(randomData());
     }
 
@@ -43,6 +43,7 @@ const PeekChart = () => {
     const updateChartOptions = () => {
       const textColor = getTextColor();
       const gridLineColor = getGridLineColor();
+      const fontFamily = 'NanumSquareNeo';
 
       option = {
         tooltip: {
@@ -62,6 +63,9 @@ const PeekChart = () => {
           },
           axisPointer: {
             animation: false
+          },
+          textStyle: {
+            fontFamily: fontFamily
           }
         },
         xAxis: {
@@ -73,7 +77,12 @@ const PeekChart = () => {
             }
           },
           axisLabel: {
-            color: textColor
+            color: textColor,
+            fontFamily: fontFamily,
+            formatter: function (value) {
+              const date = new Date(value);
+              return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+            }
           }
         },
         yAxis: {
@@ -86,7 +95,8 @@ const PeekChart = () => {
             }
           },
           axisLabel: {
-            color: textColor
+            color: textColor,
+            fontFamily: fontFamily
           }
         },
         series: [
@@ -97,10 +107,11 @@ const PeekChart = () => {
             markLine: {
               data: [
                 {
-                  yAxis: 1000, // 기준선의 y값 설정
+                  yAxis: 100, // 기준선의 y값 설정
                   label: {
                     formatter: 'Max',
-                    color: textColor
+                    color: textColor,
+                    fontFamily: fontFamily
                   },
                   lineStyle: {
                     color: isDarkMode ? '#ff0000' : '#ff0000',
@@ -108,9 +119,15 @@ const PeekChart = () => {
                   }
                 }
               ]
+            },
+            label: {
+              fontFamily: fontFamily
             }
           }
-        ]
+        ],
+        textStyle: {
+          fontFamily: fontFamily
+        }
       };
 
       myChart.setOption(option);
@@ -119,9 +136,12 @@ const PeekChart = () => {
     updateChartOptions();
 
     const intervalId = setInterval(function () {
-      for (var i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i++) {
         data.shift();
         data.push(randomData());
+      }
+      if (data.length > 1500) {
+        data = data.slice(data.length - 1500);
       }
       myChart.setOption({
         series: [

@@ -12,7 +12,7 @@ const RightChart3 = () => {
     });
 
     const option = {
-      color: ['#67F9D8', '#FFE434', '#56A040', '#FF917C'],
+      color: ['#00C700','#FC738A', '#7696ff'],
       radar: [
         {
           indicator: [
@@ -31,21 +31,11 @@ const RightChart3 = () => {
           },
           splitArea: {
             areaStyle: {
-              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-              shadowColor: 'rgba(0, 0, 0, 0.2)',
+              color: ['#313946', '#313946', '#546A82', '#8B99B3'],
+              shadowColor: 'rgba(0, 0, 0, 0.8)',
               shadowBlur: 10
             }
           },
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          }
         },
 
       ],
@@ -63,7 +53,7 @@ const RightChart3 = () => {
               name: 'Data A'
             },
             {
-              value: [60, 5,  1500],
+              value: [150, 25,  1500],
               name: 'Data B',
             },
             {
