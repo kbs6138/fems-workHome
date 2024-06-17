@@ -2,7 +2,6 @@
 
 * {
     font-family: 'NanumSquareNeoBold';
-
     /*font-family: 'NanumSquareNeoLight';
      font-family: 'NanumSquareNeo';
     font-family: 'NanumSquareNeoExtraBold';
@@ -25,6 +24,10 @@
 
 
 /*************************************************** 컨텐츠 (메인화면) ************************************************/
+.Card1-Title,
+.Card2-Title {
+    font-family: 'NanumSquareNeoExtraBold';
+}
 
 .app-Content {
     margin: 0 16px;
@@ -179,7 +182,8 @@ span p {
 }
 
 .Card2-grid-Percent-value {
-    color: #5179ff;
+    color: #7696ff;
+
 }
 
 .Card1-grid-Percent-text,
@@ -188,7 +192,7 @@ span p {
 .Card1-grid-Percent-value,
 .Card2-grid-Percent-value,
 .Card3-grid-Percent-value {
-    font-size: 25px;
+    font-size: 22.5px;
     font-family: 'NanumSquareNeoBold';
 }
 
@@ -200,23 +204,44 @@ span p {
 
 .Card1-grid-SubTitle-text,
 .Card2-grid-SubTitle-text {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .Card1-grid-Percent-Near-text,
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .Card3-grid-L1-text,
 .Card3-grid-L2-text,
-.Card3-grid-L3-text {
+.Card3-grid-L3-text  {
     font-family: 'NanumSquareNeoExtraBold';
     font-size: 16px;
     margin-bottom: 5px;
-
 }
+
+.Card3-grid-L1-text{
+    color: #00C700;
+}
+.Card3-grid-L2-text{
+    color: #FC738A;
+}
+
+.Card3-grid-L3-text{
+    color: #7696ff;
+}
+
+
+.Card3-grid-L1-subtext,
+.Card3-grid-L2-subtext,
+.Card3-grid-L3-subtext {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+
+
 
 /*************************************************** 컨텐츠 (메인화면) *************************************************/
 

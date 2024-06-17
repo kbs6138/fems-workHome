@@ -6,7 +6,7 @@
   .gauge {
     width: 100%;
     max-width: 600px; /* 최대 크기 설정 */
-    height: 350px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;

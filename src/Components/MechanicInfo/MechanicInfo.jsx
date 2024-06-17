@@ -63,14 +63,14 @@ const MechanicInfo = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>전압(V)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="volt_t" className='Span_str'>231.5</span></td>
-                                <td>전류(A)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="am_t" className='Span_str'> 30.20</span></td>
-                                <td>피상(VA)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="wat_t" className='Span_str'>4696.0</span></td>
-                                <td>유효(W)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="wat_p_t" className='Span_str'> 7008.9</span></td>
-                                <td>무효(Var)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="wat_n_t" className='Span_str'>5203.1</span></td>
-                                <td>역률(%)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="pf_t" className='Span_str'>67.0</span></td>
-                                <td>I-THD(%)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="ithd_t" className='Span_str'>117.1</span></td>
-                                <td>V-THD(%)<br /><span style={{ fontWeight: 'bolder', color: '#5D82FC' }} id="vthd_t" className='Span_str'>1.6</span></td>
+                                <td>전압(V)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="volt_t" className='Span_str'>231.5</span></td>
+                                <td>전류(A)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="am_t" className='Span_str'> 30.20</span></td>
+                                <td>피상(VA)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="wat_t" className='Span_str'>4696.0</span></td>
+                                <td>유효(W)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="wat_p_t" className='Span_str'> 7008.9</span></td>
+                                <td>무효(Var)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="wat_n_t" className='Span_str'>5203.1</span></td>
+                                <td>역률(%)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="pf_t" className='Span_str'>67.0</span></td>
+                                <td>I-THD(%)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="ithd_t" className='Span_str'>117.1</span></td>
+                                <td>V-THD(%)<br /><span style={{ fontWeight: 'bolder', color: '#7696FF' }} id="vthd_t" className='Span_str'>1.6</span></td>
                             </tr>
                         </tbody>
                     </table>

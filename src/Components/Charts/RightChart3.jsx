@@ -20,7 +20,7 @@ const RightChart3 = () => {
             { text: 'L2' },
             { text: 'L3' }
           ],
-          center: ['50%', '62%'],
+          center: ['50%', '60%'],
           radius: 45,
           startAngle: 90,
           splitNumber: 4,
@@ -94,7 +94,7 @@ const RightChart3 = () => {
   }, []);
 
   return (
-    <div id="RightChart3" style={{ width: '100%', height: '120px', marginTop:'-15px' }}></div>
+    <div id="RightChart3" style={{ width: '100%', height: '130px', marginTop:'-20px' }}></div>
   );
 };
 
