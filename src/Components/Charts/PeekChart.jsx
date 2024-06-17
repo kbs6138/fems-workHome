@@ -91,7 +91,6 @@ const PeekChart = () => {
         },
         series: [
           {
-          
             type: 'line',
             showSymbol: false,
             data: data,
@@ -119,7 +118,7 @@ const PeekChart = () => {
 
     updateChartOptions();
 
-    setInterval(function () {
+    const intervalId = setInterval(function () {
       for (var i = 0; i < 5; i++) {
         data.shift();
         data.push(randomData());
@@ -140,16 +139,14 @@ const PeekChart = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      clearInterval();
+      clearInterval(intervalId);
       window.removeEventListener('resize', handleResize);
       myChart.dispose();
     };
   }, [isDarkMode]);
 
   return (
-    <div className="Peekchart-container">
-      <div id="Peekchart" className="Peekchart" ref={chartRef} />
-    </div>
+    <div id="Peekchart" className="Peekchart" ref={chartRef} />
   );
 };
 

@@ -92,10 +92,10 @@ const AppMain = () => {
             >
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content1'>
-                 
+
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
-                        <span>Peek Monitor</span>
-                        <PeekChart />
+                            <span>Peek Monitor</span>
+                            <PeekChart />
                         </Card>
                     </div>
                 </Col>
@@ -117,10 +117,10 @@ const AppMain = () => {
                                     <div className="Card1-grid-text">
                                         <span className="Card1-grid-Title-text">당일 사용량</span>
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
-                                        <span className="Card1-grid-Percent-text">
-                                            <span className="Card1-grid-Percent-value">20.65%</span>
-                                            <p className="Card1-grid-Percent-Near-text">증가</p>
-                                        </span>
+                                            <span className="Card1-grid-Percent-text">
+                                                <span className="Card1-grid-Percent-value">20.65%</span>
+                                                <p className="Card1-grid-Percent-Near-text">증가</p>
+                                            </span>
                                         </p>
                                     </div>
                                 </Col>
@@ -152,7 +152,19 @@ const AppMain = () => {
                     </div>
                     <div>
                         <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}>
-                            <RightChart3 />
+
+                            <Row gutter={[16, 12]} justify="center" align="middle">
+                                <Col span={12}>
+                                    <div className="Card2-grid-text">
+                                        <span className="Card3-grid-L1-text">L1 :</span>
+                                        <span className="Card3-grid-L2-text">L2 :</span>
+                                        <span className="Card3-grid-L3-text">L3 :</span>
+                                    </div>
+                                </Col>
+                                <Col span={12}>
+                                    <RightChart3 />
+                                </Col>
+                            </Row>
                         </Card>
                     </div>
                 </Col>

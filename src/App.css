@@ -128,10 +128,17 @@
     padding-top: 10px;
 }
 
+
+.Main-Center-Content1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .Main-Center-Content1,
 .Main-Center-Content2,
 .Main-Center-Content3 {
-    height: 430px;
+    height: 470px;
 }
 
 .Main-Bottom-Content-Row {
@@ -148,16 +155,7 @@
 .Card3-top,
 .Card3-middle,
 .Card3-bottom {
-    border-radius: 6px;
-}
-
-.Card3-bottom{
-    height: 149px !important;
-}
-
-.Card3-top,
-.Card3-middle{
-    height: 130px !important;
+    height: 150px !important;
 }
 
 .card-container {
@@ -209,6 +207,14 @@ span p {
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
     font-size: 20px;
+}
+
+.Card3-grid-L1-text,
+.Card3-grid-L2-text,
+.Card3-grid-L3-text {
+    font-family: 'NanumSquareNeoExtraBold';
+    font-size: 16px;
+    margin-bottom: 5px;
 
 }
 

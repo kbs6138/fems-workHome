@@ -7,7 +7,7 @@ const RightChart3 = () => {
   useEffect(() => {
     const chartDom = document.getElementById('RightChart3');
     const myChart = echarts.init(chartDom, null, {
-      renderer: 'svg',
+      renderer: 'canvas',
       useDirtyRect: false
     });
 
@@ -20,8 +20,8 @@ const RightChart3 = () => {
             { text: 'L2' },
             { text: 'L3' }
           ],
-          center: ['50%', '50%'],
-          radius: 60,
+          center: ['50%', '62%'],
+          radius: 45,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -94,7 +94,7 @@ const RightChart3 = () => {
   }, []);
 
   return (
-    <div id="RightChart3" style={{ width: '100%', height: '230px' }}></div>
+    <div id="RightChart3" style={{ width: '100%', height: '120px', marginTop:'-15px' }}></div>
   );
 };
 

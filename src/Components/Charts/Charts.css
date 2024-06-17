@@ -24,8 +24,9 @@
 
 
   .Peekchart {
-    width: 100%;
+    width: 600px;
     height: 350px;
+    margin: 0 auto;
   }
   
   @media (max-width: 768px) {
@@ -36,15 +37,11 @@
   }
 
 
-
+/*
   #RightChart3 {
     border: 1px solid black;
-    position: relative;
-
-
-
   }
-
+*/
 
   
   
