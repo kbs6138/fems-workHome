@@ -1,4 +1,4 @@
-// ThemeContext.js
+// ThemeContext.js 다크모드 테마 받아오는 곳
 import React, { createContext, useState } from 'react';
 
 export const ThemeContext = createContext();
