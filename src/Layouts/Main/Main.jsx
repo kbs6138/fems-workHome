@@ -11,6 +11,7 @@ import RightChart3 from '../../Components/Charts/RightChart3';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 
 
+
 import './Main.css';
 
 const { Content } = Layout;
@@ -193,6 +194,9 @@ const AppMain = () => {
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
                         <span className='Card3-Title'>Electric Diagram</span>
+                        <div>
+                            <img src='./Diagram.jpg'/>
+                        </div>
                     </Card>
                 </Col>
 

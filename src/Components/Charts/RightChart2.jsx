@@ -17,7 +17,7 @@ const RightChart2 = () => {
                 axisLabel: {
                     color: isDarkMode ? '#fff' : 'black',
                     fontSize: '13px',
-                    fontFamily: 'NanumSquareNeo'
+                    fontFamily: 'NanumSquareNeoBold'
                 }
             },
             yAxis: {
@@ -50,7 +50,7 @@ const RightChart2 = () => {
                         position: 'top',
                         formatter: (params) => `${params.value.toLocaleString()} %`,
                         fontSize: '13px',
-                        fontFamily: 'NanumSquareNeo',
+                        fontFamily: 'NanumSquareNeoBold',
                         color: isDarkMode ? 'white' : 'black'
                     },
                     markLine: {

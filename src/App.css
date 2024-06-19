@@ -30,8 +30,8 @@
 
 /*************************************************** 컨텐츠 (메인화면) ************************************************/
 .Card1-Title,
-.Card2-Title ,
-.Card3-Title{
+.Card2-Title,
+.Card3-Title {
     font-family: 'NanumSquareNeoExtraBold';
     font-size: 12.5px;
 }
@@ -222,20 +222,21 @@ span p {
 
 .Card3-grid-L1-text,
 .Card3-grid-L2-text,
-.Card3-grid-L3-text  {
+.Card3-grid-L3-text {
     font-family: 'NanumSquareNeoExtraBold';
     font-size: 14px;
     margin-bottom: 5px;
 }
 
-.Card3-grid-L1-text{
+.Card3-grid-L1-text {
     color: #00C700;
 }
-.Card3-grid-L2-text{
+
+.Card3-grid-L2-text {
     color: #FC738A;
 }
 
-.Card3-grid-L3-text{
+.Card3-grid-L3-text {
     color: #7696ff;
 }
 

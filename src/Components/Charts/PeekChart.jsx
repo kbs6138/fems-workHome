@@ -107,7 +107,7 @@ const PeekChart = () => {
             markLine: {
               data: [
                 {
-                  yAxis: 100, // 기준선의 y값 설정
+                  yAxis: 700, // 기준선의 y값 설정
                   label: {
                     formatter: 'Max',
                     color: textColor,

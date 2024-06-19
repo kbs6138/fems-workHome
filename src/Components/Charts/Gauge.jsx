@@ -42,24 +42,24 @@ const GaugeChart = () => {
                                 }
                                 return `{${statusColor}|${statusText}}\n${value}%`;
                             },
-                            fontSize: 17,
+                            fontSize: 15,
                             color: textColor, // 기본 텍스트 색상 설정
                             fontFamily: 'NanumSquareNeoBold',
                             rich: {
                                 safe: {
                                     color: '#33cc33',
-                                    fontSize: 20, // 폰트 크기 설정
+                                    fontSize: 16, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
 
                                 },
                                 caution: {
                                     color: '#ffcc00',
-                                    fontSize: 20, // 폰트 크기 설정
+                                    fontSize: 16, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 danger: {
                                     color: '#ff3300',
-                                    fontSize: 20, // 폰트 크기 설정
+                                    fontSize: 16, // 폰트 크기 설정
                                     fontFamily: 'NanumSquareNeoBold',
                                 }
                             }

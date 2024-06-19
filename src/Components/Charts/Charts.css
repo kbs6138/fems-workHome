@@ -25,16 +25,10 @@
 
   .Peekchart {
     width: 600px;
-    height: 350px;
+    height: 370px;
     margin: 0 auto;
   }
   
-  @media (max-width: 768px) {
-    .Peekchart {
-      height: 200px;
-      width: 99%;
-    }
-  }
 
 
 /*

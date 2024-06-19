@@ -25,6 +25,8 @@ function PowerFactor() {
         height: 300,
         type: 'line',
         stacked: false,
+        fontFamily: 'NanumSquareNeoBold'
+
       },
       stroke: {
         width: [0, 2, 5],
@@ -47,25 +49,25 @@ function PowerFactor() {
           }
         }
       },
-      yaxis: {
-        labels: {
-          style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
-          }
-        }
-      },
       grid: {
         borderColor: isDarkMode ? '#444444' : '#e0e0e0'
       },
       tooltip: {
-        shared: true,
-        intersect: false,
+        theme: isDarkMode ? 'dark' : 'light',
+        style: {
+          fontSize: '12px',
+          fontFamily: 'NanumSquareNeoBold',
+          color: '#000000' // 툴팁 폰트 색상을 검정색으로 설정
+        },
+        x: {
+          formatter: function (value) {
+            const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'];
+            return months[value - 1];
+          }
+        },
         y: {
-          formatter: function (y) {
-            if (typeof y !== "undefined") {
-              return y.toFixed(0) + " Kw";
-            }
-            return y;
+          formatter: function (value) {
+            return value.toFixed(0) + ' Kw';
           }
         }
       }

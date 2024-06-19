@@ -28,6 +28,9 @@ const RightChart1 = () => {
                     show: false
                 }
             },
+            grid: {
+                show: false
+            },
             series: [
                 {
                     data: [
