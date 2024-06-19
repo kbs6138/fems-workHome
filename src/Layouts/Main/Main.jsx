@@ -121,8 +121,8 @@ const AppMain = () => {
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
                                             <span className="Card1-grid-Percent-text">
                                                 <span className="Card1-grid-Percent-value">20.65%</span>
-                                                <p className="Card1-grid-Percent-Near-text">증가</p><BiUpArrowAlt size={30} color='red'/>
-                                               
+                                                <p className="Card1-grid-Percent-Near-text">증가</p><BiUpArrowAlt size={30} color='red' />
+
                                             </span>
                                         </p>
                                     </div>
@@ -142,7 +142,7 @@ const AppMain = () => {
                                         <p className="Card2-grid-SubTitle-text">전일 역률 대비
                                             <span className="Card2-grid-Percent-text">
                                                 <span className="Card2-grid-Percent-value">12%</span>
-                                                <p className="Card2-grid-Percent-Near-text">감소</p><BiDownArrowAlt size={30} color='#7696ff'/>
+                                                <p className="Card2-grid-Percent-Near-text">감소</p><BiDownArrowAlt size={30} color='#7696ff' />
 
                                             </span>
                                         </p>
@@ -158,20 +158,20 @@ const AppMain = () => {
                         <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={12}>
-                                        <span>
-                                            <span className='Card3-grid-L1-text'>L1</span>
-                                            <p className="Card3-grid-L1-subtext">: </p>
-                                        </span>
-                                        <span>
-                                            <span className='Card3-grid-L2-text'>L3</span>
-                                            <p className="Card3-grid-L2-subtext">: </p>
-                                        </span>
+                                    <span>
+                                        <span className='Card3-grid-L1-text'>L1</span>
+                                        <p className="Card3-grid-L1-subtext">: </p>
+                                    </span>
+                                    <span>
+                                        <span className='Card3-grid-L2-text'>L3</span>
+                                        <p className="Card3-grid-L2-subtext">: </p>
+                                    </span>
 
-                                        <span>
-                                            <span className='Card3-grid-L3-text'>L3</span>
-                                            <p className="Card3-grid-L3-subtext">: </p>
-                                        </span>
-                                  
+                                    <span>
+                                        <span className='Card3-grid-L3-text'>L3</span>
+                                        <p className="Card3-grid-L3-subtext">: </p>
+                                    </span>
+
                                 </Col>
                                 <Col span={12}>
                                     <RightChart3 />
@@ -192,16 +192,16 @@ const AppMain = () => {
             >
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
-                        <h8>Electric Diagram</h8>
+                        <span className='Card3-Title'>Electric Diagram</span>
                     </Card>
                 </Col>
 
 
                 <Col className="gutter-row" span={16}>
-                        <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`}>
-                            <RightBottomMainTabs />
-                        </Card>
-                   
+                    <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`}>
+                        <RightBottomMainTabs />
+                    </Card>
+
                 </Col>
 
             </Row>
