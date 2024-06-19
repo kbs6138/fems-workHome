@@ -16,12 +16,17 @@
 /*************************************************** 헤더 (최상단) ****************************************************/
 .app-header {
     background: #001528;
+    height: 50px;
 }
 
 /*************************************************** 헤더 (최상단) ****************************************************/
 
 
-
+.ant-menu-item,
+.ant-menu-submenu,
+.ant-tabs-tab {
+    font-size: 13.5px !important;
+}
 
 /*************************************************** 컨텐츠 (메인화면) ************************************************/
 .Card1-Title,
@@ -150,7 +155,7 @@
 
 .Main-Bottom-Content1,
 .Main-Bottom-Content2 {
-    height: 430px;
+    height: 350px !important;
     max-height: 100% !important;
 }
 
@@ -192,14 +197,14 @@ span p {
 .Card1-grid-Percent-value,
 .Card2-grid-Percent-value,
 .Card3-grid-Percent-value {
-    font-size: 22.5px;
+    font-size: 21px;
     font-family: 'NanumSquareNeoBold';
 }
 
 
 .Card1-grid-Title-text,
 .Card2-grid-Title-text {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .Card1-grid-SubTitle-text,
@@ -217,7 +222,7 @@ span p {
 .Card3-grid-L2-text,
 .Card3-grid-L3-text  {
     font-family: 'NanumSquareNeoExtraBold';
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 5px;
 }
 
@@ -237,7 +242,7 @@ span p {
 .Card3-grid-L2-subtext,
 .Card3-grid-L3-subtext {
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
@@ -264,37 +269,7 @@ span p {
 /*************************************************** 컴포넌트들  ****************************************************/
 
 
-.table1 th,
-td,
-.table2 th,
-td,
-.table3 th,
-td {
-    padding-left: 15px;
-    /* 원하는 간격으로 조정 */
-}
 
-.table1 th,
-.table2 th,
-.table3 th {
-    padding-bottom: 5px;
-}
-
-.table1 td,
-.table2 td,
-.table3 td {
-    padding-bottom: 15px;
-}
-
-.ant-table-thead th {
-    text-align: center !important;
-}
-
-.ant-table-cell {
-    padding: 5px 5px !important;
-    font-size: 13px !important;
-    text-align: center;
-}
 
 
 

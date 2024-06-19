@@ -189,8 +189,10 @@ const PhaseQuarterlyInfo = () => {
       <Table
         columns={newColumns}
         dataSource={data}
+        pagination={false}
         style={{
           padding: '0 10px 0 10px',
+          fontSize:'12px'
         }}
       />
     </div>

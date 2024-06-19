@@ -9,6 +9,28 @@
 .ant-tabs-tab-dark .ant-tabs-tab-btn {
   color: #fff !important;
 }
-.ant-tabs{
-  margin-top: 10px;
+
+
+.table1 th,
+td,
+.table2 th,
+td,
+.table3 th,
+td {
+    padding-left: 15px;
+    font-size: 12px;
+    /* 원하는 간격으로 조정 */
 }
+
+.table1 th,
+.table2 th,
+.table3 th {
+    padding-bottom: 5px;
+}
+
+.table1 td,
+.table2 td,
+.table3 td {
+    padding-bottom: 10px;
+}
+

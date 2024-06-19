@@ -195,11 +195,15 @@ const AppMain = () => {
                         <h8>Electric Diagram</h8>
                     </Card>
                 </Col>
+
+
                 <Col className="gutter-row" span={16}>
-                    <Card size={'small'} className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`}>
-                        <RightBottomMainTabs />
-                    </Card>
+                        <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`}>
+                            <RightBottomMainTabs />
+                        </Card>
+                   
                 </Col>
+
             </Row>
         </Content>
     );
