@@ -122,7 +122,7 @@ const AppMain = () => {
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
                                             <span className="Card1-grid-Percent-text">
                                                 <span className="Card1-grid-Percent-value">20.65%</span>
-                                                <p className="Card1-grid-Percent-Near-text">증가</p><BiUpArrowAlt size={30} color='red' />
+                                                <span className="Card1-grid-Percent-Near-text">증가</span><BiUpArrowAlt size={30} color='red' />
 
                                             </span>
                                         </p>
@@ -143,7 +143,7 @@ const AppMain = () => {
                                         <p className="Card2-grid-SubTitle-text">전일 역률 대비
                                             <span className="Card2-grid-Percent-text">
                                                 <span className="Card2-grid-Percent-value">12%</span>
-                                                <p className="Card2-grid-Percent-Near-text">감소</p><BiDownArrowAlt size={30} color='#7696ff' />
+                                                <span className="Card2-grid-Percent-Near-text">감소</span><BiDownArrowAlt size={30} color='#7696ff' />
 
                                             </span>
                                         </p>
@@ -194,9 +194,7 @@ const AppMain = () => {
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
                         <span className='Card3-Title'>Electric Diagram</span>
-                        <div>
-                            <img src='./Diagram.jpg'/>
-                        </div>
+
                     </Card>
                 </Col>
 

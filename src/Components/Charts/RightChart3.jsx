@@ -16,9 +16,9 @@ const RightChart3 = () => {
       radar: [
         {
           indicator: [
-            { text: 'L1' },
-            { text: 'L2' },
-            { text: 'L3' }
+            { name: 'L1' },
+            { name: 'L2' },
+            { name: 'L3' }
           ],
           center: ['50%', '60%'],
           radius: 45,

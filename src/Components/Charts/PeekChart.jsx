@@ -7,9 +7,26 @@ const PeekChart = () => {
   const chartRef = useRef(null);
 
   useEffect(() => {
+    // Monkey patch addEventListener to force passive for specific events
+    const originalAddEventListener = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function (type, listener, options) {
+      if (type === 'wheel' || type === 'mousewheel') {
+        if (typeof options === 'boolean') {
+          options = { passive: true };
+        } else if (typeof options === 'object') {
+          options.passive = true;
+        } else {
+          options = { passive: true };
+        }
+      }
+      originalAddEventListener.call(this, type, listener, options);
+    };
+
     const chartDom = chartRef.current;
-    const myChart = echarts.init(chartDom);
-    let option;
+    const myChart = echarts.init(chartDom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false, // Add this line to improve performance on large datasets
+    });
 
     function randomData() {
       now = new Date(+now + oneDay);
@@ -45,7 +62,7 @@ const PeekChart = () => {
       const gridLineColor = getGridLineColor();
       const fontFamily = 'NanumSquareNeo';
 
-      option = {
+      const option = {
         tooltip: {
           trigger: 'axis',
           formatter: function (params) {
@@ -150,23 +167,24 @@ const PeekChart = () => {
           }
         ]
       });
-    }, 100);
+    }, 10000);
 
     const handleResize = () => {
       myChart.resize();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
       clearInterval(intervalId);
       window.removeEventListener('resize', handleResize);
       myChart.dispose();
+      EventTarget.prototype.addEventListener = originalAddEventListener;
     };
   }, [isDarkMode]);
 
   return (
-    <div id="Peekchart" className="Peekchart" ref={chartRef} />
+    <div id="Peekchart" className="Peekchart" ref={chartRef} style={{ width: '100%', height: '400px' }} />
   );
 };
 
