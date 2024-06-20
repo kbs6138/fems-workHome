@@ -25,7 +25,7 @@ const GaugeChart = () => {
     
             const option = {
                 animation: true,
-                animationDuration: 1000,
+                animationDuration: 10000,
                 animationEasing: 'cubicOut',
                 tooltip: {
                     formatter: '{a} <br/>{b} : {c}%'
@@ -74,7 +74,7 @@ const GaugeChart = () => {
                         },
                         data: [
                             {
-                                value: data.length > 0 ? Math.round(data[0].wat / 10) : 0,
+                                value: data.length > 0 ? Math.round(data[0].wat) : 0,
                                 name: ''
                             }
                         ],

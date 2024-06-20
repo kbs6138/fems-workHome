@@ -9,7 +9,7 @@ export const fetchGaugeData = async () => {
 
 export const useGaugeData = () => {
     const { data, isLoading, error } = useQuery('gaugeData', fetchGaugeData, {
-      refetchInterval: 1000,
+      refetchInterval: 10000,
       initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
 
     });
