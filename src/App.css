@@ -55,7 +55,7 @@
 .Main-Top-Info2,
 .Main-Top-Info3,
 .Main-Top-Info4 {
-    height: 60px;
+    height: 40px;
     display: flex;
 }
 
@@ -81,6 +81,7 @@
 .Main-Top-Info4-p {
     font-size: 13px;
     font-family: 'NanumSquareNeo';
+    margin-top: 0;
 }
 
 
@@ -218,6 +219,7 @@ span p {
 .Card2-grid-Percent-Near-text,
 .Card3-grid-Percent-Near-text {
     font-size: 17px;
+    margin-left: 5px
 }
 
 .Card3-grid-L1-text,
@@ -262,6 +264,8 @@ span p {
     text-align: center;
     background-color: #001528;
     color: white;
+    height: 45px;
+    font-size: 10px;
 
 }
 

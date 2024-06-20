@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { debounce } from 'lodash';
 import { ThemeContext } from '../../Components/ThemeContext';
 
 const GaugeChart = () => {
@@ -13,7 +12,7 @@ const GaugeChart = () => {
 
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
-            const axisLineColor = isDarkMode ? '#ffffff' : '#000000';  // 축 색상 설정
+            const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
 
             const option = {
                 animation: true,
@@ -43,23 +42,22 @@ const GaugeChart = () => {
                                 return `{${statusColor}|${statusText}}\n${value}%`;
                             },
                             fontSize: 15,
-                            color: textColor, // 기본 텍스트 색상 설정
+                            color: textColor,
                             fontFamily: 'NanumSquareNeoBold',
                             rich: {
                                 safe: {
                                     color: '#33cc33',
-                                    fontSize: 16, // 폰트 크기 설정
+                                    fontSize: 16,
                                     fontFamily: 'NanumSquareNeoBold',
-
                                 },
                                 caution: {
                                     color: '#ffcc00',
-                                    fontSize: 16, // 폰트 크기 설정
+                                    fontSize: 16,
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 danger: {
                                     color: '#ff3300',
-                                    fontSize: 16, // 폰트 크기 설정
+                                    fontSize: 16,
                                     fontFamily: 'NanumSquareNeoBold',
                                 }
                             }
@@ -67,23 +65,22 @@ const GaugeChart = () => {
                         data: [
                             {
                                 value: 50,
-                                name: ''  // name은 formatter에서 설정
+                                name: ''
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.7, '#33cc33'], // 0~70%는 초록색
-                                    [0.8, '#ffcc00'], // 70~80%는 노란색
-                                    [1, '#ff3300']   // 80~100%는 빨간색
+                                    [0.7, '#33cc33'],
+                                    [0.8, '#ffcc00'],
+                                    [1, '#ff3300']
                                 ],
                                 width: 10
                             }
                         },
                         axisLabel: {
-                            color: axisLineColor, // 축 라벨 색상 설정
+                            color: axisLineColor,
                         },
-
                     }
                 ]
             };
@@ -93,15 +90,8 @@ const GaugeChart = () => {
 
         updateChartOptions();
 
-        const handleResize = debounce(() => {
-            myChart.resize();
-        }, 300);
-
-        window.addEventListener('resize', handleResize);
-
         return () => {
             myChart.dispose();
-            window.removeEventListener('resize', handleResize);
         };
     }, [isDarkMode]);
 

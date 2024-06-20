@@ -21,7 +21,7 @@ const items = [
   getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
   getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
     getItem('관리자', '3', null, null, '/AppAdmin'),
-    getItem('사용자', '4', null, null, '/user'),
+    getItem('사용자', '4', null, null, '/'),
   ]),
 ];
 
