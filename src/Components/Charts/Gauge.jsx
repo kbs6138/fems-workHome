@@ -1,15 +1,24 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
 import { ThemeContext } from '../../Components/ThemeContext';
+import { useGaugeData } from '../db/Gauge_db';
 
 const GaugeChart = () => {
+    const { data } = useGaugeData();
     const chartRef = useRef(null);
     const { isDarkMode } = useContext(ThemeContext);
+    const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
 
     useEffect(() => {
         const chartDom = chartRef.current;
-        const myChart = echarts.init(chartDom);
+        myChart.current = echarts.init(chartDom);
 
+        return () => {
+            myChart.current.dispose();
+        };
+    }, []); // 빈 배열로 초기화만 한 번 실행되도록 설정
+
+    useEffect(() => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
             const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
@@ -39,7 +48,8 @@ const GaugeChart = () => {
                                     statusText = '위험';
                                     statusColor = 'danger';
                                 }
-                                return `{${statusColor}|${statusText}}\n${value}%`;
+                                const roundedValue = Math.round(value);
+                                return `{${statusColor}|${statusText}}\n${roundedValue}%`;
                             },
                             fontSize: 15,
                             color: textColor,
@@ -64,7 +74,7 @@ const GaugeChart = () => {
                         },
                         data: [
                             {
-                                value: 50,
+                                value: data.length > 0 ? Math.round(data[0].wat / 10) : 0,
                                 name: ''
                             }
                         ],
@@ -85,15 +95,13 @@ const GaugeChart = () => {
                 ]
             };
 
-            myChart.setOption(option);
+            myChart.current.setOption(option);
         };
 
-        updateChartOptions();
-
-        return () => {
-            myChart.dispose();
-        };
-    }, [isDarkMode]);
+        if (myChart.current) {
+            updateChartOptions();
+        }
+    }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
         <div id="gauge" ref={chartRef} className="gauge" />
