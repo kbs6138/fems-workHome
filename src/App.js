@@ -7,6 +7,7 @@ import AppMain from './Layouts/Main/Main';
 import AppFooter from './Layouts/Footer/Footer';
 import { ThemeProvider } from './Components/ThemeContext';
 import AppAdmin from './Layouts/Admin/Admin';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // 나머지 페이지 컴포넌트에 대한 주석 추가
 // import CurrentMonitoring from './Pages/CurrentMonitoring';
@@ -14,8 +15,11 @@ import AppAdmin from './Layouts/Admin/Admin';
 // import User from './Pages/User';
 import './App.css';
 
+const queryClient = new QueryClient(); 
+
 const App = () => {
   return (
+    <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <Router>
         <Layout style={{ minHeight: '100vh' }}>
@@ -38,6 +42,7 @@ const App = () => {
         </Layout>
       </Router>
     </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

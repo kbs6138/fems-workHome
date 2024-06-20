@@ -22,7 +22,7 @@ const GaugeChart = () => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
             const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
-
+    
             const option = {
                 animation: true,
                 animationDuration: 1000,
@@ -91,13 +91,26 @@ const GaugeChart = () => {
                         axisLabel: {
                             color: axisLineColor,
                         },
+                        pointer: {
+                            itemStyle: {
+                                color: (function () {
+                                    if (data.length > 0 && data[0].wat / 10 < 70) {
+                                        return '#33cc33'; // 안전 구간 바늘 색상
+                                    } else if (data.length > 0 && data[0].wat / 10 < 80) {
+                                        return '#ffcc00'; // 주의 구간 바늘 색상
+                                    } else {
+                                        return '#ff3300'; // 위험 구간 바늘 색상
+                                    }
+                                })()
+                            }
+                        }
                     }
                 ]
             };
-
+    
             myChart.current.setOption(option);
         };
-
+    
         if (myChart.current) {
             updateChartOptions();
         }
