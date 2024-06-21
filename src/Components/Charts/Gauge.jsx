@@ -6,6 +6,7 @@ import { useGaugeData } from '../db/Gauge_db';
 const GaugeChart = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
+    
     const { isDarkMode } = useContext(ThemeContext);
     const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
 
@@ -16,7 +17,7 @@ const GaugeChart = () => {
         return () => {
             myChart.current.dispose();
         };
-    }, []); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, [isDarkMode]); // 빈 배열로 초기화만 한 번 실행되도록 설정
 
     useEffect(() => {
         const updateChartOptions = () => {
@@ -48,8 +49,7 @@ const GaugeChart = () => {
                                     statusText = '위험';
                                     statusColor = 'danger';
                                 }
-                                const roundedValue = Math.round(value);
-                                return `{${statusColor}|${statusText}}\n${roundedValue}%`;
+                                return `{${statusColor}|${statusText}}\n${value}%`;
                             },
                             fontSize: 15,
                             color: textColor,
@@ -74,7 +74,7 @@ const GaugeChart = () => {
                         },
                         data: [
                             {
-                                value: data.length > 0 ? Math.round(data[0].wat) : 0,
+                                value: data.length > 0 ? data[0].gaugeData : 0,
                                 name: ''
                             }
                         ],
@@ -94,9 +94,9 @@ const GaugeChart = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (data.length > 0 && data[0].wat / 10 < 70) {
+                                    if (data.length > 0 && data[0].gaugeData < 70) {
                                         return '#33cc33'; // 안전 구간 바늘 색상
-                                    } else if (data.length > 0 && data[0].wat / 10 < 80) {
+                                    } else if (data.length > 0 && data[0].gaugeData < 80) {
                                         return '#ffcc00'; // 주의 구간 바늘 색상
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상

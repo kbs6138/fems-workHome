@@ -1,36 +1,30 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import * as echarts from 'echarts';
 import { ThemeContext } from '../../Components/ThemeContext';
+import { usePeekData } from '../db/Peek_db';
 
 const PeekChart = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const chartRef = useRef(null);
+  const { data } = usePeekData();
 
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
     let option;
 
-    function randomData() {
-      now = new Date(+now + oneDay);
-      value = value + Math.random() * 20 - 10;  // 범위 조정
-      return {
-        name: now.toString(),
-        value: [
+    const formatData = () => {
+      const formattedData = [];
+      const now = new Date(2024, 1, 1);
+      for (let i = 0; i < 15; i++) {
+        formattedData.push([
           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-          Math.round(value)
-        ]
-      };
-    }
-
-    let data = [];
-    let now = new Date(2024, 1, 1);
-    let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 1000;  // 초기값 조정
-
-    for (let i = 0; i < 1500; i++) {
-      data.push(randomData());
-    }
+          data[`min_${i + 1}`]
+        ]);
+        now.setMinutes(now.getMinutes() + 1);
+      }
+      return formattedData;
+    };
 
     const getTextColor = () => {
       return isDarkMode ? '#ffffff' : '#000000';
@@ -44,6 +38,7 @@ const PeekChart = () => {
       const textColor = getTextColor();
       const gridLineColor = getGridLineColor();
       const fontFamily = 'NanumSquareNeo';
+      const formattedData = formatData();
 
       option = {
         tooltip: {
@@ -58,7 +53,7 @@ const PeekChart = () => {
               '/' +
               date.getFullYear() +
               ' : ' +
-              params.value[1]
+              params.value
             );
           },
           axisPointer: {
@@ -69,7 +64,8 @@ const PeekChart = () => {
           }
         },
         xAxis: {
-          type: 'time',
+          type: 'category',
+          data: formattedData.map(item => item[0]),
           splitLine: {
             show: true,
             lineStyle: {
@@ -78,11 +74,7 @@ const PeekChart = () => {
           },
           axisLabel: {
             color: textColor,
-            fontFamily: fontFamily,
-            formatter: function (value) {
-              const date = new Date(value);
-              return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-            }
+            fontFamily: fontFamily
           }
         },
         yAxis: {
@@ -103,23 +95,7 @@ const PeekChart = () => {
           {
             type: 'line',
             showSymbol: false,
-            data: data,
-            markLine: {
-              data: [
-                {
-                  yAxis: 700, // 기준선의 y값 설정
-                  label: {
-                    formatter: 'Max',
-                    color: textColor,
-                    fontFamily: fontFamily
-                  },
-                  lineStyle: {
-                    color: isDarkMode ? '#ff0000' : '#ff0000',
-                    type: 'solid'
-                  }
-                }
-              ]
-            },
+            data: formattedData.map(item => item[1]),
             label: {
               fontFamily: fontFamily
             }
@@ -135,23 +111,6 @@ const PeekChart = () => {
 
     updateChartOptions();
 
-    const intervalId = setInterval(function () {
-      for (let i = 0; i < 5; i++) {
-        data.shift();
-        data.push(randomData());
-      }
-      if (data.length > 1500) {
-        data = data.slice(data.length - 1500);
-      }
-      myChart.setOption({
-        series: [
-          {
-            data: data
-          }
-        ]
-      });
-    }, 1000);
-
     const handleResize = () => {
       myChart.resize();
     };
@@ -159,11 +118,10 @@ const PeekChart = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      clearInterval(intervalId);
       window.removeEventListener('resize', handleResize);
       myChart.dispose();
     };
-  }, [isDarkMode]);
+  }, [isDarkMode, data]);
 
   return (
     <div id="Peekchart" className="Peekchart" ref={chartRef} />
