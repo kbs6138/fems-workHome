@@ -10,7 +10,7 @@ const PeekChart = () => {
 
   useEffect(() => {
     const chartDom = chartRef.current;
-    const myChart = echarts.init(chartDom);
+    let myChart = echarts.init(chartDom);
     let option;
 
     const formatData = () => {
