@@ -8,12 +8,6 @@ const PeekChart = () => {
   const chartRef = useRef(null);
   const { data } = usePeekData();
 
-
-
-
-
-  
-
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
@@ -117,14 +111,7 @@ const PeekChart = () => {
 
     updateChartOptions();
 
-    const handleResize = () => {
-      myChart.resize();
-    };
-
-    window.addEventListener('resize', handleResize);
-
     return () => {
-      window.removeEventListener('resize', handleResize);
       myChart.dispose();
     };
   }, [isDarkMode, data]);
