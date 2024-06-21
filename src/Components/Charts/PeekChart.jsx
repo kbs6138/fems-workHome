@@ -8,6 +8,12 @@ const PeekChart = () => {
   const chartRef = useRef(null);
   const { data } = usePeekData();
 
+
+
+
+
+  
+
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
