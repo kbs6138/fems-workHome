@@ -9,6 +9,7 @@ import RightChart2 from '../../Components/Charts/RightChart2';
 import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+import diagramPicture from '../diagram.png';
 
 
 
@@ -194,6 +195,7 @@ const AppMain = () => {
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
                         <span className='Card3-Title'>Electric Diagram</span>
+                        <img src={diagramPicture} height='300px' alt="Diagram" style={{marginLeft:'120px'}} />
 
                     </Card>
                 </Col>
