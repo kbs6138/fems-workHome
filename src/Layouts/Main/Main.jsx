@@ -95,10 +95,10 @@ const AppMain = () => {
             >
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content1'>
-
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
                             <span className='Card1-Title'>Peek Monitor</span>
-                            <PeekChart />
+                            <PeekChart style={{ display: 'flex', justifyContent: 'center' }} />
+                        
                         </Card>
                     </div>
                 </Col>
