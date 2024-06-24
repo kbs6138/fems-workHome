@@ -9,7 +9,7 @@ import RightChart2 from '../../Components/Charts/RightChart2';
 import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
-import diagramPicture from '../diagram.png';
+import diagramPicture from '../다이어그램.png';
 
 
 

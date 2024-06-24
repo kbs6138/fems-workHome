@@ -26,7 +26,7 @@ function UsedMonthly() {
         }
       ],
       chart: {
-        height: 300,
+        height: 340,
         type: 'line',
         stacked: false,
         fontFamily: 'NanumSquareNeoBold',
