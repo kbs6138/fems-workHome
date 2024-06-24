@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../Components/ThemeContext';
-import { usePeekData } from '../db/Peek_db';
+import { ThemeContext } from '../src/Components/ThemeContext';
+import { usePeekData } from '../src/Components/db/Peek_db';
 
 
 const PeekChart = () => {
