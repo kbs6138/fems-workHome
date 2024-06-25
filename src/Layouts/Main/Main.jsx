@@ -195,7 +195,7 @@ const AppMain = () => {
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
                         <span className='Card3-Title'>Electric Diagram</span>
-                        <img src={diagramPicture} height='300px' alt="Diagram" style={{marginLeft:'120px'}} />
+                        <img src={diagramPicture} height='200px' alt="Diagram" style={{marginLeft:'120px'}} />
 
                     </Card>
                 </Col>
