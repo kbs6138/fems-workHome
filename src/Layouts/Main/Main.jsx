@@ -99,7 +99,7 @@ const AppMain = () => {
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
                             <span className='Card1-Title'>Peek Monitor</span>
                             <PeekChart style={{ display: 'flex', justifyContent: 'center' }} />
-                        
+
                         </Card>
                     </div>
                 </Col>
@@ -195,8 +195,9 @@ const AppMain = () => {
                 <Col className="gutter-row" span={8}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
                         <span className='Card3-Title'>Electric Diagram</span>
-                        <img src={diagramPicture} height='200px' alt="Diagram" style={{marginLeft:'120px'}} />
-
+                        <Card size='medium' className={`${TxtTheme} ${BgTheme}`}>
+                            <img src={diagramPicture} height='220px' alt="Diagram" style={{ marginLeft: '120px' }} />
+                        </Card>
                     </Card>
                 </Col>
 
