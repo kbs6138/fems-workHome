@@ -10,21 +10,23 @@ const onChange = (key) => {
 };
 
 const items = [
+
     {
         key: '1',
-        label: '부하별 금일 사용량',
-        children: 'Content of Tab Pane 1',
-    },
-    {
-        key: '2',
         label: '분전반 정보',
         children: <MechanicInfo />,
     },
     {
-        key: '3',
+        key: '2',
         label: '단상분기정보',
         children: <PhaseQuarterlyInfo/>,
     },
+    {
+        key: '3',
+        label: '부하별 금일 사용량',
+        children: 'Content of Tab Pane 1',
+    },
+
     {
         key: '4',
         label: '전류 / 과전류',

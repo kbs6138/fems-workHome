@@ -7,18 +7,17 @@ import { ThemeContext } from '../../Components/ThemeContext';
 import RightChart1 from '../../Components/Charts/RightChart1';
 import RightChart2 from '../../Components/Charts/RightChart2';
 import PeekChart from '../../Components/Charts/PeekChart';
-import RightChart3 from '../../Components/Charts/RightChart3/RightChart3';
+import RightChart3 from '../../Components/Charts/RightChart3';
+import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 //import diagramPicture from '../다이어그램.png';
-
-
-
 import './Main.css';
 
 const { Content } = Layout;
 
 const AppMain = () => {
     const { isDarkMode } = useContext(ThemeContext);
+    const { data } = useRightChart3Data();
 
     const TxtTheme = isDarkMode ? 'text-dark' : 'text-light';
     const BgTheme = isDarkMode ? 'bg-dark' : 'bg-light';
@@ -159,24 +158,22 @@ const AppMain = () => {
                     <div>
                         <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
-                                <Col span={12}>
+                                <Col span={12} style={{marginTop:'-10px'}}>
                                     <span>
                                         <span className='Card3-grid-L1-text'>L1</span>
-                                        <p className="Card3-grid-L1-subtext">: </p>
+                                        <p className="Card3-grid-L1-subtext">: {data.length > 0 ? data[0].r : '-'}</p>
                                     </span>
                                     <span>
-                                        <span className='Card3-grid-L2-text'>L3</span>
-                                        <p className="Card3-grid-L2-subtext">: </p>
+                                        <span className='Card3-grid-L2-text'>L2</span>
+                                        <p className="Card3-grid-L2-subtext">: {data.length > 0 ? data[0].s : '-'}</p>
                                     </span>
-
                                     <span>
                                         <span className='Card3-grid-L3-text'>L3</span>
-                                        <p className="Card3-grid-L3-subtext">: </p>
+                                        <p className="Card3-grid-L3-subtext">: {data.length > 0 ? data[0].t : '-'}</p>
                                     </span>
-
                                 </Col>
                                 <Col span={12}>
-                                    <RightChart3 />
+                                    <RightChart3 data={data} />
                                 </Col>
                             </Row>
                         </Card>

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
-import '../Charts.css';
-import { useRightChart3Data } from '../../db/RightChart3_db';
+import './Charts.css';
+import { useRightChart3Data } from '../db/RightChart3_db';
 
 const RightChart3 = () => {
   const { data } = useRightChart3Data();
 
-  console.log(data);
+  //console.log(data);
   useEffect(() => {
     const chartDom = document.getElementById('RightChart3');
     const myChart = echarts.init(chartDom, null, {
@@ -20,12 +20,21 @@ const RightChart3 = () => {
       radar: [
         {
           indicator: [
-            { name: 'L1' },
-            { name: 'L2' },
-            { name: 'L3' }
+            {
+              name: 'L1',
+              color: '#00C700'
+            },
+            {
+              name: 'L2',
+              color: '#FC738A'
+            },
+            {
+              name: 'L3',
+              color: '#7696ff'
+            }
           ],
           center: ['50%', '60%'],
-          radius: 45,
+          radius: 50,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -51,9 +60,9 @@ const RightChart3 = () => {
             }
           },
           symbol: 'none', // 동그라미 점 포인트 제거
-          data: data.map(item => ({
-            value: data.length > 0 ? [item.r, item.s, item.t] : [0, 0, 0]
-          })),
+          data: Array.isArray(data) && data.length > 0 ? data.map(item => ({
+            value: [item.r, item.s, item.t]
+          })) : [{ value: [0, 0, 0] }],
           lineStyle: {
             width: 0.3 // 선 두께 설정
           }
@@ -78,7 +87,7 @@ const RightChart3 = () => {
   }, [data]);
 
   return (
-    <div id="RightChart3" style={{ width: '100%', height: '130px', marginTop: '-20px' }}></div>
+    <div id="RightChart3" style={{ width: '100%', height: '140px', marginTop: '-20px' }}></div>
   );
 };
 
