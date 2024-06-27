@@ -7,9 +7,9 @@ import { ThemeContext } from '../../Components/ThemeContext';
 import RightChart1 from '../../Components/Charts/RightChart1';
 import RightChart2 from '../../Components/Charts/RightChart2';
 import PeekChart from '../../Components/Charts/PeekChart';
-import RightChart3 from '../../Components/Charts/RightChart3';
+import RightChart3 from '../../Components/Charts/RightChart3/RightChart3';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
-import diagramPicture from '../다이어그램.png';
+//import diagramPicture from '../다이어그램.png';
 
 
 
@@ -193,13 +193,28 @@ const AppMain = () => {
                 }}
             >
                 <Col className="gutter-row" span={8}>
-                    <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}  >
+                    <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}>
                         <span className='Card3-Title'>Electric Diagram</span>
-                        <Card size='medium' className={`${TxtTheme} ${BgTheme}`}>
-                            <img src={diagramPicture} height='220px' alt="Diagram" style={{ marginLeft: '120px' }} />
-                        </Card>
+                        <Row>
+                            <Col span={8}>
+                                <div style={{ background: '#f6f6f6' }}>
+                                    asdasd
+                                </div>
+                            </Col>
+                            <Col span={8}>
+                                <div style={{ background: 'gray' }}>
+                                    asdasd
+                                </div>
+                            </Col>
+                            <Col span={8}>
+                                <div style={{ background: 'lightgray' }}>
+                                    asdasd
+                                </div>
+                            </Col>
+                        </Row>
                     </Card>
                 </Col>
+
 
 
                 <Col className="gutter-row" span={16}>

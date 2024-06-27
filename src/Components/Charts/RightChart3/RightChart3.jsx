@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
-import './Charts.css';  // 필요한 CSS 파일을 import
-
+import '../Charts.css';
+import { useRightChart3Data } from '../../db/RightChart3_db';
 
 const RightChart3 = () => {
+  const { data } = useRightChart3Data();
+
+  console.log(data);
   useEffect(() => {
     const chartDom = document.getElementById('RightChart3');
     const myChart = echarts.init(chartDom, null, {
@@ -11,8 +14,9 @@ const RightChart3 = () => {
       useDirtyRect: false
     });
 
+
     const option = {
-      color: ['#00C700','#FC738A', '#7696ff'],
+      color: ['#FF0000'],
       radar: [
         {
           indicator: [
@@ -31,13 +35,12 @@ const RightChart3 = () => {
           },
           splitArea: {
             areaStyle: {
-              color: ['#313946', '#313946', '#546A82', '#8B99B3'],
+              color: ['#313946'],
               shadowColor: 'rgba(0, 0, 0, 0.8)',
               shadowBlur: 10
             }
-          },
-        },
-
+          }
+        }
       ],
       series: [
         {
@@ -47,24 +50,15 @@ const RightChart3 = () => {
               width: 1
             }
           },
-          data: [
-            {
-              value: [100, 8, 2000],
-              name: 'Data A'
-            },
-            {
-              value: [150, 25,  1500],
-              name: 'Data B',
-            },
-            {
-              value: [200, 40,  2500],
-              name: 'Data C',
-            }
-          ]
-        },
+          symbol: 'none', // 동그라미 점 포인트 제거
+          data: data.map(item => ({
+            value: data.length > 0 ? [item.r, item.s, item.t] : [0, 0, 0]
+          })),
+          lineStyle: {
+            width: 0.3 // 선 두께 설정
+          }
+        }
       ]
-
-      
     };
 
     if (option && typeof option === 'object') {
@@ -81,11 +75,12 @@ const RightChart3 = () => {
       window.removeEventListener('resize', resizeChart);
       myChart.dispose();
     };
-  }, []);
+  }, [data]);
 
   return (
-    <div id="RightChart3" style={{ width: '100%', height: '130px', marginTop:'-20px' }}></div>
+    <div id="RightChart3" style={{ width: '100%', height: '130px', marginTop: '-20px' }}></div>
   );
 };
 
 export default RightChart3;
+

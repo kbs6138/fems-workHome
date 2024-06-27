@@ -9,7 +9,7 @@ export const fetchPeekData = async () => {
 
 export const usePeekData = () => {
     const { data } = useQuery('PeekData', fetchPeekData, {
-        refetchInterval: 1000,
+        refetchInterval: 10000,
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
 
     });
