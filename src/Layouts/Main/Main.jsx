@@ -6,13 +6,13 @@ import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
 import RightChart1 from '../../Components/Charts/RightChart1';
 import RightChart2 from '../../Components/Charts/RightChart2';
+import ThermometerComponent from '../../Components/Charts/Thermometer';
 import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
-//import diagramPicture from '../다이어그램.png';
-import './Main.css';
 
+//import diagramPicture from '../다이어그램.png';
 const { Content } = Layout;
 
 const AppMain = () => {
@@ -158,7 +158,7 @@ const AppMain = () => {
                     <div>
                         <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
-                                <Col span={12} style={{marginTop:'-10px'}}>
+                                <Col span={12} style={{ marginTop: '-10px' }}>
                                     <span>
                                         <span className='Card3-grid-L1-text'>L1</span>
                                         <p className="Card3-grid-L1-subtext">: {data.length > 0 ? data[0].r : '-'}</p>
@@ -195,7 +195,7 @@ const AppMain = () => {
                         <Row>
                             <Col span={8}>
                                 <div style={{ background: '#f6f6f6' }}>
-                                    asdasd
+                                    <ThermometerComponent/>
                                 </div>
                             </Col>
                             <Col span={8}>
