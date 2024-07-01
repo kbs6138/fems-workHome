@@ -13,6 +13,14 @@
   }
 
 
+  
+  .gaugeR,
+  .gaugeS,
+  .gaugeT {
+    width: 280px !important;
+    height: 400px;
+  }
+
 
   
   @media (max-width: 768px) {
