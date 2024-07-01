@@ -11,6 +11,7 @@ import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+import DiagPic from '../계통도.png';
 
 //import diagramPicture from '../다이어그램.png';
 const { Content } = Layout;
@@ -193,6 +194,8 @@ const AppMain = () => {
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
+
+                            {/*
                             <Col span={8}>
                                 <div style={{ marginTop: '30px', marginLeft: '10px' }}>
                                     <div style={{ position: 'absolute', top: '10%', left: '60%', transform: 'translate(-50%, -50%)' }}>
@@ -217,8 +220,9 @@ const AppMain = () => {
                                     </svg>
                                 </div>
                             </Col>
+                            */}
                             <Col span={8}>
-
+                            <img src={DiagPic} width='130px'/>
                             </Col>
                         </Row>
                     </Card>

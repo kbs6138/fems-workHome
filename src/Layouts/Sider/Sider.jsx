@@ -23,6 +23,18 @@ const items = [
     getItem('관리자', '3', null, null, '/AppAdmin'),
     getItem('사용자', '4', null, null, '/'),
   ]),
+  getItem('통계 그래프', 'sub2', <UserOutlined />, [
+    getItem('시간별 추이분석', '5', null, null, '/'),
+    getItem('일별 추이분석', '6', null, null, '/'),
+    getItem('월별 전력량 추이', '7', null, null, '/'),
+    getItem('15분 피크추이', '8', null, null, '/'),
+  ]),
+
+  getItem('설비관리모니터링', 'sub3', <UserOutlined />, [
+    getItem('장비1', '9', null, null, '/'),
+    getItem('장비2', '10', null, null, '/'),
+    getItem('장비3', '11', null, null, '/'),
+  ]),
 ];
 
 
