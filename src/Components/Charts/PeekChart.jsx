@@ -6,11 +6,15 @@ import { usePeekData } from '../db/Peek_db';
 const PeekChart = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const chartRef = useRef(null);
+  const chartInstance = useRef(null); // 차트 인스턴스를 저장할 레퍼런스
   const { data } = usePeekData();
 
   useEffect(() => {
     const chartDom = chartRef.current;
-    let myChart = echarts.init(chartDom);
+    if (!chartInstance.current) {
+      chartInstance.current = echarts.init(chartDom);
+    }
+    let myChart = chartInstance.current;
     let option;
 
     const formatData = () => {
@@ -112,7 +116,7 @@ const PeekChart = () => {
     updateChartOptions();
 
     return () => {
-      myChart.dispose();
+      // 언마운트 시 차트 인스턴스를 폐기하지 않음
     };
   }, [isDarkMode, data]);
 
