@@ -14,11 +14,12 @@
 
 
   
-  .gaugeR,
-  .gaugeS,
-  .gaugeT {
+  .CurrentgaugeR,
+  .CurrentgaugeS,
+  .CurrentgaugeT {
     width: 280px !important;
     height: 400px;
+    margin-left: -15px;
   }
 
 

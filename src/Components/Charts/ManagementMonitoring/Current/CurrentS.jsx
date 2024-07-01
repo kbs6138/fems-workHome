@@ -122,7 +122,7 @@ const CurrentS = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="gaugeS" ref={chartRef} className="gaugeS" />
+        <div id="CurrentgaugeS" ref={chartRef} className="CurrentgaugeS" />
     );
 };
 

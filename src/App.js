@@ -7,7 +7,7 @@ import AppMain from './Layouts/Main/Main';
 import AppFooter from './Layouts/Footer/Footer';
 import { ThemeProvider } from './Components/ThemeContext';
 import AppAdmin from './Layouts/Admin/Admin';
-import MonitorFirst from './Components/Monitoring/01';
+import MonitorFirst from './Components/Charts/ManagementMonitoring/01';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 

@@ -31,8 +31,8 @@ const items = [
   ]),
   getItem('설비관리모니터링', 'sub3', <UserOutlined />, [
     getItem('장비1', '9', null, null, '/MonitorFirst'),
-    getItem('장비2', '10', null, null, ''),
-    getItem('장비3', '11', null, null, ''),
+   //getItem('장비2', '10', null, null, ''),
+  //getItem('장비3', '11', null, null, ''),
   ]),
 ];
 
