@@ -7,12 +7,8 @@ import AppMain from './Layouts/Main/Main';
 import AppFooter from './Layouts/Footer/Footer';
 import { ThemeProvider } from './Components/ThemeContext';
 import AppAdmin from './Layouts/Admin/Admin';
+import MonitorFirst from './Components/Monitoring/01';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
-// 나머지 페이지 컴포넌트에 대한 주석 추가
-// import CurrentMonitoring from './Pages/CurrentMonitoring';
-// import Admin from './Pages/Admin';
-// import User from './Pages/User';
 import './App.css';
 
 const queryClient = new QueryClient(); 
@@ -20,28 +16,22 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <Router>
-        <Layout style={{ minHeight: '100vh' }}>
-          <AppSider />
-          <Layout>
-            <AppHeader />
-            <Routes>
-              <Route path="/" element={<AppMain />} /> {/* 통합 모니터링 페이지 */}
-              <Route path="/AppAdmin" element={<AppAdmin />} /> {/* 통합 모니터링 페이지 */}
-
-              {/* 나머지 페이지 경로에 대한 주석 추가
-              <Route path="/current-monitoring" element={<CurrentMonitoring />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/user" element={<User />} />
-               */}
-            </Routes>
-
-            <AppFooter />
+      <ThemeProvider>
+        <Router>
+          <Layout style={{ minHeight: '100vh' }}>
+            <AppSider />
+            <Layout>
+              <AppHeader />
+              <Routes>
+                <Route path="/" element={<AppMain />} /> {/* 통합 모니터링 페이지 */}
+                <Route path="/AppAdmin" element={<AppAdmin />} /> {/* 관리자 페이지 */}
+                <Route path="/MonitorFirst" element={<MonitorFirst />} /> {/* 모니터링 페이지 */}
+              </Routes>
+              <AppFooter />
+            </Layout>
           </Layout>
-        </Layout>
-      </Router>
-    </ThemeProvider>
+        </Router>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
