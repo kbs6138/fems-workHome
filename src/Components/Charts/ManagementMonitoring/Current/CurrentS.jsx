@@ -53,21 +53,21 @@ const CurrentS = () => {
                             },
                             fontSize: 12,
                             color: textColor,
-                            fontFamily: 'NanumSquareNeoBold',
+                            fontFamily: 'NanumSquareNeoExtraBold',
                             rich: {
                                 safe: {
-                                    color: '#FFFFFF',
-                                    fontSize: 13.5,
+                                    color: '#FC738A',
+                                    fontSize: 15,
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 caution: {
-                                    color: '#FFFFFF',
-                                    fontSize: 13.5,
+                                    color: '#FC738A',
+                                    fontSize: 15,
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 danger: {
-                                    color: '#FFFFFF',
-                                    fontSize: 13.5,
+                                    color: '#FC738A',
+                                    fontSize: 15,
                                     fontFamily: 'NanumSquareNeoBold',
                                 },
                                 
