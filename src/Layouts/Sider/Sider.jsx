@@ -18,11 +18,14 @@ function getItem(label, key, icon, children, link) {
 
 const items = [
   getItem('통합 모니터링', '1', <DesktopOutlined />, null, '/'),
+
   getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
+
   getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
     getItem('관리자', '3', null, null, '/AppAdmin'),
     getItem('사용자', '4', null, null, '/'),
   ]),
+  
   getItem('통계 그래프', 'sub2', <UserOutlined />, [
     getItem('시간별 추이분석', '5', null, null, '/'),
     getItem('일별 추이분석', '6', null, null, '/'),

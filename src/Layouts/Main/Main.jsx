@@ -194,7 +194,20 @@ const AppMain = () => {
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
+                            <Col span={8}>
+                                <img src={DiagPic} width='130px' />
+                            </Col>
 
+                            <Col span={8}>
+                                <img src={DiagPic} width='130px' />
+                                <div style={{ position: 'absolute', top: '25%', left: '70%', transform: 'translate(-50%, -50%)' }}>
+                                    <ThermometerComponent />
+                                </div>
+                            </Col>
+                            
+                            <Col span={8}>
+                                <img src={DiagPic} width='130px' />
+                            </Col>
                             {/*
                             <Col span={8}>
                                 <div style={{ marginTop: '30px', marginLeft: '10px' }}>
@@ -221,9 +234,7 @@ const AppMain = () => {
                                 </div>
                             </Col>
                             */}
-                            <Col span={8}>
-                            <img src={DiagPic} width='130px'/>
-                            </Col>
+
                         </Row>
                     </Card>
                 </Col>
