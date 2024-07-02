@@ -13,6 +13,15 @@
   }
 
 
+  
+  .CurrentgaugeR,
+  .CurrentgaugeS,
+  .CurrentgaugeT {
+    width: 280px !important;
+    height: 400px;
+    margin-left: -15px;
+  }
+
 
   
   @media (max-width: 768px) {
