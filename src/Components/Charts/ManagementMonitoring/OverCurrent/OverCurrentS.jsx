@@ -30,7 +30,7 @@ useEffect(() => {
             animationDuration: 10000,
             animationEasing: 'cubicOut',
             tooltip: {
-                formatter: '{a} <br/>{b} : {c}V'
+                formatter: '{a} <br/>{b} : {c}%'
             },
             series: [
                 {
@@ -41,54 +41,52 @@ useEffect(() => {
                             let statusText = '';
                             let statusColor = '';
                             if (value < 70) {
-                                statusText = 'L1';
+                                statusText = 'L2';
                                 statusColor = 'safe';
                             } else if (value <= 80) {
-                                statusText = 'L1';
+                                statusText = 'L2';
                                 statusColor = 'caution';
                             } else {
-                                statusText = 'L1';
+                                statusText = 'L2';
                                 statusColor = 'danger';
                             }
-                            return `{${statusColor}|${statusText}}\n${value}V`;
+                            return `{${statusColor}|${statusText}}\n${value}A`;
                         },
-                        fontSize: 12,
+                        fontSize: 15,
                         color: textColor,
-                        fontFamily: 'NanumSquareNeoExtraBold',
+                        fontFamily: 'NanumSquareNeoBold',
                         rich: {
                             safe: {
-                                color: '#00C700',
-                                fontSize: 15,
+                                color: '#33cc33',
+                                fontSize: 16,
                                 fontFamily: 'NanumSquareNeoBold',
                             },
                             caution: {
-                                color: '#00C700',
-                                fontSize: 15,
+                                color: '#ffcc00',
+                                fontSize: 16,
                                 fontFamily: 'NanumSquareNeoBold',
                             },
                             danger: {
-                                color: '#00C700',
-                                fontSize: 15,
+                                color: '#ff3300',
+                                fontSize: 16,
                                 fontFamily: 'NanumSquareNeoBold',
-                            },
-                            
+                            }
                         }
                     },
                     data: [
-                        {   
-                            value: 73, // 여기에 직접 값을 설정
-                            //value: data.length > 0 ? data[0].gaugeData : 0,
+                        {
+                            value: data.length > 0 ? data[0].gaugeData : 0,
                             name: ''
                         }
                     ],
                     axisLine: {
                         lineStyle: {
                             color: [
-                                [0.7, '#ff3300'],
-                                [0.8, '#33cc33'],
+                                [0.7, '#33cc33'],
+                                [0.8, '#ffcc00'],
                                 [1, '#ff3300']
                             ],
-                            width: 6
+                            width: 5
                         }
                     },
                     axisLabel: {
@@ -97,15 +95,12 @@ useEffect(() => {
                     pointer: {
                         itemStyle: {
                             color: (function () {
-                                //const gaugeValue = data.length > 0 ? data[0].gaugeData : 0;
-
-                                const gaugeValue = 73; // 여기에 직접 값을 설정
-                                if (gaugeValue <= 70) {
-                                    return '#ff3300'; // 70 이하 빨간색
-                                } else if (gaugeValue > 70 && gaugeValue <= 80) {
-                                    return '#33cc33'; // 70~80 녹색
+                                if (data.length > 0 && data[0].gaugeData < 70) {
+                                    return '#33cc33'; // 안전 구간 바늘 색상
+                                } else if (data.length > 0 && data[0].gaugeData < 80) {
+                                    return '#ffcc00'; // 주의 구간 바늘 색상
                                 } else {
-                                    return '#ff3300'; // 80 이상 빨간색
+                                    return '#ff3300'; // 위험 구간 바늘 색상
                                 }
                             })()
                         }

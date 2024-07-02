@@ -46,10 +46,8 @@ const MonitorFirst = () => {
 
                         <div className={`Current_Card ${TxtTheme} ${BgTheme}`} style={{ marginTop: '15px' }} >
 
-                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium'>
-                                <span>전류</span>
-
-
+                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium' >
+                                <span> 전압</span>
                                 <Row
                                     gutter={{
                                         xs: 10,
@@ -58,9 +56,9 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <CurrentR /> </Col>
+                                    <Col span={8}><CurrentR /> </Col>
                                     <Col span={8}> <CurrentS /> </Col>
-                                    <Col span={8}> <CurrentT /> </Col>
+                                    <Col span={8}>  <CurrentT /> </Col>
                                 </Row>
 
                             </Card>
@@ -83,7 +81,7 @@ const MonitorFirst = () => {
                         </div>
                         <div className='Other_Card'>
                             <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'>
-                                <span>전류불평형률 / 누설전류 / 온도 / 누적가동시간 </span>
+
                                 <Row
                                     gutter={{
                                         xs: 10,
@@ -92,15 +90,15 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={6}> <CurrentUnbalanceRatio /> 
-                                    <span> 전류 불평형률</span>
+                                    <Col span={6}> <span> 전류 불평형률</span> <CurrentUnbalanceRatio />
+
                                     </Col>
-                                    <Col span={6}> <OverCurrentR /> 
-                                    <span> 누설전류</span></Col>
-                                    <Col span={6}> <OverCurrentR /> 
-                                    <span> 온도</span></Col>
-                                    <Col span={6}> <OverCurrentR /> 
-                                    <span>누적가동시간</span></Col>
+                                    <Col span={6}><span> 누설전류</span>
+                                    </Col>
+                                    <Col span={6}><span> 온도</span>
+                                    </Col>
+                                    <Col span={6}><span>누적가동시간</span>
+                                    </Col>
 
                                 </Row>
 

@@ -40,13 +40,13 @@ const CurrentT = () => {
                                 let statusText = '';
                                 let statusColor = '';
                                 if (value < 70) {
-                                    statusText = 'L2';
+                                    statusText = 'L3';
                                     statusColor = 'safe';
                                 } else if (value <= 80) {
-                                    statusText = 'L2';
+                                    statusText = 'L3';
                                     statusColor = 'caution';
                                 } else {
-                                    statusText = 'L2';
+                                    statusText = 'L3';
                                     statusColor = 'danger';
                                 }
                                 return `{${statusColor}|${statusText}}\n${value}V`;
