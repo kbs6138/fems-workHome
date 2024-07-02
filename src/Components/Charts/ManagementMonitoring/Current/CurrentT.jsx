@@ -6,7 +6,7 @@ import { useGaugeData } from '../../../db/Gauge_db';
 const CurrentT = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
-    
+
     const { isDarkMode } = useContext(ThemeContext);
     const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
 
@@ -23,7 +23,7 @@ const CurrentT = () => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
             const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
-    
+
             const option = {
                 animation: true,
                 animationDuration: 10000,
@@ -35,19 +35,16 @@ const CurrentT = () => {
                     {
                         name: 'Pressure',
                         type: 'gauge',
+                        min: 0,
+                        max: 500,
+                        splitNumber: 5, // 눈금의 단위를 100으로 설정 (500 / 5 = 100)
                         detail: {
                             formatter: function (value) {
                                 let statusText = '';
                                 let statusColor = '';
-                                if (value < 70) {
+                                if (value < 500) {
                                     statusText = 'L3';
                                     statusColor = 'safe';
-                                } else if (value <= 80) {
-                                    statusText = 'L3';
-                                    statusColor = 'caution';
-                                } else {
-                                    statusText = 'L3';
-                                    statusColor = 'danger';
                                 }
                                 return `{${statusColor}|${statusText}}\n${value}V`;
                             },
@@ -59,63 +56,55 @@ const CurrentT = () => {
                                     color: '#7696ff',
                                     fontSize: 15,
                                     fontFamily: 'NanumSquareNeoBold',
-                                },
-                                caution: {
-                                    color: '#7696ff',
-                                    fontSize: 15,
-                                    fontFamily: 'NanumSquareNeoBold',
-                                },
-                                danger: {
-                                    color: '#7696ff',
-                                    fontSize: 15,
-                                    fontFamily: 'NanumSquareNeoBold',
-                                },
-                                
+                                }
                             }
                         },
                         data: [
-                            {   
-                                value: 72, // 여기에 직접 값을 설정
+                            {
                                 //value: data.length > 0 ? data[0].gaugeData : 0,
+                                value: 180, // 여기에 직접 값을 설정
                                 name: ''
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.7, '#ff3300'],
-                                    [0.8, '#33cc33'],
-                                    [1, '#ff3300']
+                                    [0.36, '#FF0000'], // 0 ~ 180
+                                    [0.4, '#00c700'], // 180 ~ 200
+                                    [0.5, '#00C700'], // 200 ~ 250
+                                    [1, '#FF0000'] // 250 ~ 500
                                 ],
-                                width: 6
+                                width: 3
                             }
                         },
                         axisLabel: {
                             color: axisLineColor,
+                            interval: 100, // 100단위로 눈금이 나오도록 설정
                         },
                         pointer: {
                             itemStyle: {
                                 color: (function () {
                                     //const gaugeValue = data.length > 0 ? data[0].gaugeData : 0;
-
-                                    const gaugeValue = 72; // 여기에 직접 값을 설정
-                                    if (gaugeValue <= 70) {
-                                        return '#ff3300'; // 70 이하 빨간색
-                                    } else if (gaugeValue > 70 && gaugeValue <= 80) {
-                                        return '#33cc33'; // 70~80 녹색
+                                    const gaugeValue = 180; // 여기에 직접 값을 설정
+                                    if (gaugeValue <= 179) {
+                                        return '#FF0000'; // 179 미만 빨간색
+                                    } else if (gaugeValue > 179 && gaugeValue <= 200) {
+                                        return '#00C700'; // 179~199 노란색
+                                    } else if (gaugeValue > 200 && gaugeValue <= 250) {
+                                        return '#00C700'; // 199~250 녹색
                                     } else {
-                                        return '#ff3300'; // 80 이상 빨간색
+                                        return '#FF0000'; // 250 이상 빨간색
                                     }
                                 })()
                             }
-                        },
+                        }
                     }
                 ]
             };
-    
+
             myChart.current.setOption(option);
         };
-    
+
         if (myChart.current) {
             updateChartOptions();
         }

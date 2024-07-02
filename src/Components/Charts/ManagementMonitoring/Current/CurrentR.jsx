@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
 import { ThemeContext } from '../../../ThemeContext';
-import { useGaugeData } from '../../../db/Gauge_db';
+import { useCurrentRData } from './CurrentR_db';
 
 const CurrentR = () => {
-    const { data } = useGaugeData();
+    const { data } = useCurrentRData();
     const chartRef = useRef(null);
 
     const { isDarkMode } = useContext(ThemeContext);
@@ -37,6 +37,7 @@ const CurrentR = () => {
                         type: 'gauge',
                         min: 0,
                         max: 500,
+                        splitNumber: 5, // 눈금의 단위를 100으로 설정 (500 / 5 = 100)
                         detail: {
                             formatter: function (value) {
                                 let statusText = '';
@@ -64,35 +65,25 @@ const CurrentR = () => {
                                     color: '#00C700',
                                     fontSize: 15,
                                     fontFamily: 'NanumSquareNeoBold',
-                                },
-                                caution: {
-                                    color: '#FFFF00',
-                                    fontSize: 15,
-                                    fontFamily: 'NanumSquareNeoBold',
-                                },
-                                danger: {
-                                    color: '#FF0000',
-                                    fontSize: 15,
-                                    fontFamily: 'NanumSquareNeoBold',
-                                },
+                                }
                             }
                         },
                         data: [
                             {
-                                //value: data.length > 0 ? data[0].gaugeData : 0,
-                                value: 350, // 여기에 직접 값을 설정
+                                value: data.length > 0 ? data[0].volt_r : 0,
+                                //value: 350, // 여기에 직접 값을 설정
                                 name: ''
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.36, '#FF0000'], // 0 ~ 180
+                                    [data[0].max_am1, '#FF0000'], // 0 ~ 180
                                     [0.4, '#00c700'], // 180 ~ 200
                                     [0.5, '#00C700'], // 200 ~ 250
                                     [1, '#FF0000'] // 250 ~ 500
                                 ],
-                                width: 5
+                                width: 3
                             }
                         },
                         axisLabel: {
@@ -102,9 +93,8 @@ const CurrentR = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-
-                                //const gaugeValue = data.length > 0 ? data[0].gaugeData : 0;
-                                    const gaugeValue = 350; // 여기에 직접 값을 설정
+                                    const gaugeValue = data.length > 0 ? data[0].currentRData : 0;
+                                    //const gaugeValue = 350; // 여기에 직접 값을 설정
                                     if (gaugeValue <= 180) {
                                         return '#FF0000'; // 180 이하 빨간색
                                     } else if (gaugeValue > 180 && gaugeValue <= 200) {

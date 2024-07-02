@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Layout, Col, Row, Card, Select } from 'antd';
 import { ThemeContext } from '../../ThemeContext';
 import CurrentR from './Current/CurrentR';
-import CurrentS from './Current/CurrentS';
-import CurrentT from './Current/CurrentT';
+//import CurrentS from './Current/CurrentS';
+//import CurrentT from './Current/CurrentT';
 import OverCurrentR from './OverCurrent/OverCurrentR';
 import OverCurrentS from './OverCurrent/OverCurrentS';
 import OverCurrentT from './OverCurrent/OverCurrentT';
@@ -57,8 +57,10 @@ const MonitorFirst = () => {
                                     }}
                                 >
                                     <Col span={8}><CurrentR /> </Col>
-                                    <Col span={8}> <CurrentS /> </Col>
-                                    <Col span={8}>  <CurrentT /> </Col>
+
+                                    <Col span={8}> 
+                                    {/*<CurrentS /> */}</Col>
+                                    <Col span={8}> {/*<CurrentT /> */}</Col>
                                 </Row>
 
                             </Card>
@@ -73,7 +75,7 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <OverCurrentR /> </Col>
+                                    <Col span={8}> <OverCurrentR  /> </Col>
                                     <Col span={8}> <OverCurrentS /> </Col>
                                     <Col span={8}> <OverCurrentT /> </Col>
                                 </Row>
