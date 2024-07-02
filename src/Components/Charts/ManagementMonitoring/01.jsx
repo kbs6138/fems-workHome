@@ -4,6 +4,9 @@ import { ThemeContext } from '../../ThemeContext';
 import CurrentR from './Current/CurrentR';
 import CurrentS from './Current/CurrentS';
 import CurrentT from './Current/CurrentT';
+import OverCurrentR from './OverCurrent/OverCurrentR';
+import OverCurrentS from './OverCurrent/OverCurrentS';
+import OverCurrentT from './OverCurrent/OverCurrentT';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -20,7 +23,7 @@ const MonitorFirst = () => {
 
     return (
         <Content className="app-Content">
-            <Row className='Main-Center-Content-Row'
+            <Row
                 gutter={{
                     xs: 10,
                     sm: 10,
@@ -40,13 +43,13 @@ const MonitorFirst = () => {
                             </Select>
                         </div>
 
-                        <div className={`Main-Center-Content1 ${TxtTheme} ${BgTheme}`} style={{ marginTop: '15px' }} >
+                        <div className={`Current_Card ${TxtTheme} ${BgTheme}`} style={{ marginTop: '15px' }} >
 
                             <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium'>
                                 <span>전류</span>
 
 
-                                <Row className='Main-Center-Content-Row'
+                                <Row
                                     gutter={{
                                         xs: 10,
                                         sm: 10,
@@ -56,18 +59,48 @@ const MonitorFirst = () => {
                                 >
                                     <Col span={8}> <CurrentR /> </Col>
                                     <Col span={8}> <CurrentS /> </Col>
-                                    <Col span={7}> <CurrentT /> </Col>
+                                    <Col span={8}> <CurrentT /> </Col>
                                 </Row>
 
                             </Card>
 
-                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium'>
+                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium'>
                                 <span>과전류</span>
+
+
+                                <Row
+                                    gutter={{
+                                        xs: 10,
+                                        sm: 10,
+                                        md: 20,
+                                        lg: 10,
+                                    }}
+                                >
+                                    <Col span={8}> <OverCurrentR /> </Col>
+                                    <Col span={8}> <OverCurrentS /> </Col>
+                                    <Col span={8}> <OverCurrentT /> </Col>
+                                </Row>
                             </Card>
                         </div>
-                        <div className='Main-Center-Content1'>
-                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium'>
+                        <div className='Other_Card'>
+                            <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'>
                                 <span>전류불평형률 / 누설전류 / 온도 / 누적가동시간 </span>
+
+                                <Row
+                                    gutter={{
+                                        xs: 10,
+                                        sm: 10,
+                                        md: 20,
+                                        lg: 10,
+                                    }}
+                                >
+                                    <Col span={6}> <OverCurrentR /> </Col>
+                                    <Col span={6}> <OverCurrentR /> </Col>
+                                    <Col span={6}> <OverCurrentR /> </Col>
+                                    <Col span={6}> <OverCurrentR /> </Col>
+
+                                </Row>
+
                             </Card>
 
                         </div>
