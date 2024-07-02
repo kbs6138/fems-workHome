@@ -7,6 +7,7 @@ import CurrentT from './Current/CurrentT';
 import OverCurrentR from './OverCurrent/OverCurrentR';
 import OverCurrentS from './OverCurrent/OverCurrentS';
 import OverCurrentT from './OverCurrent/OverCurrentT';
+import CurrentUnbalanceRatio from './Other/CurrentUnbalanceRatio';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -66,8 +67,6 @@ const MonitorFirst = () => {
 
                             <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium'>
                                 <span>과전류</span>
-
-
                                 <Row
                                     gutter={{
                                         xs: 10,
@@ -85,7 +84,6 @@ const MonitorFirst = () => {
                         <div className='Other_Card'>
                             <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'>
                                 <span>전류불평형률 / 누설전류 / 온도 / 누적가동시간 </span>
-
                                 <Row
                                     gutter={{
                                         xs: 10,
@@ -94,10 +92,15 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={6}> <OverCurrentR /> </Col>
-                                    <Col span={6}> <OverCurrentR /> </Col>
-                                    <Col span={6}> <OverCurrentR /> </Col>
-                                    <Col span={6}> <OverCurrentR /> </Col>
+                                    <Col span={6}> <CurrentUnbalanceRatio /> 
+                                    <span> 전류 불평형률</span>
+                                    </Col>
+                                    <Col span={6}> <OverCurrentR /> 
+                                    <span> 누설전류</span></Col>
+                                    <Col span={6}> <OverCurrentR /> 
+                                    <span> 온도</span></Col>
+                                    <Col span={6}> <OverCurrentR /> 
+                                    <span>누적가동시간</span></Col>
 
                                 </Row>
 

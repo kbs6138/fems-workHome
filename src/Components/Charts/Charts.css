@@ -21,7 +21,8 @@
 .CurrentgaugeT,
 .OverCurrentR,
 .OverCurrentS,
-.OverCurrentT{
+.OverCurrentT,
+.CurrentUnbalanceRatio{
   width: 280px !important;
   height: 300px;
   margin-left: -15px;
