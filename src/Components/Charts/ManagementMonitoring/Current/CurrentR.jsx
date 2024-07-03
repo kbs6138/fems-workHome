@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
 import { ThemeContext } from '../../../ThemeContext';
-import { useCurrentRData } from './CurrentR_db';
+import { useCurrentRData } from './CurrentGauge_db';
 
-const CurrentR = () => {
+const CurrentGauge = () => {
     const { data } = useCurrentRData();
     const chartRef = useRef(null);
-
     const { isDarkMode } = useContext(ThemeContext);
-    const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
+    const myChart = useRef(null);
 
     useEffect(() => {
         const chartDom = chartRef.current;
@@ -17,12 +16,14 @@ const CurrentR = () => {
         return () => {
             myChart.current.dispose();
         };
-    }, [isDarkMode]); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, []); // 빈 배열로 초기화만 한 번 실행되도록 설정
 
     useEffect(() => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
             const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
+            const Volt_r_Value = data.length > 0 ? data[0].volt_r : 0;
+            const WarningArea = data.length > 0 ? data[0].max_am1 :0; // 기본값 설정
 
             const option = {
                 animation: true,
@@ -40,22 +41,8 @@ const CurrentR = () => {
                         splitNumber: 5, // 눈금의 단위를 100으로 설정 (500 / 5 = 100)
                         detail: {
                             formatter: function (value) {
-                                let statusText = '';
-                                let statusColor = '';
-                                if (value < 180) {
-                                    statusText = 'L1';
-                                    statusColor = 'safe';
-                                } else if (value <= 200) {
-                                    statusText = 'L1';
-                                    statusColor = 'safe';
-                                } else if (value <= 250) {
-                                    statusText = 'L1';
-                                    statusColor = 'safe';
-                                } else {
-                                    statusText = 'L1';
-                                    statusColor = 'safe';
-                                }
-                                return `{${statusColor}|${statusText}}\n${value}V`;
+                                let statusText = 'L1';
+                                return `${statusText}\n${value}V`;
                             },
                             fontSize: 12,
                             color: textColor,
@@ -70,18 +57,16 @@ const CurrentR = () => {
                         },
                         data: [
                             {
-                                value: data.length > 0 ? data[0].volt_r : 0,
-                                //value: 350, // 여기에 직접 값을 설정
-                                name: ''
+                                value: Volt_r_Value
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [data[0].max_am1, '#FF0000'], // 0 ~ 180
-                                    [0.4, '#00c700'], // 180 ~ 200
-                                    [0.5, '#00C700'], // 200 ~ 250
-                                    [1, '#FF0000'] // 250 ~ 500
+                                    [WarningArea, '#FF0000'], // 0 ~ WarningArea
+                                    [0.4, '#00c700'], // 0.4 ~ 0.5
+                                    [0.5, '#00C700'], // 0.5 ~ 1
+                                    [1, '#FF0000'] // 나머지
                                 ],
                                 width: 3
                             }
@@ -93,14 +78,12 @@ const CurrentR = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    const gaugeValue = data.length > 0 ? data[0].currentRData : 0;
-                                    //const gaugeValue = 350; // 여기에 직접 값을 설정
-                                    if (gaugeValue <= 180) {
+                                    if (Volt_r_Value <= 180) {
                                         return '#FF0000'; // 180 이하 빨간색
-                                    } else if (gaugeValue > 180 && gaugeValue <= 200) {
-                                        return '#00C700'; // 180~200 노란색
-                                    } else if (gaugeValue > 200 && gaugeValue <= 250) {
-                                        return '#00C700'; // 200~250 녹색
+                                    } else if (Volt_r_Value > 180 && Volt_r_Value <= 220) {
+                                        return '#00C700'; // 180~220 녹색
+                                    } else if (Volt_r_Value > 220 && Volt_r_Value <= 250) {
+                                        return '#00C700'; // 220~250 녹색
                                     } else {
                                         return '#FF0000'; // 250 이상 빨간색
                                     }
@@ -124,4 +107,4 @@ const CurrentR = () => {
     );
 };
 
-export default CurrentR;
+export default CurrentGauge;

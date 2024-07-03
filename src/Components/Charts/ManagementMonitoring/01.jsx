@@ -5,8 +5,8 @@ import CurrentR from './Current/CurrentR';
 //import CurrentS from './Current/CurrentS';
 //import CurrentT from './Current/CurrentT';
 import OverCurrentR from './OverCurrent/OverCurrentR';
-import OverCurrentS from './OverCurrent/OverCurrentS';
-import OverCurrentT from './OverCurrent/OverCurrentT';
+//import OverCurrentS from './OverCurrent/OverCurrentS';
+//import OverCurrentT from './OverCurrent/OverCurrentT';
 import CurrentUnbalanceRatio from './Other/CurrentUnbalanceRatio';
 
 const { Content } = Layout;
@@ -76,8 +76,7 @@ const MonitorFirst = () => {
                                     }}
                                 >
                                     <Col span={8}> <OverCurrentR  /> </Col>
-                                    <Col span={8}> <OverCurrentS /> </Col>
-                                    <Col span={8}> <OverCurrentT /> </Col>
+
                                 </Row>
                             </Card>
                         </div>
