@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import { ThemeContext } from '../../../ThemeContext';
 import { useCurrentRData } from './CurrentGauge_db';
 
-const CurrentGauge = () => {
+const CurrentGauge = ({ Volt, Name, NameColor, MovePointer }) => {
     const { data } = useCurrentRData();
     const chartRef = useRef(null);
     const { isDarkMode } = useContext(ThemeContext);
@@ -13,94 +13,110 @@ const CurrentGauge = () => {
         const chartDom = chartRef.current;
         myChart.current = echarts.init(chartDom);
 
+        //console.log(Volt, Name, NameColor, MovePointer);
+
         return () => {
             myChart.current.dispose();
         };
-    }, []); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, [Volt, Name, NameColor, MovePointer]);
 
     useEffect(() => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#000000';
             const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
-            const Volt_r_Value = data.length > 0 ? data[0].volt_r : 0;
-            const WarningArea = data.length > 0 ? data[0].max_am1 :0; // 기본값 설정
+            const WarningArea = data.length > 0 ? data[0].max_am1 : 0;
 
             const option = {
-                animation: true,
-                animationDuration: 10000,
-                animationEasing: 'cubicOut',
-                tooltip: {
-                    formatter: '{a} <br/>{b} : {c}V'
-                },
                 series: [
                     {
                         name: 'Pressure',
                         type: 'gauge',
                         min: 0,
                         max: 500,
-                        splitNumber: 5, // 눈금의 단위를 100으로 설정 (500 / 5 = 100)
+                        splitNumber: 5,
                         detail: {
                             formatter: function (value) {
-                                let statusText = 'L1';
-                                return `${statusText}\n${value}V`;
+                                let statusText = Name;
+                                return `${statusText}\n${Volt}V`;
                             },
                             fontSize: 12,
                             color: textColor,
                             fontFamily: 'NanumSquareNeoExtraBold',
-                            rich: {
-                                safe: {
-                                    color: '#00C700',
-                                    fontSize: 15,
-                                    fontFamily: 'NanumSquareNeoBold',
-                                }
-                            }
                         },
                         data: [
                             {
-                                value: Volt_r_Value
+                                value: Volt
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [WarningArea, '#FF0000'], // 0 ~ WarningArea
-                                    [0.4, '#00c700'], // 0.4 ~ 0.5
-                                    [0.5, '#00C700'], // 0.5 ~ 1
-                                    [1, '#FF0000'] // 나머지
+                                    [WarningArea, '#FF0000'],
+                                    [0.4, '#00c700'],
+                                    [0.5, '#00C700'],
+                                    [1, '#FF0000']
                                 ],
                                 width: 3
                             }
                         },
                         axisLabel: {
                             color: axisLineColor,
-                            interval: 100, // 100단위로 눈금이 나오도록 설정
+                            interval: 100,
                         },
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (Volt_r_Value <= 180) {
-                                        return '#FF0000'; // 180 이하 빨간색
-                                    } else if (Volt_r_Value > 180 && Volt_r_Value <= 220) {
-                                        return '#00C700'; // 180~220 녹색
-                                    } else if (Volt_r_Value > 220 && Volt_r_Value <= 250) {
-                                        return '#00C700'; // 220~250 녹색
+                                    if (Volt <= 180) {
+                                        return '#FF0000';
+                                    } else if (Volt > 180 && Volt <= 220) {
+                                        return '#00C700';
+                                    } else if (Volt > 220 && Volt <= 250) {
+                                        return '#00C700';
                                     } else {
-                                        return '#FF0000'; // 250 이상 빨간색
+                                        return '#FF0000';
                                     }
                                 })()
-                            }
+                            },
+                            animation: true,
+                            animationDuration: 300,
+                            animationEasing: 'linear'
                         }
                     }
                 ]
             };
 
             myChart.current.setOption(option);
+
+            // 애니메이션 반복 설정
+            const animatePointer = () => {
+                const currentValue = MovePointer;
+                myChart.current.setOption({
+                    series: [{
+                        data: [{ value: MovePointer - 10 }]
+                    }]
+                });
+
+                setTimeout(() => {
+                    myChart.current.setOption({
+                        series: [{
+                            data: [{ value: currentValue + 5 }]
+                        }]
+                    });
+                }, 300);
+            };
+
+            const intervalId = setInterval(animatePointer, 1000);
+
+            return () => {
+                clearInterval(intervalId);
+            };
         };
 
         if (myChart.current) {
             updateChartOptions();
         }
-    }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
+    }, [isDarkMode, data, Volt, MovePointer, Name]);
+
 
     return (
         <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" />

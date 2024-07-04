@@ -1,18 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Layout, Col, Row, Card, Select } from 'antd';
 import { ThemeContext } from '../../ThemeContext';
 import CurrentR from './Current/CurrentR';
-//import CurrentS from './Current/CurrentS';
-//import CurrentT from './Current/CurrentT';
+
 import OverCurrentR from './OverCurrent/OverCurrentR';
 //import OverCurrentS from './OverCurrent/OverCurrentS';
 //import OverCurrentT from './OverCurrent/OverCurrentT';
 import CurrentUnbalanceRatio from './Other/CurrentUnbalanceRatio';
 
+
 const { Content } = Layout;
 const { Option } = Select;
 
 const MonitorFirst = () => {
+    const [MovePointer] = useState([250, 300, 400]);
+    const [Volt] = useState([250, 300, 400]);
+
+
+    const [Name] = useState(['L1', 'L2', 'L3']);
+    const [NameColor] = useState(['#00C700', '#FC738A', '#7696ff']);
+
+
+    /* ..................................... */
+
+
+    /* ....................................*/
+
     const { isDarkMode } = useContext(ThemeContext);
 
     const TxtTheme = isDarkMode ? 'text-dark' : 'text-light';
@@ -56,11 +69,11 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}><CurrentR /> </Col>
+                                    <Col span={8}><CurrentR Volt={Volt[0]} Name={Name[0]} NameColor={NameColor[0]} MovePointer={MovePointer[0]} key={1} /> </Col>
+                                    <Col span={8}><CurrentR Volt={Volt[1]} Name={Name[1]} NameColor={NameColor[1]} MovePointer={MovePointer[1]} key={2} /> </Col>
+                                    <Col span={8}><CurrentR Volt={Volt[2]} Name={Name[2]} NameColor={NameColor[2]} MovePointer={MovePointer[2]} key={3} /> </Col>
 
-                                    <Col span={8}> 
-                                    {/*<CurrentS /> */}</Col>
-                                    <Col span={8}> {/*<CurrentT /> */}</Col>
+
                                 </Row>
 
                             </Card>
@@ -75,7 +88,9 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <OverCurrentR  /> </Col>
+                                    <Col span={8}> <OverCurrentR /> </Col>
+
+
 
                                 </Row>
                             </Card>
