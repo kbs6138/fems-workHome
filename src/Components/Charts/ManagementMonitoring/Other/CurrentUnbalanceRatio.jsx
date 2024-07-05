@@ -85,7 +85,7 @@ const CurrentUnbalanceRatio = () => {
                                     [0.8, '#ffcc00'],
                                     [1, '#ff3300']
                                 ],
-                                width: 6
+                                width: 4
                             }
                         },
                         axisLabel: {

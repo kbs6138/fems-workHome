@@ -2,20 +2,20 @@ import React, { useContext, useState } from 'react';
 import { Layout, Col, Row, Card, Select } from 'antd';
 import { ThemeContext } from '../../ThemeContext';
 import CurrentR from './Current/CurrentR';
-
 import OverCurrentR from './OverCurrent/OverCurrentR';
-//import OverCurrentS from './OverCurrent/OverCurrentS';
-//import OverCurrentT from './OverCurrent/OverCurrentT';
 import CurrentUnbalanceRatio from './Other/CurrentUnbalanceRatio';
-
+import LeakageCurrent from './Other/LeakageCurrent';
+import Temperature from './Other/Temperature';
+import AccumulatedOperatingTime from './Other/AccumulatedOperatingTime';
 
 const { Content } = Layout;
 const { Option } = Select;
 
 const MonitorFirst = () => {
-    const [MovePointer] = useState([250, 300, 400]);
-    const [Volt] = useState([250, 300, 400]);
+    const [MovePointer] = useState([210, 220, 185]);
 
+    const [CurrentVolt] = useState([210, 220, 185]);
+    const [OverCurrentVolt] = useState([35, 20, 40]);
 
     const [Name] = useState(['L1', 'L2', 'L3']);
     const [NameColor] = useState(['#00C700', '#FC738A', '#7696ff']);
@@ -69,9 +69,9 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}><CurrentR Volt={Volt[0]} Name={Name[0]} NameColor={NameColor[0]} MovePointer={MovePointer[0]} key={1} /> </Col>
-                                    <Col span={8}><CurrentR Volt={Volt[1]} Name={Name[1]} NameColor={NameColor[1]} MovePointer={MovePointer[1]} key={2} /> </Col>
-                                    <Col span={8}><CurrentR Volt={Volt[2]} Name={Name[2]} NameColor={NameColor[2]} MovePointer={MovePointer[2]} key={3} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentVolt[0]} Name={Name[0]} NameColor={NameColor[0]} MovePointer={MovePointer[0]} key={1} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentVolt[1]} Name={Name[1]} NameColor={NameColor[1]} MovePointer={MovePointer[1]} key={2} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentVolt[2]} Name={Name[2]} NameColor={NameColor[2]} MovePointer={MovePointer[2]} key={3} /> </Col>
 
 
                                 </Row>
@@ -88,7 +88,10 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <OverCurrentR /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[0]} OverCurrentVolt={OverCurrentVolt[0]} /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[1]} OverCurrentVolt={OverCurrentVolt[1]} /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[2]} OverCurrentVolt={OverCurrentVolt[2]} /> </Col>
+
 
 
 
@@ -106,14 +109,20 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={6}> <span> 전류 불평형률</span> <CurrentUnbalanceRatio />
+                                    <Col span={6} > <span > 전류 불평형률</span>
+                                        <CurrentUnbalanceRatio />
+                                    </Col>
 
-                                    </Col>
                                     <Col span={6}><span> 누설전류</span>
+                                        <LeakageCurrent />
                                     </Col>
+
                                     <Col span={6}><span> 온도</span>
+                                        <Temperature />
                                     </Col>
+
                                     <Col span={6}><span>누적가동시간</span>
+                                        <AccumulatedOperatingTime />
                                     </Col>
 
                                 </Row>

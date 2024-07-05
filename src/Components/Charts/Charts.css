@@ -22,7 +22,10 @@
 .OverCurrentR,
 .OverCurrentS,
 .OverCurrentT,
-.CurrentUnbalanceRatio{
+.CurrentUnbalanceRatio,
+.LeakageCurrent,
+.Temperature,
+.AccumulatedOperatingTime{
   width: 280px !important;
   height: 300px;
   margin-left: -15px;
