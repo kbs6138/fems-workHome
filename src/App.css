@@ -12,7 +12,7 @@
 
 /*************************************************** 헤더 (최상단) ****************************************************/
 .app-header {
-    background: #001528;
+    background: rgb(31, 45, 68);
     height: 50px;
 }
 
@@ -20,10 +20,10 @@
 
 
 /*************************************************** 사이드바  ****************************************************/
-.ant-layout-sider-light,
-.ant-menu-light {
+.ant-layout-sider,
+.ant-menu {
    /* background: #ebebeb !important;*/
-    background-color: rgb(41, 47, 59) !important;
+    background-color:rgb(31, 45, 68) !important;
 }
 
 /*************************************************** 사이드바  ****************************************************/
@@ -260,7 +260,7 @@ span p {
 /*************************************************** 푸터 (최하단) ****************************************************/
 .app-footer {
     text-align: center;
-    background-color: #001528;
+    background-color: rgb(38, 55, 82);
     color: white;
     height: 45px;
     font-size: 10px;
@@ -287,18 +287,18 @@ span p {
 }
 
 .bg-dark {
-    background-color: rgb(49, 57, 70);
+    background-color: rgb(38, 55, 82);
 }
 
 .bg-light {
    /* background-color: #ebebeb;*/
-    background-color: rgb(49, 57, 70);
+    background-color: rgb(38, 55, 82);
 }
 
 /* 다크 모드일 때 ant-tabs-tab 스타일 */
 
 
 .ant-layout {
-    background-color: rgb(41, 47, 59);
+    background-color: rgb(38, 55, 82);
 }
 /*************************************************** 컴포넌트들  ****************************************************/
