@@ -22,8 +22,8 @@ const LeakageCurrent = () => {
 
     useEffect(() => {
         const updateChartOptions = () => {
-            const textColor = isDarkMode ? '#ffffff' : '#000000';
-            const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
+            const textColor = isDarkMode ? '#ffffff' : '#ffffff';
+            const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
 
             const gaugeValue = 0;// 데이터가 있으면 사용하고, 없으면 59 사용 data.length > 0 ? data[0].gaugeData : 59; 
 

@@ -20,8 +20,8 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
 
     useEffect(() => {
         const updateChartOptions = () => {
-            const textColor = isDarkMode ? '#ffffff' : '#000000';
-            const axisLineColor = isDarkMode ? '#ffffff' : '#000000';
+            const textColor = isDarkMode ? '#ffffff' : '#ffffff';
+            const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
 
             const option = {
                 animation: true,

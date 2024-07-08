@@ -6,6 +6,7 @@
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
+    color: white !important;
 }
 /*************************************************** 전체 폰트 설정 ****************************************************/
 
@@ -96,19 +97,19 @@
 
 
 .Main-Top-Info1-h1 {
-    color: #667EFE;
+    color: #667EFE !important;
 }
 
 .Main-Top-Info2-h1 {
-    color: #FDC06E;
+    color: #FDC06E !important;
 }
 
 .Main-Top-Info3-h1 {
-    color: #FC3EA5;
+    color: #FC3EA5 !important;
 }
 
 .Main-Top-Info4-h1 {
-    color: #72D1C8;
+    color: #72D1C8 !important;
 }
 
 .Main-Center-Content3-Col {
@@ -188,11 +189,11 @@ span p {
 }
 
 .Card1-grid-Percent-value {
-    color: #FC323C;
+    color: #FC323C !important;
 }
 
 .Card2-grid-Percent-value {
-    color: #7696ff;
+    color: #7696ff !important;
 
 }
 
@@ -233,15 +234,15 @@ span p {
 }
 
 .Card3-grid-L1-text {
-    color: #00C700;
+    color: #00C700 !important;
 }
 
 .Card3-grid-L2-text {
-    color: #FC738A;
+    color: #FC738A !important;
 }
 
 .Card3-grid-L3-text {
-    color: #7696ff;
+    color: #7696ff !important;
 }
 
 
@@ -302,3 +303,7 @@ span p {
     background-color: rgb(38, 55, 82);
 }
 /*************************************************** 컴포넌트들  ****************************************************/
+.thermometer__percent-current{
+    color: black !important;
+    font-weight: bolder;
+}

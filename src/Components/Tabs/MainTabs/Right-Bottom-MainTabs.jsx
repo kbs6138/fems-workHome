@@ -43,7 +43,7 @@ const items = [
 
 const RightBottomMainTabs = () => {
     const { isDarkMode } = useContext(ThemeContext);
-    const TabsTheme = isDarkMode ? 'ant-tabs-tab-dark' : '';
+    const TabsTheme = isDarkMode ? 'ant-tabs-tab-light' : '';
 
     return (
         <Tabs className={TabsTheme} defaultActiveKey="1" items={items} onChange={onChange} />

@@ -20,8 +20,8 @@ const AppMain = () => {
     const { isDarkMode } = useContext(ThemeContext);
     const { data } = useRightChart3Data();
 
-    const TxtTheme = isDarkMode ? 'text-dark' : 'text-light';
-    const BgTheme = isDarkMode ? 'bg-dark' : 'bg-light';
+    const TxtTheme = isDarkMode ? 'text-light' : 'text-dark';
+    const BgTheme = isDarkMode ? 'bg-light' : 'bg-dark';
 
     return (
         <Content className="app-Content">
