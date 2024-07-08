@@ -17,7 +17,7 @@ const RightChart1 = () => {
                 type: 'category',
                 data: ['전일 사용', '당일 사용'],
                 axisLabel: {
-                    color: isDarkMode ? '#fff' : '#000',
+                    color: isDarkMode ? '#fff' : '#fff',
                     fontSize: '13px',
                     fontFamily: 'NanumSquareNeoBold'
                 }
@@ -56,7 +56,7 @@ const RightChart1 = () => {
                         formatter: (params) => `${params.value.toLocaleString()} Kw`,
                         fontSize: '13px',
                         fontFamily: 'NanumSquareNeoBold',
-                        color: isDarkMode ? '#fff' : '#000'
+                        color: isDarkMode ? '#fff' : '#fff'
                     }
                 }
             ]

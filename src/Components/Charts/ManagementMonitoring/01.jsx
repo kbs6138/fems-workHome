@@ -72,8 +72,6 @@ const MonitorFirst = () => {
                                     <Col span={8}><CurrentR CurrentVolt={CurrentVolt[0]} Name={Name[0]} NameColor={NameColor[0]} MovePointer={MovePointer[0]} key={1} /> </Col>
                                     <Col span={8}><CurrentR CurrentVolt={CurrentVolt[1]} Name={Name[1]} NameColor={NameColor[1]} MovePointer={MovePointer[1]} key={2} /> </Col>
                                     <Col span={8}><CurrentR CurrentVolt={CurrentVolt[2]} Name={Name[2]} NameColor={NameColor[2]} MovePointer={MovePointer[2]} key={3} /> </Col>
-
-
                                 </Row>
 
                             </Card>
@@ -91,13 +89,10 @@ const MonitorFirst = () => {
                                     <Col span={8}> <OverCurrentR Name={Name[0]} OverCurrentVolt={OverCurrentVolt[0]} /> </Col>
                                     <Col span={8}> <OverCurrentR Name={Name[1]} OverCurrentVolt={OverCurrentVolt[1]} /> </Col>
                                     <Col span={8}> <OverCurrentR Name={Name[2]} OverCurrentVolt={OverCurrentVolt[2]} /> </Col>
-
-
-
-
                                 </Row>
                             </Card>
                         </div>
+                        <br/>
                         <div className='Other_Card'>
                             <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'>
 
@@ -124,11 +119,8 @@ const MonitorFirst = () => {
                                     <Col span={6}><span>누적가동시간</span>
                                         <AccumulatedOperatingTime />
                                     </Col>
-
                                 </Row>
-
                             </Card>
-
                         </div>
                     </Card>
                 </Col>

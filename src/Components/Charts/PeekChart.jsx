@@ -31,11 +31,11 @@ const PeekChart = () => {
     };
 
     const getTextColor = () => {
-      return isDarkMode ? '#ffffff' : '#000000';
+      return isDarkMode ? '#000000' : '#ffffff';
     };
 
     const getGridLineColor = () => {
-      return isDarkMode ? '#444444' : '#cccccc';
+      return isDarkMode ? '#cccccc' : '#aaaaaa';
     };
 
     const updateChartOptions = () => {

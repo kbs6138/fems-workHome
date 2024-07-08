@@ -15,7 +15,7 @@ const RightChart2 = () => {
                 type: 'category',
                 data: ['전일 역률', '당일 역률'],
                 axisLabel: {
-                    color: isDarkMode ? '#fff' : 'black',
+                    color: isDarkMode ? '#fff' : '#fff',
                     fontSize: '13px',
                     fontFamily: 'NanumSquareNeoBold'
                 }
@@ -51,7 +51,7 @@ const RightChart2 = () => {
                         formatter: (params) => `${params.value.toLocaleString()} %`,
                         fontSize: '13px',
                         fontFamily: 'NanumSquareNeoBold',
-                        color: isDarkMode ? 'white' : 'black'
+                        color: isDarkMode ? 'white' : '#fff'
                     },
                     markLine: {
                         data: [
@@ -62,7 +62,7 @@ const RightChart2 = () => {
                                     position: 'insideEndTop',
                                     fontSize: '10px',
                                     fontFamily: 'NanumSquareNeoExtraBold',
-                                    color: isDarkMode ? 'white' : 'black'
+                                    color: isDarkMode ? 'white' : '#fff'
                                 }
                             }
                         ],

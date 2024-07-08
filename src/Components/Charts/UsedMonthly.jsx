@@ -44,7 +44,7 @@ function UsedMonthly() {
         type: 'category',
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'];
@@ -55,7 +55,7 @@ function UsedMonthly() {
       yaxis: {
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             return value.toFixed(0) + ' Kw';
@@ -94,7 +94,7 @@ function UsedMonthly() {
       xaxis: {
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'];
@@ -105,7 +105,7 @@ function UsedMonthly() {
       yaxis: {
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             return value.toFixed(0) + ' Kw';

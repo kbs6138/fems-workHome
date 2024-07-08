@@ -260,7 +260,7 @@ span p {
 /*************************************************** 푸터 (최하단) ****************************************************/
 .app-footer {
     text-align: center;
-    background-color: rgb(38, 55, 82);
+    background: rgb(31, 45, 68);
     color: white;
     height: 45px;
     font-size: 10px;

@@ -40,7 +40,7 @@ function PowerFactor() {
         type: 'category',
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             // 레이블을 숫자 대신 월 이름으로 반환
@@ -81,7 +81,7 @@ function PowerFactor() {
       xaxis: {
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           },
           formatter: function (value) {
             const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'];
@@ -92,7 +92,7 @@ function PowerFactor() {
       yaxis: {
         labels: {
           style: {
-            colors: isDarkMode ? '#FFFFFF' : '#000000'
+            colors: isDarkMode ? '#ffffff' : '#ffffff'
           }
         }
       },

@@ -21,21 +21,23 @@ const items = [
 
   getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
 
-  getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
-    getItem('관리자', '3', null, null, '/AppAdmin'),
-    getItem('사용자', '4', null, null, ''),
-  ]),
+
   
-  getItem('통계 그래프', 'sub2', <UserOutlined />, [
-    getItem('시간별 추이분석', '5', null, null, ''),
-    getItem('일별 추이분석', '6', null, null, ''),
-    getItem('월별 전력량 추이', '7', null, null, ''),
-    getItem('15분 피크추이', '8', null, null, ''),
+  getItem('추이 그래프', 'sub2', <UserOutlined />, [
+    getItem('과전류 추이그래프', '3', null, null, ''),
+    getItem('전류 불평령률 추이그래프', '4', null, null, ''),
+    getItem('누설전류 추이그래프', '5', null, null, ''),
+    //getItem('15분 피크추이', '6', null, null, ''),
   ]),
   getItem('설비관리모니터링', 'sub3', <UserOutlined />, [
-    getItem('장비1', '9', null, null, '/MonitorFirst'),
-   //getItem('장비2', '10', null, null, ''),
-  //getItem('장비3', '11', null, null, ''),
+    getItem('장비1', '7', null, null, '/MonitorFirst'),
+   //getItem('장비2', '8', null, null, ''),
+  //getItem('장비3', '9', null, null, ''),
+  ]),
+
+  getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
+    getItem('관리자', '10', null, null, '/AppAdmin'),
+    getItem('사용자', '11', null, null, ''),
   ]),
 ];
 
@@ -57,11 +59,9 @@ const AppSider = () => {
         defaultSelectedKeys={['1']}
         mode="inline"
         items={items}
-        theme={isDarkMode ? 'dark' : 'light'}
+        theme={isDarkMode ? 'light' : 'dark'}
       />
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
-        <Switch checked={isDarkMode} onChange={toggleTheme} />
-      </div>
+
     </Sider>
   );
 };
