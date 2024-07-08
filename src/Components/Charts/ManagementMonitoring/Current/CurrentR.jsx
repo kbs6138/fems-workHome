@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import { ThemeContext } from '../../../ThemeContext';
 import { useCurrentRData } from './CurrentGauge_db';
 
-const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
+const CurrentGauge = ({ Volt, Name, NameColor, MovePointer, FirstArea, SecondArea, ThirdArea }) => {
     const { data } = useCurrentRData();
     const chartRef = useRef(null);
     const { isDarkMode } = useContext(ThemeContext);
@@ -13,12 +13,12 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
         const chartDom = chartRef.current;
         myChart.current = echarts.init(chartDom);
 
-        //console.log(CurrentVolt, Name, NameColor, MovePointer);
+        //console.log(Volt, Name, NameColor, MovePointer);
 
         return () => {
             myChart.current.dispose();
         };
-    }, [CurrentVolt, Name, NameColor, MovePointer]);
+    }, [Volt, Name, NameColor, MovePointer, FirstArea, SecondArea, ThirdArea]);
 
     useEffect(() => {
         const updateChartOptions = () => {
@@ -37,7 +37,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
                         detail: {
                             formatter: function (value) {
                                 let statusText = Name;
-                                return `${statusText}\n${CurrentVolt}V`;
+                                return `${statusText}\n${Volt}V`;
                             },
                             fontSize: 12,
                             color: textColor,
@@ -45,15 +45,15 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
                         },
                         data: [
                             {
-                                value: CurrentVolt
+                                value: Volt
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [WarningArea, '#FF0000'],
-                                    [0.5, '#00C700'],
-                                    [1, '#FF0000']
+                                    [FirstArea, '#FF0000'],
+                                    [SecondArea, '#00C700'],
+                                    [ThirdArea, '#FF0000']
                                 ],
                                 width: 3
                             }
@@ -65,11 +65,11 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (CurrentVolt <= 180) {
+                                    if (Volt <= 180) {
                                         return '#FF0000';
-                                    } else if (CurrentVolt > 180 && CurrentVolt <= 220) {
+                                    } else if (Volt > 180 && Volt <= 220) {
                                         return '#00C700';
-                                    } else if (CurrentVolt > 220 && CurrentVolt <= 250) {
+                                    } else if (Volt > 220 && Volt <= 250) {
                                         return '#00C700';
                                     } else {
                                         return '#FF0000';
@@ -88,17 +88,17 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
 
             // 애니메이션 반복 설정
             const animatePointer = () => {
-                const currentValue = MovePointer;
+                const currentValue = Volt;
                 myChart.current.setOption({
                     series: [{
-                        data: [{ value: MovePointer - 5 }]
+                        data: [{ value: Volt - 2 }]
                     }]
                 });
 
                 setTimeout(() => {
                     myChart.current.setOption({
                         series: [{
-                            data: [{ value: currentValue + 5 }]
+                            data: [{ value: currentValue + 2 }]
                         }]
                     });
                 }, 100);
@@ -114,7 +114,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
         if (myChart.current) {
             updateChartOptions();
         }
-    }, [isDarkMode, data, CurrentVolt, MovePointer, Name]);
+    }, [isDarkMode, data, Volt, MovePointer, Name, FirstArea, SecondArea, ThirdArea]);
 
 
     return (
