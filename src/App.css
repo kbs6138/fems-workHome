@@ -307,3 +307,7 @@ span p {
     color: black !important;
     font-weight: bolder;
 }
+
+.ant-layout-sider-trigger{
+    background-color: rgb(38, 55, 82) !important;
+}
