@@ -12,6 +12,14 @@ const { Content } = Layout;
 const { Option } = Select;
 
 const MonitorFirst = () => {
+
+    const Datas = useState [
+        { L1: "1", value: "1", section: "1" },
+        { L2: "2", value: "2", section: "2" },
+        { L3: "3", value: "3", section: "3" }
+    ]
+
+
     const [MovePointer] = useState([210, 220, 185]);
 
     const [CurrentVolt] = useState([210, 220, 185]);
@@ -46,20 +54,20 @@ const MonitorFirst = () => {
                 }}
             >
                 <Col className="gutter-row" span={24}>
-                    <Card className={` ${TxtTheme} ${BgTheme}`}>
+                    <Card className={` ${TxtTheme} ${BgTheme}`} bordered={false}> 
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '20px' }}> 설비관리모니터링</span>
 
-                            <Select defaultValue="Option1" style={{ width: 120 }} onChange={handleChange}>
-                                <Option value="Option1">장비1</Option>
-                                <Option value="Option2">장비2</Option>
-                                <Option value="Option3">장비3</Option>
+                            <Select defaultValue="Option1" style={{ width: 120, background: '#263752', color:'#000000' }} onChange={handleChange}>
+                                <Option value="Option1" >장비1</Option>
+                                <Option value="Option2" >장비2</Option>
+                                <Option value="Option3" >장비3</Option>
                             </Select>
                         </div>
 
                         <div className={`Current_Card ${TxtTheme} ${BgTheme}`} style={{ marginTop: '15px' }} >
 
-                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium' >
+                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
                                 <span> 전압</span>
                                 <Row
                                     gutter={{
@@ -73,10 +81,9 @@ const MonitorFirst = () => {
                                     <Col span={8}><CurrentR CurrentVolt={CurrentVolt[1]} Name={Name[1]} NameColor={NameColor[1]} MovePointer={MovePointer[1]} key={2} /> </Col>
                                     <Col span={8}><CurrentR CurrentVolt={CurrentVolt[2]} Name={Name[2]} NameColor={NameColor[2]} MovePointer={MovePointer[2]} key={3} /> </Col>
                                 </Row>
-
                             </Card>
 
-                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium'>
+                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
                                 <span>과전류</span>
                                 <Row
                                     gutter={{
@@ -92,9 +99,10 @@ const MonitorFirst = () => {
                                 </Row>
                             </Card>
                         </div>
-                        <br/>
+                        <br />
+                        <br />
                         <div className='Other_Card'>
-                            <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'>
+                            <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium'  bordered={false} >
 
                                 <Row
                                     gutter={{

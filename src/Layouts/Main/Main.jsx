@@ -26,7 +26,7 @@ const AppMain = () => {
     return (
         <Content className="app-Content">
 
-            <Card className={`${BgTheme}`}>
+            <Card className={` Main-Top-Info-Card ${BgTheme}`} bordered={false}>
                 <Row className={`Main-Top-Info-Row ${BgTheme}`}
                     gutter={{
                         xs: 10,
@@ -96,7 +96,7 @@ const AppMain = () => {
             >
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content1'>
-                        <Card className={`Card1 ${TxtTheme} ${BgTheme}`}>
+                        <Card className={`Card1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <span className='Card1-Title'>Peek Monitor</span>
                             <PeekChart style={{ display: 'flex', justifyContent: 'center' }} />
 
@@ -106,7 +106,7 @@ const AppMain = () => {
 
                 <Col className="gutter-row" span={9}>
                     <div className='Main-Center-Content2' >
-                        <Card size='medium' className={`Card2 ${TxtTheme} ${BgTheme}`}>
+                        <Card size='medium' className={`Card2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <span className='Card2-Title'> Trend Analysis Monitor</span>
                             <CenterMainTabs />
                         </Card>
@@ -115,7 +115,7 @@ const AppMain = () => {
 
                 <Col className="gutter-row" span={6}>
                     <div className="card-container">
-                        <Card className={`Card3-top ${TxtTheme} ${BgTheme}`}>
+                        <Card className={`Card3-top ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={14}>
                                     <div className="Card1-grid-text">
@@ -136,7 +136,7 @@ const AppMain = () => {
                         </Card>
                     </div>
                     <div className="card-container">
-                        <Card className={`Card3-middle ${TxtTheme} ${BgTheme}`}>
+                        <Card className={`Card3-middle ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={12}>
                                     <div className="Card2-grid-text">
@@ -157,7 +157,7 @@ const AppMain = () => {
                         </Card>
                     </div>
                     <div>
-                        <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}>
+                        <Card className={`Card3-bottom ${TxtTheme} ${BgTheme}`}  bordered={false}> 
                             <Row gutter={[16, 12]} justify="center" align="middle">
                                 <Col span={12} style={{ marginTop: '-10px' }}>
                                     <span>
@@ -191,7 +191,7 @@ const AppMain = () => {
                 }}
             >
                 <Col className="gutter-row" span={8}>
-                    <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`}>
+                    <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
                             <Col span={8}>
@@ -242,7 +242,7 @@ const AppMain = () => {
 
 
                 <Col className="gutter-row" span={16}>
-                    <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`}>
+                    <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <RightBottomMainTabs />
                     </Card>
 

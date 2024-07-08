@@ -52,7 +52,6 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer }) => {
                             lineStyle: {
                                 color: [
                                     [WarningArea, '#FF0000'],
-                                    [0.4, '#00c700'],
                                     [0.5, '#00C700'],
                                     [1, '#FF0000']
                                 ],
