@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import { ThemeContext } from '../../../ThemeContext';
 import { useGaugeData } from '../../../db/Gauge_db';
 
-const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
+const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea }) => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
     const { isDarkMode } = useContext(ThemeContext);
@@ -16,12 +16,14 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
         return () => {
             myChart.current.dispose();
         };
-    }, [isDarkMode, Name, OverCurrentVolt]); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, [isDarkMode, Name, OverCurrentValue, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]); // 빈 배열로 초기화만 한 번 실행되도록 설정
 
     useEffect(() => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#ffffff';
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
+
+            console.log(OverCurrentThirdArea);
 
             const option = {
                 animation: true,
@@ -37,7 +39,7 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
                         detail: {
                             formatter: function (value) {
                                 let statusText = Name;
-                                return `${statusText}\n${OverCurrentVolt}A`;
+                                return `${statusText}\n${OverCurrentValue}A`;
                             },
                             fontSize: 13,
                             color: textColor,
@@ -45,17 +47,16 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
                         },
                         data: [
                             {
-                                value: OverCurrentVolt,
-                                // value: data.length > 0 ? data[0].gaugeData : 0,
-                                name: ''
+                                value: OverCurrentValue,
                             }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.3, '#33cc33'],
-                                    [0.35, '#ffcc00'],
-                                    [1, '#ff3300']
+                                    [OverCurrentFirstArea, '#33cc33'],
+                                    [OverCurrentSecondArea, '#ffcc00'],
+                                    [OverCurrentThirdArea, '#ff3300']
+                                    
                                 ],
                                 width: 3
                             }
@@ -66,11 +67,11 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (OverCurrentVolt <= 30) {
+                                    if (OverCurrentValue <= 30) {
                                         return '#33cc33'; // 안전 구간 바늘 색상
-                                    } else if (OverCurrentVolt > 30 && OverCurrentVolt <= 35) {
+                                    } else if (OverCurrentValue > 30 && OverCurrentValue <= 39) {
                                         return '#ffcc00'; // 주의 구간 바늘 색상
-                                    } else if (OverCurrentVolt > 35 && OverCurrentVolt <= 100) {
+                                    } else if (OverCurrentValue > 39 && OverCurrentValue <= 100) {
                                         return '#ff3300'; // 위험 구간 바늘 색상
                                     }
                                 })()
@@ -86,7 +87,7 @@ const OverCurrentR = ({ Name, OverCurrentVolt, NameColor }) => {
         if (myChart.current) {
             updateChartOptions();
         }
-    }, [isDarkMode, data, OverCurrentVolt, Name,NameColor]); // 의존성 배열에 isDarkMode와 data 포함
+    }, [isDarkMode, data, OverCurrentValue, Name, NameColor, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
         <div id="OverCurrentR" ref={chartRef} className="OverCurrentR" />

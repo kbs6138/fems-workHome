@@ -17,17 +17,23 @@ const MonitorFirst = () => {
 
 
     const [Name, setName] = useState([]);
-    const [Value, setCurrentValue] = useState([]);
+    const [CurrentValue, setCurrentValue] = useState([]);
+    const [OverCurrentValue, setOverCurrentValue] = useState([]);
 
-    const [FirstArea, setFirstArea] = useState([]);
-    const [SecondArea, setSecondArea] = useState([]);
-    const [ThirdArea, setThirdArea] = useState([]);
+    /** 전압 구간 */
+    const [CurrentFirstArea, setCurrentFirstArea] = useState([]);
+    const [CurrentSecondArea, setCurrentSecondArea] = useState([]);
+    const [CurrentThirdArea, setCurrentThirdArea] = useState([]);
+    /** 전압 구간 */
 
-
-
+    /** 과전류 구간 */
+    const [OverCurrentFirstArea, setOverCurrentFirstArea] = useState([]);
+    const [OverCurrentSecondArea, setOverCurrentSecondArea] = useState([]);
+    const [OverCurrentThirdArea, setOverCurrentThirdArea] = useState([]);
+    /** 과전류 구간 */
 
     const [MovePointer, setMovePointer] = useState([]);
-    const [OverCurrentVolt, setOverCurrentVolt] = useState([]);
+
 
     const { isDarkMode } = useContext(ThemeContext);
 
@@ -40,21 +46,20 @@ const MonitorFirst = () => {
     useEffect(() => {
         if (data && data.length > 0) {
             setMovePointer([210, 220, 185]);
-            setOverCurrentVolt([35, 20, 40]);
             setName([data[0].name, data[1].name, data[2].name]);
+
             setCurrentValue([data[0].value, data[1].value, data[2].value]);
-            setFirstArea([data[0].area1, data[1].area1, data[2].area1]);
-            setSecondArea([data[0].area2, data[1].area2, data[2].area2]);
-            setThirdArea([data[0].area3, data[1].area3, data[2].area3]);
+            setCurrentFirstArea([data[0].area1, data[1].area1, data[2].area1]);
+            setCurrentSecondArea([data[0].area2, data[1].area2, data[2].area2]);
+            setCurrentThirdArea([data[0].area3, data[1].area3, data[2].area3]);
 
-
-
-
+            setOverCurrentValue([data[3].value, data[4].value, data[5].value]);
+            setOverCurrentFirstArea([data[3].area1, data[4].area1, data[5].area1]);
+            setOverCurrentSecondArea([data[3].area2, data[4].area2, data[5].area2]);
+            setOverCurrentThirdArea([data[3].area3, data[4].area3, data[5].area3]);
 
         }
     }, [data]);
-
-    console.log(SecondArea);
     return (
         <Content className="app-Content">
             <Row
@@ -77,9 +82,8 @@ const MonitorFirst = () => {
                             </Select>
                         </div>
 
-                        <div className={`Current_Card ${TxtTheme} ${BgTheme}`} style={{ marginTop: '15px' }} >
-
-                            <Card className={`Card1 ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
+                        <div className='Current_Card' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                            <Card className={`Card1  ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
                                 <span> 전압</span>
                                 <Row
                                     gutter={{
@@ -89,13 +93,13 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}><CurrentR Volt={Value[0]} Name={Name[0]} MovePointer={MovePointer[0]} SecondArea={SecondArea[0]} FirstArea={FirstArea[0]} ThirdArea={ThirdArea[0]} key={1} /> </Col>
-                                    <Col span={8}><CurrentR Volt={Value[1]} Name={Name[1]} MovePointer={MovePointer[1]} SecondArea={SecondArea[1]} FirstArea={FirstArea[1]} ThirdArea={ThirdArea[0]} key={2} /> </Col>
-                                    <Col span={8}><CurrentR Volt={Value[2]} Name={Name[2]} MovePointer={MovePointer[2]} SecondArea={SecondArea[2]} FirstArea={FirstArea[2]} ThirdArea={ThirdArea[0]} key={3} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentValue[0]} Name={Name[0]} MovePointer={MovePointer[0]} CurrentFirstArea={CurrentFirstArea[0]} CurrentSecondArea={CurrentSecondArea[0]} CurrentThirdArea={CurrentThirdArea[0]} key={1} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentValue[1]} Name={Name[1]} MovePointer={MovePointer[1]} CurrentFirstArea={CurrentFirstArea[1]} CurrentSecondArea={CurrentSecondArea[1]} CurrentThirdArea={CurrentThirdArea[1]} key={2} /> </Col>
+                                    <Col span={8}><CurrentR CurrentVolt={CurrentValue[2]} Name={Name[2]} MovePointer={MovePointer[2]} CurrentFirstArea={CurrentFirstArea[2]} CurrentSecondArea={CurrentSecondArea[2]} CurrentThirdArea={CurrentThirdArea[2]} key={3} /> </Col>
                                 </Row>
                             </Card>
 
-                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
+                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                 <span>과전류</span>
                                 <Row
                                     gutter={{
@@ -105,12 +109,14 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <OverCurrentR Name={Name[0]} OverCurrentVolt={OverCurrentVolt[0]} /> </Col>
-                                    <Col span={8}> <OverCurrentR Name={Name[1]} OverCurrentVolt={OverCurrentVolt[1]} /> </Col>
-                                    <Col span={8}> <OverCurrentR Name={Name[2]} OverCurrentVolt={OverCurrentVolt[2]} /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[0]} OverCurrentValue={OverCurrentValue[0]} OverCurrentFirstArea={OverCurrentFirstArea[0]} OverCurrentSecondArea={OverCurrentSecondArea[0]} OverCurrentThirdArea={OverCurrentThirdArea[0]} key={1} /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[1]} OverCurrentValue={OverCurrentValue[1]} OverCurrentFirstArea={OverCurrentFirstArea[1]} OverCurrentSecondArea={OverCurrentSecondArea[1]} OverCurrentThirdArea={OverCurrentThirdArea[1]} key={2} /> </Col>
+                                    <Col span={8}> <OverCurrentR Name={Name[2]} OverCurrentValue={OverCurrentValue[2]} OverCurrentFirstArea={OverCurrentFirstArea[2]} OverCurrentSecondArea={OverCurrentSecondArea[2]} OverCurrentThirdArea={OverCurrentThirdArea[2]} key={3} /> </Col>
                                 </Row>
                             </Card>
                         </div>
+
+
                         <br />
                         <br />
                         <div className='Other_Card'>
