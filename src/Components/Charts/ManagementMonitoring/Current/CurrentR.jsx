@@ -13,7 +13,6 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
         const chartDom = chartRef.current;
         myChart.current = echarts.init(chartDom);
 
-        //console.log(CurrentVolt, Name, NameColor, MovePointer);
 
         return () => {
             myChart.current.dispose();
