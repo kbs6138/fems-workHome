@@ -41,7 +41,7 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
                                 let statusText = Name;
                                 return `${statusText}\n${OverCurrentValue}A`;
                             },
-                            fontSize: 13,
+                            fontSize: 12,
                             color: textColor,
                             fontFamily: 'NanumSquareNeoExtraBold',
                         },

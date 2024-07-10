@@ -121,3 +121,4 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
 };
 
 export default CurrentGauge;
+

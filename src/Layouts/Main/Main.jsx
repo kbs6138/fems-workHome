@@ -11,6 +11,7 @@ import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+
 import DiagPic from '../계통도.png';
 
 //import diagramPicture from '../다이어그램.png';
