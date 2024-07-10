@@ -23,10 +23,10 @@ const items = [
 
 
 
-  getItem('추이 그래프', 'sub2', <LineChartOutlined />, [
-    getItem('과전류 추이그래프', '3', null, null, ''),
-    getItem('전류 불평령률 추이그래프', '4', null, null, ''),
-    getItem('누설전류 추이그래프', '5', null, null, ''),
+  getItem('추이그래프', 'sub2', <LineChartOutlined />, [
+    getItem('과전류 추이그래프', '3', null, null, '/OverCurrentTrendCurve'),
+    getItem('전류불평형률 추이그래프', '4', null, null, '/UnbalanceRatioCurve'),
+    getItem('누설전류 추이그래프', '5', null, null, '/LeakageCurrentCurve'),
     //getItem('15분 피크추이', '6', null, null, ''),
   ]),
   getItem('설비관리모니터링', 'sub3', <FundOutlined />

@@ -14,21 +14,18 @@
   align-items: center;
 }
 
-
-
+.CurrentgaugeR canvas{
+  left: -20px !important;
+}
 .CurrentgaugeR,
-.CurrentgaugeS,
-.CurrentgaugeT,
 .OverCurrentR,
-.OverCurrentS,
-.OverCurrentT,
 .CurrentUnbalanceRatio,
 .LeakageCurrent,
 .Temperature,
 .AccumulatedOperatingTime{
-  width: 280px !important;
+  width: 300px !important;
   height: 300px;
-  margin-left: -15px;
+  left: -20px;
 }
 
 

@@ -77,7 +77,7 @@ const MonitorFirst = () => {
             >
                 <Col className="gutter-row" span={24}>
                     <Card className={` ${TxtTheme} ${BgTheme}`} bordered={false} style={{ padding: 0 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                             <span style={{ fontSize: '20px' }}> 설비관리모니터링</span>
 
                             <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
@@ -87,150 +87,169 @@ const MonitorFirst = () => {
                             </Select>
                         </div>
 
-                        <div className='Current_Card' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-                            <Card className={`Card1  ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
-                                <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전압
-                                    <Button type="link" className='OverCurrent_Button'>전압 추이곡선
-                                        <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                    </Button>
-                                </span>
 
-                                <Row
-                                    gutter={{
-                                        xs: 10,
-                                        sm: 10,
-                                        md: 20,
-                                        lg: 10,
-                                    }}
-                                >
-                                    <Col span={8}>
-                                        <CurrentR
-                                            CurrentVolt={CurrentValue[0]}
-                                            Name={Name[0]}
-                                            MovePointer={MovePointer[0]}
-                                            CurrentFirstArea={CurrentFirstArea[0]}
-                                            CurrentSecondArea={CurrentSecondArea[0]}
-                                            CurrentThirdArea={CurrentThirdArea[0]} key={1} />
-                                    </Col>
 
-                                    <Col span={8}>
-                                        <CurrentR
-                                            CurrentVolt={CurrentValue[1]}
-                                            Name={Name[1]}
-                                            MovePointer={MovePointer[1]}
-                                            CurrentFirstArea={CurrentFirstArea[1]}
-                                            CurrentSecondArea={CurrentSecondArea[1]}
-                                            CurrentThirdArea={CurrentThirdArea[1]} key={2} />
-                                    </Col>
+                        <Row
+                            gutter={{
+                                xs: 10,
+                                sm: 10,
+                                md: 20,
+                                lg: 10,
+                            }}
+                        >
+                            <Col span={12} >
+                                <Card className={`Current_Card ${TxtTheme} ${BgTheme}`} size='small' bordered={false} >
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft:'10px', marginTop:'10px' }}>전압
+                                        <Button type="link" className='OverCurrent_Button'>
+                                            전압 추이그래프
+                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                        </Button>
+                                    </span>
+                                    <Row
+                                        gutter={{
+                                            xs: 10,
+                                            sm: 10,
+                                            md: 20,
+                                            lg: 10,
+                                        }}
+                                    >
+                                        <Col span={8}>
+                                            <CurrentR
+                                                CurrentVolt={CurrentValue[0]}
+                                                Name={Name[0]}
+                                                MovePointer={MovePointer[0]}
+                                                CurrentFirstArea={CurrentFirstArea[0]}
+                                                CurrentSecondArea={CurrentSecondArea[0]}
+                                                CurrentThirdArea={CurrentThirdArea[0]} key={1} />
+                                        </Col>
 
-                                    <Col span={8}>
-                                        <CurrentR
-                                            CurrentVolt={CurrentValue[2]}
-                                            Name={Name[2]}
-                                            MovePointer={MovePointer[2]}
-                                            CurrentFirstArea={CurrentFirstArea[2]}
-                                            CurrentSecondArea={CurrentSecondArea[2]}
-                                            CurrentThirdArea={CurrentThirdArea[2]} key={3} />
-                                    </Col>
-                                </Row>
-                            </Card>
+                                        <Col span={8}>
+                                            <CurrentR
+                                                CurrentVolt={CurrentValue[1]}
+                                                Name={Name[1]}
+                                                MovePointer={MovePointer[1]}
+                                                CurrentFirstArea={CurrentFirstArea[1]}
+                                                CurrentSecondArea={CurrentSecondArea[1]}
+                                                CurrentThirdArea={CurrentThirdArea[1]} key={2} />
+                                        </Col>
 
-                            <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
+                                        <Col span={8}>
+                                            <CurrentR
+                                                CurrentVolt={CurrentValue[2]}
+                                                Name={Name[2]}
+                                                MovePointer={MovePointer[2]}
+                                                CurrentFirstArea={CurrentFirstArea[2]}
+                                                CurrentSecondArea={CurrentSecondArea[2]}
+                                                CurrentThirdArea={CurrentThirdArea[2]} key={3} />
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Col>
 
-                                <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 과전류
-                                    <Button type="link" className='OverCurrent_Button'>과전류 추이곡선
-                                        <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                    </Button>
-                                </span>
-                                <Row
-                                    gutter={{
-                                        xs: 10,
-                                        sm: 10,
-                                        md: 20,
-                                        lg: 10,
-                                    }}
-                                >
-                                    <Col span={8}>
-                                        <OverCurrentR
-                                            Name={Name[0]}
-                                            OverCurrentValue={OverCurrentValue[0]}
-                                            OverCurrentFirstArea={OverCurrentFirstArea[0]}
-                                            OverCurrentSecondArea={OverCurrentSecondArea[0]}
-                                            OverCurrentThirdArea={OverCurrentThirdArea[0]} key={1} />
-                                    </Col>
+                            <Col span={12} >
+                                <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='small' bordered={false} >
+                                <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft:'10px', marginTop:'10px' }}>과전류
+                                <Button type="link" className='OverCurrent_Button'>
+                                            과전류 추이그래프
+                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                        </Button>
+                                    </span>
+                                    <Row
+                                        gutter={{
+                                            xs: 10,
+                                            sm: 10,
+                                            md: 20,
+                                            lg: 10,
+                                        }}
+                                    >
+                                        <Col span={8}>
+                                            <OverCurrentR
+                                                Name={Name[0]}
+                                                OverCurrentValue={OverCurrentValue[0]}
+                                                OverCurrentFirstArea={OverCurrentFirstArea[0]}
+                                                OverCurrentSecondArea={OverCurrentSecondArea[0]}
+                                                OverCurrentThirdArea={OverCurrentThirdArea[0]} key={1} />
+                                        </Col>
 
-                                    <Col span={8}>
-                                        <OverCurrentR
-                                            Name={Name[1]}
-                                            OverCurrentValue={OverCurrentValue[1]}
-                                            OverCurrentFirstArea={OverCurrentFirstArea[1]}
-                                            OverCurrentSecondArea={OverCurrentSecondArea[1]}
-                                            OverCurrentThirdArea={OverCurrentThirdArea[1]} key={2} />
-                                    </Col>
+                                        <Col span={8}>
+                                            <OverCurrentR
+                                                Name={Name[1]}
+                                                OverCurrentValue={OverCurrentValue[1]}
+                                                OverCurrentFirstArea={OverCurrentFirstArea[1]}
+                                                OverCurrentSecondArea={OverCurrentSecondArea[1]}
+                                                OverCurrentThirdArea={OverCurrentThirdArea[1]} key={2} />
+                                        </Col>
 
-                                    <Col span={8}>
-                                        <OverCurrentR
-                                            Name={Name[2]}
-                                            OverCurrentValue={OverCurrentValue[2]}
-                                            OverCurrentFirstArea={OverCurrentFirstArea[2]}
-                                            OverCurrentSecondArea={OverCurrentSecondArea[2]}
-                                            OverCurrentThirdArea={OverCurrentThirdArea[2]} key={3} />
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </div>
+                                        <Col span={8}>
+                                            <OverCurrentR
+                                                Name={Name[2]}
+                                                OverCurrentValue={OverCurrentValue[2]}
+                                                OverCurrentFirstArea={OverCurrentFirstArea[2]}
+                                                OverCurrentSecondArea={OverCurrentSecondArea[2]}
+                                                OverCurrentThirdArea={OverCurrentThirdArea[2]} key={3} />
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Col>
+
+                        </Row>
 
                         <br />
 
-                        <div className='Other_Card'>
-                            <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
 
-                                <Row
-                                    gutter={{
-                                        xs: 10,
-                                        sm: 10,
-                                        md: 20,
-                                        lg: 10,
-                                    }}
-                                >
+                        <Row
+                            gutter={{
+                                xs: 10,
+                                sm: 10,
+                                md: 20,
+                                lg: 10,
+                            }}
+                        >
+                            <Col span={6}>
+                                <Card className={`Temperature_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 온도 </span>
+                                    <Temperature />
+                                </Card>
+                            </Col>
 
-                                    <Col span={6}>
-                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 온도 </span>
-                                        <Temperature />
-                                    </Col>
-                                    <Col span={6} >
-                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
-                                            <Button type="link" className='CurrentUnbalanceRatio_Button'>
-                                                과전류 추이곡선
-                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                            </Button>
-                                        </span>
-                                        <CurrentUnbalanceRatio />
-                                    </Col>
+                            <Col span={6} >
+                                <Card className={`CurrentUnbalanceRatio_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
+                                        <Button type="link" className='CurrentUnbalanceRatio_Button'>
+                                            전류불평형률  추이그래프
+                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                        </Button>
+                                    </span>
+                                    <CurrentUnbalanceRatio />
+                                </Card>
+                            </Col>
 
-                                    <Col span={6}>
-                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
-                                            <Button type="link" className='LeakageCurrent_Button'>
-                                                누설전류 추이곡선
-                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                            </Button>
-                                        </span>
-                                        <LeakageCurrent />
-                                    </Col>
+                            <Col span={6}>
+                                <Card className={`LeakageCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
+                                        <Button type="link" className='LeakageCurrent_Button'>
+                                            누설전류 추이그래프
+                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                        </Button>
+                                    </span>
+                                    <LeakageCurrent />
+                                </Card>
+                            </Col>
 
 
 
-                                    <Col span={6}>
-                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누적가동시간 </span>
-                                        <AccumulatedOperatingTime />
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </div>
+                            <Col span={6}>
+                                <Card className={`AccumulatedOperatingTime_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누적가동시간 </span>
+                                    <AccumulatedOperatingTime />
+                                </Card>
+
+                            </Col>
+                        </Row>
                     </Card>
                 </Col>
-            </Row>
-        </Content>
+            </Row >
+        </Content >
     );
 };
 

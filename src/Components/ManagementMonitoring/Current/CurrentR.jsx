@@ -116,7 +116,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
 
 
     return (
-        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" />
+        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" style={{left:'-20px'}} />
     );
 };
 
