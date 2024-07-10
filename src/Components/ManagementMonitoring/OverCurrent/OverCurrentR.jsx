@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../../ThemeContext';
-import { useGaugeData } from '../../../db/Gauge_db';
+import { ThemeContext } from '../../ThemeContext';
+import { useGaugeData } from '../../db/Gauge_db';
 
 const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea }) => {
     const { data } = useGaugeData();

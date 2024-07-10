@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Layout, Col, Row, Card, Select, Button } from 'antd';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../ThemeContext';
 import CurrentR from './Current/CurrentR';
 import OverCurrentR from './OverCurrent/OverCurrentR';
 import CurrentUnbalanceRatio from './Other/CurrentUnbalanceRatio';
 import LeakageCurrent from './Other/LeakageCurrent';
 import Temperature from './Other/Temperature';
 import AccumulatedOperatingTime from './Other/AccumulatedOperatingTime';
-import { useCurrentData } from '../../db/Current_db';
+import { useCurrentData } from '../db/Current_db';
 import { AiOutlineSwapRight } from "react-icons/ai";
 
 const { Content } = Layout;

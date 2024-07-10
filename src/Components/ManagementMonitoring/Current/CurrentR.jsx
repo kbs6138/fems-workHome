@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../../ThemeContext';
+import { ThemeContext } from '../../ThemeContext';
 import { useCurrentRData } from './CurrentGauge_db';
 
 const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstArea, CurrentSecondArea, CurrentThirdArea }) => {

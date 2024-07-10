@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../../ThemeContext';
-import { useGaugeData } from '../../../db/Gauge_db';
+import { ThemeContext } from '../../ThemeContext';
+import { useGaugeData } from '../../db/Gauge_db';
 
-const CurrentUnbalanceRatio = () => {
+
+const LeakageCurrent = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
     
@@ -23,6 +24,9 @@ const CurrentUnbalanceRatio = () => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#ffffff';
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
+
+            const gaugeValue = 0;// 데이터가 있으면 사용하고, 없으면 59 사용 data.length > 0 ? data[0].gaugeData : 59; 
+
     
             const option = {
                 animation: true,
@@ -39,17 +43,17 @@ const CurrentUnbalanceRatio = () => {
                             formatter: function (value) {
                                 let statusText = '';
                                 let statusColor = '';
-                                if (value < 70) {
+                                if (value < 10) {
                                     statusText = '안전';
                                     statusColor = 'safe';
-                                } else if (value < 80) {
+                                } else if (value < 20) {
                                     statusText = '주의';
                                     statusColor = 'caution';
                                 } else {
                                     statusText = '위험';
                                     statusColor = 'danger';
                                 }
-                                return `{${statusColor}|${statusText}}\n${value}%`;
+                                return `{${statusColor}|${statusText}}\n${value} mA`;
                             },
                             fontSize: 15,
                             color: textColor,
@@ -73,16 +77,13 @@ const CurrentUnbalanceRatio = () => {
                             }
                         },
                         data: [
-                            {
-                                value: data.length > 0 ? data[0].gaugeData : 0,
-                                name: ''
-                            }
+                            { value: gaugeValue }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.7, '#33cc33'],
-                                    [0.8, '#ffcc00'],
+                                    [0.1, '#33cc33'],
+                                    [0.2, '#ffcc00'],
                                     [1, '#ff3300']
                                 ],
                                 width: 4
@@ -94,9 +95,9 @@ const CurrentUnbalanceRatio = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (data.length > 0 && data[0].gaugeData < 70) {
+                                    if (gaugeValue  < 10) {
                                         return '#33cc33'; // 안전 구간 바늘 색상
-                                    } else if (data.length > 0 && data[0].gaugeData < 80) {
+                                    } else if (gaugeValue < 20) {
                                         return '#ffcc00'; // 주의 구간 바늘 색상
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상
@@ -117,8 +118,8 @@ const CurrentUnbalanceRatio = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="CurrentUnbalanceRatio" ref={chartRef} className="CurrentUnbalanceRatio" style={{left:'50px'}}/>
+        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent"  style={{left:'50px'}} />
     );
 };
 
-export default CurrentUnbalanceRatio;
+export default LeakageCurrent;

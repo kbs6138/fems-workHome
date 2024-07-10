@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../../ThemeContext';
-import { useGaugeData } from '../../../db/Gauge_db';
+import { ThemeContext } from '../../ThemeContext';
+import { useGaugeData } from '../../db/Gauge_db';
 
 
-const LeakageCurrent = () => {
+const AccumulatedOperatingTime = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
     
@@ -24,9 +24,6 @@ const LeakageCurrent = () => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#ffffff';
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
-
-            const gaugeValue = 0;// 데이터가 있으면 사용하고, 없으면 59 사용 data.length > 0 ? data[0].gaugeData : 59; 
-
     
             const option = {
                 animation: true,
@@ -43,17 +40,17 @@ const LeakageCurrent = () => {
                             formatter: function (value) {
                                 let statusText = '';
                                 let statusColor = '';
-                                if (value < 10) {
+                                if (value < 70) {
                                     statusText = '안전';
                                     statusColor = 'safe';
-                                } else if (value < 20) {
+                                } else if (value < 80) {
                                     statusText = '주의';
                                     statusColor = 'caution';
                                 } else {
                                     statusText = '위험';
                                     statusColor = 'danger';
                                 }
-                                return `{${statusColor}|${statusText}}\n${value} mA`;
+                                return `{${statusColor}|${statusText}}\n${value}%`;
                             },
                             fontSize: 15,
                             color: textColor,
@@ -77,13 +74,16 @@ const LeakageCurrent = () => {
                             }
                         },
                         data: [
-                            { value: gaugeValue }
+                            {
+                                value: data.length > 0 ? data[0].gaugeData : 0,
+                                name: ''
+                            }
                         ],
                         axisLine: {
                             lineStyle: {
                                 color: [
-                                    [0.1, '#33cc33'],
-                                    [0.2, '#ffcc00'],
+                                    [0.7, '#33cc33'],
+                                    [0.8, '#ffcc00'],
                                     [1, '#ff3300']
                                 ],
                                 width: 4
@@ -95,9 +95,9 @@ const LeakageCurrent = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (gaugeValue  < 10) {
+                                    if (data.length > 0 && data[0].gaugeData < 70) {
                                         return '#33cc33'; // 안전 구간 바늘 색상
-                                    } else if (gaugeValue < 20) {
+                                    } else if (data.length > 0 && data[0].gaugeData < 80) {
                                         return '#ffcc00'; // 주의 구간 바늘 색상
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상
@@ -118,8 +118,8 @@ const LeakageCurrent = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent"  style={{left:'50px'}} />
+        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime"  style={{left:'50px'}}/>
     );
 };
 
-export default LeakageCurrent;
+export default AccumulatedOperatingTime;

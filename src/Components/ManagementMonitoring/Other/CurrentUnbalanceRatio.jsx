@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import * as echarts from 'echarts';
-import { ThemeContext } from '../../../ThemeContext';
-import { useGaugeData } from '../../../db/Gauge_db';
+import { ThemeContext } from '../../ThemeContext';
+import { useGaugeData } from '../../db/Gauge_db';
 
-
-const AccumulatedOperatingTime = () => {
+const CurrentUnbalanceRatio = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
     
@@ -118,8 +117,8 @@ const AccumulatedOperatingTime = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime"  style={{left:'50px'}}/>
+        <div id="CurrentUnbalanceRatio" ref={chartRef} className="CurrentUnbalanceRatio" style={{left:'50px'}}/>
     );
 };
 
-export default AccumulatedOperatingTime;
+export default CurrentUnbalanceRatio;
