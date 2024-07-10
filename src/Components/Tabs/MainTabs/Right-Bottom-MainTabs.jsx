@@ -6,7 +6,7 @@ import { ThemeContext } from '../../ThemeContext';
 import './Tabs.css';
 
 const onChange = (key) => {
-    console.log(key);
+
 };
 
 const items = [

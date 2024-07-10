@@ -80,7 +80,7 @@ const MonitorFirst = () => {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '20px' }}> 설비관리모니터링</span>
 
-                            <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#000000' }} onChange={handleChange}>
+                            <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
                                 <Option value="Option1" >장비1</Option>
                                 <Option value="Option2" >장비2</Option>
                                 <Option value="Option3" >장비3</Option>
@@ -91,7 +91,7 @@ const MonitorFirst = () => {
                             <Card className={`Card1  ${TxtTheme} ${BgTheme}`} size='medium' bordered={false}>
                                 <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전압
                                     <Button type="link" className='OverCurrent_Button'>전압 추이곡선
-                                        <AiOutlineSwapRight style={{ fontSize: '20px' }} />
+                                        <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                                     </Button>
                                 </span>
 
@@ -139,7 +139,7 @@ const MonitorFirst = () => {
 
                                 <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 과전류
                                     <Button type="link" className='OverCurrent_Button'>과전류 추이곡선
-                                        <AiOutlineSwapRight style={{ fontSize: '20px' }} />
+                                        <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                                     </Button>
                                 </span>
                                 <Row
@@ -150,9 +150,32 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
-                                    <Col span={8}> <OverCurrentR Name={Name[0]} OverCurrentValue={OverCurrentValue[0]} OverCurrentFirstArea={OverCurrentFirstArea[0]} OverCurrentSecondArea={OverCurrentSecondArea[0]} OverCurrentThirdArea={OverCurrentThirdArea[0]} key={1} /> </Col>
-                                    <Col span={8}> <OverCurrentR Name={Name[1]} OverCurrentValue={OverCurrentValue[1]} OverCurrentFirstArea={OverCurrentFirstArea[1]} OverCurrentSecondArea={OverCurrentSecondArea[1]} OverCurrentThirdArea={OverCurrentThirdArea[1]} key={2} /> </Col>
-                                    <Col span={8}> <OverCurrentR Name={Name[2]} OverCurrentValue={OverCurrentValue[2]} OverCurrentFirstArea={OverCurrentFirstArea[2]} OverCurrentSecondArea={OverCurrentSecondArea[2]} OverCurrentThirdArea={OverCurrentThirdArea[2]} key={3} /> </Col>
+                                    <Col span={8}>
+                                        <OverCurrentR
+                                            Name={Name[0]}
+                                            OverCurrentValue={OverCurrentValue[0]}
+                                            OverCurrentFirstArea={OverCurrentFirstArea[0]}
+                                            OverCurrentSecondArea={OverCurrentSecondArea[0]}
+                                            OverCurrentThirdArea={OverCurrentThirdArea[0]} key={1} />
+                                    </Col>
+
+                                    <Col span={8}>
+                                        <OverCurrentR
+                                            Name={Name[1]}
+                                            OverCurrentValue={OverCurrentValue[1]}
+                                            OverCurrentFirstArea={OverCurrentFirstArea[1]}
+                                            OverCurrentSecondArea={OverCurrentSecondArea[1]}
+                                            OverCurrentThirdArea={OverCurrentThirdArea[1]} key={2} />
+                                    </Col>
+
+                                    <Col span={8}>
+                                        <OverCurrentR
+                                            Name={Name[2]}
+                                            OverCurrentValue={OverCurrentValue[2]}
+                                            OverCurrentFirstArea={OverCurrentFirstArea[2]}
+                                            OverCurrentSecondArea={OverCurrentSecondArea[2]}
+                                            OverCurrentThirdArea={OverCurrentThirdArea[2]} key={3} />
+                                    </Col>
                                 </Row>
                             </Card>
                         </div>
@@ -179,7 +202,7 @@ const MonitorFirst = () => {
                                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
                                             <Button type="link" className='CurrentUnbalanceRatio_Button'>
                                                 과전류 추이곡선
-                                                <AiOutlineSwapRight style={{ fontSize: '20px' }} />
+                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                                             </Button>
                                         </span>
                                         <CurrentUnbalanceRatio />
@@ -189,7 +212,7 @@ const MonitorFirst = () => {
                                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
                                             <Button type="link" className='LeakageCurrent_Button'>
                                                 누설전류 추이곡선
-                                                <AiOutlineSwapRight style={{ fontSize: '20px' }} />
+                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                                             </Button>
                                         </span>
                                         <LeakageCurrent />

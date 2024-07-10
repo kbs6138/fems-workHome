@@ -6,7 +6,7 @@
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
-    color: white;
+   
 }
 
 /*************************************************** 전체 폰트 설정 ****************************************************/
@@ -286,7 +286,11 @@ span p {
 .ant-tabs-tab {
     font-size: 12.5px !important;
 }
-
+.ant-select-selector,
+.ant-select-arrow,
+.thermometer ul.thermometer__statistics li{
+    color: white !important;
+}
 
 .text-dark {
     color: #ffffff;
@@ -341,6 +345,7 @@ span p {
 .LeakageCurrent_Button span {
     font-size: 11.5px;
     font-weight: lighter !important;
+    color: lightgrey !important;
 }
 
 .Current_Button,
@@ -363,3 +368,5 @@ span p {
 .apexcharts-legend-text {
     color: white !important;
 }
+
+
