@@ -349,7 +349,15 @@ span p {
 .LeakageCurrent_Button {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     left: -20px !important;
+    height: 25px;
+}
 
+
+.Current_Button:hover,
+.OverCurrent_Button:hover,
+.CurrentUnbalanceRatio_Button:hover,
+.LeakageCurrent_Button:hover {
+  background: rgb(22, 42, 69) !important; /* 왼쪽에서 오른쪽으로 색상 변화 */
 }
 
 .apexcharts-legend-text {

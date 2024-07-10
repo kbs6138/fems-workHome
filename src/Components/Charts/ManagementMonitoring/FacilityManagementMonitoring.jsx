@@ -76,7 +76,7 @@ const MonitorFirst = () => {
                 }}
             >
                 <Col className="gutter-row" span={24}>
-                    <Card className={` ${TxtTheme} ${BgTheme}`} bordered={false} style={{padding:0}}>
+                    <Card className={` ${TxtTheme} ${BgTheme}`} bordered={false} style={{ padding: 0 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '20px' }}> 설비관리모니터링</span>
 
@@ -157,9 +157,8 @@ const MonitorFirst = () => {
                             </Card>
                         </div>
 
+                        <br />
 
-                        <br />
-                        <br />
                         <div className='Other_Card'>
                             <Card className={`Other_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
 
@@ -171,6 +170,11 @@ const MonitorFirst = () => {
                                         lg: 10,
                                     }}
                                 >
+
+                                    <Col span={6}>
+                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 온도 </span>
+                                        <Temperature />
+                                    </Col>
                                     <Col span={6} >
                                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
                                             <Button type="link" className='CurrentUnbalanceRatio_Button'>
@@ -191,15 +195,10 @@ const MonitorFirst = () => {
                                         <LeakageCurrent />
                                     </Col>
 
-                                    <Col span={6}>
-                                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 온도 </span>
-                                        <Temperature />
-                                    </Col>
+
 
                                     <Col span={6}>
                                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누적가동시간 </span>
-
-
                                         <AccumulatedOperatingTime />
                                     </Col>
                                 </Row>
