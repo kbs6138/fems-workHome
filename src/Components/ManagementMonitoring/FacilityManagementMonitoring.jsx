@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Layout, Col, Row, Card, Select, Button } from 'antd';
 import { ThemeContext } from '../ThemeContext';
 import CurrentR from './Current/CurrentR';
@@ -99,7 +101,7 @@ const MonitorFirst = () => {
                         >
                             <Col span={12} >
                                 <Card className={`Current_Card ${TxtTheme} ${BgTheme}`} size='small' bordered={false} >
-                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft:'10px', marginTop:'10px' }}>전압
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>전압
                                         <Button type="link" className='OverCurrent_Button'>
                                             전압 추이그래프
                                             <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -148,11 +150,14 @@ const MonitorFirst = () => {
 
                             <Col span={12} >
                                 <Card className={`OverCurrent_Card ${TxtTheme} ${BgTheme}`} size='small' bordered={false} >
-                                <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft:'10px', marginTop:'10px' }}>과전류
-                                <Button type="link" className='OverCurrent_Button'>
-                                            과전류 추이그래프
-                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                        </Button>
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>과전류
+
+                                        <Link to="/OverCurrentTrendCurve">
+                                            <Button type="link" className='OverCurrent_Button'>
+                                                과전류 추이그래프
+                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                            </Button>
+                                        </Link>
                                     </span>
                                     <Row
                                         gutter={{
@@ -215,10 +220,12 @@ const MonitorFirst = () => {
                             <Col span={6} >
                                 <Card className={`CurrentUnbalanceRatio_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
-                                        <Button type="link" className='CurrentUnbalanceRatio_Button'>
-                                            전류불평형률  추이그래프
-                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                        </Button>
+                                        <Link to="/UnbalanceRatioCurve">
+                                            <Button type="link" className='CurrentUnbalanceRatio_Button'>
+                                                전류불평형률  추이그래프
+                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                            </Button>
+                                        </Link>
                                     </span>
                                     <CurrentUnbalanceRatio />
                                 </Card>
@@ -227,10 +234,12 @@ const MonitorFirst = () => {
                             <Col span={6}>
                                 <Card className={`LeakageCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
-                                        <Button type="link" className='LeakageCurrent_Button'>
-                                            누설전류 추이그래프
-                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                        </Button>
+                                        <Link to="/LeakageCurrentCurve">
+                                            <Button type="link" className='LeakageCurrent_Button'>
+                                                누설전류 추이그래프
+                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                            </Button>
+                                        </Link>
                                     </span>
                                     <LeakageCurrent />
                                 </Card>
