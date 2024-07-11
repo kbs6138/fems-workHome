@@ -101,8 +101,16 @@ const GaugeChart = () => {
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상
                                     }
-                                })()
-                            }
+                                })(),
+                                shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
+                                shadowBlur: 10, // 그림자 흐림 정도
+                                shadowOffsetX: 2, // 그림자 수평 오프셋
+                                shadowOffsetY: 2 // 그림자 수직 오프셋
+                            },
+                            animation: true,
+                            animationDuration: 300,
+                            animationEasing: 'linear'
+                            
                         }
                     }
                 ]
