@@ -1,9 +1,11 @@
 import React from 'react'
+import { Card } from 'antd';
 
 export default function OverCurrentTrendCurve() {
   return (
     <div>
-            <h1>이게 뭔ㄴ데</h1>
+      <div>
+      </div>
 
     </div>
   )
