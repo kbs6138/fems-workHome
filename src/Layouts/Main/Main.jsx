@@ -1,6 +1,9 @@
 // Main.jsx
 import React, { useContext } from 'react';
-import { Layout, Col, Row, Card } from 'antd';
+import { Link } from 'react-router-dom';
+import { AiOutlineSwapRight } from "react-icons/ai";
+
+import { Layout, Col, Row, Card, Button } from 'antd';
 import RightBottomMainTabs from '../../Components/Tabs/MainTabs/Right-Bottom-MainTabs';
 import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
@@ -217,31 +220,47 @@ const AppMain = () => {
 
                 <Col className="gutter-row" span={6}>
                     <Card size='medium' className={`  Card5  Main-Bottom-Content2  ${TxtTheme} ${BgTheme}`} bordered={false}>
-                        <span className='Card3-Title'>상세정보</span>
-                        <br />
-                        <Row style={{ display: 'flex', justifyContent: 'space-between' }} gutter={[24, 5]}>
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전압
-                                <h4>V</h4>
+
+
+                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>상세정보
+                            <Link to="/">
+                                <Button type="link" className='Diagram_Info_Button'>
+                                    상세조회
+                                    <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                                </Button>
+                            </Link>
+                        </span>
+
+                    
+                        <Row style={{ display: 'flex', justifyContent: 'space-between' , marginTop:'15px' }} gutter={[22, 5]}>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>전압</p>
+                                <span>V</span>
                             </Col>
 
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전류
-                                <h4>A</h4>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>전류</p>
+                                <span>A</span>
                             </Col>
 
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전력
-                                <h4>A</h4>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>전력</p>
+                                <span>W</span>
                             </Col>
 
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>역률
-                                <h4>W/VA</h4>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>역률</p>
+                                <span>W/VA</span>
                             </Col>
 
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>외부온도
-                                <h4>°C</h4>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>외부온도</p>
+                                <span>°C</span>
                             </Col>
 
-                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>내부온도
-                                <h4>°C</h4>
+                            <Col span={12} className='Diagram_Info_Col'>
+                                <p>내부온도</p>
+                                <span>°C</span>
                             </Col>
                         </Row>
                     </Card>

@@ -7,7 +7,7 @@ import { useGaugeData } from '../../db/Gauge_db';
 const AccumulatedOperatingTime = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
-    
+
     const { isDarkMode } = useContext(ThemeContext);
     const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
 
@@ -24,7 +24,7 @@ const AccumulatedOperatingTime = () => {
         const updateChartOptions = () => {
             const textColor = isDarkMode ? '#ffffff' : '#ffffff';
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
-    
+
             const option = {
                 animation: true,
                 animationDuration: 10000,
@@ -102,23 +102,31 @@ const AccumulatedOperatingTime = () => {
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상
                                     }
-                                })()
-                            }
+                                })(),
+                                shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
+                                shadowBlur: 10, // 그림자 흐림 정도
+                                shadowOffsetX: 2, // 그림자 수평 오프셋
+                                shadowOffsetY: 2 // 그림자 수직 오프셋
+                            },
+                            animation: true,
+                            animationDuration: 300,
+                            animationEasing: 'linear'
+
                         }
                     }
                 ]
             };
-    
+
             myChart.current.setOption(option);
         };
-    
+
         if (myChart.current) {
             updateChartOptions();
         }
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime"  style={{left:'20px'}}/>
+        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime" style={{ left: '20px' }} />
     );
 };
 

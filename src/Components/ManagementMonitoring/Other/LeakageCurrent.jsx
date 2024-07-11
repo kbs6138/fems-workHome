@@ -7,7 +7,7 @@ import { useGaugeData } from '../../db/Gauge_db';
 const LeakageCurrent = () => {
     const { data } = useGaugeData();
     const chartRef = useRef(null);
-    
+
     const { isDarkMode } = useContext(ThemeContext);
     const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
 
@@ -27,7 +27,7 @@ const LeakageCurrent = () => {
 
             const gaugeValue = 0;// 데이터가 있으면 사용하고, 없으면 59 사용 data.length > 0 ? data[0].gaugeData : 59; 
 
-    
+
             const option = {
                 animation: true,
                 animationDuration: 10000,
@@ -95,30 +95,38 @@ const LeakageCurrent = () => {
                         pointer: {
                             itemStyle: {
                                 color: (function () {
-                                    if (gaugeValue  < 10) {
+                                    if (gaugeValue < 10) {
                                         return '#33cc33'; // 안전 구간 바늘 색상
                                     } else if (gaugeValue < 20) {
                                         return '#ffcc00'; // 주의 구간 바늘 색상
                                     } else {
                                         return '#ff3300'; // 위험 구간 바늘 색상
                                     }
-                                })()
-                            }
+                                })(),
+                                shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
+                                shadowBlur: 10, // 그림자 흐림 정도
+                                shadowOffsetX: 2, // 그림자 수평 오프셋
+                                shadowOffsetY: 2 // 그림자 수직 오프셋
+                            },
+                            animation: true,
+                            animationDuration: 300,
+                            animationEasing: 'linear'
+
                         }
                     }
                 ]
             };
-    
+
             myChart.current.setOption(option);
         };
-    
+
         if (myChart.current) {
             updateChartOptions();
         }
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent"  style={{left:'20px'}}/>
+        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent" style={{ left: '20px' }} />
     );
 };
 

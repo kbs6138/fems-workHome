@@ -340,7 +340,8 @@ span p {
 .Current_Button span,
 .OverCurrent_Button span,
 .CurrentUnbalanceRatio_Button span,
-.LeakageCurrent_Button span {
+.LeakageCurrent_Button span,
+.Diagram_Info_Button span {
     font-size: 11.5px;
     font-weight: lighter !important;
     color: lightgrey !important;
@@ -349,7 +350,8 @@ span p {
 .Current_Button,
 .OverCurrent_Button,
 .CurrentUnbalanceRatio_Button,
-.LeakageCurrent_Button {
+.LeakageCurrent_Button,
+.Diagram_Info_Button {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 
     height: 20px;
@@ -359,7 +361,8 @@ span p {
 .Current_Button:hover,
 .OverCurrent_Button:hover,
 .CurrentUnbalanceRatio_Button:hover,
-.LeakageCurrent_Button:hover {
+.LeakageCurrent_Button:hover,
+.Diagram_Info_Button:hover {
     background: rgb(22, 42, 69) !important;
     /* 왼쪽에서 오른쪽으로 색상 변화 */
 }
@@ -394,6 +397,9 @@ span p {
 
 .Diagram_Info_Col {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-    height: 80px !important;
+    height: 75px !important;
     border-radius: 5px;
+}
+.Diagram_Info_Col p , span {
+    font-size: 12px;
 }
