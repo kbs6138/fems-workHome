@@ -50,7 +50,7 @@ const AccumulatedOperatingTime = () => {
                                     statusText = '위험';
                                     statusColor = 'danger';
                                 }
-                                return `{${statusColor}|${statusText}}\n${value}%`;
+                                return `{${statusColor}|${statusText}}\n${value} Hr`;
                             },
                             fontSize: 15,
                             color: textColor,

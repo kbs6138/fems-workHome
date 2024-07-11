@@ -1,12 +1,12 @@
 /*************************************************** 전체 폰트 설정 ***************************************************/
 * {
-    font-family: 'NanumSquareNeoBold';
+    font-family: 'NanumSquareNeoBold'!important;
     /*font-family: 'NanumSquareNeoLight';
      font-family: 'NanumSquareNeo';
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
-   
+
 }
 
 /*************************************************** 전체 폰트 설정 ****************************************************/
@@ -286,9 +286,10 @@ span p {
 .ant-tabs-tab {
     font-size: 12.5px !important;
 }
+
 .ant-select-selector,
 .ant-select-arrow,
-.thermometer ul.thermometer__statistics li{
+.thermometer ul.thermometer__statistics li {
     color: white !important;
 }
 
@@ -350,7 +351,7 @@ span p {
 .CurrentUnbalanceRatio_Button,
 .LeakageCurrent_Button {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-   
+
     height: 20px;
 }
 
@@ -359,7 +360,8 @@ span p {
 .OverCurrent_Button:hover,
 .CurrentUnbalanceRatio_Button:hover,
 .LeakageCurrent_Button:hover {
-  background: rgb(22, 42, 69) !important; /* 왼쪽에서 오른쪽으로 색상 변화 */
+    background: rgb(22, 42, 69) !important;
+    /* 왼쪽에서 오른쪽으로 색상 변화 */
 }
 
 .apexcharts-legend-text {
@@ -371,10 +373,27 @@ span p {
 .LeakageCurrent_Card,
 .Current_Card,
 .AccumulatedOperatingTime_Card,
-.OverCurrent_Card{
+.OverCurrent_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     height: 350px;
 
 }
 
+.ant-menu-submenu-active,
+.ant-menu-item-active {
+    background-color: #1677FF !important;
+}
 
+.ant-menu-title-content a {
+    color: white !important;
+}
+
+.ant-layout-sider-trigger svg {
+    color: white;
+}
+
+.Diagram_Info_Col {
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    height: 80px !important;
+    border-radius: 5px;
+}

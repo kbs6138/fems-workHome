@@ -13,7 +13,6 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
         const chartDom = chartRef.current;
         myChart.current = echarts.init(chartDom);
 
-
         return () => {
             myChart.current.dispose();
         };
@@ -21,6 +20,10 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
 
     useEffect(() => {
         const updateChartOptions = () => {
+            if (!data) {
+                return; // 데이터가 없는 경우 차트 업데이트를 건너뜀
+            }
+
             const textColor = isDarkMode ? '#ffffff' : '#ffffff';
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
 
@@ -72,7 +75,12 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
                                     } else {
                                         return '#FF0000';
                                     }
-                                })()
+                                })(),
+
+                                shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
+                                shadowBlur: 10, // 그림자 흐림 정도
+                                shadowOffsetX: 2, // 그림자 수평 오프셋
+                                shadowOffsetY: 2 // 그림자 수직 오프셋
                             },
                             animation: true,
                             animationDuration: 300,
@@ -114,11 +122,9 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
         }
     }, [isDarkMode, data, CurrentVolt, MovePointer, Name, CurrentFirstArea, CurrentSecondArea, CurrentThirdArea]);
 
-
     return (
-        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" style={{left:'-20px'}} />
+        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" style={{ left: '-20px' }} />
     );
 };
 
 export default CurrentGauge;
-

@@ -19,7 +19,7 @@ function getItem(label, key, icon, children, link) {
 const items = [
   getItem('통합 모니터링', '1', <DesktopOutlined />, null, '/'),
 
-  getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
+  //getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
 
 
 

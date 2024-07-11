@@ -192,32 +192,64 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" span={5}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
                             <Col span={8}>
-                                <img src={DiagPic} width='130px' />
+                                <img src={DiagPic} width='120px' />
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='130px' />
+                                <img src={DiagPic} width='120px' />
                                 <div style={{ position: 'absolute', top: '25%', left: '70%', transform: 'translate(-50%, -50%)' }}>
                                     <ThermometerComponent />
                                 </div>
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='130px' />
+                                <img src={DiagPic} width='120px' />
                             </Col>
 
                         </Row>
                     </Card>
                 </Col>
 
+                <Col className="gutter-row" span={6}>
+                    <Card size='medium' className={`  Card5  Main-Bottom-Content2  ${TxtTheme} ${BgTheme}`} bordered={false}>
+                        <span className='Card3-Title'>상세정보</span>
+                        <br />
+                        <Row style={{ display: 'flex', justifyContent: 'space-between' }} gutter={[24, 5]}>
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전압
+                                <h4>V</h4>
+                            </Col>
+
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전류
+                                <h4>A</h4>
+                            </Col>
+
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>전력
+                                <h4>A</h4>
+                            </Col>
+
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>역률
+                                <h4>W/VA</h4>
+                            </Col>
+
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>외부온도
+                                <h4>°C</h4>
+                            </Col>
+
+                            <Col span={12} style={{ background: 'gray' }} className='Diagram_Info_Col'>내부온도
+                                <h4>°C</h4>
+                            </Col>
+                        </Row>
+                    </Card>
+
+                </Col>
 
 
-                <Col className="gutter-row" span={16}>
+                <Col className="gutter-row" span={13}>
                     <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <RightBottomMainTabs />
                     </Card>

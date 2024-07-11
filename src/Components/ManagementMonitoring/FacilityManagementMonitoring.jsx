@@ -20,8 +20,15 @@ const MonitorFirst = () => {
 
 
     const [Name, setName] = useState([]);
+
+
     const [CurrentValue, setCurrentValue] = useState([]);
     const [OverCurrentValue, setOverCurrentValue] = useState([]);
+
+    //const [TemperatureValue, setTemperatureValue] = useState([]); //온도
+    //const [CurrentUnbalanceRatioValue, setCurrentUnbalanceRatioValue] = useState([]); //전류불평형률
+    //const [LeakageCurrentValue, setLeakageCurrentValue] = useState([]); //누설전류
+    //const [AccumulatedOperatingTimeValue, setAccumulatedOperatingTimeValue] = useState([]); //누적가동시간
 
     /** 전압 구간 */
     const [CurrentFirstArea, setCurrentFirstArea] = useState([]);
@@ -102,10 +109,6 @@ const MonitorFirst = () => {
                             <Col span={12} >
                                 <Card className={`Current_Card ${TxtTheme} ${BgTheme}`} size='small' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>전압
-                                        <Button type="link" className='OverCurrent_Button'>
-                                            전압 추이그래프
-                                            <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                        </Button>
                                     </span>
                                     <Row
                                         gutter={{
