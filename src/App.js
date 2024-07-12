@@ -12,6 +12,7 @@ import LeakageCurrentCurve from './Components/TrendCurves/LeakageCurrentCurve';
 import OverCurrentTrendCurve from './Components/TrendCurves/OverCurrentTrendCurve';
 import UnbalanceRatioCurve from './Components/TrendCurves/UnbalanceRatioCurve';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import DiagramInfo from './Components/DiagramInfo/DiagramInfo';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -32,6 +33,8 @@ const App = () => {
                 <Route path="/LeakageCurrentCurve" element={<LeakageCurrentCurve />} /> {/* 누설전류 */}
                 <Route path="/OverCurrentTrendCurve" element={<OverCurrentTrendCurve />} /> {/* 과전류 */}
                 <Route path="/UnbalanceRatioCurve" element={<UnbalanceRatioCurve />} /> {/* 불평형률 */}
+                <Route path="/DiagramInfo" element={<DiagramInfo />} /> {/* 불평형률 */}
+
               </Routes>
               <AppFooter />
             </Layout>

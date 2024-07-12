@@ -18,8 +18,8 @@ const OverCurrentTrendChart = () => {
       },
       grid: {
         left: '5%',
-        right: '15%',
-        bottom: '10%'
+        right: '10%',
+        bottom: '15%'
       },
       xAxis: {
         type: 'category',
@@ -126,7 +126,7 @@ const OverCurrentTrendChart = () => {
     };
   }, []);
 
-  return <div ref={chartDomRef} style={{ width: '100%', height: '400px', fontFamily: 'NanumSquareNeoBold' }} />;
+  return <div ref={chartDomRef} style={{ width: '100%', height: '600px', fontFamily: 'NanumSquareNeoBold' }} />;
 };
 
 export default OverCurrentTrendChart;

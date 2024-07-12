@@ -222,7 +222,7 @@ const AppMain = () => {
 
 
                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>상세정보
-                            <Link to="/">
+                            <Link to="/DiagramInfo">
                                 <Button type="link" className='Diagram_Info_Button'>
                                     상세조회
                                     <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />

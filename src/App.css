@@ -358,7 +358,6 @@ span p {
 .LeakageCurrent_Button,
 .Diagram_Info_Button {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-
     height: 20px;
 }
 
@@ -367,7 +366,8 @@ span p {
 .OverCurrent_Button:hover,
 .CurrentUnbalanceRatio_Button:hover,
 .LeakageCurrent_Button:hover,
-.Diagram_Info_Button:hover {
+.Diagram_Info_Button:hover,
+.OverCurrentTrendCurve_Button:hover {
     background: rgb(22, 42, 69) !important;
     /* 왼쪽에서 오른쪽으로 색상 변화 */
 }
@@ -413,19 +413,38 @@ span {
 
 .OverCurrentTrendCurve_Warning_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    margin-top: 20px;
     background-color: transparent;
 }
 
 .OverCurrentTrendCurve_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-    margin-top: 10px;
+    margin-top: 30px;
     background-color: transparent;
 }
 
 .OverCurrentTrendCurve_Title {
     color: white;
-    font-size: 14px;
+    font-size: 20px;
 }
-.OverCurrentTrendCurve_Warning_Card span{
+
+.OverCurrentTrendCurve_Warning_Card span {
     color: white !important;
+}
+
+.OverCurrentTrendCurve_Button span,
+svg {
+    color: white;
+}
+
+.OverCurrentTrendCurve_Button svg {
+    margin-top: -3px;
+}
+
+.OverCurrentTrendCurve_Button {
+    background: transparent;
+    box-shadow: 0px 0px 15px 2px rgb(15, 25, 45) !important;
+    border: none !important;
+    height: 25px;
+
 }
