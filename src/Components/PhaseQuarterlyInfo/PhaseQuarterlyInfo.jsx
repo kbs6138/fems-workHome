@@ -8,56 +8,67 @@ const columns = [
     title: '부하정보',
     dataIndex: 'loadInfo',
     key: '1',
+    className: 'PhaseQuarterlyInfo_loadInfo',
   },
   {
     title: '상태',
     dataIndex: 'status',
     key: '2',
+    className: 'PhaseQuarterlyInfo_status',
   },
   {
     title: '용량(A)',
     dataIndex: 'capacity',
     key: '3',
+    className: 'PhaseQuarterlyInfo_capacity',
   },
   {
     title: '상',
     dataIndex: 'phase',
     key: '4',
+    className: 'PhaseQuarterlyInfo_phase',
   },
   {
     title: '전류(A)',
     dataIndex: 'current',
     key: '5',
+    className: 'PhaseQuarterlyInfo_current',
   },
   {
     title: '전력(W)',
     dataIndex: 'power',
     key: '6',
+    className: 'PhaseQuarterlyInfo_power',
   },
   {
     title: '합성누설(mA)',
     dataIndex: 'totalLeakage',
     key: '7',
+    className: 'PhaseQuarterlyInfo_totalLeakage',
   },
   {
     title: '저항성누설(mA)',
     dataIndex: 'resistiveLeakage',
     key: '8',
+    className: 'PhaseQuarterlyInfo_resistiveLeakage',
   },
   {
     title: '용량성누설(mA)',
     dataIndex: 'capacitiveLeakage',
     key: '9',
+    className: 'PhaseQuarterlyInfo_capacitiveLeakage',
   },
   {
     title: '절연저항(㏁)',
     dataIndex: 'insulationResistance',
     key: '10',
+    className: 'PhaseQuarterlyInfo_insulationResistance',
   },
   {
     title: '아크',
     dataIndex: 'arc',
     key: '11',
+    className: 'PhaseQuarterlyInfo_arc',
   },
 ];
 
@@ -185,14 +196,16 @@ const PhaseQuarterlyInfo = () => {
   const newColumns = columns.filter((item) => checkedList.includes(item.key));
 
   return (
-    <div className={isDarkMode ? 'dark-mode' : ''}>
+    <div className={`PhaseQuarterlyInfo ${isDarkMode ? 'PhaseQuarterlyInfo--dark-mode' : ''}`}>
       <Table
         columns={newColumns}
         dataSource={data}
         pagination={false}
+        className="PhaseQuarterlyInfo_table"
         style={{
-          padding: '0 10px 0 10px',
-          fontSize:'12px'
+          padding: '4px 4px',
+          fontSize: '12px',
+          height: '10px',
         }}
       />
     </div>

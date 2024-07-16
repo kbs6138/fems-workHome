@@ -12,3 +12,18 @@
 .ant-table-thead th {
     color: white !important;
 }
+
+.PhaseQuarterlyInfo_loadInfo,
+.PhaseQuarterlyInfo_status,
+.PhaseQuarterlyInfo_capacity,
+.PhaseQuarterlyInfo_phase,
+.PhaseQuarterlyInfo_current,
+.PhaseQuarterlyInfo_power,
+.PhaseQuarterlyInfo_totalLeakage,
+.PhaseQuarterlyInfo_resistiveLeakage,
+.PhaseQuarterlyInfo_capacitiveLeakage,
+.PhaseQuarterlyInfo_insulationResistance,
+.PhaseQuarterlyInfo_arc{
+    padding: 4px 4px !important;
+    text-align: center;
+}

@@ -6,14 +6,15 @@ const components = {
   header: {
     wrapper: (props) => <thead className="DiagramInfoTable-thead" {...props} />,
     row: (props) => <tr className="DiagramInfoTable-thead-row" {...props} />,
-    cell: (props) => <th className="DiagramInfoTable-thead-cell" {...props} />,
+    cell: (props) => <th className="DiagramInfoTable-thead-cell" style={{ padding: '10px 16px' }} {...props} />,
   },
   body: {
     wrapper: (props) => <tbody className="DiagramInfoTable-tbody" {...props} />,
     row: (props) => <tr className="DiagramInfoTable-tbody-row" {...props} />,
-    cell: (props) => <td className="DiagramInfoTable-tbody-cell" {...props} />,
+    cell: (props) => <td className="DiagramInfoTable-tbody-cell" style={{ padding: '10px 16px' }} {...props} />,
   },
 };
+
 
 // 컬럼 정의
 const columns = [
@@ -32,7 +33,7 @@ const columns = [
     render: (text) => <span className="DiagramInfoTable-span">{text}</span>,
   },
   {
-    title: 'Math Score',
+    title: '2정보',
     dataIndex: 'math',
     sorter: {
       compare: (a, b) => a.math - b.math,
