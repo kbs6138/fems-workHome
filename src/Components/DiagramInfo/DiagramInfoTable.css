@@ -1,22 +1,17 @@
 /* App.css */
 .ant-table-cell.ant-table-cell-row-hover {
     background: rgb(78, 112, 167) !important;
-
-    /* 다크 모드 배경 색상 */
     color: #e9e9e9;
 }
 
 .ant-table-cell.ant-table-cell-row-hover {
     background: rgb(78, 112, 167) !important;
-
-    /* 다크 모드 배경 색상 */
-    color: #e9e9e9;}
+    color: #e9e9e9;
+}
 
 .ant-table-cell {
     background: rgb(31, 45, 68) !important;
-    /* 다크 모드 배경 색상 */
     color: #fff;
-    /* 다크 모드 텍스트 색상 */
 }
 
 .DiagramInfoTable-thead-row th {
@@ -36,5 +31,9 @@
 .ant-table-thead th {
     text-align: center !important;
     font-size: 11.5px !important;
+}
+.DiagramInfoTable{
+    padding: 10px 10px 10px 10px;
+    text-align: center !important;
 }
 
