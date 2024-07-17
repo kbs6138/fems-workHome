@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
+import './DiagramInfoTable.css'; // CSS 파일을 import
 
 const columns = [
   {
