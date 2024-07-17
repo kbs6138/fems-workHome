@@ -1,12 +1,17 @@
 import React from 'react'
 import DiagramInfoTable from './DiagramInfoTable'
+import { Card } from 'antd';
+
 import './DiagramInfoTable.css'
 
 export default function DiagramInfo() {
   return (
     <div>
-      <h1>이게 뭔데</h1>
-      <DiagramInfoTable/>
+    {/*    <Card className='DiagramInfoTable_Card'>
+      <DiagramInfoTable />
+    </Card>
+    */ }
     </div>
+
   )
 }

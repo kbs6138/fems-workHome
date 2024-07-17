@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Popover } from 'antd';
+import { Button, Popover, Card, Col, Row } from 'antd';
 import OverCurrentTrendChart from './OverCurrentTrendChart';
-import { Card, Col, Row } from 'antd';
-import { BiQuestionMark } from "react-icons/bi";
+import { AiOutlineWarning } from "react-icons/ai";
 
 
 export default function OverCurrentTrendCurve() {
@@ -19,7 +18,7 @@ export default function OverCurrentTrendCurve() {
   return (
     <div>
       <Row>
-        <Col span={24}>
+        <Col span={24} style={{ padding: '10px 10px 10px 10px' }}>
 
           <Card className='OverCurrentTrendCurve_Card' bordered={false}>
 
@@ -51,7 +50,7 @@ export default function OverCurrentTrendCurve() {
                 onOpenChange={handleOpenChange}
               >
                 <Button className='OverCurrentTrendCurve_Button'>과전류 상승에 따른 위험
-                  <BiQuestionMark size={'15px'} />
+                  <AiOutlineWarning size={'22px'} />
                 </Button>
               </Popover>
             </div>

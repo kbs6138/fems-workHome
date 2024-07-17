@@ -170,21 +170,8 @@ const data = [
     capacitiveLeakage: 0.00,
     insulationResistance: 0.00,
     arc: '정상',
-  },
-  {
-    key: '8',
-    loadInfo: '템플스테이 부하8',
-    status: 'ON',
-    capacity: 20,
-    phase: 'R',
-    current: 0.00,
-    power: 0.0,
-    totalLeakage: 0.00,
-    resistiveLeakage: 0.00,
-    capacitiveLeakage: 0.00,
-    insulationResistance: 0.00,
-    arc: '정상',
-  },
+  }
+
 ];
 
 const defaultCheckedList = columns.map((item) => item.key);
