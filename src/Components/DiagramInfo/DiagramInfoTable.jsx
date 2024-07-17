@@ -91,6 +91,7 @@ const DiagramInfoTable = () => (
       columns={columns}
       dataSource={data}
       onChange={onChange}
+      pagination={false} // 페이지네이션 비활성화
       className="DiagramInfoTable-table"
     />
   </div>

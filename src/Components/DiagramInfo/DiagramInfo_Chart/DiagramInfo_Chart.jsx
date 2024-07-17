@@ -66,7 +66,7 @@ const DiagramInfo_Chart = () => {
     }
   }, []);
 
-  return <div id="main" ref={chartDomRef} style={{ width: '100%', height: '140px', marginTop: '5px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'}} />;
+  return <div id="main" ref={chartDomRef} style={{ width: '100%', height: '135px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'}} />;
 };
 
 export default DiagramInfo_Chart;
