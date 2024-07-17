@@ -65,6 +65,20 @@ const data = [
     math: 99,
     english: 89,
   },
+  {
+    key: '5',
+    name: <div className="DiagramInfoTable-cell">kevin</div>,
+    chinese: 88,
+    math: 99,
+    english: 89,
+  },
+  {
+    key: '6',
+    name: <div className="DiagramInfoTable-cell">garen</div>,
+    chinese: 88,
+    math: 99,
+    english: 89,
+  },
 ];
 
 const onChange = (pagination, filters, sorter, extra) => {
