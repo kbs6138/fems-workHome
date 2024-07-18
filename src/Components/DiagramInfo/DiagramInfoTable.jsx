@@ -111,9 +111,42 @@ const data = [
     chinese: 98,
     math: 60,
     english: 70,
+  },
+  {
+    key: '11',
+    date: '2023-05-11',
+    chinese: 98,
+    math: 60,
+    english: 70,
+  },
+  {
+    key: '12',
+    date: '2023-05-12',
+    chinese: 98,
+    math: 60,
+    english: 70,
+  },
+  {
+    key: '13',
+    date: '2023-05-13',
+    chinese: 98,
+    math: 60,
+    english: 70,
+  },
+  {
+    key: '14',
+    date: '2023-05-14',
+    chinese: 98,
+    math: 60,
+    english: 70,
+  },
+  {
+    key: '15',
+    date: '2023-05-15',
+    chinese: 98,
+    math: 60,
+    english: 70,
   }
-  // 기존 데이터들...
-
 ];
 
 const onChange = (pagination, filters, sorter, extra) => {
@@ -124,13 +157,14 @@ const DiagramInfoTable = () => (
   <div className="DiagramInfoTable">
     <Table
       columns={columns}
-      dataSource={data.slice(0, 10)} // 데이터 10개만 표시
+      dataSource={data}
       onChange={onChange}
-      pagination={false} // 페이지네이션 비활성화
+      pagination={{ pageSize: 5 }} // 페이지당 5개의 데이터 표시
       className="DiagramInfoTable-table"
     />
   </div>
 );
+
 
 
 export default DiagramInfoTable;

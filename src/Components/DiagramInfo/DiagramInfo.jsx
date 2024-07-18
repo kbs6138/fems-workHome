@@ -9,9 +9,6 @@ const { Content } = Layout;
 const DiagramInfo = () => {
   return (
     <Content className="app-Content">
-
-
-
       <Row
         gutter={{
           xs: 10,
@@ -33,9 +30,8 @@ const DiagramInfo = () => {
                 lg: 10,
               }}
             >
-              <Col span={12} >
-                <Card size='small' bordered={false} className='DiagramInfo_Card'>
-
+              <Col span={24}>
+                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '530px' }}>
                   <Row
                     gutter={{
                       xs: 10,
@@ -44,53 +40,64 @@ const DiagramInfo = () => {
                       lg: 10,
                     }}
                   >
-                    <Col span={24}>
-                      <span style={{
-                        display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px'
-                      }}>
-                        온도
+                    <Col span={12} style={{ marginTop: '-10px' }}>
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                        전압
                       </span>
                       <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
                         <DiagramInfoChart key={1} />
                       </div>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        내부온도
+                        전력
                       </span>
                       <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
                         <DiagramInfoChart key={2} />
                       </div>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        외부온도
+                        내부온도
                       </span>
                       <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
                         <DiagramInfoChart key={3} />
                       </div>
+                    </Col>
+                    <Col span={12} style={{ marginTop: '-10px' }}>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        전압
+                        전류
                       </span>
                       <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
                         <DiagramInfoChart key={4} />
                       </div>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        전류
+                        역률
                       </span>
                       <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
                         <DiagramInfoChart key={5} />
                       </div>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        역률
+                        외부온도
                       </span>
-                      <div><DiagramInfoChart key={6} /></div>
+                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
+                        <DiagramInfoChart key={6} />
+                      </div>
                     </Col>
                   </Row>
                 </Card>
               </Col>
-              <Col span={12} >
-                <Card size='small' bordered={false} className='DiagramInfo_Card' >
+            </Row>
+            <Row
+              gutter={{
+                xs: 10,
+                sm: 10,
+                md: 20,
+                lg: 10,
+              }}
+            >
+              <Col span={24}>
+                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '425px' }}>
                   <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
                     로그 이력
                   </span>
-                  <Row style={{ marginTop: '5px' }}
+                  <Row style={{ marginTop: '10px' }}
                     gutter={{
                       xs: 10,
                       sm: 10,
@@ -107,12 +114,9 @@ const DiagramInfo = () => {
             </Row>
           </Card>
         </Col>
-      </Row >
-
+      </Row>
 
     </Content>
-
-
   );
 };
 
