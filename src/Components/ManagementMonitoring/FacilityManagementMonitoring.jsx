@@ -84,7 +84,7 @@ const MonitorFirst = () => {
                 }}
             >
                 <Col className="gutter-row" span={24}>
-                    <Card className={` ${TxtTheme} ${BgTheme}`} bordered={false} style={{ padding: 0 }}>
+                    <Card bordered={false} style={{ padding: 0, background: 'transparent', color: 'white', marginTop: '-15px' }} >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                             <span style={{ fontSize: '20px' }}> 설비관리모니터링</span>
 

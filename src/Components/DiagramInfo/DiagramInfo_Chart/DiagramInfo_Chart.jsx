@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { Card } from 'antd';
+
 
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = () => {
+const DiagramInfoChart = () => {
   const chartDomRef = useRef(null);
 
   useEffect(() => {
@@ -69,4 +69,4 @@ const DiagramInfo_Chart = () => {
   return <div id="main" ref={chartDomRef} style={{ width: '100%', height: '135px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'}} />;
 };
 
-export default DiagramInfo_Chart;
+export default DiagramInfoChart;
