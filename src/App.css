@@ -409,7 +409,9 @@ span p {
 
 .Diagram_Info_Col p,
 span {
-    font-size: 12px;
+    font-size: 13px;
+
+
 }
 
 .OverCurrentTrendCurve_Warning_Card {

@@ -41,31 +41,31 @@ const DiagramInfo = () => {
                     }}
                   >
                     <Col span={12} style={{ marginTop: '-10px' }}>
-                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
-                    전압
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
+                        전압
                       </span>
                       <DiagramInfoChart key={1} />
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         전력
                       </span>
                       <DiagramInfoChart key={2} />
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         내부온도
                       </span>
                       <DiagramInfoChart key={3} />
                     </Col>
                     <Col span={12} style={{ marginTop: '-10px' }}>
-                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
-                    전류
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
+                        전류
                       </span>
                       <DiagramInfoChart key={4} />
 
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         역률
                       </span>
                       <DiagramInfoChart key={5} />
 
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
+                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         외부온도
                       </span>
                       <DiagramInfoChart key={6} />

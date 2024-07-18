@@ -67,7 +67,7 @@ const DiagramInfoChart = () => {
     }
   }, []);
 
-  return <Card id="DiagramInfoChart" ref={chartDomRef} style={{ borderRadius: '80px', width: '100%', height: '130px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} />;
+  return <Card id="DiagramInfoChart" ref={chartDomRef} style={{ borderRadius: '80px', width: '100%', height: '130px', border: 'none'}} />;
 };
 
 export default DiagramInfoChart;
