@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+import { Card} from 'antd';
 
 import * as echarts from 'echarts';
 
@@ -66,7 +67,7 @@ const DiagramInfoChart = () => {
     }
   }, []);
 
-  return <div id="main" ref={chartDomRef} style={{ width: '100%', height: '135px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'}} />;
+  return <Card id="DiagramInfoChart" ref={chartDomRef} style={{ borderRadius: '80px', width: '100%', height: '130px', border: 'none', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} />;
 };
 
 export default DiagramInfoChart;

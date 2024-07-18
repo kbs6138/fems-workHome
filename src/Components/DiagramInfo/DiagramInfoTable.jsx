@@ -10,7 +10,8 @@ const columns = [
       compare: (a, b) => new Date(a.date) - new Date(b.date),
       multiple: 1,
     },
-    className: 'DiagramInfoTable-column',
+    className: 'DiagramInfoTable-column DiagramInfoTable_Date',
+    render: (text) => <div className="DiagramInfoTable_Date">{text}</div>,
   },
   {
     title: <div className="DiagramInfoTable-title">Chinese Score</div>,
@@ -19,7 +20,8 @@ const columns = [
       compare: (a, b) => a.chinese - b.chinese,
       multiple: 3,
     },
-    className: 'DiagramInfoTable-column',
+    className: 'DiagramInfoTable-column DiagramInfoTable_Chinese',
+    render: (text) => <div className="DiagramInfoTable_Chinese">{text}</div>,
   },
   {
     title: <div className="DiagramInfoTable-title">Math Score</div>,
@@ -28,7 +30,8 @@ const columns = [
       compare: (a, b) => a.math - b.math,
       multiple: 2,
     },
-    className: 'DiagramInfoTable-column',
+    className: 'DiagramInfoTable-column DiagramInfoTable_Math',
+    render: (text) => <div className="DiagramInfoTable_Math">{text}</div>,
   },
   {
     title: <div className="DiagramInfoTable-title">English Score</div>,
@@ -37,7 +40,8 @@ const columns = [
       compare: (a, b) => a.english - b.english,
       multiple: 1,
     },
-    className: 'DiagramInfoTable-column',
+    className: 'DiagramInfoTable-column DiagramInfoTable_English',
+    render: (text) => <div className="DiagramInfoTable_English">{text}</div>,
   },
 ];
 
@@ -159,12 +163,13 @@ const DiagramInfoTable = () => (
       columns={columns}
       dataSource={data}
       onChange={onChange}
-      pagination={{ pageSize: 5 }} // 페이지당 5개의 데이터 표시
+      pagination={{
+        pageSize: 5,
+        position: ['bottomCenter'],
+      }}
       className="DiagramInfoTable-table"
     />
   </div>
 );
-
-
 
 export default DiagramInfoTable;

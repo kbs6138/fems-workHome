@@ -31,7 +31,7 @@ const DiagramInfo = () => {
               }}
             >
               <Col span={24}>
-                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '530px' }}>
+                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '510px' }}>
                   <Row
                     gutter={{
                       xs: 10,
@@ -41,44 +41,34 @@ const DiagramInfo = () => {
                     }}
                   >
                     <Col span={12} style={{ marginTop: '-10px' }}>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        전압
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
+                    전압
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={1} />
-                      </div>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                      <DiagramInfoChart key={1} />
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         전력
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={2} />
-                      </div>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                      <DiagramInfoChart key={2} />
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         내부온도
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={3} />
-                      </div>
+                      <DiagramInfoChart key={3} />
                     </Col>
                     <Col span={12} style={{ marginTop: '-10px' }}>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-                        전류
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
+                    전류
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={4} />
-                      </div>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                      <DiagramInfoChart key={4} />
+
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         역률
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={5} />
-                      </div>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                      <DiagramInfoChart key={5} />
+
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
                         외부온도
                       </span>
-                      <div style={{ marginBottom: '10px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', marginTop: '5px' }}>
-                        <DiagramInfoChart key={6} />
-                      </div>
+                      <DiagramInfoChart key={6} />
                     </Col>
                   </Row>
                 </Card>
@@ -93,8 +83,8 @@ const DiagramInfo = () => {
               }}
             >
               <Col span={24}>
-                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '425px' }}>
-                  <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
+                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '380px' }}>
+                  <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', marginTop: '-10px' }}>
                     로그 이력
                   </span>
                   <Row style={{ marginTop: '10px' }}
