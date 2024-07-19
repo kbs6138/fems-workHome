@@ -85,3 +85,7 @@
     font-family: 'NanumSquareNeo' !important;
 
 }
+
+.ant-table-thead .DiagramInfoTable-column{
+    height: 10px !important;
+}
