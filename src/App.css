@@ -1,8 +1,9 @@
 /*************************************************** 전체 폰트 설정 ***************************************************/
 * {
-    font-family: 'NanumSquareNeoBold' !important;
+    font-family: 'NanumSquareNeo';
     /*font-family: 'NanumSquareNeoLight';
-     font-family: 'NanumSquareNeo';
+       font-family: 'NanumSquareNeoBold'
+  
     font-family: 'NanumSquareNeoExtraBold';
     font-family: 'NanumSquareNeoHeavy';
     */
@@ -422,7 +423,7 @@ span {
 
 .OverCurrentTrendCurve_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: transparent;
     padding: 10px 10px 10px 10px;
 }

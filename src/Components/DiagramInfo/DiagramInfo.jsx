@@ -83,8 +83,8 @@ const DiagramInfo = () => {
               }}
             >
               <Col span={24}>
-                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '380px' }}>
-                  <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', marginTop: '-10px' }}>
+                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '355px' }}>
+                  <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
                     로그 이력
                   </span>
                   <Row style={{ marginTop: '10px' }}

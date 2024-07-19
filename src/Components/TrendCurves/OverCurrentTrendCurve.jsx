@@ -18,11 +18,8 @@ export default function OverCurrentTrendCurve() {
   return (
     <div>
       <Row>
-        <Col span={24} style={{ padding: '10px 10px 10px 10px' }}>
-
-          <Card className='OverCurrentTrendCurve_Card' bordered={false}>
-
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '160px' }}>
+        <Col span={24} style={{ padding: '15px 35px 0 35px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               <span className='OverCurrentTrendCurve_Title'>과전류 추이그래프</span>
               <Popover
                 content={
@@ -41,7 +38,7 @@ export default function OverCurrentTrendCurve() {
                     <span>
                       정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
                     </span>
-                    <a onClick={hide}>Close</a>
+                    <a onClick={hide}>닫기</a>
                   </div>
                 }
                 title="과전류 상승에 따른 위험"
@@ -54,6 +51,7 @@ export default function OverCurrentTrendCurve() {
                 </Button>
               </Popover>
             </div>
+          <Card className='OverCurrentTrendCurve_Card' bordered={false}>
             <OverCurrentTrendChart />
           </Card>
         </Col>
