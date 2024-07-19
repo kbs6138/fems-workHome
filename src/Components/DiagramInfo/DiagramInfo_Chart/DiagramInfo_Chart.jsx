@@ -26,9 +26,6 @@ const DiagramInfo_Chart = ({ VoltData }) => {
     }
 
     option = {
-      title: {
-        text: 'Dynamic Time Axis'
-      },
       tooltip: {
         trigger: 'axis',
         formatter: function (params) {
