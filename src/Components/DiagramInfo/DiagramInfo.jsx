@@ -34,7 +34,7 @@ const DiagramInfo = () => {
             </div>
 
 
-            <Row gutter={[16, 8]} >
+            <Row gutter={[10, 2]} >
               <Col span={12}>
                 <Card title={<div className='Diagram_V_Card_Title'>전압</div>} bordered={false} className='Diagram_V_Card'>
                   <DiagramInfoChart key={1} VoltData={VoltData[0].v_data} chartColor={chartColors[0]} />
