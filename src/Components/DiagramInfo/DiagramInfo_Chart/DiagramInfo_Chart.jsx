@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ VoltData }) => {
+const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
 
@@ -53,7 +53,10 @@ const DiagramInfo_Chart = ({ VoltData }) => {
       xAxis: {
         type: 'time',
         splitLine: {
-          show: false
+          show: false,
+        },
+        axisLabel: {
+          color: 'white' // x축 텍스트 색상 설정
         }
       },
       yAxis: {
@@ -61,14 +64,45 @@ const DiagramInfo_Chart = ({ VoltData }) => {
         boundaryGap: [0, '100%'],
         splitLine: {
           show: false
+        },
+        axisLabel: {
+          color: 'white' // y축 텍스트 색상 설정
         }
       },
       series: [
         {
-          name: 'Fake Data',
+          name: '전압 데이터',
           type: 'line',
           showSymbol: false,
-          data: data
+          data: data,
+          lineStyle: {
+            color: chartColor
+          },
+          itemStyle: {
+            color: chartColor
+          },
+          markPoint: {
+            data: [
+              {
+                name: '현재값',
+                coord: data[data.length - 1], // 마지막 데이터 포인트의 좌표
+                itemStyle: {
+                  color: 'red' // 빨간색으로 설정
+                },
+                symbol: 'circle',
+                symbolSize: 10, // 점의 크기 조절
+                label: {
+                  show: false // 라벨 숨기기
+                },
+              }
+            ],
+            // 현재 데이터의 마지막 점을 표시
+            emphasis: {
+              itemStyle: {
+                color: 'red'
+              }
+            }
+          }
         }
       ]
     };
@@ -87,7 +121,7 @@ const DiagramInfo_Chart = ({ VoltData }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [VoltData]);
+  }, [VoltData, chartColor]);
 
   return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
 };

@@ -37,11 +37,9 @@
 
 .DiagramInfo_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-    background: transparent !;
     margin-top: 10px;
     background-color: rgb(38, 55, 82);
     color: white;
-
 }
 
 .DiagramInfo_Chart {
@@ -72,20 +70,42 @@
 .ant-pagination-item-active a {
     color: black !important;
 }
-#DiagramInfoChart canvas{
+
+#DiagramInfoChart canvas {
     border-radius: 10px !important;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 
 }
-.ant-table-wrapper .ant-table-tbody>tr>td{
+
+.ant-table-wrapper .ant-table-tbody>tr>td {
     padding: 10px 10px;
-    
-}
-.DiagramInfo_span{
-    font-family: 'NanumSquareNeo' !important;
 
 }
 
-.ant-table-thead .DiagramInfoTable-column{
+
+.ant-table-thead .DiagramInfoTable-column {
     height: 10px !important;
+}
+
+.Diagram_V_Card,
+.Diagram_A_Card,
+.Diagram_W_Card,
+.Diagram_WVA_Card,
+.Diagram_OutDeg_Card,
+.Diagram_InnerDeg_Card {
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    margin-top: 10px;
+    background-color: rgb(38, 55, 82);
+    color: white;
+    height: 450px;
+}
+
+.Diagram_V_Card_Title,
+.Diagram_A_Card_Title,
+.Diagram_W_Card_Title,
+.Diagram_WVA_Card_Title,
+.Diagram_OutDeg_Card_Title,
+.Diagram_InnerDeg_Card_Title {
+    color: White;
+    font-family: 'NanumSquareNeo' !important;
 }

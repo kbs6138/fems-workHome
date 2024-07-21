@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import DiagramInfoTable from './DiagramInfoTable'
 import { Card, Col, Row, Layout } from 'antd';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import './DiagramInfo.css'
 import { useVoltData } from './DiagramInfo_DB/DiagramInfo_DB';
 
-
 const { Content } = Layout;
 
 const DiagramInfo = () => {
   const { data: VoltData } = useVoltData();
+  const [chartColors, setChartColors] = useState([]);
 
-
-  //console.log(VoltData);
+  useEffect(() => {
+    // Generate random chart line colors
+    const colors = ['#FF6B6B', '#FFD700', '#9370DB', '#00BFFF', '#7CFC00', '#FF69B4'];
+    setChartColors(colors);
+  }, []);
 
   return (
     <Content className="app-Content">
@@ -29,62 +32,40 @@ const DiagramInfo = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: '20px' }}>장비 상세보기</span>
             </div>
-            <Row
-              gutter={{
-                xs: 10,
-                sm: 10,
-                md: 20,
-                lg: 10,
-              }}
-            >
-              <Col span={24}>
-                <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '100%' }}>
-                  <Row
-                    gutter={{
-                      xs: 10,
-                      sm: 10,
-                      md: 20,
-                      lg: 10,
-                    }}
-                  >
-                    <Col span={12} style={{ marginTop: '-10px' }}>
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
-                        전압
-                      </span>
-                      <DiagramInfoChart key={1} VoltData={VoltData[0].v_data} />
-                      {/*     
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
-                        전력
-                      </span>
-                      <DiagramInfoChart key={2} />
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
-                        내부온도
-                      </span>
-                      <DiagramInfoChart key={3} />
-                    </Col>
-                    <Col span={12} style={{ marginTop: '-10px' }}>
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '0 0 4px 0' }}>
-                        전류
-                      </span>
-                      <DiagramInfoChart key={4} />
 
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
-                        역률
-                      </span>
-                      <DiagramInfoChart key={5} />
 
-                      <span className='DiagramInfo_span' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14.5px', margin: '10px 0 4px 0' }}>
-                        외부온도
-                      </span>
-                      <DiagramInfoChart key={6} />
-                      */}
-                    </Col>
-
-                  </Row>
+            <Row gutter={[16, 8]} >
+              <Col span={12}>
+                <Card title={<div className='Diagram_V_Card_Title'>전압</div>} bordered={false} className='Diagram_V_Card'>
+                  <DiagramInfoChart key={1} VoltData={VoltData[0].v_data} chartColor={chartColors[0]} />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title={<div className='Diagram_A_Card_Title'>전류</div>} bordered={false} className='Diagram_A_Card'>
+                  <DiagramInfoChart key={2} VoltData={VoltData[0].v_data} chartColor={chartColors[1]} />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title={<div className='Diagram_W_Card_Title'>전력</div>} bordered={false} className='Diagram_W_Card'>
+                  <DiagramInfoChart key={3} VoltData={VoltData[0].v_data} chartColor={chartColors[2]} />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title={<div className='Diagram_WVA_Card_Title'>역률</div>} bordered={false} className='Diagram_WVA_Card'>
+                  <DiagramInfoChart key={4} VoltData={VoltData[0].v_data} chartColor={chartColors[3]} />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title={<div className='Diagram_OutDeg_Card_Title'>외부온도</div>} bordered={false} className='Diagram_OutDeg_Card'>
+                  <DiagramInfoChart key={5} VoltData={VoltData[0].v_data} chartColor={chartColors[4]} />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title={<div className='Diagram_InnerDeg_Card_Title'>내부온도</div>} bordered={false} className='Diagram_InnerDeg_Card'>
+                  <DiagramInfoChart key={6} VoltData={VoltData[0].v_data} chartColor={chartColors[5]} />
                 </Card>
               </Col>
             </Row>
-
           </Card>
         </Col>
         <Col span={8} style={{ marginTop: '25px' }}>
