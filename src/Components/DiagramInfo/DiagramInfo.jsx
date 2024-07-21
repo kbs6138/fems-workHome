@@ -12,7 +12,6 @@ const DiagramInfo = () => {
   const [chartColors, setChartColors] = useState([]);
 
   useEffect(() => {
-    // Generate random chart line colors
     const colors = ['#FF6B6B', '#FFD700', '#9370DB', '#00BFFF', '#7CFC00', '#FF69B4'];
     setChartColors(colors);
   }, []);
