@@ -1,23 +1,13 @@
 import React from 'react';
 import { Table } from 'antd';
-import './DiagramInfo.css'; // CSS 파일을 import
+import '../DiagramInfo.css'; // CSS 파일을 import
 
 const columns = [
-  {
-    title: <div className="DiagramInfoTable-title">날짜</div>,
-    dataIndex: 'date',
-    sorter: {
-      compare: (a, b) => new Date(a.date) - new Date(b.date),
-      multiple: 1,
-    },
-    className: 'DiagramInfoTable-column DiagramInfoTable_Date',
-    render: (text) => <div className="DiagramInfoTable_Date">{text}</div>,
-  },
   {
     title: <div className="DiagramInfoTable-title">항목</div>,
     dataIndex: 'category',
     sorter: {
-      compare: (a, b) => a.category.localeCompare(b.category), // 문자열 비교로 수정
+      compare: (a, b) => a.category.localeCompare(b.category),
       multiple: 1,
     },
     className: 'DiagramInfoTable-column DiagramInfoTable_category',
@@ -25,84 +15,110 @@ const columns = [
   },
   {
     title: <div className="DiagramInfoTable-title">현재값</div>,
-    dataIndex: 'currentValue', // 데이터 소스의 key를 'currentValue'로 수정
+    dataIndex: 'currentValue',
     sorter: {
       compare: (a, b) => a.currentValue - b.currentValue,
-      multiple: 3,
+      multiple: 2,
     },
     className: 'DiagramInfoTable-column DiagramInfoTable_CurrentValue',
     render: (text) => <div className="DiagramInfoTable_CurrentValue">{text}</div>,
   },
   {
     title: <div className="DiagramInfoTable-title">이전값</div>,
-    dataIndex: 'previousValue', // 데이터 소스의 key를 'previousValue'로 수정
+    dataIndex: 'previousValue',
     sorter: {
       compare: (a, b) => a.previousValue - b.previousValue,
-      multiple: 2,
+      multiple: 3,
     },
     className: 'DiagramInfoTable-column DiagramInfoTable_PreviousValue',
     render: (text) => <div className="DiagramInfoTable_PreviousValue">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">이전값 대비 현재값</div>,
-    dataIndex: 'difference', // 데이터 소스의 key를 'difference'로 수정
+    title: <div className="DiagramInfoTable-title">당일최대</div>,
+    dataIndex: 'dailyMax',
     sorter: {
-      compare: (a, b) => a.difference - b.difference,
-      multiple: 1,
+      compare: (a, b) => a.dailyMax - b.dailyMax,
+      multiple: 4,
     },
-    className: 'DiagramInfoTable-column DiagramInfoTable_Difference',
-    render: (text) => <div className="DiagramInfoTable_Difference">{text}</div>,
+    className: 'DiagramInfoTable-column DiagramInfoTable_DailyMax',
+    render: (text) => <div className="DiagramInfoTable_DailyMax">{text}</div>,
+  },
+  {
+    title: <div className="DiagramInfoTable-title">당일최소</div>,
+    dataIndex: 'dailyMin',
+    sorter: {
+      compare: (a, b) => a.dailyMin - b.dailyMin,
+      multiple: 5,
+    },
+    className: 'DiagramInfoTable-column DiagramInfoTable_DailyMin',
+    render: (text) => <div className="DiagramInfoTable_DailyMin">{text}</div>,
+  },
+  {
+    title: <div className="DiagramInfoTable-title">가감률</div>,
+    dataIndex: 'rateOfChange',
+    sorter: {
+      compare: (a, b) => a.rateOfChange - b.rateOfChange,
+      multiple: 6,
+    },
+    className: 'DiagramInfoTable-column DiagramInfoTable_RateOfChange',
+    render: (text) => <div className="DiagramInfoTable_RateOfChange">{text}</div>,
   },
 ];
 
 const data = [
   {
     key: '1',
-    date: '2023-05-01',
     category: '전압',
-    currentValue: 98, // key 수정
-    previousValue: 60, // key 수정
-    difference: 70, // key 수정
+    currentValue: 98,
+    previousValue: 60,
+    dailyMax: 100,
+    dailyMin: 50,
+    rateOfChange: 63.33, // 예시 값
   },
   {
     key: '2',
-    date: '2023-05-02',
     category: '전류',
     currentValue: 95,
     previousValue: 58,
-    difference: 68,
+    dailyMax: 98,
+    dailyMin: 55,
+    rateOfChange: 63.79, // 예시 값
   },
   {
     key: '3',
-    date: '2023-05-03',
     category: '전력',
     currentValue: 90,
     previousValue: 55,
-    difference: 65,
+    dailyMax: 95,
+    dailyMin: 50,
+    rateOfChange: 63.64, // 예시 값
   },
   {
     key: '4',
-    date: '2023-05-04',
     category: '역률',
     currentValue: 85,
     previousValue: 50,
-    difference: 60,
+    dailyMax: 90,
+    dailyMin: 45,
+    rateOfChange: 70.00, // 예시 값
   },
   {
     key: '5',
-    date: '2023-05-05',
     category: '외부온도',
     currentValue: 80,
     previousValue: 45,
-    difference: 55,
+    dailyMax: 85,
+    dailyMin: 40,
+    rateOfChange: 77.78, // 예시 값
   },
   {
     key: '6',
-    date: '2023-05-06',
     category: '내부온도',
     currentValue: 75,
     previousValue: 40,
-    difference: 50,
+    dailyMax: 80,
+    dailyMin: 35,
+    rateOfChange: 87.50, // 예시 값
   },
 ];
 
@@ -116,10 +132,7 @@ const DiagramInfoTable = () => (
       columns={columns}
       dataSource={data}
       onChange={onChange}
-      pagination={{
-        pageSize: 6,
-        position: ['bottomCenter'],
-      }}
+      pagination={false}
       className="DiagramInfoTable-table"
     />
   </div>

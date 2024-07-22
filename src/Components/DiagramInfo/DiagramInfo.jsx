@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DiagramInfoTable from './DiagramInfoTable'
+import DiagramLogTable from './DiagramTable.jsx/DiagramLogTable';
+import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import { Card, Col, Row, Layout } from 'antd';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import './DiagramInfo.css'
@@ -70,7 +71,7 @@ const DiagramInfo = () => {
         <Col span={8} style={{ marginTop: '25px' }}>
           <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '355px', marginTop: '20px' }}>
             <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
-              로그 이력
+              실시간 조회
             </span>
             <Row style={{ marginTop: '10px' }}
               gutter={{
@@ -82,12 +83,13 @@ const DiagramInfo = () => {
             >
               <Col span={24}>
                 <DiagramInfoTable />
+
               </Col>
             </Row>
           </Card>
-          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '350px', marginTop: '20px' }}>
+          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '525px', marginTop: '15px' }}>
             <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
-              로그 이력
+              로그 이력조회
             </span>
             <Row style={{ marginTop: '10px' }}
               gutter={{
@@ -98,12 +100,12 @@ const DiagramInfo = () => {
               }}
             >
               <Col span={24}>
-                <DiagramInfoTable />
+                <DiagramLogTable />
               </Col>
             </Row>
           </Card>
         </Col>
-        
+
       </Row>
     </Content>
   );

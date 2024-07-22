@@ -1,4 +1,23 @@
-/* App.css */
+.DiagramLogTable-title,
+.DiagramLogTable_Time,
+.DiagramLogTable_Voltage,
+.DiagramLogTable_Current,
+.DiagramLogTable_Power,
+.DiagramLogTable_PowerFactor,
+.DiagramLogTable_ExternalTemperature,
+.DiagramLogTable_InternalTemperature,
+.DiagramInfoTable-title,
+.DiagramInfoTable_category,
+.DiagramInfoTable_CurrentValue,
+.DiagramInfoTable_PreviousValue,
+.DiagramInfoTable_DailyMax,
+.DiagramInfoTable_DailyMin,
+.DiagramInfoTable_RateOfChange {
+    font-size: 12px;
+
+
+}
+
 .ant-table-cell.ant-table-cell-row-hover {
     background: rgb(78, 112, 167) !important;
     color: #e9e9e9;
@@ -51,6 +70,14 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
 
+.DiagramLogTable-table .ant-table {
+    border: none;
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+}
+
+.DiagramLogTable-column {
+    font-size: 11.5px !important;
+}
 
 .DiagramInfo_Title {
     color: white;
@@ -74,18 +101,18 @@
 #DiagramInfoChart canvas {
     border-radius: 10px !important;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-
 }
 
 .ant-table-wrapper .ant-table-tbody>tr>td {
     padding: 10px 10px;
-
 }
-
 
 .ant-table-thead .DiagramInfoTable-column {
     height: 10px !important;
 }
+
+
+
 
 .Diagram_V_Card,
 .Diagram_A_Card,
