@@ -14,8 +14,7 @@
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
     font-size: 12px;
-
-
+    padding: 5px 5px 5px 5px !important;
 }
 
 .ant-table-cell.ant-table-cell-row-hover {
@@ -39,20 +38,9 @@
 
 .ant-table {
     background: none !important;
-    border: 1px solid lightgray;
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     border-bottom: none !important;
 }
-
-.ant-pagination-item-link {
-    color: white !important;
-}
-
-.ant-table-thead th {
-    text-align: center !important;
-    font-size: 11.5px !important;
-}
-
-
 
 .DiagramInfo_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
@@ -75,44 +63,10 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
 
-.DiagramLogTable-column {
-    font-size: 11.5px !important;
-}
-
-.DiagramInfo_Title {
-    color: white;
-    font-size: 20px;
-}
-
-
-.ant-table-row .DiagramInfoTable-column {
-    height: 10px !important;
-}
-
-
-.ant-pagination-item a {
-    color: white !important;
-}
-
-.ant-pagination-item-active a {
-    color: black !important;
-}
-
 #DiagramInfoChart canvas {
     border-radius: 10px !important;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
-
-.ant-table-wrapper .ant-table-tbody>tr>td {
-    padding: 10px 10px;
-}
-
-.ant-table-thead .DiagramInfoTable-column {
-    height: 10px !important;
-}
-
-
-
 
 .Diagram_V_Card,
 .Diagram_A_Card,
@@ -135,4 +89,6 @@
 .Diagram_InnerDeg_Card_Title {
     color: White;
     font-family: 'NanumSquareNeo' !important;
+    font-size: 15px;
+    font-weight: 100;
 }

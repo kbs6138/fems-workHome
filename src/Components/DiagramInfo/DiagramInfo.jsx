@@ -19,14 +19,9 @@ const DiagramInfo = () => {
 
   return (
     <Content className="app-Content">
-      <Row
-        gutter={{
-          xs: 10,
-          sm: 10,
-          md: 20,
-          lg: 10,
-        }}
-      >
+      <Row>
+
+
         <Col className="gutter-row" span={16}>
           <Card bordered={false} style={{ padding: 0, background: 'transparent', color: 'white', marginTop: '-15px' }} >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -71,34 +66,19 @@ const DiagramInfo = () => {
         <Col span={8} style={{ marginTop: '25px' }}>
           <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '355px', marginTop: '20px' }}>
             <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
-              실시간 조회
+              실시간 수치
             </span>
-            <Row style={{ marginTop: '10px' }}
-              gutter={{
-                xs: 10,
-                sm: 10,
-                md: 20,
-                lg: 10,
-              }}
-            >
+            <Row style={{ marginTop: '10px' }}>
               <Col span={24}>
                 <DiagramInfoTable />
-
               </Col>
             </Row>
           </Card>
-          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '525px', marginTop: '15px' }}>
+          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '530px'}}>
             <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
               로그 이력조회
             </span>
-            <Row style={{ marginTop: '10px' }}
-              gutter={{
-                xs: 10,
-                sm: 10,
-                md: 20,
-                lg: 10,
-              }}
-            >
+            <Row style={{ marginTop: '10px' }}>
               <Col span={24}>
                 <DiagramLogTable />
               </Col>

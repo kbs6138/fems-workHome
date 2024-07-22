@@ -25,5 +25,6 @@
 .PhaseQuarterlyInfo_insulationResistance,
 .PhaseQuarterlyInfo_arc{
     padding: 4px 4px !important;
-    text-align: center;
+    text-align: center !important;
+    font-size: 12px;
 }

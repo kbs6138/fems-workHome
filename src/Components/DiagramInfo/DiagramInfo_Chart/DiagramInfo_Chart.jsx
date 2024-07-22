@@ -56,7 +56,8 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
           show: false,
         },
         axisLabel: {
-          color: 'white' // x축 텍스트 색상 설정
+          color: 'white', // x축 텍스트 색상 설정
+          fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
         }
       },
       yAxis: {
@@ -66,7 +67,8 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
           show: false
         },
         axisLabel: {
-          color: 'white' // y축 텍스트 색상 설정
+          color: 'white', // y축 텍스트 색상 설정
+          fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
         }
       },
       series: [
@@ -104,7 +106,10 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
             }
           }
         }
-      ]
+      ],
+      textStyle: {
+        fontFamily: 'NanumSquareNeo' // 전체 텍스트에 폰트 패밀리 설정
+      }
     };
 
     myChart.setOption(option);
