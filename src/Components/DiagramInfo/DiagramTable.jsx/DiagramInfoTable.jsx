@@ -4,58 +4,32 @@ import '../DiagramInfo.css'; // CSS 파일을 import
 
 const columns = [
   {
-    title: <div className="DiagramInfoTable-title">항목</div>,
     dataIndex: 'category',
     className: 'DiagramInfoTable-column DiagramInfoTable_category',
     render: (text) => <div className="DiagramInfoTable_category">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">현재값</div>,
     dataIndex: 'currentValue',
-    sorter: {
-      compare: (a, b) => a.currentValue - b.currentValue,
-      multiple: 2,
-    },
     className: 'DiagramInfoTable-column DiagramInfoTable_CurrentValue',
     render: (text) => <div className="DiagramInfoTable_CurrentValue">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">이전값</div>,
     dataIndex: 'previousValue',
-    sorter: {
-      compare: (a, b) => a.previousValue - b.previousValue,
-      multiple: 3,
-    },
     className: 'DiagramInfoTable-column DiagramInfoTable_PreviousValue',
     render: (text) => <div className="DiagramInfoTable_PreviousValue">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">당일최대</div>,
     dataIndex: 'dailyMax',
-    sorter: {
-      compare: (a, b) => a.dailyMax - b.dailyMax,
-      multiple: 4,
-    },
     className: 'DiagramInfoTable-column DiagramInfoTable_DailyMax',
     render: (text) => <div className="DiagramInfoTable_DailyMax">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">당일최소</div>,
     dataIndex: 'dailyMin',
-    sorter: {
-      compare: (a, b) => a.dailyMin - b.dailyMin,
-      multiple: 5,
-    },
     className: 'DiagramInfoTable-column DiagramInfoTable_DailyMin',
     render: (text) => <div className="DiagramInfoTable_DailyMin">{text}</div>,
   },
   {
-    title: <div className="DiagramInfoTable-title">가감률</div>,
     dataIndex: 'rateOfChange',
-    sorter: {
-      compare: (a, b) => a.rateOfChange - b.rateOfChange,
-      multiple: 6,
-    },
     className: 'DiagramInfoTable-column DiagramInfoTable_RateOfChange',
     render: (text) => <div className="DiagramInfoTable_RateOfChange">{text}</div>,
   },
@@ -130,6 +104,7 @@ const DiagramInfoTable = () => (
       onChange={onChange}
       pagination={false}
       className="DiagramInfoTable-table"
+      showHeader={false} // 테이블 헤더를 숨기는 옵션
     />
   </div>
 );

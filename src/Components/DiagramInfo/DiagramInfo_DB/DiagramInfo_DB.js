@@ -9,7 +9,7 @@ export const fetchVoltData = async () => {
 
 export const useVoltData = () => {
     const { data, isLoading, error } = useQuery('voltData', fetchVoltData, {
-        refetchInterval: 1000,
+        refetchInterval: 10000,
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
 
     });

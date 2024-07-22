@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
+const DiagramInfoTest_Chart = ({ VoltData, chartColor }) => {
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
 
@@ -19,7 +19,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
     // 초기 데이터 생성
     if (data.length === 0) {
       const initialData = [];
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < 100; i++) {
         initialData.push(randomData());
       }
       setData(initialData);
@@ -50,12 +50,20 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
           animation: false
         }
       },
+      grid: {
+        left: '10%',
+        right: '10%',
+        top: '10%',
+        bottom: '10%',
+        containLabel: true
+      },
       xAxis: {
         type: 'time',
         splitLine: {
           show: false,
         },
         axisLabel: {
+            show:false,
           color: 'white', // x축 텍스트 색상 설정
           fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
         }
@@ -63,15 +71,21 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
       yAxis: {
         type: 'value',
         min: 224,
-        max: 235,
+        max: 230,
         boundaryGap: [0, '100%'],
         splitLine: {
-          show: false
+          show: true, // y축 그리드 라인 표시
+          lineStyle: {
+            color: '#ffffff', // 그리드 라인 색상
+            opacity: 0.2 // 그리드 라인 투명도
+          }
         },
         axisLabel: {
-          color: 'white', // y축 텍스트 색상 설정
-          fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
-        }
+          show: false, // y축 텍스트 숨기기
+        },
+        axisTick: {
+          show: false // y축 눈금 숨기기
+        },
       },
       series: [
         {
@@ -131,7 +145,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
     };
   }, [VoltData, chartColor]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '245px', marginTop: '-40px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '100px' }} />;
 };
 
-export default DiagramInfo_Chart;
+export default DiagramInfoTest_Chart;
