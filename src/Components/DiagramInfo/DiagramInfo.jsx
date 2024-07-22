@@ -36,39 +36,56 @@ const DiagramInfo = () => {
             <Row gutter={[10, 2]} >
               <Col span={12}>
                 <Card title={<div className='Diagram_V_Card_Title'>전압</div>} bordered={false} className='Diagram_V_Card'>
-                  <DiagramInfoChart key={1} VoltData={VoltData[0].v_data} chartColor={chartColors[0]} />
+                  <DiagramInfoChart key={1} VoltData={VoltData[0]} chartColor={chartColors[0]} />
                 </Card>
               </Col>
               <Col span={12}>
                 <Card title={<div className='Diagram_A_Card_Title'>전류</div>} bordered={false} className='Diagram_A_Card'>
-                  <DiagramInfoChart key={2} VoltData={VoltData[0].v_data} chartColor={chartColors[1]} />
+                  <DiagramInfoChart key={2} VoltData={VoltData[1]} chartColor={chartColors[1]} />
                 </Card>
               </Col>
               <Col span={12}>
                 <Card title={<div className='Diagram_W_Card_Title'>전력</div>} bordered={false} className='Diagram_W_Card'>
-                  <DiagramInfoChart key={3} VoltData={VoltData[0].v_data} chartColor={chartColors[2]} />
+                  <DiagramInfoChart key={3} VoltData={VoltData[2]} chartColor={chartColors[2]} />
                 </Card>
               </Col>
               <Col span={12}>
                 <Card title={<div className='Diagram_WVA_Card_Title'>역률</div>} bordered={false} className='Diagram_WVA_Card'>
-                  <DiagramInfoChart key={4} VoltData={VoltData[0].v_data} chartColor={chartColors[3]} />
+                  <DiagramInfoChart key={4} VoltData={VoltData[3]} chartColor={chartColors[3]} />
                 </Card>
               </Col>
               <Col span={12}>
                 <Card title={<div className='Diagram_OutDeg_Card_Title'>외부온도</div>} bordered={false} className='Diagram_OutDeg_Card'>
-                  <DiagramInfoChart key={5} VoltData={VoltData[0].v_data} chartColor={chartColors[4]} />
+                  <DiagramInfoChart key={5} VoltData={VoltData[4]} chartColor={chartColors[4]} />
                 </Card>
               </Col>
               <Col span={12}>
                 <Card title={<div className='Diagram_InnerDeg_Card_Title'>내부온도</div>} bordered={false} className='Diagram_InnerDeg_Card'>
-                  <DiagramInfoChart key={6} VoltData={VoltData[0].v_data} chartColor={chartColors[5]} />
+                  <DiagramInfoChart key={6} VoltData={VoltData[5]} chartColor={chartColors[5]} />
                 </Card>
               </Col>
             </Row>
           </Card>
         </Col>
         <Col span={8} style={{ marginTop: '25px' }}>
-          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '510px', marginTop: '20px' }}>
+          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '355px', marginTop: '20px' }}>
+            <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
+              로그 이력
+            </span>
+            <Row style={{ marginTop: '10px' }}
+              gutter={{
+                xs: 10,
+                sm: 10,
+                md: 20,
+                lg: 10,
+              }}
+            >
+              <Col span={24}>
+                <DiagramInfoTable />
+              </Col>
+            </Row>
+          </Card>
+          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '350px', marginTop: '20px' }}>
             <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
               로그 이력
             </span>
@@ -86,6 +103,7 @@ const DiagramInfo = () => {
             </Row>
           </Card>
         </Col>
+        
       </Row>
     </Content>
   );

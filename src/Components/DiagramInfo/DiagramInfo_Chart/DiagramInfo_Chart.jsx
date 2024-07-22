@@ -123,7 +123,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
     };
   }, [VoltData, chartColor]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '245px' }} />;
 };
 
 export default DiagramInfo_Chart;
