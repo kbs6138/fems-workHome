@@ -6,10 +6,7 @@ const columns = [
   {
     title: <div className="DiagramInfoTable-title">항목</div>,
     dataIndex: 'category',
-    sorter: {
-      compare: (a, b) => a.category.localeCompare(b.category),
-      multiple: 1,
-    },
+
     className: 'DiagramInfoTable-column DiagramInfoTable_category',
     render: (text) => <div className="DiagramInfoTable_category">{text}</div>,
   },

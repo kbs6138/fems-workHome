@@ -7,6 +7,7 @@ const columns = [
     title: <div className="DiagramLogTable-title">시간</div>,
     dataIndex: 'time',
     className: 'DiagramLogTable-column DiagramLogTable_Time',
+    sorter: (a, b) => new Date(a.time) - new Date(b.time), // 시간 정렬 기능 추가
     render: (text) => <div className="DiagramLogTable_Time">{text}</div>,
   },
   {
