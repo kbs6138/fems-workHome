@@ -19,7 +19,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
     // 초기 데이터 생성
     if (data.length === 0) {
       const initialData = [];
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < 1000; i++) {
         initialData.push(randomData());
       }
       setData(initialData);
@@ -92,7 +92,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
                   color: 'red' // 빨간색으로 설정
                 },
                 symbol: 'circle',
-                symbolSize: 10, // 점의 크기 조절
+                symbolSize: 8, // 점의 크기 조절
                 label: {
                   show: false // 라벨 숨기기
                 },
