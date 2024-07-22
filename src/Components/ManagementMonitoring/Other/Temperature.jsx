@@ -107,7 +107,7 @@ const Temperature = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="Temperature" ref={chartRef} className="Temperature" style={{ left: '20px' }} />
+        <div id="Temperature" ref={chartRef} className="Temperature" style={{ left: '45px' }} />
     );
 };
 

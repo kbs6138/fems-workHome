@@ -126,7 +126,7 @@ const LeakageCurrent = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent" style={{ left: '20px' }} />
+        <div id="LeakageCurrent" ref={chartRef} className="LeakageCurrent" style={{ left: '45px' }} />
     );
 };
 

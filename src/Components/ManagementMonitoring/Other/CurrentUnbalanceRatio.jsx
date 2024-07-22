@@ -125,7 +125,7 @@ const CurrentUnbalanceRatio = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="CurrentUnbalanceRatio" ref={chartRef} className="CurrentUnbalanceRatio" style={{ left: '20px' }} />
+        <div id="CurrentUnbalanceRatio" ref={chartRef} className="CurrentUnbalanceRatio" style={{ left: '45px' }} />
     );
 };
 

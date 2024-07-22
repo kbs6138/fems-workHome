@@ -126,7 +126,7 @@ const AccumulatedOperatingTime = () => {
     }, [isDarkMode, data]); // 의존성 배열에 isDarkMode와 data 포함
 
     return (
-        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime" style={{ left: '20px' }} />
+        <div id="AccumulatedOperatingTime" ref={chartRef} className="AccumulatedOperatingTime" style={{ left: '45px' }} />
     );
 };
 
