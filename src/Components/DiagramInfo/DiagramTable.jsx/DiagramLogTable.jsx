@@ -157,14 +157,17 @@ const onChange = (pagination, filters, sorter, extra) => {
 
 const DiagramLogTable = () => (
   <div className="DiagramLogTable">
-    <Table
-      columns={columns}
-      dataSource={data}
-      onChange={onChange}
-      pagination={false}
-      className="DiagramLogTable-table"
-    />
+    <div style={{ overflowY: 'auto', maxHeight: '400px' }}>
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        pagination={false}
+        className="DiagramLogTable-table"
+      />
+    </div>
   </div>
 );
+
 
 export default DiagramLogTable;
