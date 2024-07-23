@@ -4,6 +4,9 @@ import OverCurrentTrendChart from './OverCurrentTrendChart';
 import { AiOutlineWarning } from "react-icons/ai";
 
 
+/*과전류 추이그래프 성민이 작업
+Itess select 예제 http://powermonitor.itess.online/sys/analysis/state
+*/ 
 export default function OverCurrentTrendCurve() {
   const [open, setOpen] = useState(false);
 
