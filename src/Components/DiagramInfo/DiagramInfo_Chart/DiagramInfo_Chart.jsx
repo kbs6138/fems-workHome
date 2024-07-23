@@ -60,7 +60,12 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
           }
         },
         axisLabel: {
-          color: 'white',
+          color: function (value, index) {
+            if (value === data[data.length - 1][0]) {
+              return '#7CFC00'; // 현재 시간의 텍스트 색상 설정
+            }
+            return 'white';
+          },
           fontFamily: 'NanumSquareNeo',
           formatter: function (value, index) {
             const date = new Date(value);
@@ -147,6 +152,12 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
       myChart.setOption({
         xAxis: {
           axisLabel: {
+            color: function (value, index) {
+              if (value === data[data.length - 1][0]) {
+                return '#7CFC00'; // 현재 시간의 텍스트 색상 설정
+              }
+              return 'white';
+            },
             formatter: function (value, index) {
               const date = new Date(value);
               if (value === data[0][0] || value === data[data.length - 1][0]) {
@@ -157,6 +168,8 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
               }
               return '';
             },
+            showMaxLabel: true,
+            showMinLabel: true,
           },
         },
         series: [{ data }]
