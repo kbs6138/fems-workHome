@@ -11,7 +11,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
     let option;
 
     function randomData() {
-      const now = new Date(+new Date() + 1000 * 60 * 60 * 24);
+      const now = new Date();
       const value = VoltData;
       return [now.getTime(), value];
     }
@@ -55,11 +55,29 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         splitLine: {
           show: false,
         },
+
+
+        /* axislabel 떼어서 붙이기*/
         axisLabel: {
           color: 'white', // x축 텍스트 색상 설정
           fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
-          show:false
+          formatter: function (value, index) {
+            const date = new Date(value);
+            if (value === data[0][0] || value === data[data.length - 1][0]) {
+              const hours = date.getHours().toString().padStart(2, '0');
+              const minutes = date.getMinutes().toString().padStart(2, '0');
+              const seconds = date.getSeconds().toString().padStart(2, '0');
+              return `${hours}:${minutes}:${seconds}`;
+            }
+            return '';
+          },
+          showMaxLabel: true,
+          showMinLabel: true,
         }
+
+
+
+
       },
       yAxis: {
         type: 'value',
@@ -125,8 +143,27 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         newData.push(randomData());
         return newData;
       });
-    }, 1000);
 
+      /** */
+      myChart.setOption({
+        xAxis: {
+          axisLabel: {
+            formatter: function (value, index) {
+              const date = new Date(value);
+              if (value === data[0][0] || value === data[data.length - 1][0]) {
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+                const seconds = date.getSeconds().toString().padStart(2, '0');
+                return `${hours}:${minutes}:${seconds}`;
+              }
+              return '';
+            },
+          },
+        },
+        series: [{ data }]
+      });
+    }, 1000);
+/*** */
     return () => {
       clearInterval(interval);
     };
