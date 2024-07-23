@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
+const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
 
@@ -58,12 +58,13 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
         axisLabel: {
           color: 'white', // x축 텍스트 색상 설정
           fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
+          show:false
         }
       },
       yAxis: {
         type: 'value',
-        min: 224,
-        max: 235,
+        min: Min,
+        max: Max,
         boundaryGap: [0, '100%'],
         splitLine: {
           show: false
@@ -129,7 +130,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [VoltData, chartColor]);
+  }, [VoltData, chartColor, Min, Max]);
 
   return <div ref={chartRef} style={{ width: '100%', height: '245px', marginTop: '-40px' }} />;
 };
