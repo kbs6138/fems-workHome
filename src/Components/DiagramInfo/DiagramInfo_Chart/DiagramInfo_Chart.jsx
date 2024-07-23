@@ -53,14 +53,15 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
       xAxis: {
         type: 'time',
         splitLine: {
-          show: false,
+          show: true,
+          lineStyle: {
+            color: '#696969', // 그리드 선 색상 설정
+            type: 'dashed' // 그리드 선 스타일 설정 (점선)
+          }
         },
-
-
-        /* axislabel 떼어서 붙이기*/
         axisLabel: {
-          color: 'white', // x축 텍스트 색상 설정
-          fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
+          color: 'white',
+          fontFamily: 'NanumSquareNeo',
           formatter: function (value, index) {
             const date = new Date(value);
             if (value === data[0][0] || value === data[data.length - 1][0]) {
@@ -74,10 +75,6 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
           showMaxLabel: true,
           showMinLabel: true,
         }
-
-
-
-
       },
       yAxis: {
         type: 'value',
@@ -85,11 +82,15 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         max: Max,
         boundaryGap: [0, '100%'],
         splitLine: {
-          show: false
+          show: true,
+          lineStyle: {
+            color: '#696969', // 그리드 선 색상 설정
+            type: 'dashed' // 그리드 선 스타일 설정 (점선)
+          }
         },
         axisLabel: {
-          color: 'white', // y축 텍스트 색상 설정
-          fontFamily: 'NanumSquareNeo', // 폰트 패밀리 설정
+          color: 'white',
+          fontFamily: 'NanumSquareNeo',
         }
       },
       series: [
@@ -100,7 +101,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
           data: data,
           lineStyle: {
             color: chartColor,
-            width: 1 // 선 두께 설정
+            width: 2
           },
           itemStyle: {
             color: chartColor
@@ -109,18 +110,17 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
             data: [
               {
                 name: '현재값',
-                coord: data[data.length - 1], // 마지막 데이터 포인트의 좌표
+                coord: data[data.length - 1],
                 itemStyle: {
-                  color: 'red' // 빨간색으로 설정
+                  color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8, // 점의 크기 조절
+                symbolSize: 8,
                 label: {
-                  show: false // 라벨 숨기기
+                  show: false
                 },
               }
             ],
-            // 현재 데이터의 마지막 점을 표시
             emphasis: {
               itemStyle: {
                 color: 'red'
@@ -130,7 +130,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         }
       ],
       textStyle: {
-        fontFamily: 'NanumSquareNeo' // 전체 텍스트에 폰트 패밀리 설정
+        fontFamily: 'NanumSquareNeo'
       }
     };
 
@@ -144,7 +144,6 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         return newData;
       });
 
-      /** */
       myChart.setOption({
         xAxis: {
           axisLabel: {
@@ -163,7 +162,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         series: [{ data }]
       });
     }, 1000);
-/*** */
+
     return () => {
       clearInterval(interval);
     };
