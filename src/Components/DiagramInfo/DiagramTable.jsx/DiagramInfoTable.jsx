@@ -1,15 +1,12 @@
 import React from 'react';
 import { Table } from 'antd';
 import '../DiagramInfo.css'; // CSS 파일을 import
-import DiagramInfoTest_Chart from '../DiagramInfo_Chart/DiagramInfoTest_Chart';
 
 const columns = [
   {
     dataIndex: 'category',
     className: 'DiagramInfoTable-column DiagramInfoTable_category',
     render: (text) => <div className="DiagramInfoTable_category">{text}</div>,
-
-
   },
   {
     dataIndex: 'currentValue',
@@ -36,11 +33,6 @@ const columns = [
     className: 'DiagramInfoTable-column DiagramInfoTable_RateOfChange',
     render: (text) => <div className="DiagramInfoTable_RateOfChange">{text}</div>,
   },
-  {
-    dataIndex: 'Chart',
-    className: 'DiagramInfoTable-column DiagramInfoTable_Chart',
-
-  },
 ];
 
 const data = [
@@ -52,7 +44,6 @@ const data = [
     dailyMax: 100,
     dailyMin: 50,
     rateOfChange: 63.33, // 예시 값
-
   },
   {
     key: '2',
@@ -62,7 +53,6 @@ const data = [
     dailyMax: 98,
     dailyMin: 55,
     rateOfChange: 63.79, // 예시 값
-
   },
   {
     key: '3',

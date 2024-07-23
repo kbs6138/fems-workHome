@@ -73,20 +73,28 @@ const DiagramInfo = () => {
               실시간 수치
             </span>
             <Row style={{ marginTop: '10px' }}>
-              <DiagramInfoTable />
+
               <Col span={24}>
-                <Card style={{ background: 'rgb(31, 45, 68)' }} bordered={false} >
-                  <Row justify="center">
-                    <Col span={4}>내부온도</Col>
-                    <Col span={4}>수치1</Col>
-                    <Col span={4}>수치2</Col>
-                    <Col span={4}>수치3</Col>
-                    <Col span={4}>수치1</Col>
-                    <Col span={4}>수치2</Col>
+                <Card style={{ background: 'rgb(31, 45, 68)' }} bordered={false}>
+                  <span className='Diagram_Name' style={{ padding: '0 0 0 5px ', fontSize: '15px', color: 'white' }}>내부온도</span>
+                  <Row justify="center" align="middle">
+                    <Col>
+                      <table style={{ borderCollapse: 'collapse' }}>
+                        <tr>
+                          <td className='Diagram_td'>수치1</td>
+                          <td className='Diagram_td'>수치2</td>
+                          <td className='Diagram_td'>수치3</td>
+                          <td className='Diagram_td'>수치4</td>
+                          <td className='Diagram_td'>수치5</td>
+                        </tr>
+                      </table>
+                    </Col>
                   </Row>
                   <DiagramInfoTest_Chart key={6} VoltData={VoltData[0]?.v_data} chartColor={chartColors[5]} Min={MinValue[0]} Max={MaxValue[0]} />
                 </Card>
               </Col>
+
+
             </Row>
           </Card>
         </Col>

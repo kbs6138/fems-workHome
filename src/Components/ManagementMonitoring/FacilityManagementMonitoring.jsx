@@ -94,9 +94,6 @@ const MonitorFirst = () => {
                                 <Option value="Option3" >장비3</Option>
                             </Select>
                         </div>
-
-
-
                         <Row
                             gutter={{
                                 xs: 10,
@@ -198,12 +195,8 @@ const MonitorFirst = () => {
                                     </Row>
                                 </Card>
                             </Col>
-
                         </Row>
-
                         <br />
-
-
                         <Row
                             gutter={{
                                 xs: 10,
@@ -218,7 +211,6 @@ const MonitorFirst = () => {
                                     <Temperature />
                                 </Card>
                             </Col>
-
                             <Col span={6} >
                                 <Card className={`CurrentUnbalanceRatio_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
@@ -232,7 +224,6 @@ const MonitorFirst = () => {
                                     <CurrentUnbalanceRatio />
                                 </Card>
                             </Col>
-
                             <Col span={6}>
                                 <Card className={`LeakageCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
@@ -246,9 +237,6 @@ const MonitorFirst = () => {
                                     <LeakageCurrent />
                                 </Card>
                             </Col>
-
-
-
                             <Col span={6}>
                                 <Card className={`AccumulatedOperatingTime_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
                                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누적가동시간 </span>
