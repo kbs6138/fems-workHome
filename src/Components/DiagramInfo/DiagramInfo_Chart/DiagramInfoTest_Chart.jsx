@@ -17,7 +17,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
 
     if (chartData.length === 0) {
       const initialData = [];
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < 60; i++) {
         initialData.push(randomData());
       }
       setChartData(initialData);

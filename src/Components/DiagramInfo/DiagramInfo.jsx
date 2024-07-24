@@ -129,7 +129,9 @@ const DiagramInfo = () => {
         <Col className="gutter-row" span={15}>
           <Card bordered={false} style={{ padding: 0, background: 'transparent', color: 'white', marginTop: '-15px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '20px' }}>장비 상세보기</span>
+              <span style={{ fontSize: '20px' }}>장비 상세보기
+              <p style={{ fontSize: '12px'}}>(10분 간격 데이터)</p>
+              </span>
               <span style={{ fontSize: '16px' }}>{currentTime}</span> {/* 현재 시간 표시 */}
               <Dropdown
                 menu={{
@@ -151,7 +153,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[0]?.min !== undefined && MaxData[0]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_V_Card' size='small'>
-                    <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon' />전압</div>
+                    <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
                     <Card bordered={false} className='Diagram_V_Chart_Card'>
                       <DiagramInfoChart key={1} data={VoltData[0]?.v_data} chartColor={chartColors[0]} Min={MinData[0]?.min || 0} Max={MaxData[0]?.max || 0} />
                     </Card>
@@ -161,7 +163,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[1]?.min !== undefined && MaxData[1]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_A_Card'>
-                    <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon' />전류</div>
+                    <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon_A' />전류</div>
                     <Card bordered={false} className='Diagram_A_Chart_Card'>
                       <DiagramInfoChart key={2} data={AmData[0]?.am_data} chartColor={chartColors[1]} Min={MinData[1]?.min || 0} Max={MaxData[1]?.max || 0} />
                     </Card>
@@ -171,7 +173,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[2]?.min !== undefined && MaxData[2]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_W_Card'>
-                    <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon' />전력</div>
+                    <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon_W' />전력</div>
                     <Card bordered={false} className='Diagram_W_Chart_Card ' size='large'>
                       <DiagramInfoChart key={3} data={WData[0]?.w_data} chartColor={chartColors[2]} Min={MinData[2]?.min || 0} Max={MaxData[2]?.max || 0} />
                     </Card>
@@ -181,7 +183,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[3]?.min !== undefined && MaxData[3]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_WVA_Card'>
-                    <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon' />역률</div>
+                    <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
                     <Card bordered={false} className='Diagram_WVA_Chart_Card'>
 
                       <DiagramInfoChart key={4} data={PfData[0]?.pf_data} chartColor={chartColors[3]} Min={MinData[3]?.min || 0} Max={MaxData[3]?.max || 0} />
@@ -192,7 +194,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[4]?.min !== undefined && MaxData[4]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_OutDeg_Card'>
-                    <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon' />외부온도</div>
+                    <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
                     <Card bordered={false} className='Diagram_OutDeg_Chart_Card'>
 
                       <DiagramInfoChart key={5} data={OutData[0]?.out_data} chartColor={chartColors[4]} Min={MinData[4]?.min || 0} Max={MaxData[4]?.max || 0} />
@@ -203,7 +205,7 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {MinData[5]?.min !== undefined && MaxData[5]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_InnerDeg_Card'>
-                    <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon' />내부온도 </div>
+                    <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
                     <Card bordered={false} className='Diagram_InnerDeg_Chart_Card' >
 
                       <DiagramInfoChart key={6} data={InData[0]?.in_data} chartColor={chartColors[5]} Min={MinData[5]?.min || 0} Max={MaxData[5]?.max || 0} />
@@ -215,7 +217,9 @@ const DiagramInfo = () => {
           </Card>
         </Col>
         <Col span={9} style={{ marginTop: '25px' }}>
-          <span style={{ fontSize: '20px', color: 'white', marginTop: '-15px' }}>실시간 수치</span>
+          <span style={{ fontSize: '20px', color: 'white', marginTop: '-15px' }}>실시간 수치
+            <p style={{ fontSize: '12px'}}>(최근 1분 데이터)</p>
+          </span>
           <Row gutter={[10, 5]} style={{ marginTop: '14px' }}>
 
             <Col span={24}>

@@ -110,12 +110,19 @@
     font-weight: 100;
     display: flex;
     align-items: center;
+    margin-top: -5px;
 }
 
-.Diagram_icon {
-    font-size: 20px;
+.Diagram_icon_InnerDeg,
+.Diagram_icon_OutDeg,
+.Diagram_icon_WVA,
+.Diagram_icon_W,
+.Diagram_icon_A,
+.Diagram_icon_V {
     margin-right: 10px;
+    font-size: 20px;
 }
+
 
 .Diagram_V_Chart_Card,
 .Diagram_A_Chart_Card,
@@ -130,4 +137,32 @@
     height: 170px;
     padding: 5px !important;
 
+}
+
+.Diagram_icon_InnerDeg {
+    color: #FF69B4;
+}
+
+.Diagram_icon_OutDeg {
+    color: #7CFC00;
+}
+
+.Diagram_icon_WVA {
+    color:
+        #00BFFF;
+}
+
+.Diagram_icon_W {
+    color:
+        #9370DB;
+}
+
+.Diagram_icon_A {
+    color:
+        #FFD700;
+}
+
+.Diagram_icon_V {
+    color:
+        #FF6B6B;
 }
