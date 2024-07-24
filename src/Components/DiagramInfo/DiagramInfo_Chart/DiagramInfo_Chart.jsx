@@ -9,7 +9,7 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
-    
+
     function randomData() {
       const now = new Date();
       const value = data;
