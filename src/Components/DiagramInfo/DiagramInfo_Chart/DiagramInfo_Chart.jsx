@@ -25,7 +25,6 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
     }
 
     const option = {
-
       tooltip: {
         trigger: 'axis',
         formatter: function (params) {
@@ -66,6 +65,7 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
           },
           showMaxLabel: true,
           showMinLabel: true,
+          fontSize: 10.5 // Set the font size to 10px
         }
       },
       yAxis: {
@@ -81,7 +81,8 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
           }
         },
         axisLabel: {
-          color: 'white'
+          color: 'white',
+          fontSize: 10.5 // Set the font size to 10px
         }
       },
       series: [
@@ -155,6 +156,7 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
             },
             showMaxLabel: true,
             showMinLabel: true,
+            fontSize: 10.5 // Set the font size to 10px
           },
         },
         series: [{ data: chartData }]
@@ -166,7 +168,7 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
     };
   }, [data, chartColor, Min, Max, chartData]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '245px', marginTop: '-40px' }} />;
+  return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft:'-10px'}} />;
 };
 
 export default DiagramInfo_Chart;

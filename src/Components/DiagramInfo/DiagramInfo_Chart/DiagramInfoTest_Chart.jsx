@@ -64,7 +64,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
           },
           showMaxLabel: true,
           showMinLabel: true,
-          fontSize: 11
+          fontSize: 10.5
         },
         axisLine: {
           show: true // x축 선 숨기기
@@ -88,7 +88,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
         axisLabel: {
           color: 'white',
           show: false, // y축 레이블 숨기기
-          fontSize: 11
+          fontSize: 10.5
         },
         axisLine: {
           show: false // y축 선 숨기기
@@ -104,7 +104,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
           data: chartData,
           lineStyle: {
             color: chartColor,
-            width: 2
+            width: 1
           },
           itemStyle: {
             color: chartColor
@@ -168,7 +168,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
             },
             showMaxLabel: true,
             showMinLabel: true,
-            fontSize: 11
+            fontSize: 10.5
           },
         },
         series: [{ data: chartData }]
@@ -181,9 +181,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
   }, [data, chartColor, Min, Max, chartData]);
 
   return (
-    <div style={{ padding: '5px', margin: '5px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'  ,background:'rgb(38, 55, 82)', borderRadius:'5px'}}>
-      <div ref={chartRef} style={{ width: '100%', height: '80px'}} />
-    </div>
+    <div id='DiagramInfoTest_Chart' ref={chartRef} style={{ width: '100%', height: '100%', background: 'rgb(38, 55, 82)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '2px', marginTop: '5px', backgroundColor: '#263752' }} />
   );
 };
 

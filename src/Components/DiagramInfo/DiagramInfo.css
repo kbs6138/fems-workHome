@@ -13,8 +13,8 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    font-size: 12px;
-    padding: 4px 5px 5px 5px !important;
+    font-size: 11.5px;
+    padding: 5px 5px 4px 4px !important;
 }
 
 .DiagramInfoTable_CurrentValue,
@@ -22,18 +22,21 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    margin-left: 5px;
-}
-.ant-table-wrapper .ant-table-thead >tr>th{
+    margin-left: 6px;
     text-align: center !important;
+    font-family: 'NanumSquareNeo' !important;
+    font-weight: lighter !important;
 }
 
-.ant-table-cell .DiagramInfoTable-column .DiagramInfoTable_CurrentValue {
-    background-color: none !important;
+.ant-table-wrapper .ant-table-thead>tr>th {
+    text-align: center !important;
+    font-family: 'NanumSquareNeo' !important;
+    font-weight: lighter !important;
 }
+
 
 .DiagramInfoTable {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 
@@ -48,7 +51,7 @@
 }
 
 .ant-table-cell {
-    background: rgb(31, 45, 68) !important;
+    background: transparent !important;
     color: #fff;
 }
 
@@ -62,11 +65,17 @@
     border-bottom: none !important;
 }
 
+.ant-table-wrapper .ant-table-tbody>tr>td {
+    border-bottom: none !important;
+}
+
+
 .DiagramInfo_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     margin-top: 10px;
     background-color: rgb(38, 55, 82);
     color: white;
+    height: 900px;
 }
 
 
@@ -86,7 +95,7 @@
     margin-top: 10px;
     background-color: rgb(38, 55, 82);
     color: white;
-    height: 250px;
+    height: 240px;
 }
 
 .Diagram_V_Card_Title,
@@ -99,4 +108,26 @@
     font-family: 'NanumSquareNeo' !important;
     font-size: 15px;
     font-weight: 100;
+    display: flex;
+    align-items: center;
+}
+
+.Diagram_icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.Diagram_V_Chart_Card,
+.Diagram_A_Chart_Card,
+.Diagram_W_Chart_Card,
+.Diagram_WVA_Chart_Card,
+.Diagram_OutDeg_Chart_Card,
+.Diagram_InnerDeg_Chart_Card {
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    margin-top: 10px;
+    background-color: rgb(38, 55, 82);
+    color: white;
+    height: 170px;
+    padding: 5px !important;
+
 }
