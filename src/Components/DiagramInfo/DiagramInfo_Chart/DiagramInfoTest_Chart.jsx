@@ -8,7 +8,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
-    
+
     function randomData() {
       const now = new Date();
       const value = data;
@@ -24,7 +24,6 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
     }
 
     const option = {
-
       tooltip: {
         trigger: 'axis',
         formatter: function (params) {
@@ -65,6 +64,13 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
           },
           showMaxLabel: true,
           showMinLabel: true,
+          fontSize: 11
+        },
+        axisLine: {
+          show: true // x축 선 숨기기
+        },
+        axisTick: {
+          show: true // x축 눈금 숨기기
         }
       },
       yAxis: {
@@ -80,7 +86,15 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
           }
         },
         axisLabel: {
-          color: 'white'
+          color: 'white',
+          show: false, // y축 레이블 숨기기
+          fontSize: 11
+        },
+        axisLine: {
+          show: false // y축 선 숨기기
+        },
+        axisTick: {
+          show: true // y축 눈금 숨기기
         }
       },
       series: [
@@ -154,6 +168,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
             },
             showMaxLabel: true,
             showMinLabel: true,
+            fontSize: 11
           },
         },
         series: [{ data: chartData }]
@@ -165,7 +180,11 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
     };
   }, [data, chartColor, Min, Max, chartData]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '245px', marginTop: '-40px' }} />;
+  return (
+    <div style={{ padding: '5px', margin: '5px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)'  ,background:'rgb(38, 55, 82)', borderRadius:'5px'}}>
+      <div ref={chartRef} style={{ width: '100%', height: '80px'}} />
+    </div>
+  );
 };
 
 export default DiagramInfoTest_Chart;

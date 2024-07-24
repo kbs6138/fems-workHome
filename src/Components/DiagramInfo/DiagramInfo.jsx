@@ -1,7 +1,7 @@
 // DiagramInfo.js
 import React, { useState, useEffect } from 'react';
 import DiagramInfoTest_Chart from './DiagramInfo_Chart/DiagramInfoTest_Chart';
-import { DownOutlined } from '@ant-design/icons';  
+import { DownOutlined } from '@ant-design/icons';
 
 import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import { Card, Col, Row, Layout, Dropdown, Space } from 'antd';
@@ -150,16 +150,17 @@ const DiagramInfo = () => {
           </Card>
         </Col>
         <Col span={8} style={{ marginTop: '25px' }}>
-          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '895px', marginTop: '20px' }}>
-            <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', marginTop: '-10px' }}>
-              실시간 수치
-            </span>
-            <Row style={{ marginTop: '10px' }}>
-              <Col span={24}>
-                <Card style={{ background: 'rgb(31, 45, 68)' }} bordered={false}>
-                  <span className='Diagram_Name' style={{ padding: '0 0 0 5px ', fontSize: '15px', color: 'white' }}>내부온도</span>
+          <span style={{ fontSize: '20px', color: 'white', marginTop: '-15px' }}>실시간 수치</span>
 
-                  <Row>
+
+          <Card size='small' bordered={false} className='DiagramInfo_Card' style={{ height: '895px', marginTop: '14px' }}>
+
+            <Row>
+
+              <Col span={24}>
+                <Card style={{ background: 'transparent', height: '150px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}>내부온도</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                     <Col span={12}>
                       <DiagramInfoTable data={tableDataArray[0]} />
                     </Col>
@@ -171,20 +172,23 @@ const DiagramInfo = () => {
               </Col>
 
               <Col span={24} style={{ marginTop: '10px' }}>
-                <Card style={{ background: 'rgb(31, 45, 68)' }} bordered={false}>
-                  <span className='Diagram_Name' style={{ padding: '0 0 0 5px ', fontSize: '15px', color: 'white' }}>외부온도</span>
-                  <Row>
+                <Card style={{ background: 'transparent', height: '150px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name' style={{ padding: '0 0 0 5px', fontSize: '15px', color: 'white' }}>외부온도</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                     <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[1]} />
+                      <DiagramInfoTable data={tableDataArray[0]} />
                     </Col>
-                    <Col span={8}>
+                    <Col span={12}>
                       <DiagramInfoTest_Chart key={7} data={WData[0]?.w_data} chartColor={chartColors[2]} Min={MinValue[2]} Max={MaxValue[2]} />
                     </Col>
                   </Row>
                 </Card>
               </Col>
+
               {/* 추가 테이블들 */}
+
             </Row>
+
           </Card>
         </Col>
       </Row>

@@ -14,11 +14,27 @@
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
     font-size: 12px;
-    padding: 5px 5px 5px 5px !important;
+    padding: 4px 5px 5px 5px !important;
 }
 
+.DiagramInfoTable_CurrentValue,
+.DiagramInfoTable_PreviousValue,
+.DiagramInfoTable_DailyMax,
+.DiagramInfoTable_DailyMin,
+.DiagramInfoTable_RateOfChange {
+    margin-left: 5px;
+}
+.ant-table-wrapper .ant-table-thead >tr>th{
+    text-align: center !important;
+}
 
+.ant-table-cell .DiagramInfoTable-column .DiagramInfoTable_CurrentValue {
+    background-color: none !important;
+}
 
+.DiagramInfoTable {
+    margin-top: 10px;
+}
 
 
 .ant-table-cell.ant-table-cell-row-hover {
@@ -53,25 +69,12 @@
     color: white;
 }
 
-.DiagramInfo_Chart {
-    margin-bottom: 150px !important;
-}
+
 
 .DiagramInfoTable-table .ant-table {
-    border: none;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
 
-.DiagramLogTable-table .ant-table {
-    border: none;
-    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-}
-
-#DiagramInfoChart canvas {
-    border-radius: 10px !important;
-    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
-    
-}
 
 .Diagram_V_Card,
 .Diagram_A_Card,
@@ -97,4 +100,3 @@
     font-size: 15px;
     font-weight: 100;
 }
-
