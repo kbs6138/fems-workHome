@@ -1,49 +1,37 @@
+// DiagramInfo_Chart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
+const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
   const chartRef = useRef(null);
-  const [data, setData] = useState([]);
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
-    let option;
-
+    
     function randomData() {
       const now = new Date();
-      const value = VoltData;
+      const value = data;
       return [now.getTime(), value];
     }
 
-    // 초기 데이터 생성
-    if (data.length === 0) {
+    if (chartData.length === 0) {
       const initialData = [];
       for (let i = 0; i < 500; i++) {
         initialData.push(randomData());
       }
-      setData(initialData);
+      setChartData(initialData);
     }
 
-    option = {
+    const option = {
+
       tooltip: {
         trigger: 'axis',
         formatter: function (params) {
           const date = new Date(params[0].value[0]);
           return (
-            date.getDate() +
-            '/' +
-            (date.getMonth() + 1) +
-            '/' +
-            date.getFullYear() +
-            ' ' +
-            date.getHours() +
-            ':' +
-            date.getMinutes() +
-            ':' +
-            date.getSeconds() +
-            ' : ' +
-            params[0].value[1]
+            `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} : ${params[0].value[1]}`
           );
         },
         axisPointer: {
@@ -55,21 +43,20 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         splitLine: {
           show: true,
           lineStyle: {
-            color: '#696969', // 그리드 선 색상 설정
-            type: 'dashed' // 그리드 선 스타일 설정 (점선)
+            color: '#696969',
+            type: 'dashed'
           }
         },
         axisLabel: {
           color: function (value, index) {
-            if (value === data[data.length - 1][0]) {
-              return '#7CFC00'; // 현재 시간의 텍스트 색상 설정
+            if (value === chartData[chartData.length - 1][0]) {
+              return '#7CFC00';
             }
             return 'white';
           },
-          fontFamily: 'NanumSquareNeo',
           formatter: function (value, index) {
             const date = new Date(value);
-            if (value === data[0][0] || value === data[data.length - 1][0]) {
+            if (value === chartData[0][0] || value === chartData[chartData.length - 1][0]) {
               const hours = date.getHours().toString().padStart(2, '0');
               const minutes = date.getMinutes().toString().padStart(2, '0');
               const seconds = date.getSeconds().toString().padStart(2, '0');
@@ -89,21 +76,19 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         splitLine: {
           show: true,
           lineStyle: {
-            color: '#696969', // 그리드 선 색상 설정
-            type: 'dashed' // 그리드 선 스타일 설정 (점선)
+            color: '#696969',
+            type: 'dashed'
           }
         },
         axisLabel: {
-          color: 'white',
-          fontFamily: 'NanumSquareNeo',
+          color: 'white'
         }
       },
       series: [
         {
-          name: '전압 데이터',
           type: 'line',
           showSymbol: false,
-          data: data,
+          data: chartData,
           lineStyle: {
             color: chartColor,
             width: 2
@@ -115,7 +100,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
             data: [
               {
                 name: '현재값',
-                coord: data[data.length - 1],
+                coord: chartData[chartData.length - 1],
                 itemStyle: {
                   color: 'red'
                 },
@@ -142,7 +127,7 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
     myChart.setOption(option);
 
     const interval = setInterval(() => {
-      setData((prevData) => {
+      setChartData((prevData) => {
         const newData = [...prevData];
         newData.shift();
         newData.push(randomData());
@@ -153,14 +138,14 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
         xAxis: {
           axisLabel: {
             color: function (value, index) {
-              if (value === data[data.length - 1][0]) {
-                return '#7CFC00'; // 현재 시간의 텍스트 색상 설정
+              if (value === chartData[chartData.length - 1][0]) {
+                return '#7CFC00';
               }
               return 'white';
             },
             formatter: function (value, index) {
               const date = new Date(value);
-              if (value === data[0][0] || value === data[data.length - 1][0]) {
+              if (value === chartData[0][0] || value === chartData[chartData.length - 1][0]) {
                 const hours = date.getHours().toString().padStart(2, '0');
                 const minutes = date.getMinutes().toString().padStart(2, '0');
                 const seconds = date.getSeconds().toString().padStart(2, '0');
@@ -172,14 +157,14 @@ const DiagramInfo_Chart = ({ VoltData, chartColor, Min, Max }) => {
             showMinLabel: true,
           },
         },
-        series: [{ data }]
+        series: [{ data: chartData }]
       });
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [VoltData, chartColor, Min, Max]);
+  }, [data, chartColor, Min, Max, chartData]);
 
   return <div ref={chartRef} style={{ width: '100%', height: '245px', marginTop: '-40px' }} />;
 };
