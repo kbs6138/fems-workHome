@@ -221,6 +221,7 @@ span p {
 .Card1-grid-Title-text,
 .Card2-grid-Title-text {
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .Card1-grid-SubTitle-text,
