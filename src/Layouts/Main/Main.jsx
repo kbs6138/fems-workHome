@@ -125,10 +125,8 @@ const AppMain = () => {
                                         <span className="Card1-grid-Title-text">당일 사용량</span>
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
                                             <span className="Card1-grid-Percent-text">
-                                                <span className="Card1-grid-Percent-value">20.65%</span>
+                                                <span className="Card1-grid-Percent-value">20.65%</span>{/*데이터 연결해야함*/}
                                                 <span className="Card1-grid-Percent-Near-text">증가</span><BiUpArrowAlt size={30} color='red' />
-
-
                                             </span>
                                         </p>
                                     </div>
@@ -147,7 +145,7 @@ const AppMain = () => {
                                         <span className="Card2-grid-Title-text">당일 역률 평균</span>
                                         <p className="Card2-grid-SubTitle-text">전일 역률 대비
                                             <span className="Card2-grid-Percent-text">
-                                                <span className="Card2-grid-Percent-value">12%</span>
+                                                <span className="Card2-grid-Percent-value">12%</span>{/*데이터 연결해야함*/}
                                                 <span className="Card2-grid-Percent-Near-text">감소</span><BiDownArrowAlt size={30} color='#667EFE' />
 
                                             </span>
