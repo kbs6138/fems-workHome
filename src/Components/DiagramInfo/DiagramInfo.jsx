@@ -8,6 +8,7 @@ import { VscPulse } from "react-icons/vsc";
 import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import { Card, Col, Row, Layout, Dropdown, Space } from 'antd';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
+import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
 import './DiagramInfo.css';
 import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
 
@@ -182,7 +183,6 @@ const DiagramInfo = () => {
                   <Card bordered={false} className='Diagram_WVA_Card'>
                     <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
                     <Card bordered={false} className='Diagram_WVA_Chart_Card'>
-
                       <DiagramInfoChart key={4} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3]?.min || 0} Max={DiagramMinmaxData[3]?.max || 0} />
                     </Card>
                   </Card>
@@ -193,7 +193,6 @@ const DiagramInfo = () => {
                   <Card bordered={false} className='Diagram_OutDeg_Card'>
                     <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
                     <Card bordered={false} className='Diagram_OutDeg_Chart_Card'>
-
                       <DiagramInfoChart key={5} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4]?.min || 0} Max={DiagramMinmaxData[4]?.max || 0} />
                     </Card>
                   </Card>
@@ -204,12 +203,29 @@ const DiagramInfo = () => {
                   <Card bordered={false} className='Diagram_InnerDeg_Card'>
                     <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
                     <Card bordered={false} className='Diagram_InnerDeg_Chart_Card' >
-
                       <DiagramInfoChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5]?.min || 0} Max={DiagramMinmaxData[5]?.max || 0} />
                     </Card>
                   </Card>
                 )}
               </Col>
+
+              
+
+
+
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'transparent', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <Row gutter={[5, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                  <DiagramAlertStep/>
+                  </Col>
+                  <Col span={12}>
+               
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+
             </Row>
           </Card>
         </Col>
@@ -245,7 +261,6 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-
                       <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
                     )}
                   </Col>
@@ -262,7 +277,6 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-
                       <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
                     )}
                   </Col>
@@ -279,7 +293,6 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-
                       <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
                     )}
                   </Col>
@@ -296,7 +309,6 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-
                       <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
                     )}
                   </Col>

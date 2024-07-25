@@ -17,7 +17,7 @@
     padding: 3px !important;
 }
 
-.Diagram_Name{
+.Diagram_Name {
     font-family: 'NanumSquareNeo' !important;
 }
 
@@ -30,7 +30,8 @@
     font-family: 'NanumSquareNeo' !important;
     font-weight: lighter !important;
 }
-.DiagramInfoTable_RateOfChange{
+
+.DiagramInfoTable_RateOfChange {
     font-family: 'NanumSquareNeoExtraBold' !important;
 
 }
@@ -172,4 +173,37 @@
 .Diagram_icon_V {
     color:
         #FF6B6B;
+}
+
+.ant-timeline-item-tail {
+    background-color: rgb(255, 192, 192) !important;
+}
+.ant-timeline .ant-timeline-item-content{
+    position: relative;
+    inset-block-start: -5px !important;
+    margin-inline-start: 26px;
+    margin-inline-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    word-break: break-word;
+}
+.ant-timeline-item-content {
+    font-size: 11.5px;
+    color: white;
+    font-family: 'NanumSquareNeoLight';
+}
+.ant-timeline .ant-timeline-item{
+    margin-bottom: -7px !important;
+}
+.ant-timeline .ant-timeline-item-head-blue {
+    color: #f16d6d !important;
+    border-color: #f16d6d !important;
+}
+.ant-timeline .ant-timeline-item-head {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f50000;
+    border: 3px solid transparent;
+    border-radius: 50%;
 }
