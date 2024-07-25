@@ -42,25 +42,28 @@ const DiagramInfo = () => {
     return rateOfChange.toFixed(1); // 소수점 첫째 자리까지 표시
   };
 
+  const formatNumber = (number) => {
+    return number.toLocaleString(); // Add commas to the number
+  };
+
   const tableDataArray = [
     [
       {
         key: '1',
         currentValue: DiagramInfoData[0]?.v_data,
-        dailyMax: DiagramCurrentData[0]?.max || 0,
-        dailyMin: DiagramCurrentData[0]?.min || 0,
-        previousValue: DiagramCurrentData[0]?.avg || 0,
+        dailyMax: formatNumber(DiagramCurrentData[0]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[0]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[0]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data, DiagramCurrentData[0]?.avg),
       },
-
     ],
     [
       {
         key: '2',
         currentValue: DiagramInfoData[0]?.am_data,
-        dailyMax: DiagramCurrentData[1]?.max || 0, //최대값
-        dailyMin: DiagramCurrentData[1]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[1]?.avg || 0, //평균
+        dailyMax: formatNumber(DiagramCurrentData[1]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[1]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[1]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data, DiagramCurrentData[1]?.avg),
       },
     ],
@@ -68,9 +71,9 @@ const DiagramInfo = () => {
       {
         key: '3',
         currentValue: DiagramInfoData[0]?.w_data,
-        dailyMax: DiagramCurrentData[2]?.max || 0, //최대값
-        dailyMin: DiagramCurrentData[2]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[2]?.avg || 0, //평균
+        dailyMax: formatNumber(DiagramCurrentData[2]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[2]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[2]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.w_data, DiagramCurrentData[2]?.avg),
       },
     ],
@@ -78,9 +81,9 @@ const DiagramInfo = () => {
       {
         key: '4',
         currentValue: DiagramInfoData[0]?.pf_data,
-        dailyMax: DiagramCurrentData[3]?.max || 0, //최대값
-        dailyMin: DiagramCurrentData[3]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[3]?.avg || 0, //평균
+        dailyMax: formatNumber(DiagramCurrentData[3]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[3]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[3]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.pf_data, DiagramCurrentData[3]?.avg),
       },
     ],
@@ -88,9 +91,9 @@ const DiagramInfo = () => {
       {
         key: '5',
         currentValue: DiagramInfoData[0]?.out_data,
-        dailyMax: DiagramCurrentData[4]?.max || 0, //최대값
-        dailyMin: DiagramCurrentData[4]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[4]?.avg || 0, //평균
+        dailyMax: formatNumber(DiagramCurrentData[4]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[4]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[4]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.out_data, DiagramCurrentData[4]?.avg),
       },
     ],
@@ -98,9 +101,9 @@ const DiagramInfo = () => {
       {
         key: '6',
         currentValue: DiagramInfoData[0]?.in_data,
-        dailyMax: DiagramCurrentData[5]?.max || 0, //최대값
-        dailyMin: DiagramCurrentData[5]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[5]?.avg || 0, //평균
+        dailyMax: formatNumber(DiagramCurrentData[5]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[5]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[5]?.avg || 0), //평균
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[5]?.avg),
       },
     ],
@@ -209,20 +212,16 @@ const DiagramInfo = () => {
                 )}
               </Col>
 
-              
+              <Col span={12} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'transparent', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <Row gutter={[5, 2]}> {/* 여백을 추가 */}
+                    <Col span={24}>
+                      <DiagramAlertStep />
+                    </Col>
 
-
-
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <Row gutter={[5, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                  <DiagramAlertStep/>
-                  </Col>
-
-                </Row>
-              </Card>
-            </Col>
+                  </Row>
+                </Card>
+              </Col>
 
             </Row>
           </Card>
@@ -232,104 +231,106 @@ const DiagramInfo = () => {
           <span style={{ fontSize: '20px', color: 'white', marginTop: '-15px' }}>실시간 수치
             <p style={{ fontSize: '12px' }}>(최근 1분 데이터)</p>
           </span>
-          <Row gutter={[10, 5]} style={{ marginTop: '14px' }}>
+          <Row gutter={[48, 5]} style={{ marginTop: '14px' }}>
 
-            <Col span={24}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[0]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
+              <Col span={24}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[0]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
+                        <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[1]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[1]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
+                        <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[2]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
 
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[3]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[2]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
+                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[4]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[3]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
+                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
-            <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'transparent', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
-                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[5]} />
-                  </Col>
-                  <Col span={12}>
-                    {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[4]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
+                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                  <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
+                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                    <Col span={12}>
+                      <DiagramInfoTable data={tableDataArray[5]} />
+                    </Col>
+                    <Col span={12}>
+                      {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
+                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
+                      )}
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+
+           
           </Row>
         </Col>
       </Row>

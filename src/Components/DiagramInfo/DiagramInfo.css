@@ -13,7 +13,7 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    font-size: 11px;
+    font-size: 12px;
     padding: 3px !important;
 }
 
@@ -24,6 +24,7 @@
     margin-top: -10px;
 }
 
+
 .DiagramInfoTable_CurrentValue,
 .DiagramInfoTable_PreviousValue,
 .DiagramInfoTable_DailyMax,
@@ -31,12 +32,14 @@
 .DiagramInfoTable_RateOfChange {
     text-align: center !important;
     font-family: 'NanumSquareNeo' !important;
-    font-weight: lighter !important;
 }
 
+.DiagramInfoTable_CurrentValue {
+    color: #FFD700;
+  }
+  
 .DiagramInfoTable_RateOfChange {
     font-family: 'NanumSquareNeoExtraBold' !important;
-
 }
 
 .ant-table-wrapper .ant-table-thead>tr>th {
@@ -135,6 +138,7 @@
 }
 
 
+
 .Diagram_V_Chart_Card,
 .Diagram_A_Chart_Card,
 .Diagram_W_Chart_Card,
@@ -147,7 +151,6 @@
     color: white;
     height: 170px;
     padding: 5px !important;
-
 }
 
 .Diagram_icon_InnerDeg {
@@ -206,3 +209,5 @@
     border: 3px solid transparent;
     border-radius: 50%;
 }
+
+
