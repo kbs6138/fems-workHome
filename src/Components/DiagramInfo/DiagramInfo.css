@@ -13,12 +13,15 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    font-size: 11.5px;
+    font-size: 11px;
     padding: 3px !important;
 }
 
 .Diagram_Name {
     font-family: 'NanumSquareNeo' !important;
+    font-size: 14px;
+    color: white;
+    margin-top: -10px;
 }
 
 .DiagramInfoTable_CurrentValue,
@@ -38,7 +41,7 @@
 
 .ant-table-wrapper .ant-table-thead>tr>th {
     text-align: center !important;
-    font-family: 'NanumSquareNeo' !important;
+    font-family: 'NanumSquareNeoLight' !important;
     font-weight: lighter !important;
 }
 
@@ -114,7 +117,7 @@
 .Diagram_InnerDeg_Card_Title {
     color: White;
     font-family: 'NanumSquareNeo' !important;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 100;
     display: flex;
     align-items: center;
@@ -187,11 +190,7 @@
     margin-block-end: 0;
     word-break: break-word;
 }
-.ant-timeline-item-content {
-    font-size: 11.5px;
-    color: white;
-    font-family: 'NanumSquareNeoLight';
-}
+
 .ant-timeline .ant-timeline-item{
     margin-bottom: -7px !important;
 }

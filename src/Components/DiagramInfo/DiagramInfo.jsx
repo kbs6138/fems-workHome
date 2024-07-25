@@ -238,7 +238,7 @@ const DiagramInfo = () => {
 
             <Col span={24}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><SlEnergy className='Diagram_icon_V' />전압</span>
+                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[0]} />
@@ -254,7 +254,7 @@ const DiagramInfo = () => {
 
             <Col span={24} style={{ marginTop: '6px' }}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><VscPulse className='Diagram_icon_A' />전류</span>
+                <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[1]} />
@@ -270,7 +270,7 @@ const DiagramInfo = () => {
 
             <Col span={24} style={{ marginTop: '6px' }}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><SlEnergy className='Diagram_icon_W' />전력</span>
+                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[2]} />
@@ -286,7 +286,7 @@ const DiagramInfo = () => {
 
             <Col span={24} style={{ marginTop: '6px' }}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
+                <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[3]} />
@@ -302,7 +302,7 @@ const DiagramInfo = () => {
 
             <Col span={24} style={{ marginTop: '6px' }}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
+                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[4]} />
@@ -318,7 +318,7 @@ const DiagramInfo = () => {
 
             <Col span={24} style={{ marginTop: '6px' }}>
               <Card style={{ background: 'transparent', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                <span className='Diagram_Name' style={{ fontSize: '15px', color: 'white', marginTop: '-10px' }}><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
+                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
                     <DiagramInfoTable data={tableDataArray[5]} />
