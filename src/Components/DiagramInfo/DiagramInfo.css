@@ -14,7 +14,11 @@
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
     font-size: 11.5px;
-    padding: 5px 5px 4px 4px !important;
+    padding: 3px !important;
+}
+
+.Diagram_Name{
+    font-family: 'NanumSquareNeo' !important;
 }
 
 .DiagramInfoTable_CurrentValue,
@@ -22,10 +26,13 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    margin-left: 6px;
     text-align: center !important;
     font-family: 'NanumSquareNeo' !important;
     font-weight: lighter !important;
+}
+.DiagramInfoTable_RateOfChange{
+    font-family: 'NanumSquareNeoExtraBold' !important;
+
 }
 
 .ant-table-wrapper .ant-table-thead>tr>th {

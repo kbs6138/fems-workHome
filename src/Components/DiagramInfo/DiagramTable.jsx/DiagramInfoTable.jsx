@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table } from 'antd';
 import '../DiagramInfo.css'; // CSS 파일을 import
+import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+
 
 const columns = [
   {
@@ -28,10 +30,32 @@ const columns = [
     render: (text) => <div className="DiagramInfoTable_PreviousValue">{text}</div>,
   },
   {
-    title: '대비', // 헤더 제목을 설정
+    title: '평균대비', // 헤더 제목을 설정
     dataIndex: 'rateOfChange',
     className: 'DiagramInfoTable-column DiagramInfoTable_RateOfChange',
-    render: (text) => <div className="DiagramInfoTable_RateOfChange">{text}</div>,
+    render: (text) => {
+      const rate = parseFloat(text);
+      let color;
+      let Icon = null;
+
+      if (rate > 0) {
+        color = '#FC323C';
+        Icon = BiUpArrowAlt;
+      } else if (rate < 0) {
+        color = '#7696FF';
+        Icon = BiDownArrowAlt;
+      } else {
+        color = 'inherit'; // 변화가 없을 때 색상 설정
+        Icon = null; // 아이콘 숨김
+      }
+
+      return (
+        <div className="DiagramInfoTable_RateOfChange" style={{ color, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }}>
+          {text !== '0.0' ? `${text}%` : '0.0'}
+          {Icon && <Icon size={17} style={{ color }} />}
+        </div>
+      );
+    },
   },
 ];
 

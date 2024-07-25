@@ -1,6 +1,4 @@
-
-
-// DiagramInfo.js
+// DiagramInfo.jsx
 import React, { useState, useEffect } from 'react';
 import DiagramInfoTest_Chart from './DiagramInfo_Chart/DiagramInfoTest_Chart';
 import { DownOutlined } from '@ant-design/icons';
@@ -11,7 +9,7 @@ import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import { Card, Col, Row, Layout, Dropdown, Space } from 'antd';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import './DiagramInfo.css';
-import { useDiagramInfoData, useDiagramCurrentData , useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
+import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
 
 const { Content } = Layout;
 
@@ -37,65 +35,72 @@ const DiagramInfo = () => {
 
   const [chartColors, setChartColors] = useState([]);
 
+  const calculateRateOfChange = (currentValue, previousValue) => {
+    if (previousValue === 0) return 0; // 이전 값이 0일 때, 비율 변화는 0으로 처리
+    const rateOfChange = ((currentValue / previousValue) * 100) - 100;
+    return rateOfChange.toFixed(1); // 소수점 첫째 자리까지 표시
+  };
+
   const tableDataArray = [
     [
       {
         key: '1',
         currentValue: DiagramInfoData[0]?.v_data,
-        dailyMax: DiagramMinmaxData[0]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[0]?.min || 0, //최소값
-        previousValue: DiagramCurrentData[0]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        dailyMax: DiagramCurrentData[0]?.max || 0,
+        dailyMin: DiagramCurrentData[0]?.min || 0,
+        previousValue: DiagramCurrentData[0]?.avg || 0,
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data, DiagramCurrentData[0]?.avg),
       },
+
     ],
     [
       {
         key: '2',
         currentValue: DiagramInfoData[0]?.am_data,
-        dailyMax: DiagramMinmaxData[1]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[1]?.min || 0, //최소값
+        dailyMax: DiagramCurrentData[1]?.max || 0, //최대값
+        dailyMin: DiagramCurrentData[1]?.min || 0, //최소값
         previousValue: DiagramCurrentData[1]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data, DiagramCurrentData[1]?.avg),
       },
     ],
     [
       {
         key: '3',
         currentValue: DiagramInfoData[0]?.w_data,
-        dailyMax: DiagramMinmaxData[2]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[2]?.min || 0, //최소값
+        dailyMax: DiagramCurrentData[2]?.max || 0, //최대값
+        dailyMin: DiagramCurrentData[2]?.min || 0, //최소값
         previousValue: DiagramCurrentData[2]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.w_data, DiagramCurrentData[2]?.avg),
       },
     ],
     [
       {
         key: '4',
         currentValue: DiagramInfoData[0]?.pf_data,
-        dailyMax: DiagramMinmaxData[3]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[3]?.min || 0, //최소값
+        dailyMax: DiagramCurrentData[3]?.max || 0, //최대값
+        dailyMin: DiagramCurrentData[3]?.min || 0, //최소값
         previousValue: DiagramCurrentData[3]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.pf_data, DiagramCurrentData[3]?.avg),
       },
     ],
     [
       {
         key: '5',
         currentValue: DiagramInfoData[0]?.out_data,
-        dailyMax: DiagramMinmaxData[4]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[4]?.min || 0, //최소값
+        dailyMax: DiagramCurrentData[4]?.max || 0, //최대값
+        dailyMin: DiagramCurrentData[4]?.min || 0, //최소값
         previousValue: DiagramCurrentData[4]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.out_data, DiagramCurrentData[4]?.avg),
       },
     ],
     [
       {
         key: '6',
         currentValue: DiagramInfoData[0]?.in_data,
-        dailyMax: DiagramMinmaxData[5]?.max || 0, //최대값
-        dailyMin: DiagramMinmaxData[5]?.min || 0, //최소값
+        dailyMax: DiagramCurrentData[5]?.max || 0, //최대값
+        dailyMin: DiagramCurrentData[5]?.min || 0, //최소값
         previousValue: DiagramCurrentData[5]?.avg || 0, //평균
-        rateOfChange: 63.33, // 평균대비
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[5]?.avg),
       },
     ],
   ];
@@ -224,7 +229,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramMinmaxData[0].min} Max={DiagramMinmaxData[0].max} />
+                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
                     )}
                   </Col>
                 </Row>
@@ -241,7 +246,7 @@ const DiagramInfo = () => {
                   <Col span={12}>
                     {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
 
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramMinmaxData[1].min} Max={DiagramMinmaxData[1].max} />
+                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
                     )}
                   </Col>
                 </Row>
@@ -258,7 +263,7 @@ const DiagramInfo = () => {
                   <Col span={12}>
                     {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
 
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramMinmaxData[2].min} Max={DiagramMinmaxData[2].max} />
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
                     )}
                   </Col>
                 </Row>
@@ -275,7 +280,7 @@ const DiagramInfo = () => {
                   <Col span={12}>
                     {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
 
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3].min} Max={DiagramMinmaxData[3].max} />
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
                     )}
                   </Col>
                 </Row>
@@ -292,7 +297,7 @@ const DiagramInfo = () => {
                   <Col span={12}>
                     {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
 
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4].min} Max={DiagramMinmaxData[4].max} />
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
                     )}
                   </Col>
                 </Row>
@@ -308,7 +313,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5].min} Max={DiagramMinmaxData[5].max} />
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
                     )}
                   </Col>
                 </Row>
