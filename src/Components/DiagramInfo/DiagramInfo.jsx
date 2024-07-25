@@ -219,9 +219,7 @@ const DiagramInfo = () => {
                   <Col span={12}>
                   <DiagramAlertStep/>
                   </Col>
-                  <Col span={12}>
-               
-                  </Col>
+
                 </Row>
               </Card>
             </Col>
