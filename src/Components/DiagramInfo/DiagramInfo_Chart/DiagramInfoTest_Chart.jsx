@@ -104,7 +104,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
           data: chartData,
           lineStyle: {
             color: chartColor,
-            width: 1
+            width: 1.2
           },
           itemStyle: {
             color: chartColor
@@ -118,7 +118,7 @@ const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8,
+                symbolSize: 7,
                 label: {
                   show: false
                 },
