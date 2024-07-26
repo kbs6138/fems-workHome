@@ -1,3 +1,24 @@
+/* DiagramInfo.css */
+@keyframes flicker {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.DiagramInfoTable_RateOfChange_animate {
+    animation: flicker 10s ease-in-out;
+}
+
+
+
 .DiagramLogTable-title,
 .DiagramLogTable_Time,
 .DiagramLogTable_Voltage,
@@ -48,7 +69,8 @@
 
 
 
-.DiagramInfoTable_RateOfChange {
+
+.DiagramInfoTable_RateOfChange div {
     font-family: 'NanumSquareNeoBold' !important;
 }
 

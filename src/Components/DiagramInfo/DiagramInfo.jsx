@@ -1,19 +1,23 @@
 // DiagramInfo.jsx
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DiagramInfoTest_Chart from './DiagramInfo_Chart/DiagramInfoTest_Chart';
 import { DownOutlined } from '@ant-design/icons';
 import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
+import { AiOutlineSwapRight } from "react-icons/ai";
 import { VscPulse } from "react-icons/vsc";
 import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
-import { Card, Col, Row, Layout, Dropdown, Space } from 'antd';
+import { Card, Col, Row, Layout, Dropdown, Space, Button, Select } from 'antd';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
 import './DiagramInfo.css';
 import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
 
 const { Content } = Layout;
-
+const { Option } = Select;
+const handleChange = () => {
+};
 const DiagramInfo = () => {
   const [refreshInterval, setRefreshInterval] = useState(10000); // 초기값 설정
   const [currentTime, setCurrentTime] = useState('');
@@ -136,6 +140,13 @@ const DiagramInfo = () => {
               <span style={{ fontSize: '20px' }}>장비 상세정보
                 <p style={{ fontSize: '12px' }}>(10분 간격 데이터)</p>
               </span>
+
+              <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
+                <Option value="Option1" >장비1</Option>
+                <Option value="Option2" >장비2</Option>
+                <Option value="Option3" >장비3</Option>
+              </Select>
+
               <span style={{ fontSize: '16px' }}>{currentTime}</span> {/* 현재 시간 표시 */}
               <Dropdown
                 menu={{
@@ -157,7 +168,15 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_V_Card' size='small'>
-                    <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)' }}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_V_Chart_Card'>
                       <DiagramInfoChart key={1} data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramMinmaxData[0]?.min || 0} Max={DiagramMinmaxData[0]?.max || 0} />
                     </Card>
@@ -167,7 +186,16 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_A_Card'>
-                    <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon_A' />전류</div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon_A' />전류</div>
+
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background:'rgb(42 ,63 ,97)' }}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_A_Chart_Card'>
                       <DiagramInfoChart key={2} data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramMinmaxData[1]?.min || 0} Max={DiagramMinmaxData[1]?.max || 0} />
                     </Card>
@@ -177,7 +205,16 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_W_Card'>
-                    <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon_W' />전력</div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon_W' />전력</div>
+
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_W_Chart_Card ' size='large'>
                       <DiagramInfoChart key={3} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramMinmaxData[2]?.min || 0} Max={DiagramMinmaxData[2]?.max || 0} />
                     </Card>
@@ -187,7 +224,16 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_WVA_Card'>
-                    <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
+
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_WVA_Chart_Card'>
                       <DiagramInfoChart key={4} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3]?.min || 0} Max={DiagramMinmaxData[3]?.max || 0} />
                     </Card>
@@ -197,7 +243,16 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_OutDeg_Card'>
-                    <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
+
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_OutDeg_Chart_Card'>
                       <DiagramInfoChart key={5} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4]?.min || 0} Max={DiagramMinmaxData[4]?.max || 0} />
                     </Card>
@@ -207,7 +262,16 @@ const DiagramInfo = () => {
               <Col span={12}>
                 {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
                   <Card bordered={false} className='Diagram_InnerDeg_Card'>
-                    <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
+                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
+
+                      <Link to="/DiagramInfo">
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background:'rgb(42 ,63 ,97)' }}>
+                          상세조회
+                          <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
+                        </Button>
+                      </Link>
+                    </span>
                     <Card bordered={false} className='Diagram_InnerDeg_Chart_Card' >
                       <DiagramInfoChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5]?.min || 0} Max={DiagramMinmaxData[5]?.max || 0} />
                     </Card>
@@ -215,8 +279,8 @@ const DiagramInfo = () => {
                 )}
               </Col>
 
-              <Col span={12} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'transparent', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Col span={24} style={{ marginTop: '6px' }}>
+                <Card style={{ background: 'rgb(42 ,63 ,97)', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                   <Row gutter={[5, 2]}> {/* 여백을 추가 */}
                     <Col span={24}>
                       <DiagramAlertStep />
@@ -236,104 +300,104 @@ const DiagramInfo = () => {
           </span>
           <Row gutter={[48, 5]} style={{ marginTop: '14px' }}>
 
-              <Col span={24}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[0]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                        <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[0]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
+                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
-              <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[1]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                        <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[1]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
+                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
 
-              <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[2]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[2]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
-              <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[3]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[3]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
-              <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[4]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[4]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
-              <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(38, 55, 82)', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                  <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
-                  <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                    <Col span={12}>
-                      <DiagramInfoTable data={tableDataArray[5]} />
-                    </Col>
-                    <Col span={12}>
-                      {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                        <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
-                      )}
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
+            <Col span={24} style={{ marginTop: '6px' }}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
+                <Row gutter={[10, 2]}> {/* 여백을 추가 */}
+                  <Col span={12}>
+                    <DiagramInfoTable data={tableDataArray[5]} />
+                  </Col>
+                  <Col span={12}>
+                    {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
+                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
+                    )}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
 
-           
+
           </Row>
         </Col>
       </Row>
