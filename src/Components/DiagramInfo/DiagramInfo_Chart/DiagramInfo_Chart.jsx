@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
+const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState([]);
 
@@ -12,7 +12,8 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
 
     function randomData() {
       const now = new Date();
-      const value = data;
+      const value = (dataS, data);
+
       return [now.getTime(), value];
     }
 
@@ -166,9 +167,9 @@ const DiagramInfo_Chart = ({ data, chartColor, Min, Max }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [data, chartColor, Min, Max, chartData]);
+  }, [dataS, chartColor, Min, Max, chartData, data]);
 
-  return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft:'-10px'}} />;
+  return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft: '-10px' }} />;
 };
 
 export default DiagramInfo_Chart;
