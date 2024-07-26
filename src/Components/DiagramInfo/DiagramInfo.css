@@ -13,7 +13,6 @@
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
-    font-size: 12px;
     padding: 3px !important;
 }
 
@@ -24,6 +23,18 @@
     margin-top: -10px;
 }
 
+.DiagramInfoTable_CurrentValue {
+    color: #FFD700;
+}
+
+.DiagramInfoTable_CurrentValue div,
+.DiagramInfoTable_PreviousValue div,
+.DiagramInfoTable_DailyMax div,
+.DiagramInfoTable_DailyMin div,
+.DiagramInfoTable_RateOfChange div {
+    font-size: 10.5px;
+    font-family: 'NanumSquareNeo' !important;
+}
 
 .DiagramInfoTable_CurrentValue,
 .DiagramInfoTable_PreviousValue,
@@ -31,15 +42,14 @@
 .DiagramInfoTable_DailyMin,
 .DiagramInfoTable_RateOfChange {
     text-align: center !important;
-    font-family: 'NanumSquareNeo' !important;
+    font-family: 'NanumSquareNeoBold' !important;
+    font-size: 12px;
 }
 
-.DiagramInfoTable_CurrentValue {
-    color: #FFD700;
-  }
-  
+
+
 .DiagramInfoTable_RateOfChange {
-    font-family: 'NanumSquareNeoExtraBold' !important;
+    font-family: 'NanumSquareNeoBold' !important;
 }
 
 .ant-table-wrapper .ant-table-thead>tr>th {
@@ -184,7 +194,8 @@
 .ant-timeline-item-tail {
     background-color: rgb(255, 192, 192) !important;
 }
-.ant-timeline .ant-timeline-item-content{
+
+.ant-timeline .ant-timeline-item-content {
     position: relative;
     inset-block-start: -5px !important;
     margin-inline-start: 26px;
@@ -194,13 +205,15 @@
     word-break: break-word;
 }
 
-.ant-timeline .ant-timeline-item{
+.ant-timeline .ant-timeline-item {
     margin-bottom: -7px !important;
 }
+
 .ant-timeline .ant-timeline-item-head-blue {
     color: #f16d6d !important;
     border-color: #f16d6d !important;
 }
+
 .ant-timeline .ant-timeline-item-head {
     position: absolute;
     width: 10px;
@@ -209,5 +222,3 @@
     border: 3px solid transparent;
     border-radius: 50%;
 }
-
-

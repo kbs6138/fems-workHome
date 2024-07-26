@@ -43,6 +43,9 @@ const DiagramInfo = () => {
   };
 
   const formatNumber = (number) => {
+    if (number === undefined || number === null) {
+      return '-'; // 기본값 설정
+    }
     return number.toLocaleString(); // Add commas to the number
   };
 

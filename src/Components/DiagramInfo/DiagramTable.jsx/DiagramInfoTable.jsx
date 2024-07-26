@@ -4,6 +4,9 @@ import '../DiagramInfo.css'; // CSS 파일을 import
 import { BiSolidUpvote ,  BiSolidDownvote } from "react-icons/bi";
 
 const formatNumber = (number) => {
+  if (number === undefined || number === null) {
+    return '-'; // 기본값 설정
+  }
   return number.toLocaleString(); // Add commas to the number
 };
 
@@ -39,29 +42,32 @@ const columns = [
     render: (text) => {
       const rate = parseFloat(text);
       let color;
+      let backgroundColor;
       let Icon = null;
 
       if (rate > 0) {
-        color = '#FF5A5A';
+        color = '#1CCD2D';
+        backgroundColor = '#1E4532'; // 수치가 0보다 낮을 때배경
         Icon = BiSolidUpvote;
       } else if (rate < 0) {
-        color = '#7696FF';
+        color = '#FF1846';
+        backgroundColor = '#55203D'; // 수치가 0보다 높을 때 배경
         Icon = BiSolidDownvote;
       } else {
         color = 'inherit'; // 변화가 없을 때 색상 설정
+        backgroundColor = 'inherit'; // 변화가 없을 때 배경색 설정
         Icon = null; // 아이콘 숨김
       }
 
       return (
-        <div className="DiagramInfoTable_RateOfChange" style={{ color, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }}>
+        <div className="DiagramInfoTable_RateOfChange" style={{ color, backgroundColor, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', padding: '5px', borderRadius: '10px' }}>
           {text !== '0.0' ? `${text}%` : '0.0'}
-          {Icon && <Icon size={15} style={{ color }} />}
+          {Icon && <Icon size={12} style={{ color }} />}
         </div>
       );
     },
   },
 ];
-
 
 const DiagramInfoTable = ({ data }) => (
   <div className="DiagramInfoTable">
