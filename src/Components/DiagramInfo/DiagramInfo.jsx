@@ -398,7 +398,7 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.am_data_s}
                         dataT={DiagramInfoData[0]?.am_data_t}
                         rstColor={rstchartColors}
-                        Min={'425'}
+                        Min={'415'}
                         Max={'460'}
                         /**
                         Min={DiagramCurrentData[5].min}
