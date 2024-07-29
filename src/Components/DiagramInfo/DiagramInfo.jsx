@@ -1,15 +1,16 @@
 // DiagramInfo.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import DiagramInfoTest_Chart from './DiagramInfo_Chart/DiagramInfoTest_Chart';
 import { DownOutlined } from '@ant-design/icons';
 import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { VscPulse } from "react-icons/vsc";
-import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import { Card, Col, Row, Layout, Dropdown, Space, Button, Select } from 'antd';
+import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
+import DiagramInfo_VWChart from './DiagramInfo_Chart/DiagramInfo_VWChart';
+import DiagramInfo_MinuteChart from './DiagramInfo_Chart/DiagramInfo_MinuteChart';
 import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
 import './DiagramInfo.css';
 import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
@@ -25,6 +26,7 @@ const DiagramInfo = () => {
   const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
   const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
   const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
+
 
 
   const handleMenuClick = (key) => {
@@ -171,14 +173,20 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)' }}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
                     </span>
                     <Card bordered={false} className='Diagram_V_Chart_Card'>
-                      <DiagramInfoChart key={1} data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramMinmaxData[0]?.min || 0} Max={DiagramMinmaxData[0]?.max || 0} />
+                      <DiagramInfo_VWChart key={1}
+                        dataR={DiagramInfoData[0]?.v_data_r}
+                        dataS={DiagramInfoData[0]?.v_data_s}
+                        dataT={DiagramInfoData[0]?.v_data_t}
+                        chartColor={chartColors[0]}
+                        Min={DiagramMinmaxData[0]?.min || 0}
+                        Max={DiagramMinmaxData[0]?.max || 0} />
                     </Card>
                   </Card>
                 )}
@@ -190,14 +198,20 @@ const DiagramInfo = () => {
                       <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon_A' />전류</div>
 
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background:'rgb(42 ,63 ,97)' }}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
                     </span>
                     <Card bordered={false} className='Diagram_A_Chart_Card'>
-                      <DiagramInfoChart key={2} data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramMinmaxData[1]?.min || 0} Max={DiagramMinmaxData[1]?.max || 0} />
+                      <DiagramInfo_VWChart key={2}
+                        dataR={DiagramInfoData[0]?.am_data_r}
+                        dataS={DiagramInfoData[0]?.am_data_s}
+                        dataT={DiagramInfoData[0]?.am_data_t}
+                        chartColor={chartColors[1]}
+                        Min={DiagramMinmaxData[1]?.min || 0}
+                        Max={DiagramMinmaxData[1]?.max || 0} />
                     </Card>
                   </Card>
                 )}
@@ -209,7 +223,7 @@ const DiagramInfo = () => {
                       <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon_W' />전력</div>
 
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
@@ -228,7 +242,7 @@ const DiagramInfo = () => {
                       <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
 
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
@@ -247,7 +261,7 @@ const DiagramInfo = () => {
                       <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
 
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px' , background:'rgb(42 ,63 ,97)'}}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
@@ -266,7 +280,7 @@ const DiagramInfo = () => {
                       <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
 
                       <Link to="/DiagramInfo">
-                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background:'rgb(42 ,63 ,97)' }}>
+                        <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
@@ -309,7 +323,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
+                      <DiagramInfo_MinuteChart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
                     )}
                   </Col>
                 </Row>
@@ -325,7 +339,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                      <DiagramInfoTest_Chart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
+                      <DiagramInfo_MinuteChart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
                     )}
                   </Col>
                 </Row>
@@ -342,7 +356,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
                     )}
                   </Col>
                 </Row>
@@ -358,7 +372,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
                     )}
                   </Col>
                 </Row>
@@ -374,7 +388,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
                     )}
                   </Col>
                 </Row>
@@ -390,7 +404,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                      <DiagramInfoTest_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
                     )}
                   </Col>
                 </Row>

@@ -1,22 +1,25 @@
+// DiagramInfo_VWChart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
+const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
   const chartRef = useRef(null);
-  const [chartDataR, setChartDataR] = useState([]);
-  const [chartDataS, setChartDataS] = useState([]);
-  const [chartDataT, setChartDataT] = useState([]);
+  const [chartData, setChartData] = useState({
+    dataR: [],
+    dataS: [],
+    dataT: []
+  });
 
   useEffect(() => {
     const chartDom = chartRef.current;
     const myChart = echarts.init(chartDom);
 
-    function randomData(data) {
+    function randomData(value) {
       const now = new Date();
-      return [now.getTime(), data];
+      return [now.getTime(), value];
     }
 
-    if (chartDataR.length === 0 && chartDataS.length === 0 && chartDataT.length === 0) {
+    if (chartData.dataR.length === 0) {
       const initialDataR = [];
       const initialDataS = [];
       const initialDataT = [];
@@ -25,9 +28,11 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
         initialDataS.push(randomData(dataS));
         initialDataT.push(randomData(dataT));
       }
-      setChartDataR(initialDataR);
-      setChartDataS(initialDataS);
-      setChartDataT(initialDataT);
+      setChartData({
+        dataR: initialDataR,
+        dataS: initialDataS,
+        dataT: initialDataT
+      });
     }
 
     const option = {
@@ -35,9 +40,11 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
         trigger: 'axis',
         formatter: function (params) {
           const date = new Date(params[0].value[0]);
-          return (
-            `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} : ${params[0].value[1]}`
-          );
+          return params.map(param => {
+            const seriesName = param.seriesName;
+            const value = param.value[1];
+            return `${seriesName}: ${value}`;
+          }).join('<br/>') + `<br/>시간:   ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
         },
         axisPointer: {
           animation: false
@@ -54,14 +61,14 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
         },
         axisLabel: {
           color: function (value, index) {
-            if (value === chartDataR[chartDataR.length - 1][0]) {
+            if (value === chartData.dataR[chartData.dataR.length - 1][0]) {
               return '#7CFC00';
             }
             return 'white';
           },
           formatter: function (value, index) {
             const date = new Date(value);
-            if (value === chartDataR[0][0] || value === chartDataR[chartDataR.length - 1][0]) {
+            if (value === chartData.dataR[0][0] || value === chartData.dataR[chartData.dataR.length - 1][0]) {
               const hours = date.getHours().toString().padStart(2, '0');
               const minutes = date.getMinutes().toString().padStart(2, '0');
               const seconds = date.getSeconds().toString().padStart(2, '0');
@@ -71,7 +78,7 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           },
           showMaxLabel: true,
           showMinLabel: true,
-          fontSize: 10.5
+          fontSize: 10.5 // Set the font size to 10px
         }
       },
       yAxis: {
@@ -88,7 +95,7 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
         },
         axisLabel: {
           color: 'white',
-          fontSize: 10.5
+          fontSize: 10.5 // Set the font size to 10px
         }
       },
       series: [
@@ -96,19 +103,19 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           name: 'Data R',
           type: 'line',
           showSymbol: false,
-          data: chartDataR,
+          data: chartData.dataR,
           lineStyle: {
-            color: chartColor[0],
+            color: chartColor,
             width: 2
           },
           itemStyle: {
-            color: chartColor[0]
+            color: chartColor
           },
           markPoint: {
             data: [
               {
-                name: '현재값',
-                coord: chartDataR[chartDataR.length - 1],
+                name: '현재값 R',
+                coord: chartData.dataR[chartData.dataR.length - 1],
                 itemStyle: {
                   color: 'red'
                 },
@@ -130,19 +137,19 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           name: 'Data S',
           type: 'line',
           showSymbol: false,
-          data: chartDataS,
+          data: chartData.dataS,
           lineStyle: {
-            color: chartColor[1],
+            color: chartColor,
             width: 2
           },
           itemStyle: {
-            color: chartColor[1]
+            color: chartColor
           },
           markPoint: {
             data: [
               {
-                name: '현재값',
-                coord: chartDataS[chartDataS.length - 1],
+                name: '현재값 S',
+                coord: chartData.dataS[chartData.dataS.length - 1],
                 itemStyle: {
                   color: 'red'
                 },
@@ -164,19 +171,19 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           name: 'Data T',
           type: 'line',
           showSymbol: false,
-          data: chartDataT,
+          data: chartData.dataT,
           lineStyle: {
-            color: chartColor[2],
+            color: chartColor,
             width: 2
           },
           itemStyle: {
-            color: chartColor[2]
+            color: chartColor
           },
           markPoint: {
             data: [
               {
-                name: '현재값',
-                coord: chartDataT[chartDataT.length - 1],
+                name: '현재값 T',
+                coord: chartData.dataT[chartData.dataT.length - 1],
                 itemStyle: {
                   color: 'red'
                 },
@@ -195,6 +202,7 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           }
         }
       ],
+
       textStyle: {
         fontFamily: 'NanumSquareNeo'
       }
@@ -203,30 +211,29 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
     myChart.setOption(option);
 
     const interval = setInterval(() => {
-      setChartDataR((prevData) => {
-        const newData = [...prevData];
-        newData.shift();
-        newData.push(randomData(dataR));
-        return newData;
-      });
-      setChartDataS((prevData) => {
-        const newData = [...prevData];
-        newData.shift();
-        newData.push(randomData(dataS));
-        return newData;
-      });
-      setChartDataT((prevData) => {
-        const newData = [...prevData];
-        newData.shift();
-        newData.push(randomData(dataT));
-        return newData;
+      setChartData((prevData) => {
+        const newDataR = [...prevData.dataR];
+        const newDataS = [...prevData.dataS];
+        const newDataT = [...prevData.dataT];
+        newDataR.shift();
+        newDataS.shift();
+        newDataT.shift();
+        newDataR.push(randomData(dataR));
+        newDataS.push(randomData(dataS));
+        newDataT.push(randomData(dataT));
+        return {
+          dataR: newDataR,
+          dataS: newDataS,
+          dataT: newDataT
+        };
       });
 
+      // 차트 옵션 업데이트
       myChart.setOption({
         series: [
-          { data: chartDataR },
-          { data: chartDataS },
-          { data: chartDataT }
+          { data: chartData.dataR },
+          { data: chartData.dataS },
+          { data: chartData.dataT }
         ]
       });
     }, 1000);
@@ -234,9 +241,9 @@ const DiagramInfo_Chart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [dataR, dataS, dataT, chartColor, Min, Max, chartDataR, chartDataS, chartDataT]);
+  }, [dataR, dataS, dataT, chartColor, Min, Max, chartData]);
 
-  return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft:'-10px'}} />;
+  return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft: '-10px' }} />;
 };
 
-export default DiagramInfo_Chart;
+export default DiagramInfo_VWChart;
