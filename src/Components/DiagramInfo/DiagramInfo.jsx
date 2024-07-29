@@ -41,6 +41,8 @@ const DiagramInfo = () => {
   ];
 
   const [chartColors, setChartColors] = useState([]);
+  const [rstchartColors, setRSTColors] = useState([]);
+
 
   const calculateRateOfChange = (currentValue, previousValue) => {
     if (previousValue === 0) return 0; // 이전 값이 0일 때, 비율 변화는 0으로 처리
@@ -130,6 +132,10 @@ const DiagramInfo = () => {
     const colors = ['#FF6B6B', '#FFD700', '#9370DB', '#00BFFF', '#7CFC00', '#FF69B4'];
     setChartColors(colors);
 
+
+    const rstcolors = ['#00BFFF', '#7CFC00', '#FF69B4'];
+    setRSTColors(rstcolors);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -184,6 +190,7 @@ const DiagramInfo = () => {
                         dataR={DiagramInfoData[0]?.v_data_r}
                         dataS={DiagramInfoData[0]?.v_data_s}
                         dataT={DiagramInfoData[0]?.v_data_t}
+                        rstColor={rstchartColors}
                         chartColor={chartColors[0]}
                         Min={DiagramMinmaxData[0]?.min || 0}
                         Max={DiagramMinmaxData[0]?.max || 0} />
@@ -209,6 +216,7 @@ const DiagramInfo = () => {
                         dataR={DiagramInfoData[0]?.am_data_r}
                         dataS={DiagramInfoData[0]?.am_data_s}
                         dataT={DiagramInfoData[0]?.am_data_t}
+                        rstColor={rstchartColors}
                         chartColor={chartColors[1]}
                         Min={DiagramMinmaxData[1]?.min || 0}
                         Max={DiagramMinmaxData[1]?.max || 0} />

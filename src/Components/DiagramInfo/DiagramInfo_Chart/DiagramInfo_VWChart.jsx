@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
+const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     dataR: [],
@@ -100,16 +100,16 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
       },
       series: [
         {
-          name: 'Data R',
+          name: 'L1',
           type: 'line',
           showSymbol: false,
           data: chartData.dataR,
           lineStyle: {
-            color: chartColor,
+            color: rstColor[0],
             width: 2
           },
           itemStyle: {
-            color: chartColor
+            color: rstColor[0]
           },
           markPoint: {
             data: [
@@ -134,16 +134,16 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           }
         },
         {
-          name: 'Data S',
+          name: 'L2',
           type: 'line',
           showSymbol: false,
           data: chartData.dataS,
           lineStyle: {
-            color: chartColor,
+            color: rstColor[1],
             width: 2
           },
           itemStyle: {
-            color: chartColor
+            color: rstColor[1]
           },
           markPoint: {
             data: [
@@ -168,16 +168,16 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
           }
         },
         {
-          name: 'Data T',
+          name: 'L3',
           type: 'line',
           showSymbol: false,
           data: chartData.dataT,
           lineStyle: {
-            color: chartColor,
+            color: rstColor[2],
             width: 2
           },
           itemStyle: {
-            color: chartColor
+            color: rstColor[2]
           },
           markPoint: {
             data: [
@@ -241,7 +241,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [dataR, dataS, dataT, chartColor, Min, Max, chartData]);
+  }, [dataR, dataS, dataT, chartColor, Min, Max, chartData, rstColor]);
 
   return <div ref={chartRef} style={{ width: '495px', height: '230px', marginTop: '-50px', marginLeft: '-10px' }} />;
 };
