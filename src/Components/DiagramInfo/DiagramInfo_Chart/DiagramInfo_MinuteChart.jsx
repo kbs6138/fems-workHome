@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_MinuteChart = ({ data, chartColor, Min, Max }) => {
+const DiagramInfoTest_Chart = ({ data, chartColor, Min, Max }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState([]);
 
@@ -181,8 +181,8 @@ const DiagramInfo_MinuteChart = ({ data, chartColor, Min, Max }) => {
   }, [data, chartColor, Min, Max, chartData]);
 
   return (
-    <div id='DiagramInfo_MinuteChart' ref={chartRef} style={{ width: '100%', height: '80px', background: 'rgb(42 ,63 ,97)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '10px', marginTop: '5px', backgroundColor: '#263752' }} />
+    <div id='DiagramInfoTest_Chart' ref={chartRef} style={{ width: '100%', height: '80px', background: 'rgb(42 ,63 ,97)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '10px', marginTop: '5px', backgroundColor: '#263752' }} />
   );
 };
 
-export default DiagramInfo_MinuteChart;
+export default DiagramInfoTest_Chart;

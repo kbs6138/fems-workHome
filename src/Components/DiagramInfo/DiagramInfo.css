@@ -13,11 +13,22 @@
     }
 }
 
-.DiagramInfoTable_RateOfChange_animate {
+
+.DiagramInfoTable_RateOfChange_animate,
+.DiagramInfoMinuteTable_RateOfChange_animate {
     animation: flicker 10s ease-in-out;
 }
 
-
+.DiagramInfoMinuteTable-title,
+.DiagramInfoMinuteTable,
+.DiagramInfoMinuteTable_CurrentValue,
+.DiagramInfoMinuteTable_PreviousValue,
+.DiagramInfoMinuteTable_DailyMax,
+.DiagramInfoMinuteTable_DailyMin,
+.DiagramInfoMinuteTable_RateOfChange,
+.DiagramInfoMinuteTable_phase {
+    padding: 2px !important;
+}
 
 .DiagramLogTable-title,
 .DiagramLogTable_Time,
@@ -44,7 +55,12 @@
     margin-top: -10px;
 }
 
-.DiagramInfoTable_CurrentValue {
+.DiagramInfoMinuteTable_phase div {
+    font-weight: bold !important;
+}
+
+.DiagramInfoTable_CurrentValue,
+.DiagramInfoMinuteTable_CurrentValue {
     color: #FFD700;
 }
 
@@ -52,7 +68,13 @@
 .DiagramInfoTable_PreviousValue div,
 .DiagramInfoTable_DailyMax div,
 .DiagramInfoTable_DailyMin div,
-.DiagramInfoTable_RateOfChange div {
+.DiagramInfoTable_RateOfChange div,
+.DiagramInfoMinuteTable_CurrentValue div,
+.DiagramInfoMinuteTable_PreviousValue div,
+.DiagramInfoMinuteTable_DailyMax div,
+.DiagramInfoMinuteTable_DailyMin div,
+.DiagramInfoMinuteTable_RateOfChange div,
+.DiagramInfoMinuteTable_phase div {
     font-size: 10.5px;
     font-family: 'NanumSquareNeo' !important;
 }
@@ -61,7 +83,13 @@
 .DiagramInfoTable_PreviousValue,
 .DiagramInfoTable_DailyMax,
 .DiagramInfoTable_DailyMin,
-.DiagramInfoTable_RateOfChange {
+.DiagramInfoTable_RateOfChange,
+.DiagramInfoMinuteTable_CurrentValue,
+.DiagramInfoMinuteTable_PreviousValue,
+.DiagramInfoMinuteTable_DailyMax,
+.DiagramInfoMinuteTable_DailyMin,
+.DiagramInfoMinuteTable_RateOfChange,
+.DiagramInfoMinuteTable_phase {
     text-align: center !important;
     font-family: 'NanumSquareNeoBold' !important;
     font-size: 12px;

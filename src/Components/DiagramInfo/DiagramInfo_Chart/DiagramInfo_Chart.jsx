@@ -107,7 +107,7 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8,
+                symbolSize: 10,
                 label: {
                   show: false
                 },

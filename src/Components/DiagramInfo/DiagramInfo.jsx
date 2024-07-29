@@ -7,10 +7,12 @@ import { SlEnergy } from "react-icons/sl";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { VscPulse } from "react-icons/vsc";
 import { Card, Col, Row, Layout, Dropdown, Space, Button, Select } from 'antd';
-import DiagramInfoTable from './DiagramTable.jsx/DiagramInfoTable';
+import DiagramInfoTable from './DiagramTable/DiagramInfoTable';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import DiagramInfo_VWChart from './DiagramInfo_Chart/DiagramInfo_VWChart';
 import DiagramInfo_MinuteChart from './DiagramInfo_Chart/DiagramInfo_MinuteChart';
+import DiagramInfo_VWMinuteChart from './DiagramInfo_Chart/DiagramInfo_VWMinuteChart';
+import DiagramInfoMinuteTable from './DiagramTable/DiagramInfoMinuteTable';
 import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
 import './DiagramInfo.css';
 import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
@@ -61,61 +63,96 @@ const DiagramInfo = () => {
     [
       {
         key: '1',
-        currentValue: DiagramInfoData[0]?.v_data,
+        Phase: 'L1',
+        PhaseValue: DiagramInfoData[0]?.v_data_r,
         dailyMax: formatNumber(DiagramCurrentData[0]?.max || 0), //최대값
         dailyMin: formatNumber(DiagramCurrentData[0]?.min || 0), //최소값
         previousValue: formatNumber(DiagramCurrentData[0]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data, DiagramCurrentData[0]?.avg),
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_r, DiagramCurrentData[0]?.avg),
       },
-    ],
-    [
       {
-        key: '2',
-        currentValue: DiagramInfoData[0]?.am_data,
+        Phase: 'L2',
+        PhaseValue: DiagramInfoData[0]?.v_data_s,
         dailyMax: formatNumber(DiagramCurrentData[1]?.max || 0), //최대값
         dailyMin: formatNumber(DiagramCurrentData[1]?.min || 0), //최소값
         previousValue: formatNumber(DiagramCurrentData[1]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data, DiagramCurrentData[1]?.avg),
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_s, DiagramCurrentData[1]?.avg),
+      },
+      {
+        Phase: 'L3',
+        PhaseValue: DiagramInfoData[0]?.v_data_t,
+        dailyMax: formatNumber(DiagramCurrentData[2]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[2]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[2]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_t, DiagramCurrentData[2]?.avg),
+      },
+    ],
+
+    [
+      {
+        key: '2',
+        Phase: 'L1',
+        PhaseValue: DiagramInfoData[0]?.am_data_r,
+        dailyMax: formatNumber(DiagramCurrentData[3]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[3]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[3]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_r, DiagramCurrentData[3]?.avg),
+      },
+      {
+        Phase: 'L2',
+        PhaseValue: DiagramInfoData[0]?.am_data_s,
+        dailyMax: formatNumber(DiagramCurrentData[4]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[4]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[4]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_s, DiagramCurrentData[4]?.avg),
+      },
+      {
+        Phase: 'L3',
+        PhaseValue: DiagramInfoData[0]?.am_data_t,
+        dailyMax: formatNumber(DiagramCurrentData[5]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[5]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[5]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_t, DiagramCurrentData[5]?.avg),
       },
     ],
     [
       {
         key: '3',
         currentValue: DiagramInfoData[0]?.w_data,
-        dailyMax: formatNumber(DiagramCurrentData[2]?.max || 0), //최대값
-        dailyMin: formatNumber(DiagramCurrentData[2]?.min || 0), //최소값
-        previousValue: formatNumber(DiagramCurrentData[2]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.w_data, DiagramCurrentData[2]?.avg),
+        dailyMax: formatNumber(DiagramCurrentData[6]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[6]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[6]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.w_data, DiagramCurrentData[6]?.avg),
       },
     ],
     [
       {
         key: '4',
         currentValue: DiagramInfoData[0]?.pf_data,
-        dailyMax: formatNumber(DiagramCurrentData[3]?.max || 0), //최대값
-        dailyMin: formatNumber(DiagramCurrentData[3]?.min || 0), //최소값
-        previousValue: formatNumber(DiagramCurrentData[3]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.pf_data, DiagramCurrentData[3]?.avg),
+        dailyMax: formatNumber(DiagramCurrentData[7]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[7]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[7]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.pf_data, DiagramCurrentData[7]?.avg),
       },
     ],
     [
       {
         key: '5',
         currentValue: DiagramInfoData[0]?.out_data,
-        dailyMax: formatNumber(DiagramCurrentData[4]?.max || 0), //최대값
-        dailyMin: formatNumber(DiagramCurrentData[4]?.min || 0), //최소값
-        previousValue: formatNumber(DiagramCurrentData[4]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.out_data, DiagramCurrentData[4]?.avg),
+        dailyMax: formatNumber(DiagramCurrentData[8]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[8]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[8]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.out_data, DiagramCurrentData[8]?.avg),
       },
     ],
     [
       {
         key: '6',
         currentValue: DiagramInfoData[0]?.in_data,
-        dailyMax: formatNumber(DiagramCurrentData[5]?.max || 0), //최대값
-        dailyMin: formatNumber(DiagramCurrentData[5]?.min || 0), //최소값
-        previousValue: formatNumber(DiagramCurrentData[5]?.avg || 0), //평균
-        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[5]?.avg),
+        dailyMax: formatNumber(DiagramCurrentData[9]?.max || 0), //최대값
+        dailyMin: formatNumber(DiagramCurrentData[9]?.min || 0), //최소값
+        previousValue: formatNumber(DiagramCurrentData[9]?.avg || 0), //평균
+        rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[9]?.avg),
       },
     ],
   ];
@@ -133,7 +170,7 @@ const DiagramInfo = () => {
     setChartColors(colors);
 
 
-    const rstcolors = ['#00BFFF', '#7CFC00', '#FF69B4'];
+    const rstcolors = ['#00C700', '#FC738A', '#7696FF'];
     setRSTColors(rstcolors);
 
     return () => clearInterval(interval);
@@ -191,7 +228,6 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.v_data_s}
                         dataT={DiagramInfoData[0]?.v_data_t}
                         rstColor={rstchartColors}
-                        chartColor={chartColors[0]}
                         Min={DiagramMinmaxData[0]?.min || 0}
                         Max={DiagramMinmaxData[0]?.max || 0} />
                     </Card>
@@ -217,7 +253,6 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.am_data_s}
                         dataT={DiagramInfoData[0]?.am_data_t}
                         rstColor={rstchartColors}
-                        chartColor={chartColors[1]}
                         Min={DiagramMinmaxData[1]?.min || 0}
                         Max={DiagramMinmaxData[1]?.max || 0} />
                     </Card>
@@ -327,11 +362,22 @@ const DiagramInfo = () => {
                 <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[0]} />
+                    <DiagramInfoMinuteTable data={tableDataArray[0]} />
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart data={DiagramInfoData[0]?.v_data} chartColor={chartColors[0]} Min={DiagramCurrentData[0].min} Max={DiagramCurrentData[0].max} />
+                      <DiagramInfo_VWMinuteChart
+                        dataR={DiagramInfoData[0]?.v_data_r}
+                        dataS={DiagramInfoData[0]?.v_data_s}
+                        dataT={DiagramInfoData[0]?.v_data_t}
+                        rstColor={rstchartColors}
+                        Min={'215'}
+                        Max={'225'}
+                        /*
+                        /*Min={DiagramCurrentData[0].min}
+                        Max={DiagramCurrentData[2].max}*/ />
+
+
                     )}
                   </Col>
                 </Row>
@@ -343,11 +389,21 @@ const DiagramInfo = () => {
                 <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
-                    <DiagramInfoTable data={tableDataArray[1]} />
+                    <DiagramInfoMinuteTable data={tableDataArray[1]} />
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart data={DiagramInfoData[0]?.am_data} chartColor={chartColors[1]} Min={DiagramCurrentData[1].min} Max={DiagramCurrentData[1].max} />
+                      <DiagramInfo_VWMinuteChart
+                        dataR={DiagramInfoData[0]?.am_data_r}
+                        dataS={DiagramInfoData[0]?.am_data_s}
+                        dataT={DiagramInfoData[0]?.am_data_t}
+                        rstColor={rstchartColors}
+                        Min={'425'}
+                        Max={'460'}
+                        /**
+                        Min={DiagramCurrentData[5].min}
+                        Max={DiagramCurrentData[5].max}  */
+                        />
                     )}
                   </Col>
                 </Row>
@@ -364,7 +420,11 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramCurrentData[2].min} Max={DiagramCurrentData[2].max} />
+                      <DiagramInfo_MinuteChart key={6}
+                        data={DiagramInfoData[0]?.w_data}
+                        chartColor={chartColors[2]}
+                        Min={DiagramCurrentData[6].min}
+                        Max={DiagramCurrentData[6].max} />
                     )}
                   </Col>
                 </Row>
@@ -380,7 +440,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[3].min} Max={DiagramCurrentData[3].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[7].min} Max={DiagramCurrentData[7].max} />
                     )}
                   </Col>
                 </Row>
@@ -396,7 +456,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[4].min} Max={DiagramCurrentData[4].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[8].min} Max={DiagramCurrentData[8].max} />
                     )}
                   </Col>
                 </Row>
@@ -412,7 +472,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[5].min} Max={DiagramCurrentData[5].max} />
+                      <DiagramInfo_MinuteChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[9].min} Max={DiagramCurrentData[9].max} />
                     )}
                   </Col>
                 </Row>
