@@ -1,12 +1,11 @@
 // DiagramInfo.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { DownOutlined } from '@ant-design/icons';
 import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { VscPulse } from "react-icons/vsc";
-import { Card, Col, Row, Layout, Dropdown, Space, Button, Select } from 'antd';
+import { Card, Col, Row, Layout, Button, Select } from 'antd';
 import DiagramInfoTable from './DiagramTable/DiagramInfoTable';
 import DiagramInfoChart from './DiagramInfo_Chart/DiagramInfo_Chart';
 import DiagramInfo_VWChart from './DiagramInfo_Chart/DiagramInfo_VWChart';

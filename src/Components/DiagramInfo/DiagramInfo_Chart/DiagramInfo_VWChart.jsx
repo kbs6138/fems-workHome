@@ -44,7 +44,9 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
             const seriesName = param.seriesName;
             const value = param.value[1];
             return `${seriesName}: ${value}`;
-          }).join('<br/>') + `<br/>시간:   ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+          }).join('<br/>') + `<br/>   
+          ${date.getFullYear()}년${date.getMonth() + 1}월${date.getDate()}일
+           ${date.getHours()}시${date.getMinutes()}분${date.getSeconds()}초`;
         },
         axisPointer: {
           animation: false

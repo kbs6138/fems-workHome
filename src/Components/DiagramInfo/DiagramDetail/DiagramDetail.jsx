@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { DownOutlined } from '@ant-design/icons';
 import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { VscPulse } from "react-icons/vsc";
-import { Card, Col, Row, Layout, Dropdown, Space, Select, Tabs } from 'antd';
+import { Card, Col, Row, Layout, Select, Tabs } from 'antd';
 import DiagramDetail_Chart from './DiagramDetailChart/DiagramDetail_Chart'; // 전력~내부온도
 import DiagramDetail_VWChart from './DiagramDetailChart/DiagramDetail_VWChart'; // 전압,전력
 import DiagramDetailAlertStep from './DiagramDetailAlertStep/DiagramDetailAlertStep';
