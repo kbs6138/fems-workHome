@@ -362,26 +362,29 @@ const DiagramDetail = () => {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '20px' }}>상세조회</span>
                             <span style={{ fontSize: '16px' }}>{currentTime}</span> {/* 현재 시간 표시 */}
-                            <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
-                                <Option value="Option1" >장비1</Option>
-                                <Option value="Option2" >장비2</Option>
-                                <Option value="Option3" >장비3</Option>
-                            </Select>
-                            <Dropdown
-                                menu={{
-                                    items: menuItems.map(({ key, label }) => ({
-                                        key,
-                                        label,
-                                        onClick: () => handleMenuClick(key), // 클릭 시 refreshInterval 업데이트
-                                    })),
-                                }}
-                                trigger={['click']}
-                            >
-                                <a onClick={e => e.preventDefault()}>
-                                    <Space style={{ color: 'white' }}>{menuItems.find(item => item.key === refreshInterval)?.label || '10초'}<DownOutlined /></Space>
-                                </a>
-                            </Dropdown>
+
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Select
+                                    defaultValue={menuItems.find(item => item.key === refreshInterval)?.label || '10초'}
+                                    style={{ width: 120, color: 'white' , marginRight:'10px'  }}
+                                    onChange={value => handleMenuClick(menuItems.find(item => item.label === value).key)}
+                                    dropdownStyle={{ color: 'white'}} // Dropdown 메뉴의 스타일을 설정
+                                >
+                                    {menuItems.map(({ key, label }) => (
+                                        <Option key={key} value={label}>
+                                            {label}
+                                        </Option>
+                                    ))}
+                                </Select>
+                                <Select defaultValue="Option0" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
+                                    <Option value="Option0" >장비선택</Option>
+                                    <Option value="Option1" >장비1</Option>
+                                    <Option value="Option2" >장비2</Option>
+                                    <Option value="Option3" >장비3</Option>
+                                </Select>
+                            </div>
                         </div>
+
                         <Col span={24}>
                             <Row>
                                 <Col span={24} style={{ marginTop: '10px' }}>
@@ -389,7 +392,7 @@ const DiagramDetail = () => {
                                 </Col>
                             </Row>
                             <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                                <Col span={12}>
+                                <Col span={8}>
                                     <Card className='DiagramDetailAlertStep_Card' bordered={false}>
                                         <DiagramDetailAlertStep />
                                     </Card>
