@@ -1,8 +1,7 @@
-// DiagramInfo_Chart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
+const DiagramDetail_MinuteChart = ({ data, chartColor, Min, Max }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState([]);
 
@@ -12,14 +11,13 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
 
     function randomData() {
       const now = new Date();
-      const value = (dataS, data);
-
+      const value = data;
       return [now.getTime(), value];
     }
 
     if (chartData.length === 0) {
       const initialData = [];
-      for (let i = 0; i < 6000; i++) {
+      for (let i = 0; i < 60; i++) {
         initialData.push(randomData());
       }
       setChartData(initialData);
@@ -66,7 +64,13 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
           },
           showMaxLabel: true,
           showMinLabel: true,
-          fontSize: 10.5 // Set the font size to 10px
+          fontSize: 10.5
+        },
+        axisLine: {
+          show: true // x축 선 숨기기
+        },
+        axisTick: {
+          show: true // x축 눈금 숨기기
         }
       },
       yAxis: {
@@ -83,7 +87,14 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
         },
         axisLabel: {
           color: 'white',
-          fontSize: 10.5 // Set the font size to 10px
+          show: false, // y축 레이블 숨기기
+          fontSize: 10.5
+        },
+        axisLine: {
+          show: false // y축 선 숨기기
+        },
+        axisTick: {
+          show: true // y축 눈금 숨기기
         }
       },
       series: [
@@ -93,7 +104,7 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
           data: chartData,
           lineStyle: {
             color: chartColor,
-            width: 2
+            width: 1.2
           },
           itemStyle: {
             color: chartColor
@@ -107,7 +118,7 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 10,
+                symbolSize: 7,
                 label: {
                   show: false
                 },
@@ -157,7 +168,7 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
             },
             showMaxLabel: true,
             showMinLabel: true,
-            fontSize: 10.5 // Set the font size to 10px
+            fontSize: 10.5
           },
         },
         series: [{ data: chartData }]
@@ -167,9 +178,11 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [dataS, chartColor, Min, Max, chartData, data]);
+  }, [data, chartColor, Min, Max, chartData]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
+  return (
+    <div id='DiagramDetail_MinuteChart' ref={chartRef} style={{ width: '100%', height: '80px', background: 'rgb(42 ,63 ,97)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '10px', marginTop: '5px', backgroundColor: '#263752' }} />
+  );
 };
 
-export default DiagramInfo_Chart;
+export default DiagramDetail_MinuteChart;

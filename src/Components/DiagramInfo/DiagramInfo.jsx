@@ -215,7 +215,7 @@ const DiagramInfo = () => {
                   <Card bordered={false} className='Diagram_V_Card' size='small'>
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />

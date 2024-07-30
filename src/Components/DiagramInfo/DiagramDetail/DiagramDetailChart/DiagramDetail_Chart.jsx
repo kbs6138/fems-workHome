@@ -1,8 +1,8 @@
-// DiagramInfo_Chart.js
+// DiagramDetail_Chart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
+const DiagramDetail_Chart = ({ dataS, chartColor, Min, Max, data }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState([]);
 
@@ -31,7 +31,10 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
         formatter: function (params) {
           const date = new Date(params[0].value[0]);
           return (
-            `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} : ${params[0].value[1]}`
+            ` ${date.getFullYear()}년${date.getMonth() + 1}월${date.getDate()}일 
+            <br/>${date.getHours()}시${date.getMinutes()}분${date.getSeconds()}초 
+            <br/>수치 : ${params[0].value[1]}`
+
           );
         },
         axisPointer: {
@@ -169,7 +172,7 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
     };
   }, [dataS, chartColor, Min, Max, chartData, data]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '350px', marginTop: '-40px' }} />;
 };
 
-export default DiagramInfo_Chart;
+export default DiagramDetail_Chart;

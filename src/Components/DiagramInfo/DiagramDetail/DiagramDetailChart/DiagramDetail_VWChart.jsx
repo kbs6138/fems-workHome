@@ -1,8 +1,8 @@
-// DiagramInfo_VWChart.js
+// DiagramDetail_VWChart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
+const DiagramDetail_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     dataR: [],
@@ -44,7 +44,9 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
             const seriesName = param.seriesName;
             const value = param.value[1];
             return `${seriesName}: ${value}`;
-          }).join('<br/>') + `<br/>시간:   ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+          }).join('<br/>') + `<br/>   
+          ${date.getFullYear()}년${date.getMonth() + 1}월${date.getDate()}일
+           ${date.getHours()}시${date.getMinutes()}분${date.getSeconds()}초`;
         },
         axisPointer: {
           animation: false
@@ -243,7 +245,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
     };
   }, [dataR, dataS, dataT, chartColor, Min, Max, chartData, rstColor]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '350px', marginTop: '-40px' }} />;
 };
 
-export default DiagramInfo_VWChart;
+export default DiagramDetail_VWChart;

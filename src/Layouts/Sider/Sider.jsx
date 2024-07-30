@@ -12,39 +12,33 @@ function getItem(label, key, icon, children, link) {
     key,
     icon,
     children,
-    label: <Link to={link}>{label}</Link>,
+    label: link ? <Link to={link}>{label}</Link> : label,
   };
 }
 
 const items = [
   getItem('통합 모니터링', '1', <DesktopOutlined />, null, '/'),
-  getItem('장비 상세정보', '2', <DesktopOutlined />, null, '/DiagramInfo'),
+  getItem('장비 상세정보', 'sub2', <DesktopOutlined />, [
+    getItem('상세조회', '2', null, null, '/DiagramDetail'),
+  ], '/DiagramInfo'),
 
-
-  //getItem('전류/과전류 일별 모니터링', '2', <PieChartOutlined />, null),
-
-
-
-  getItem('추이그래프', 'sub2', <LineChartOutlined />, [
+  getItem('추이그래프', 'sub3', <LineChartOutlined />, [
     getItem('과전류 추이그래프', '3', null, null, '/OverCurrentTrendCurve'),
     getItem('전류불평형률 추이그래프', '4', null, null, '/UnbalanceRatioCurve'),
     getItem('누설전류 추이그래프', '5', null, null, '/LeakageCurrentCurve'),
     //getItem('15분 피크추이', '6', null, null, ''),
   ]),
-  getItem('설비관리모니터링', 'sub3', <FundOutlined />
-    , [
-      getItem('장비1', '7', null, null, '/MonitorFirst'),
-      //getItem('장비2', '8', null, null, ''),
-      //getItem('장비3', '9', null, null, ''),
-    ]),
+  getItem('설비관리모니터링', 'sub4', <FundOutlined />, [
+    getItem('장비1', '7', null, null, '/MonitorFirst'),
+    //getItem('장비2', '8', null, null, ''),
+    //getItem('장비3', '9', null, null, ''),
+  ]),
 
-  getItem('관리/사용자 전환', 'sub1', <UserOutlined />, [
+  getItem('관리/사용자 전환', 'sub5', <UserOutlined />, [
     getItem('관리자', '10', null, null, '/AppAdmin'),
     getItem('사용자', '11', null, null, ''),
   ]),
 ];
-
-
 
 const AppSider = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -64,7 +58,6 @@ const AppSider = () => {
         items={items}
         theme={isDarkMode ? 'light' : 'dark'}
       />
-
     </Sider>
   );
 };

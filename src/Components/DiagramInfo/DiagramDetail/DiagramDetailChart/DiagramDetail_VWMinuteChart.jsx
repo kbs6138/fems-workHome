@@ -1,8 +1,7 @@
-// DiagramInfo_VWChart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
+const DiagramDetail_VWMinuteChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     dataR: [],
@@ -23,7 +22,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
       const initialDataR = [];
       const initialDataS = [];
       const initialDataT = [];
-      for (let i = 0; i < 6000; i++) {
+      for (let i = 0; i < 60; i++) {
         initialDataR.push(randomData(dataR));
         initialDataS.push(randomData(dataS));
         initialDataT.push(randomData(dataT));
@@ -44,7 +43,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
             const seriesName = param.seriesName;
             const value = param.value[1];
             return `${seriesName}: ${value}`;
-          }).join('<br/>') + `<br/>시간:   ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+          }).join('<br/>') + `<br/>시간: ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
         },
         axisPointer: {
           animation: false
@@ -78,7 +77,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           },
           showMaxLabel: true,
           showMinLabel: true,
-          fontSize: 10.5 // Set the font size to 10px
+          fontSize: 10.5
         }
       },
       yAxis: {
@@ -95,7 +94,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
         },
         axisLabel: {
           color: 'white',
-          fontSize: 10.5 // Set the font size to 10px
+          fontSize: 10.5
         }
       },
       series: [
@@ -106,7 +105,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           data: chartData.dataR,
           lineStyle: {
             color: rstColor[0],
-            width: 2
+            width: 1.2
           },
           itemStyle: {
             color: rstColor[0]
@@ -120,7 +119,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8,
+                symbolSize: 7,
                 label: {
                   show: false
                 },
@@ -140,7 +139,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           data: chartData.dataS,
           lineStyle: {
             color: rstColor[1],
-            width: 2
+            width: 1.2
           },
           itemStyle: {
             color: rstColor[1]
@@ -154,7 +153,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8,
+                symbolSize: 7,
                 label: {
                   show: false
                 },
@@ -174,7 +173,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           data: chartData.dataT,
           lineStyle: {
             color: rstColor[2],
-            width: 2
+            width: 1.2
           },
           itemStyle: {
             color: rstColor[2]
@@ -188,7 +187,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
                   color: 'red'
                 },
                 symbol: 'circle',
-                symbolSize: 8,
+                symbolSize: 7,
                 label: {
                   show: false
                 },
@@ -202,7 +201,6 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           }
         }
       ],
-
       textStyle: {
         fontFamily: 'NanumSquareNeo'
       }
@@ -228,7 +226,6 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
         };
       });
 
-      // 차트 옵션 업데이트
       myChart.setOption({
         series: [
           { data: chartData.dataR },
@@ -243,7 +240,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
     };
   }, [dataR, dataS, dataT, chartColor, Min, Max, chartData, rstColor]);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '80px', background: 'rgb(42 ,63 ,97)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '10px', marginTop: '5px', backgroundColor: '#263752' }} />;
 };
 
-export default DiagramInfo_VWChart;
+export default DiagramDetail_VWMinuteChart;
