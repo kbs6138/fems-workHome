@@ -13,32 +13,32 @@ const formatNumber = (number) => {
 const columns = (animateKey) => [
   {
     title: '현재',
-    dataIndex: 'PhaseValue',
-    className: 'DiagramDetailTable-column DiagramDetailTable_CurrentValue',
-    render: (text) => <div className="DiagramDetailTable_CurrentValue">{formatNumber(text)}</div>,
+    dataIndex: 'currentValue',
+    className: 'DiagramInfoOtherTable-column DiagramInfoOtherTable_CurrentValue',
+    render: (text) => <div className="DiagramInfoOtherTable_CurrentValue">{formatNumber(text)}</div>,
   },
   {
     title: '최대',
     dataIndex: 'dailyMax',
-    className: 'DiagramDetailTable-column DiagramDetailTable_DailyMax',
-    render: (text) => <div className="DiagramDetailTable_DailyMax">{formatNumber(text)}</div>,
+    className: 'DiagramInfoOtherTable-column DiagramInfoOtherTable_DailyMax',
+    render: (text) => <div className="DiagramInfoOtherTable_DailyMax">{formatNumber(text)}</div>,
   },
   {
     title: '최소',
     dataIndex: 'dailyMin',
-    className: 'DiagramDetailTable-column DiagramDetailTable_DailyMin',
-    render: (text) => <div className="DiagramDetailTable_DailyMin">{formatNumber(text)}</div>,
+    className: 'DiagramInfoOtherTable-column DiagramInfoOtherTable_DailyMin',
+    render: (text) => <div className="DiagramInfoOtherTable_DailyMin">{formatNumber(text)}</div>,
   },
   {
     title: '평균',
     dataIndex: 'previousValue',
-    className: 'DiagramDetailTable-column DiagramDetailTable_PreviousValue',
-    render: (text) => <div className="DiagramDetailTable_PreviousValue">{formatNumber(text)}</div>,
+    className: 'DiagramInfoOtherTable-column DiagramInfoOtherTable_PreviousValue',
+    render: (text) => <div className="DiagramInfoOtherTable_PreviousValue">{formatNumber(text)}</div>,
   },
   {
     title: '평균대비',
     dataIndex: 'rateOfChange',
-    className: 'DiagramDetailTable-column DiagramDetailTable_RateOfChange',
+    className: 'DiagramInfoOtherTable-column DiagramInfoOtherTable_RateOfChange',
     render: (text) => {
       const rate = parseFloat(text);
       let color;
@@ -60,7 +60,7 @@ const columns = (animateKey) => [
       }
 
       return (
-        <div className={`DiagramDetailTable_RateOfChange ${animateKey}`} style={{ color, backgroundColor, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', padding: '5px', borderRadius: '10px' }}>
+        <div className={`DiagramInfoOtherTable_RateOfChange ${animateKey}`} style={{ color, backgroundColor, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', padding: '5px', borderRadius: '10px' }}>
           {text !== '0.0' ? `${text}%` : '0.0'}
           {Icon && <Icon size={12} style={{ color }} />}
         </div>
@@ -69,11 +69,11 @@ const columns = (animateKey) => [
   },
 ];
 
-const DiagramDetailTable = ({ data }) => {
+const DiagramInfoOtherTable = ({ data }) => {
   const [animateKey, setAnimateKey] = useState('');
 
   useEffect(() => {
-    setAnimateKey('DiagramDetailTable_RateOfChange_animate');
+    setAnimateKey('DiagramInfoOtherTable_RateOfChange_animate');
     const timer = setTimeout(() => {
       setAnimateKey('');
     }, 500);
@@ -81,16 +81,16 @@ const DiagramDetailTable = ({ data }) => {
   }, [data]);
 
   return (
-    <div className="DiagramDetailTable">
+    <div className="DiagramInfoOtherTable">
       <Table
         columns={columns(animateKey)}
         dataSource={data}
         pagination={false}
-        className="DiagramDetailTable-table"
+        className="DiagramInfoOtherTable-table"
         showHeader={true}
       />
     </div>
   );
 };
 
-export default DiagramDetailTable;
+export default DiagramInfoOtherTable;

@@ -1,0 +1,21 @@
+.custom-timeline .timeline-item-content {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.timeline-time {
+    flex-shrink: 0;
+    width: 80px;
+    /* 시간 표시 영역의 너비를 조정할 수 있습니다 */
+    text-align: left;
+    font-size: 10px;
+    font-family: 'NanumSquareNeoLight' !important;
+}
+
+.timeline-text {
+    flex-grow: 1;
+    text-align: right;
+    font-family: 'NanumSquareNeoLight' !important;
+    font-size: 12px;
+}

@@ -293,46 +293,46 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: rgb(38, 55, 82);
     color: white;
-    height: 100%;
+    height: 300px;
 }
 
-.ant-tabs-card >.ant-tabs-nav .ant-tabs-tab{
+.ant-tabs-card>.ant-tabs-nav .ant-tabs-tab {
     margin: 0;
     padding: 8px 16px;
     background: rgba(0, 0, 0, 0.02);
-    border: none; 
+    border: none;
 }
+
 .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #8fb4e9;
     text-shadow: 0 0 0.25px currentcolor;
 }
 
 
-.DiagramDetailTable_CurrentValue,
+.DiagramInfoOtherTable_CurrentValue,
 .DiagramInfoMinuteTable_CurrentValue {
     color: #FFD700;
 }
 
-.DiagramDetailTable_CurrentValue div,
-.DiagramDetailTable_PreviousValue div,
-.DiagramDetailTable_DailyMax div,
-.DiagramDetailTable_DailyMin div,
-.DiagramDetailTable_RateOfChange div,
+.DiagramInfoOtherTable_CurrentValue div,
+.DiagramInfoOtherTable_PreviousValue div,
+.DiagramInfoOtherTable_DailyMax div,
+.DiagramInfoOtherTable_DailyMin div,
+.DiagramInfoOtherTable_RateOfChange div,
 .DiagramDetailVWTable_CurrentValue div,
 .DiagramDetailVWTable_PreviousValue div,
 .DiagramDetailVWTable_DailyMax div,
 .DiagramDetailVWTable_DailyMin div,
 .DiagramDetailVWTable_RateOfChange div,
 .DiagramDetailVWTable_phase div {
-    font-size: 10.5px;
-    font-family: 'NanumSquareNeo' !important;
+    font-size: 11px;
 }
 
-.DiagramDetailTable_CurrentValue,
-.DiagramDetailTable_PreviousValue,
-.DiagramDetailTable_DailyMax,
-.DiagramDetailTable_DailyMin,
-.DiagramDetailTable_RateOfChange,
+.DiagramInfoOtherTable_CurrentValue,
+.DiagramInfoOtherTable_PreviousValue,
+.DiagramInfoOtherTable_DailyMax,
+.DiagramInfoOtherTable_DailyMin,
+.DiagramInfoOtherTable_RateOfChange,
 .DiagramDetailVWTable_CurrentValue,
 .DiagramDetailVWTable_PreviousValue,
 .DiagramDetailVWTable_DailyMax,
@@ -345,7 +345,7 @@
 }
 
 
-.DiagramDetailTable_RateOfChange div {
+.DiagramInfoOtherTable_RateOfChange div {
     font-family: 'NanumSquareNeoBold' !important;
 }
 
@@ -355,7 +355,14 @@
     font-weight: lighter !important;
 }
 
-.DiagramDetailTable_RateOfChange_animate,
+.DiagramInfoOtherTable_RateOfChange_animate,
 .DiagramDetailVWTable_RateOfChange_animate {
     animation: flicker 10s ease-in-out;
+}
+
+.DiagramDetailAlertStep_Card {
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    background-color: rgb(38, 55, 82);
+    color: white;
+    height: 200px;
 }
