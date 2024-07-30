@@ -7,8 +7,10 @@ import { Card, Col, Row, Layout, Dropdown, Space, Select, Tabs } from 'antd';
 import DiagramDetail_Chart from './DiagramDetailChart/DiagramDetail_Chart'; // 전력~내부온도
 import DiagramDetail_VWChart from './DiagramDetailChart/DiagramDetail_VWChart'; // 전압,전력
 import DiagramAlertStep from '../DiagramAlertStep/DiagramAlertStep';
+import DiagramDetailVWTable from './DiagramDetailTable/DiagramDetailVWTable';
+import DiagramDetailTable from './DiagramDetailTable/DiagramDetailTable';
 import '../DiagramInfo.css';
-import { useDiagramInfoData, useMinMaxData } from '../DiagramInfo_DB/DiagramInfo_DB';
+import { useDiagramInfoData, useMinMaxData, useDiagramCurrentData } from '../DiagramInfo_DB/DiagramInfo_DB';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -21,6 +23,7 @@ const DiagramDetail = () => {
     const [currentTime, setCurrentTime] = useState('');
 
     const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
+    const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
     const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
 
     const handleMenuClick = (key) => {
@@ -37,12 +40,124 @@ const DiagramDetail = () => {
     const [chartColors, setChartColors] = useState([]);
     const [rstchartColors, setRSTColors] = useState([]);
 
+    const calculateRateOfChange = (currentValue, previousValue) => {
+        if (previousValue === 0) return 0; // 이전 값이 0일 때, 비율 변화는 0으로 처리
+        const rateOfChange = ((currentValue / previousValue) * 100) - 100;
+        return rateOfChange.toFixed(1); // 소수점 첫째 자리까지 표시
+    };
+
+    const formatNumber = (number) => {
+        if (number === undefined || number === null) {
+            return '-'; // 기본값 설정
+        }
+        return number.toLocaleString(); // Add commas to the number
+    };
+    const tableDataArray = [
+        [
+            {
+                key: '1',
+                Phase: 'L1',
+                PhaseValue: DiagramInfoData[0]?.v_data_r,
+                dailyMax: formatNumber(DiagramCurrentData[0]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[0]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[0]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_r, DiagramCurrentData[0]?.avg),
+            },
+            {
+                Phase: 'L2',
+                PhaseValue: DiagramInfoData[0]?.v_data_s,
+                dailyMax: formatNumber(DiagramCurrentData[1]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[1]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[1]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_s, DiagramCurrentData[1]?.avg),
+            },
+            {
+                Phase: 'L3',
+                PhaseValue: DiagramInfoData[0]?.v_data_t,
+                dailyMax: formatNumber(DiagramCurrentData[2]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[2]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[2]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.v_data_t, DiagramCurrentData[2]?.avg),
+            },
+        ],
+
+        [
+            {
+                key: '2',
+                Phase: 'L1',
+                PhaseValue: DiagramInfoData[0]?.am_data_r,
+                dailyMax: formatNumber(DiagramCurrentData[3]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[3]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[3]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_r, DiagramCurrentData[3]?.avg),
+            },
+            {
+                Phase: 'L2',
+                PhaseValue: DiagramInfoData[0]?.am_data_s,
+                dailyMax: formatNumber(DiagramCurrentData[4]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[4]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[4]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_s, DiagramCurrentData[4]?.avg),
+            },
+            {
+                Phase: 'L3',
+                PhaseValue: DiagramInfoData[0]?.am_data_t,
+                dailyMax: formatNumber(DiagramCurrentData[5]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[5]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[5]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.am_data_t, DiagramCurrentData[5]?.avg),
+            },
+        ],
+        [
+            {
+                key: '3',
+                currentValue: DiagramInfoData[0]?.w_data,
+                dailyMax: formatNumber(DiagramCurrentData[6]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[6]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[6]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.w_data, DiagramCurrentData[6]?.avg),
+            },
+        ],
+        [
+            {
+                key: '4',
+                currentValue: DiagramInfoData[0]?.pf_data,
+                dailyMax: formatNumber(DiagramCurrentData[7]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[7]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[7]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.pf_data, DiagramCurrentData[7]?.avg),
+            },
+        ],
+        [
+            {
+                key: '5',
+                currentValue: DiagramInfoData[0]?.out_data,
+                dailyMax: formatNumber(DiagramCurrentData[8]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[8]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[8]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.out_data, DiagramCurrentData[8]?.avg),
+            },
+        ],
+        [
+            {
+                key: '6',
+                currentValue: DiagramInfoData[0]?.in_data,
+                dailyMax: formatNumber(DiagramCurrentData[9]?.max || 0), //최대값
+                dailyMin: formatNumber(DiagramCurrentData[9]?.min || 0), //최소값
+                previousValue: formatNumber(DiagramCurrentData[9]?.avg || 0), //평균
+                rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[9]?.avg),
+            },
+        ],
+    ];
+
     useEffect(() => {
         // 현재 시간 업데이트
         const updateTime = () => {
             const now = new Date();
             setCurrentTime(now.toLocaleString()); // 날짜와 시간을 문자열로 변환
         };
+
+
 
         updateTime(); // 처음 렌더링 시 시간 설정
         const interval = setInterval(updateTime, 1000); // 1초마다 시간 업데이트
@@ -61,15 +176,33 @@ const DiagramDetail = () => {
             key: "1",
             children: (
                 DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                    <Card bordered={false} className='DiagramDetail_V_Chart_Card'>
-                        <DiagramDetail_VWChart key={1}
-                            dataR={DiagramInfoData[0]?.v_data_r}
-                            dataS={DiagramInfoData[0]?.v_data_s}
-                            dataT={DiagramInfoData[0]?.v_data_t}
-                            rstColor={rstchartColors}
-                            Min={DiagramMinmaxData[0]?.min || 0}
-                            Max={DiagramMinmaxData[0]?.max || 0} />
-                    </Card>
+                    <Col span={24}>
+                        <Row> {/* 수평 16px, 수직 24px 간격 설정 */}
+                            <Col span={24}>
+                                <Card bordered={false} className='DiagramDetail_V_Chart_Card'>
+                                    <DiagramDetail_VWChart
+                                        key={1}
+                                        dataR={DiagramInfoData[0]?.v_data_r}
+                                        dataS={DiagramInfoData[0]?.v_data_s}
+                                        dataT={DiagramInfoData[0]?.v_data_t}
+                                        rstColor={rstchartColors}
+                                        Min={DiagramMinmaxData[0]?.min || 0}
+                                        Max={DiagramMinmaxData[0]?.max || 0}
+                                    />
+                                </Card>
+                            </Col>
+                        </Row>
+                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+                            <Col span={8}>
+                                <DiagramDetailVWTable data={tableDataArray[0]} />
+                            </Col>
+                            <Col span={16}>
+                                <Card bordered={false} className='DiagramDetail_V_Card'>
+                                    asdasd
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Col>
                 )
             )
         },
@@ -78,15 +211,34 @@ const DiagramDetail = () => {
             key: "2",
             children: (
                 DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                    <Card bordered={false} className='DiagramDetail_A_Chart_Card'>
-                        <DiagramDetail_VWChart key={2}
-                            dataR={DiagramInfoData[0]?.am_data_r}
-                            dataS={DiagramInfoData[0]?.am_data_s}
-                            dataT={DiagramInfoData[0]?.am_data_t}
-                            rstColor={rstchartColors}
-                            Min={DiagramMinmaxData[1]?.min || 0}
-                            Max={DiagramMinmaxData[1]?.max || 0} />
-                    </Card>
+
+                    <Col span={24}>
+                        <Row>
+                            <Col span={24}>
+                                <Card bordered={false} className='DiagramDetail_A_Chart_Card'>
+                                    <DiagramDetail_VWChart key={2}
+                                        dataR={DiagramInfoData[0]?.am_data_r}
+                                        dataS={DiagramInfoData[0]?.am_data_s}
+                                        dataT={DiagramInfoData[0]?.am_data_t}
+                                        rstColor={rstchartColors}
+                                        Min={DiagramMinmaxData[1]?.min || 0}
+                                        Max={DiagramMinmaxData[1]?.max || 0} />
+
+                                </Card>
+                            </Col>
+                        </Row>
+                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+                            <Col span={8}>
+                                <DiagramDetailVWTable data={tableDataArray[1]} />
+                            </Col>
+                            <Col span={16}>
+                                <Card bordered={false} className='DiagramDetail_A_Card'>
+                                    asdasd
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Col>
+
                 )
             )
         },
@@ -164,18 +316,11 @@ const DiagramDetail = () => {
                                 </a>
                             </Dropdown>
                         </div>
-                        <Tabs onChange={console.log} type="card" items={tabsItems} />
-                        <Row gutter={[10, 2]} style={{ marginTop: '10px' }}>
-                            <Col span={8}>
-                                <Card style={{ background: 'rgb(42 ,63 ,97)', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
-                                    <Row gutter={[5, 2]}> {/* 여백을 추가 */}
-                                        <Col span={24}>
-                                            <DiagramAlertStep />
-                                        </Col>
-                                    </Row>
-                                </Card>
-                            </Col>
-                        </Row>
+                        <Col span={24} style={{ marginTop: '10px' }}>
+                            <Tabs type="card" items={tabsItems} />
+
+                        </Col>
+
                     </Card>
                 </Col>
             </Row>
