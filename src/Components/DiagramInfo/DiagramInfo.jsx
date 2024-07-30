@@ -181,32 +181,33 @@ const DiagramInfo = () => {
       <Row>
         <Col className="gutter-row" span={15}>
           <Card bordered={false} style={{ padding: 0, background: 'transparent', color: 'white', marginTop: '-15px' }}>
+
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: '20px' }}>장비 상세정보
                 <p style={{ fontSize: '12px' }}>(10분 간격 데이터)</p>
               </span>
-
-              <Select defaultValue="Option1" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
-                <Option value="Option1" >장비1</Option>
-                <Option value="Option2" >장비2</Option>
-                <Option value="Option3" >장비3</Option>
-              </Select>
-
               <span style={{ fontSize: '16px' }}>{currentTime}</span> {/* 현재 시간 표시 */}
-              <Dropdown
-                menu={{
-                  items: menuItems.map(({ key, label }) => ({
-                    key,
-                    label,
-                    onClick: () => handleMenuClick(key), // 클릭 시 refreshInterval 업데이트
-                  })),
-                }}
-                trigger={['click']}
-              >
-                <a onClick={e => e.preventDefault()}>
-                  <Space style={{ color: 'white' }}>{menuItems.find(item => item.key === refreshInterval)?.label || '10초'}<DownOutlined /></Space>
-                </a>
-              </Dropdown>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Select
+                  defaultValue={menuItems.find(item => item.key === refreshInterval)?.label || '10초'}
+                  style={{ width: 120, color: 'white', marginRight: '10px' }}
+                  onChange={value => handleMenuClick(menuItems.find(item => item.label === value).key)}
+                  dropdownStyle={{ color: 'white' }} // Dropdown 메뉴의 스타일을 설정
+                >
+                  {menuItems.map(({ key, label }) => (
+                    <Option key={key} value={label}>
+                      {label}
+                    </Option>
+                  ))}
+                </Select>
+                <Select defaultValue="Option0" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
+                  <Option value="Option0" >장비선택</Option>
+                  <Option value="Option1" >장비1</Option>
+                  <Option value="Option2" >장비2</Option>
+                  <Option value="Option3" >장비3</Option>
+                </Select>
+              </div>
             </div>
 
             <Row gutter={[10, 2]}>
@@ -215,6 +216,7 @@ const DiagramInfo = () => {
                   <Card bordered={false} className='Diagram_V_Card' size='small'>
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
+
                       <Link to="/DiagramDetail">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           상세조회
@@ -358,10 +360,10 @@ const DiagramInfo = () => {
           <Row gutter={[48, 5]} style={{ marginTop: '14px' }}>
 
             <Col span={24}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '150px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><SlEnergy className='Diagram_icon_V' />전압</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
+                  <Col span={12} style={{ marginTop: '4px' }}>
                     <DiagramInfoMinuteTable data={tableDataArray[0]} />
                   </Col>
                   <Col span={12}>
@@ -376,8 +378,6 @@ const DiagramInfo = () => {
                         /*
                         /*Min={DiagramCurrentData[0].min}
                         Max={DiagramCurrentData[2].max}*/ />
-
-
                     )}
                   </Col>
                 </Row>
@@ -385,10 +385,10 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '150px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><VscPulse className='Diagram_icon_A' />전류</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
-                  <Col span={12}>
+                  <Col span={12} style={{ marginTop: '4px' }}>
                     <DiagramInfoMinuteTable data={tableDataArray[1]} />
                   </Col>
                   <Col span={12}>
@@ -400,10 +400,10 @@ const DiagramInfo = () => {
                         rstColor={rstchartColors}
                         Min={'415'}
                         Max={'460'}
-                        /**
-                        Min={DiagramCurrentData[5].min}
-                        Max={DiagramCurrentData[5].max}  */
-                        />
+                      /**
+                      Min={DiagramCurrentData[5].min}
+                      Max={DiagramCurrentData[5].max}  */
+                      />
                     )}
                   </Col>
                 </Row>
@@ -412,7 +412,7 @@ const DiagramInfo = () => {
 
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -432,7 +432,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -448,7 +448,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -464,7 +464,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '140px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
