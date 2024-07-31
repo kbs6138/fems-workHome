@@ -281,7 +281,7 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: rgb(38, 55, 82);
     color: white;
-    height: 310px !important;
+    height: 400px !important;
 }
 
 .DiagramDetail_V_Card,
@@ -293,7 +293,7 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: rgb(38, 55, 82);
     color: white;
-    height: 100% !important;
+    height: 400px !important;
 }
 
 .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab {
@@ -361,5 +361,6 @@
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: rgb(38, 55, 82);
     color: white;
-    height: 210px;
+    height: 150px !important;
+    margin-top: -220px;
 }

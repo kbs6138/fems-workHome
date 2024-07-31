@@ -19,7 +19,7 @@ const DiagramDetail_Chart = ({ dataS, chartColor, Min, Max, data }) => {
 
     if (chartData.length === 0) {
       const initialData = [];
-      for (let i = 0; i < 6000; i++) {
+      for (let i = 0; i < 60000; i++) {
         initialData.push(randomData());
       }
       setChartData(initialData);

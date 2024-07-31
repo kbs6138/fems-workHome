@@ -19,3 +19,62 @@
     font-family: 'NanumSquareNeoLight' !important;
     font-size: 12px;
 }
+
+/******************************************************************* DiagramDetailLog *******************************************************************/
+
+.custom-timeline .DiagramDetailLog-timeline-item-content {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.DiagramDetailLog-timeline-time {
+    flex-shrink: 0;
+    width: 90px;
+    /* 시간 표시 영역의 너비를 조정할 수 있습니다 */
+    text-align: left;
+    font-size: 10px;
+    font-family: 'NanumSquareNeoLight' !important;
+    color: white;
+}
+
+.DiagramDetailLog-timeline-text {
+    flex-grow: 1;
+    text-align: right;
+    font-family: 'NanumSquareNeoLight' !important;
+    font-size: 12px;
+    color: white;
+}
+
+
+
+.DiagramDetailLog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.DiagramDetailLog-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: transparent;
+    border-bottom: 1px solid #d9d9d9;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.DiagramDetailLog-header-time,
+.DiagramDetailLog-header-text {
+    flex: 1;
+    text-align: left;
+}
+
+/***********************************************************************************************/
+.DiagramDetailLog-container{
+    margin-top: 10px;
+    height: 420px !important;
+    max-height: 325px; /* Adjust this value based on your layout */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background: transparent;
+    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+}

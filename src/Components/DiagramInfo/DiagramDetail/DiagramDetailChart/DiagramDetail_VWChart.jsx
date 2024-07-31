@@ -23,7 +23,7 @@ const DiagramDetail_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstC
       const initialDataR = [];
       const initialDataS = [];
       const initialDataT = [];
-      for (let i = 0; i < 6000; i++) {
+      for (let i = 0; i < 60000; i++) {
         initialDataR.push(randomData(dataR));
         initialDataS.push(randomData(dataS));
         initialDataT.push(randomData(dataT));

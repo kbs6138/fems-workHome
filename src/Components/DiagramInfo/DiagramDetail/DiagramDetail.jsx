@@ -3,9 +3,10 @@ import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { VscPulse } from "react-icons/vsc";
 import { Card, Col, Row, Layout, Select, Tabs } from 'antd';
-import DiagramDetail_Chart from './DiagramDetailChart/DiagramDetail_Chart'; // 전력~내부온도
-import DiagramDetail_VWChart from './DiagramDetailChart/DiagramDetail_VWChart'; // 전압,전력
+import DiagramDetail_Chart from './DiagramDetailChart/DiagramDetail_Chart';
+import DiagramDetail_VWChart from './DiagramDetailChart/DiagramDetail_VWChart';
 import DiagramDetailAlertStep from './DiagramDetailAlertStep/DiagramDetailAlertStep';
+import DiagramDetailLog from './DiagramDetailLog/DiagramDetailLog';
 import DiagramDetailVWTable from './DiagramDetailTable/DiagramDetailVWTable';
 import DiagramInfoOtherTable from './DiagramDetailTable/DiagramInfoOtherTable';
 import '../DiagramInfo.css';
@@ -14,19 +15,19 @@ import { useDiagramInfoData, useMinMaxData, useDiagramCurrentData } from '../Dia
 const { Content } = Layout;
 const { Option } = Select;
 
-const handleChange = () => {
-};
+const handleChange = () => { };
 
 const DiagramDetail = () => {
-    const [refreshInterval, setRefreshInterval] = useState(10000); // 초기값 설정
+    const [refreshInterval, setRefreshInterval] = useState(10000);
     const [currentTime, setCurrentTime] = useState('');
+    const [logEntries, setLogEntries] = useState([]);
 
     const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
     const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
     const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
 
     const handleMenuClick = (key) => {
-        setRefreshInterval(key); // 클릭한 메뉴의 키로 refreshInterval 업데이트
+        setRefreshInterval(key);
     };
 
     const menuItems = [
@@ -40,17 +41,18 @@ const DiagramDetail = () => {
     const [rstchartColors, setRSTColors] = useState([]);
 
     const calculateRateOfChange = (currentValue, previousValue) => {
-        if (previousValue === 0) return 0; // 이전 값이 0일 때, 비율 변화는 0으로 처리
+        if (previousValue === 0) return 0;
         const rateOfChange = ((currentValue / previousValue) * 100) - 100;
-        return rateOfChange.toFixed(1); // 소수점 첫째 자리까지 표시
+        return rateOfChange.toFixed(1);
     };
 
     const formatNumber = (number) => {
         if (number === undefined || number === null) {
-            return '-'; // 기본값 설정
+            return '-';
         }
-        return number.toLocaleString(); // Add commas to the number
+        return number.toLocaleString();
     };
+
     const tableDataArray = [
         [
             {
@@ -150,16 +152,14 @@ const DiagramDetail = () => {
     ];
 
     useEffect(() => {
-        // 현재 시간 업데이트
         const updateTime = () => {
             const now = new Date();
-            setCurrentTime(now.toLocaleString()); // 날짜와 시간을 문자열로 변환
+            setCurrentTime(now.toLocaleString());
         };
 
+        updateTime();
+        const interval = setInterval(updateTime, 1000);
 
-
-        updateTime(); // 처음 렌더링 시 시간 설정
-        const interval = setInterval(updateTime, 1000); // 1초마다 시간 업데이트
         const colors = ['#FF6B6B', '#FFD700', '#9370DB', '#00BFFF', '#7CFC00', '#FF69B4'];
         setChartColors(colors);
 
@@ -168,6 +168,20 @@ const DiagramDetail = () => {
 
         return () => clearInterval(interval);
     }, []);
+
+
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const newLogEntry = {
+                time: new Date().toLocaleString(),
+                L1: `L1: ${DiagramInfoData[0]?.v_data_r || '-'}`,
+                L2: `L2: ${DiagramInfoData[0]?.v_data_s || '-'}`,
+                L3: `L3: ${DiagramInfoData[0]?.v_data_t || '-'}`,
+            };
+            setLogEntries((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 10)); // Keep only the last 10 entries
+        }
+    }, [DiagramInfoData]);
+
 
     const tabsItems = [
         {
@@ -195,9 +209,9 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramDetailVWTable data={tableDataArray[0]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_V_Card'>
-                                    asdasd
+                                    <DiagramDetailLog logEntries={logEntries} />
                                 </Card>
                             </Col>
                         </Row>
@@ -229,7 +243,7 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramDetailVWTable data={tableDataArray[1]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_A_Card'>
                                     asdasd
                                 </Card>
@@ -256,7 +270,7 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[2]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_W_Card'>
                                     asdasd
                                 </Card>
@@ -284,7 +298,7 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[3]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_WVA_Card'>
                                     asdasd
                                 </Card>
@@ -313,7 +327,7 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[4]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_OutDeg_Card'>
                                     asdasd
                                 </Card>
@@ -341,9 +355,9 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[5]} />
                             </Col>
-                            <Col span={16}>
+                            <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_InnerDeg_Card'>
-                                    asdasd
+                                    로그형식...
                                 </Card>
                             </Col>
                         </Row>
@@ -365,9 +379,9 @@ const DiagramDetail = () => {
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Select
                                     defaultValue={menuItems.find(item => item.key === refreshInterval)?.label || '10초'}
-                                    style={{ width: 120, color: 'white' , marginRight:'10px'  }}
+                                    style={{ width: 120, color: 'white', marginRight: '10px' }}
                                     onChange={value => handleMenuClick(menuItems.find(item => item.label === value).key)}
-                                    dropdownStyle={{ color: 'white'}} // Dropdown 메뉴의 스타일을 설정
+                                    dropdownStyle={{ color: 'white' }} // Dropdown 메뉴의 스타일을 설정
                                 >
                                     {menuItems.map(({ key, label }) => (
                                         <Option key={key} value={label}>
