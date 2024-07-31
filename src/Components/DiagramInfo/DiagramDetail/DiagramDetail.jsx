@@ -173,12 +173,10 @@ const DiagramDetail = () => {
 
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
-            const date = new Date();
-            const formattedDate = date.toLocaleDateString('ko-KR');
-            const formattedTime = date.toLocaleTimeString('ko-KR', { hour12: false });
-            
+            const now = new Date();
             const newLogEntry = {
-                time: `${formattedDate}\n${formattedTime}`,
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
                 L1: `L1 : ${DiagramInfoData[0]?.v_data_r || '-'}`,
                 L2: `L2 : ${DiagramInfoData[0]?.v_data_s || '-'}`,
                 L3: `L3 : ${DiagramInfoData[0]?.v_data_t || '-'}`,
