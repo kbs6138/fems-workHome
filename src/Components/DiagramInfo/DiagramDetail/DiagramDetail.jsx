@@ -3,9 +3,10 @@ import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { VscPulse } from "react-icons/vsc";
 import { Card, Col, Row, Layout, Select, Tabs } from 'antd';
-import DiagramDetail_Chart from './DiagramDetailChart/DiagramDetail_Chart';
-import DiagramDetail_VWChart from './DiagramDetailChart/DiagramDetail_VWChart';
-import DiagramDetailAlertStep from './DiagramDetailAlertStep/DiagramDetailAlertStep';
+
+
+import DiagramDetailChart from './DiagramDetailChart/DiagramDetail_Chart';
+import DiagramDetailVWChart from './DiagramDetailChart/DiagramDetail_VWChart';
 import DiagramDetailLog from './DiagramDetailLog/DiagramDetailLog';
 import DiagramDetailVWTable from './DiagramDetailTable/DiagramDetailVWTable';
 import DiagramInfoOtherTable from './DiagramDetailTable/DiagramInfoOtherTable';
@@ -172,15 +173,21 @@ const DiagramDetail = () => {
 
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
+            const date = new Date();
+            const formattedDate = date.toLocaleDateString('ko-KR');
+            const formattedTime = date.toLocaleTimeString('ko-KR', { hour12: false });
+            
             const newLogEntry = {
-                time: new Date().toLocaleString(),
-                L1: `L1: ${DiagramInfoData[0]?.v_data_r || '-'}`,
-                L2: `L2: ${DiagramInfoData[0]?.v_data_s || '-'}`,
-                L3: `L3: ${DiagramInfoData[0]?.v_data_t || '-'}`,
+                time: `${formattedDate}\n${formattedTime}`,
+                L1: `L1 : ${DiagramInfoData[0]?.v_data_r || '-'}`,
+                L2: `L2 : ${DiagramInfoData[0]?.v_data_s || '-'}`,
+                L3: `L3 : ${DiagramInfoData[0]?.v_data_t || '-'}`,
             };
-            setLogEntries((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 10)); // Keep only the last 10 entries
+            setLogEntries((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 30)); // Keep only the last 30 entries
         }
     }, [DiagramInfoData]);
+    
+    
 
 
     const tabsItems = [
@@ -193,7 +200,7 @@ const DiagramDetail = () => {
                         <Row> {/* 수평 16px, 수직 24px 간격 설정 */}
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_V_Chart_Card'>
-                                    <DiagramDetail_VWChart
+                                    <DiagramDetailVWChart
                                         key={1}
                                         dataR={DiagramInfoData[0]?.v_data_r}
                                         dataS={DiagramInfoData[0]?.v_data_s}
@@ -209,9 +216,14 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramDetailVWTable data={tableDataArray[0]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_V_Card'>
+                            <Col span={8}>
+                                <Card bordered={false} className='DiagramDetail_V_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={logEntries} />
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card bordered={false} className='DiagramDetail_V_RSTChart_Card'>
+                                    
                                 </Card>
                             </Col>
                         </Row>
@@ -228,7 +240,7 @@ const DiagramDetail = () => {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_A_Chart_Card'>
-                                    <DiagramDetail_VWChart key={2}
+                                    <DiagramDetailVWChart key={2}
                                         dataR={DiagramInfoData[0]?.am_data_r}
                                         dataS={DiagramInfoData[0]?.am_data_s}
                                         dataT={DiagramInfoData[0]?.am_data_t}
@@ -262,7 +274,7 @@ const DiagramDetail = () => {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_W_Chart_Card' size='large'>
-                                    <DiagramDetail_Chart key={3} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramMinmaxData[2]?.min || 0} Max={DiagramMinmaxData[2]?.max || 0} />
+                                    <DiagramDetailChart key={3} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramMinmaxData[2]?.min || 0} Max={DiagramMinmaxData[2]?.max || 0} />
                                 </Card>
                             </Col>
                         </Row>
@@ -290,7 +302,7 @@ const DiagramDetail = () => {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_WVA_Chart_Card'>
-                                    <DiagramDetail_Chart key={4} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3]?.min || 0} Max={DiagramMinmaxData[3]?.max || 0} />
+                                    <DiagramDetailChart key={4} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3]?.min || 0} Max={DiagramMinmaxData[3]?.max || 0} />
                                 </Card>
                             </Col>
                         </Row>
@@ -319,7 +331,7 @@ const DiagramDetail = () => {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_OutDeg_Chart_Card'>
-                                    <DiagramDetail_Chart key={5} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4]?.min || 0} Max={DiagramMinmaxData[4]?.max || 0} />
+                                    <DiagramDetailChart key={5} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4]?.min || 0} Max={DiagramMinmaxData[4]?.max || 0} />
                                 </Card>
                             </Col>
                         </Row>
@@ -347,7 +359,7 @@ const DiagramDetail = () => {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_InnerDeg_Chart_Card'>
-                                    <DiagramDetail_Chart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5]?.min || 0} Max={DiagramMinmaxData[5]?.max || 0} />
+                                    <DiagramDetailChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5]?.min || 0} Max={DiagramMinmaxData[5]?.max || 0} />
                                 </Card>
                             </Col>
                         </Row>
@@ -404,13 +416,7 @@ const DiagramDetail = () => {
                                     <Tabs type="card" items={tabsItems} />
                                 </Col>
                             </Row>
-                            <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                                <Col span={8}>
-                                    <Card className='DiagramDetailAlertStep_Card' bordered={false}>
-                                        <DiagramDetailAlertStep />
-                                    </Card>
-                                </Col>
-                            </Row>
+
                         </Col>
                     </Card>
                 </Col>

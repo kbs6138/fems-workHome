@@ -30,11 +30,11 @@
 
 .DiagramDetailLog-timeline-time {
     flex-shrink: 0;
-    width: 90px;
+    width: 71px;
     /* 시간 표시 영역의 너비를 조정할 수 있습니다 */
     text-align: left;
     font-size: 10px;
-    font-family: 'NanumSquareNeoLight' !important;
+    font-family: 'NanumSquareNeo' !important;
     color: white;
 }
 
@@ -44,6 +44,7 @@
     font-family: 'NanumSquareNeoLight' !important;
     font-size: 12px;
     color: white;
+    margin-top: 5px;
 }
 
 
@@ -71,9 +72,9 @@
 
 /***********************************************************************************************/
 .DiagramDetailLog-container{
-    margin-top: 10px;
-    height: 420px !important;
-    max-height: 325px; /* Adjust this value based on your layout */
+    margin-top: 5px;
+    height: 190px !important;
+    max-height: 180px; /* Adjust this value based on your layout */
     overflow-y: auto; /* Enable vertical scrolling */
     background: transparent;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;

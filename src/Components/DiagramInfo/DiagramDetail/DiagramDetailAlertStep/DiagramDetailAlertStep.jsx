@@ -28,7 +28,6 @@ const DiagramDetailAlertStep = () => (
              <span className="DiagramDetailAlertStep-timeline-text">네트워크 에러 발생</span>
             </div>
         </Timeline.Item>
-
     </Timeline>
 );
 
