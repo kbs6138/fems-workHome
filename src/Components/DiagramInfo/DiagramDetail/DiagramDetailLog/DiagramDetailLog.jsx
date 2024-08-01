@@ -1,6 +1,6 @@
 import React from 'react';
 import { Timeline, Card, Row, Col } from 'antd';
-import '../DiagramDetailAlertStep/DiagramDetailAlertStep.css';
+import '../DiagramDetailLog/DiagramDetailLog.css';
 
 const DiagramDetailLog = ({ logEntries = [] }) => { // 기본값으로 빈 배열 설정
     return (
