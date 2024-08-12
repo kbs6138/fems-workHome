@@ -7,6 +7,7 @@ import { Card, Col, Row, Layout, Select, Tabs } from 'antd';
 
 import DiagramDetailChart from './DiagramDetailChart/DiagramDetail_Chart';
 import DiagramDetailVWChart from './DiagramDetailChart/DiagramDetail_VWChart';
+import DiagramDetailRSTChart from './DiagramDetailRSTChart/DiagramDetailRSTChart';
 import DiagramDetailLog from './DiagramDetailLog/DiagramDetailLog';
 import DiagramDetailVWTable from './DiagramDetailTable/DiagramDetailVWTable';
 import DiagramInfoOtherTable from './DiagramDetailTable/DiagramInfoOtherTable';
@@ -184,8 +185,8 @@ const DiagramDetail = () => {
             setLogEntries((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 30)); // Keep only the last 30 entries
         }
     }, [DiagramInfoData]);
-    
-    
+
+
 
 
     const tabsItems = [
@@ -221,7 +222,11 @@ const DiagramDetail = () => {
                             </Col>
                             <Col span={8}>
                                 <Card bordered={false} className='DiagramDetail_V_RSTChart_Card'>
-                                    
+                                    <DiagramDetailRSTChart
+                                        key={1}
+                                        dataR={DiagramInfoData[0]?.v_data_r}
+                                        dataS={DiagramInfoData[0]?.v_data_s}
+                                        dataT={DiagramInfoData[0]?.v_data_t} />
                                 </Card>
                             </Col>
                         </Row>
@@ -255,7 +260,7 @@ const DiagramDetail = () => {
                             </Col>
                             <Col span={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_A_Card'>
-                                    asdasd
+
                                 </Card>
                             </Col>
                         </Row>
