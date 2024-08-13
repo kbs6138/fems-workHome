@@ -1,5 +1,5 @@
 // Main.jsx
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { Layout, Col, Row, Card, Button } from 'antd';
@@ -8,11 +8,11 @@ import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
 import RightChart1 from '../../Components/Charts/RightChart1';
 import RightChart2 from '../../Components/Charts/RightChart2';
-import ThermometerComponent from '../../Components/Charts/Thermometer';
 import PeekChart from '../../Components/Charts/PeekChart';
 import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+import { useMainDiagramData } from './MainDiagram/MainDiagram';
 
 import DiagPic from '../계통도.png';
 
@@ -21,10 +21,20 @@ const { Content } = Layout;
 
 const AppMain = () => {
     const { isDarkMode } = useContext(ThemeContext);
+    const [selectedDiagramId, setSelectedDiagramId] = useState('');
+    const [scpId, setScpId] = useState('2300136001'); // 먼저 scpId를 선언
+
+    const { data: MainDiagramData } = useMainDiagramData(scpId); // scpId가 초기화된 후에 훅 호출
     const { data } = useRightChart3Data();
+
+    const handleImageClick = (id, scp_id) => {
+        setSelectedDiagramId(id);
+        setScpId(scp_id); // 클릭된 이미지에 따라 scp_id 설정
+    };
 
     const TxtTheme = isDarkMode ? 'text-light' : 'text-dark';
     const BgTheme = isDarkMode ? 'bg-light' : 'bg-dark';
+
 
     return (
         <Content className="app-Content">
@@ -197,29 +207,33 @@ const AppMain = () => {
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
                             <Col span={8}>
-                                <img src={DiagPic} width='120px' />
+                                <img src={DiagPic} width='110px' id='First_Diagram' onClick={() => handleImageClick('첫번째 분전반', '2300136001')}
+
+                                // 클릭 이벤트 핸들러 연결
+                                />
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='120px' />
+                                <img src={DiagPic} width='110px' id='Second_Diagram' onClick={() => handleImageClick('두번째 분전반', '2300136002')} // 클릭 이벤트 핸들러 연결
+                                />
                                 <div style={{ position: 'absolute', top: '25%', left: '70%', transform: 'translate(-50%, -50%)' }}>
-                                    <ThermometerComponent />
                                 </div>
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='120px' />
+                                <img src={DiagPic} width='110px' id='Third_Diagram' onClick={() => handleImageClick('세번째 분전반', '2300136003')}   // 클릭 이벤트 핸들러 연결
+                                />
                             </Col>
-
                         </Row>
                     </Card>
                 </Col>
 
                 <Col className="gutter-row" span={6}>
                     <Card size='medium' className={`  Card5  Main-Bottom-Content2  ${TxtTheme} ${BgTheme}`} bordered={false}>
-
-
-                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>상세정보
+                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>
+                                {selectedDiagramId && <span>{selectedDiagramId}</span>}
+                                &nbsp; 상세정보</span>
                             <Link to="/DiagramInfo">
                                 <Button type="link" className='Diagram_Info_Button'>
                                     상세조회
@@ -228,40 +242,39 @@ const AppMain = () => {
                             </Link>
                         </span>
 
-                    
-                        <Row style={{ display: 'flex', justifyContent: 'space-between' , marginTop:'15px' }} gutter={[22, 5]}>
+
+                        <Row style={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px' }} gutter={[22, 5]}>
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>전압</p>
-                                <span>V</span>
+                                <span>{MainDiagramData[0]?.volt_r} V</span>
                             </Col>
 
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>전류</p>
-                                <span>A</span>
+                                <span>{MainDiagramData[0]?.am} A</span>
                             </Col>
 
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>전력</p>
-                                <span>W</span>
+                                <span>{MainDiagramData[0]?.wat} W</span>
                             </Col>
 
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>역률</p>
-                                <span>W/VA</span>
+                                <span>{MainDiagramData[0]?.pf} W/VA</span>
                             </Col>
 
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>외부온도</p>
-                                <span>°C</span>
+                                <span>{MainDiagramData[0]?.out_deg} °C</span>
                             </Col>
 
                             <Col span={12} className='Diagram_Info_Col'>
                                 <p>내부온도</p>
-                                <span>°C</span>
+                                <span>{MainDiagramData[0]?.in_deg} °C</span>
                             </Col>
                         </Row>
                     </Card>
-
                 </Col>
 
 

@@ -24,6 +24,9 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
         detail: {
           valueAnimation: true,
           offsetCenter: ['0%', '-40%']  // 여백 추가
+        },
+        itemStyle: {
+          color: 'rgb(0, 199, 0)'  // L1의 색상 설정
         }
       },
       {
@@ -39,6 +42,9 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
         detail: {
           valueAnimation: true,
           offsetCenter: ['0%', '8%']  // 여백 추가
+        },
+        itemStyle: {
+          color: 'rgb(252, 115, 138)'  // L2의 색상 설정
         }
       },
       {
@@ -54,6 +60,9 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
         detail: {
           valueAnimation: true,
           offsetCenter: ['0%', '55%']  // 여백 추가
+        },
+        itemStyle: {
+          color: 'rgb(118, 150, 255)'  // L3의 색상 설정
         }
       }
     ];
@@ -96,6 +105,10 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
             distance: 50
           },
           data: gaugeData,
+          title: {
+            color: '#FFFFFF', // 흰색 텍스트 색상
+            fontSize: 12      // 폰트 크기 12px
+          },
           detail: {
             width: 50,
             height: 12,
