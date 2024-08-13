@@ -17,7 +17,7 @@ const GaugeChart = () => {
         return () => {
             myChart.current.dispose();
         };
-    }, [isDarkMode]); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, [isDarkMode]); // 빈 배열로 초기화가 한 번 실행되도록 설정
 
     useEffect(() => {
         const updateChartOptions = () => {
