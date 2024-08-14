@@ -3,8 +3,6 @@ import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { VscPulse } from "react-icons/vsc";
 import { Card, Col, Row, Layout, Select, Tabs } from 'antd';
-
-
 import DiagramDetailChart from './DiagramDetailChart/DiagramDetail_Chart';
 import DiagramDetailVWChart from './DiagramDetailChart/DiagramDetail_VWChart';
 import DiagramDetailRSTChart from './DiagramDetailRSTChart/DiagramDetailRSTChart';
@@ -22,7 +20,9 @@ const handleChange = () => { };
 const DiagramDetail = () => {
     const [refreshInterval, setRefreshInterval] = useState(10000);
     const [currentTime, setCurrentTime] = useState('');
-    const [logEntries, setLogEntries] = useState([]);
+
+
+
 
     const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
     const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
@@ -153,6 +153,9 @@ const DiagramDetail = () => {
         ],
     ];
 
+
+
+
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
@@ -171,6 +174,10 @@ const DiagramDetail = () => {
         return () => clearInterval(interval);
     }, []);
 
+    /************************************** 로그이력관리 useEffect ****************************************/
+
+    const [VoltRSTlog, setVoltRSTLog] = useState([]);
+    const [AmRSTlog, setAmRSTlog] = useState([]);
 
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
@@ -182,12 +189,25 @@ const DiagramDetail = () => {
                 L2: `L2 : ${DiagramInfoData[0]?.v_data_s || '-'}`,
                 L3: `L3 : ${DiagramInfoData[0]?.v_data_t || '-'}`,
             };
-            setLogEntries((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 30)); // Keep only the last 30 entries
+            setVoltRSTLog((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 30));
         }
     }, [DiagramInfoData]);
 
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const now = new Date();
+            const newLogEntry = {
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
+                L1: `L1 : ${DiagramInfoData[0]?.am_data_r || '-'}`,
+                L2: `L2 : ${DiagramInfoData[0]?.am_data_s || '-'}`,
+                L3: `L3 : ${DiagramInfoData[0]?.am_data_t || '-'}`,
+            };
+            setAmRSTlog((prevEntries) => [newLogEntry, ...prevEntries].slice(0, 30));
+        }
+    }, [DiagramInfoData]);
 
-
+    /************************************** 로그이력관리 useEffect ****************************************/
 
     const tabsItems = [
         {
@@ -217,16 +237,17 @@ const DiagramDetail = () => {
                             </Col>
                             <Col span={8}>
                                 <Card bordered={false} className='DiagramDetail_V_DiagramDetailLog_Card'>
-                                    <DiagramDetailLog logEntries={logEntries} />
+                                    <DiagramDetailLog logEntries={VoltRSTlog} />
                                 </Card>
                             </Col>
                             <Col span={8}>
                                 <Card bordered={false} className='DiagramDetail_V_RSTChart_Card'>
                                     <DiagramDetailRSTChart
-                                        key={1}
+                                        key="1"
                                         dataR={DiagramInfoData[0]?.v_data_r}
                                         dataS={DiagramInfoData[0]?.v_data_s}
-                                        dataT={DiagramInfoData[0]?.v_data_t} />
+                                        dataT={DiagramInfoData[0]?.v_data_t}
+                                    />
                                 </Card>
                             </Col>
                         </Row>
@@ -258,9 +279,20 @@ const DiagramDetail = () => {
                             <Col span={8}>
                                 <DiagramDetailVWTable data={tableDataArray[1]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_A_Card'>
+                            <Col span={8}>
+                                <Card bordered={false} className='DiagramDetail_A_DiagramDetailLog_Card'>
+                                    <DiagramDetailLog logEntries={AmRSTlog} />
+                                </Card>
+                            </Col>
 
+                            <Col span={8}>
+                                <Card bordered={false} className='DiagramDetail_A_RSTChart_Card'>
+                                    <DiagramDetailRSTChart
+                                        key="2"
+                                        dataR={DiagramInfoData[0]?.am_data_r}
+                                        dataS={DiagramInfoData[0]?.am_data_s}
+                                        dataT={DiagramInfoData[0]?.am_data_t}
+                                    />
                                 </Card>
                             </Col>
                         </Row>
