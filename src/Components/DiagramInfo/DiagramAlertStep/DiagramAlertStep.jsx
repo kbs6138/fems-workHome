@@ -22,12 +22,7 @@ const DiagramAlertStep = () => (
                 <span className="timeline-text">Technical testing</span>
             </div>
         </Timeline.Item>
-        <Timeline.Item>
-            <div className="timeline-item-content">
-                <span className="timeline-time">2024-07-25</span>
-                <span className="timeline-text">Network problems being solved</span>
-            </div>
-        </Timeline.Item>
+
     </Timeline>
 );
 

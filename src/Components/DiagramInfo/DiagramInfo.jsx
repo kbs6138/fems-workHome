@@ -218,7 +218,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramDetail">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          전압 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -243,7 +243,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramInfo">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          전류 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -268,7 +268,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramInfo">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          전력 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -287,7 +287,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramInfo">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          역률 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -306,7 +306,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramInfo">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          외부온도 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -325,7 +325,7 @@ const DiagramInfo = () => {
 
                       <Link to="/DiagramInfo">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
-                          상세조회
+                          내부온도 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
                         </Button>
                       </Link>
@@ -338,7 +338,7 @@ const DiagramInfo = () => {
               </Col>
 
               <Col span={24} style={{ marginTop: '6px' }}>
-                <Card style={{ background: 'rgb(42 ,63 ,97)', height: '144px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+                <Card style={{ background: 'rgb(42 ,63 ,97)', height: '95px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                   <Row gutter={[5, 2]}> {/* 여백을 추가 */}
                     <Col span={24}>
                       <DiagramAlertStep />
@@ -411,7 +411,7 @@ const DiagramInfo = () => {
 
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '123px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><SlEnergy className='Diagram_icon_W' />전력</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -431,7 +431,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '123px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoBarChartOutline className='Diagram_icon_WVA' />역률</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -447,7 +447,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '123px', boxShadow: ' 0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도 </span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>
@@ -463,7 +463,7 @@ const DiagramInfo = () => {
             </Col>
 
             <Col span={24} style={{ marginTop: '6px' }}>
-              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '135px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
+              <Card style={{ background: 'rgb(42 ,63 ,97)', height: '123px', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)' }} bordered={false}>
                 <span className='Diagram_Name'><IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도</span>
                 <Row gutter={[10, 2]}> {/* 여백을 추가 */}
                   <Col span={12}>

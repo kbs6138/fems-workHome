@@ -11,25 +11,23 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
       useDirtyRect: false,
     });
 
-    // 차트 초기화
     chartRef.current = myChart;
 
-    // 윈도우 리사이즈 이벤트 추가
     const resizeChart = () => {
       myChart.resize();
     };
     window.addEventListener('resize', resizeChart);
 
-    // 리소스 정리
     return () => {
       window.removeEventListener('resize', resizeChart);
       myChart.dispose();
     };
-  }, []); // 빈 배열로 초기화는 한번만 수행
+  }, []);
 
   useEffect(() => {
     if (chartRef.current) {
-      // 게이지 데이터 설정
+      const maxValue = Math.max(dataR, dataS, dataT, 300); // Ensure the max value is set appropriately
+
       const gaugeData = [
         {
           value: dataR || 0,
@@ -87,11 +85,11 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
         },
       ];
 
-      // 차트 옵션 설정
       const option = {
         series: [
           {
             type: 'gauge',
+            max: maxValue,  // Set the max value dynamically
             startAngle: 90,
             endAngle: -270,
             pointer: {
@@ -143,10 +141,9 @@ const DiagramDetailRSTChart = ({ dataR, dataS, dataT }) => {
         ],
       };
 
-      // 차트 옵션 업데이트
       chartRef.current.setOption(option);
     }
-  }, [dataR, dataS, dataT]); // 데이터가 변경될 때만 옵션을 업데이트
+  }, [dataR, dataS, dataT]);
 
   return <div id="DiagramDetailRSTChart" style={{ width: '100%', height: '280px', marginTop: '-40px' }}></div>;
 };

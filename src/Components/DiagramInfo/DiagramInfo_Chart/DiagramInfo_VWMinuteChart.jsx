@@ -93,8 +93,7 @@ const DiagramInfo_VWMinuteChart = ({ dataR, dataS, dataT, chartColor, Min, Max, 
           }
         },
         axisLabel: {
-          color: 'white',
-          fontSize: 10.5
+          show: false, // Hide the y-axis labels
         }
       },
       series: [

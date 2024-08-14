@@ -19,7 +19,7 @@ const PeekChart = () => {
 
     const formatData = () => {
       const formattedData = [];
-      const now = new Date(2024, 1, 1);
+      const now = new Date(); // 현재 날짜로 설정
       for (let i = 0; i < 15; i++) {
         formattedData.push([
           [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
@@ -35,7 +35,7 @@ const PeekChart = () => {
     };
 
     const getGridLineColor = () => {
-      return isDarkMode ? '#cccccc' : '#aaaaaa';
+      return isDarkMode ? '#e0e0e0' : '#d0d0d0'; // 밝은 색으로 설정
     };
 
     const updateChartOptions = () => {
@@ -73,7 +73,8 @@ const PeekChart = () => {
           splitLine: {
             show: true,
             lineStyle: {
-              color: gridLineColor
+              color: gridLineColor,
+              width: 0.1 // 그리드 선 두께를 얇게 설정
             }
           },
           axisLabel: {
@@ -87,7 +88,8 @@ const PeekChart = () => {
           splitLine: {
             show: true,
             lineStyle: {
-              color: gridLineColor
+              color: gridLineColor,
+              width: 0.51 // 그리드 선 두께를 얇게 설정
             }
           },
           axisLabel: {
