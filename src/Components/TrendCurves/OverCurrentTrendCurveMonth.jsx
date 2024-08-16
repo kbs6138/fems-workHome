@@ -94,93 +94,100 @@ const OverCurrentTrendCurveMonth = () => {
 
   return (
     <div>
-      <Row span={23}>
-        <Col span={23} style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px', alignItems: 'center', padding: '0 2% 0 2%' }}>
-            <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 월별</span>
-            <Popover
-              content={
-                <div>
-                  <span>
-                    정격전류를 초과하여 연속적으로 흐르는 경우를 과전류라고 한다.
-                  </span>
-                  <span>
-                    과전류의 원인은 부하 사용 전류가 전선의 허용전류를 초과하거나 전선의 절연 허용 온도를 초과하는 것이며,
-                    과부하, 지락, 단락이 과전류의 원인이 될 수 있으며,
-                  </span>
-                  <span>
-                    단상 부하가 한 상에 집중되는 경우 그 상에 과전류가 발생할 수 있으며,
-                    지속적인 한 상의 과전류는 전선 과열과 화재 위험이 있다.
-                  </span>
-                  <span>
-                    정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
-                  </span>
-                  <a onClick={hide}>닫기</a>
-                </div>
-              }
-              title="과전류 상승에 따른 위험"
-              trigger="click"
-              open={open}
-              onOpenChange={handleOpenChange}
-            >
-              <Button className='OverCurrentTrendCurve_Button'>과전류 상승에 따른 위험
-                <AiOutlineWarning size={'22px'} />
-              </Button>
-            </Popover>
-          </div>
+      <Card style={{ background: 'transparent', boxShadow: 'none', padding: '0 10px 10px 10px' }} bordered={false}>
 
-          <Card className='trendGraphCard OverCurrentTrendCurve_Card' bordered={false}>
-            <div className='setGraphInfoWrapper'>
-                <Select
-                  className='selectCss'
-                  value={`${yyyy}년`} // 여기에 "년"을 추가
-                  onChange={(value) => setYear(value)}
+        <Col span={24}>
+          <Row>
+            <Col span={24}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 5px 10px 5px', alignItems: 'center' }}>
+                <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 월별</span>
+                <Popover
+                  content={
+                    <div>
+                      <span>
+                        정격전류를 초과하여 연속적으로 흐르는 경우를 과전류라고 한다.
+                      </span>
+                      <span>
+                        과전류의 원인은 부하 사용 전류가 전선의 허용전류를 초과하거나 전선의 절연 허용 온도를 초과하는 것이며,
+                        과부하, 지락, 단락이 과전류의 원인이 될 수 있으며,
+                      </span>
+                      <span>
+                        단상 부하가 한 상에 집중되는 경우 그 상에 과전류가 발생할 수 있으며,
+                        지속적인 한 상의 과전류는 전선 과열과 화재 위험이 있다.
+                      </span>
+                      <span>
+                        정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
+                      </span>
+                      <a onClick={hide}>닫기</a>
+                    </div>
+                  }
+                  title="과전류 상승에 따른 위험"
+                  trigger="click"
+                  open={open}
+                  onOpenChange={handleOpenChange}
                 >
-                  <Option value="2023">2023년</Option>
-                  <Option value="2024">2024년</Option>
-                </Select>
-                <Select
-                  className='selectCss'
-                  value={scp_id}
-                  onChange={(value) => setScpId(value)}
-                >
-                  <Option value="2300136001">601부하</Option>
-                  <Option value="2300130203">203부하</Option>
-                </Select>
-                <Select
-                  className='selectCss'
-                  value={indicator}
-                  onChange={(value) => setIndicator(value)}
-                >
-                  <Option value="voltage">전압</Option>
-                  <Option value="overCurrent">과전류</Option>
-                </Select>
-              <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
-            </div>
-            <OverCurrentTrendBarChartMonth />
-            {/* <OverCurrentTrendChart TrendData={TrendData} selectedTimeUnit={selectedTimeUnit} /* permitRender={permitRender} /> */}
-          </Card>
-        </Col>
-      </Row>
-      <Row span={12}>
-        <Col span={8}>
-          <div style={{ position: 'relative', height: '480px', margin: '20px 35px 0 35px', padding: 0, color: 'white', borderRadius: '8px' }} className='OverCurrentTrendCurve_Card'>
-            <div className='logInfo'>
-              <Col span={24}>
+                  <Button className='OverCurrentTrendCurve_Button'>과전류 상승에 따른 위험
+                    <AiOutlineWarning size={'22px'} />
+                  </Button>
+                </Popover>
+              </div>
+              <Card bordered={false} className='OverCurrentTrendCurveMonth_Chart_Card'>
+                <div className='setGraphInfoWrapper' style={{ marginTop: '10px ' }}>
+                  <Select
+                    className='selectCss'
+                    value={`${yyyy}년`} // 여기에 "년"을 추가
+                    onChange={(value) => setYear(value)}
+                  >
+                    <Option value="2023">2023년</Option>
+                    <Option value="2024">2024년</Option>
+                  </Select>
+                  <Select
+                    className='selectCss'
+                    value={scp_id}
+                    onChange={(value) => setScpId(value)}
+                  >
+                    <Option value="2300136001">601부하</Option>
+                    <Option value="2300130203">203부하</Option>
+                  </Select>
+                  <Select
+                    className='selectCss'
+                    value={indicator}
+                    onChange={(value) => setIndicator(value)}
+                  >
+                    <Option value="voltage">전압</Option>
+                    <Option value="overCurrent">과전류</Option>
+                  </Select>
+                  <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
+                </div>
+
+                <OverCurrentTrendBarChartMonth />
+
+              </Card>
+            </Col>
+          </Row>
+          <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+
+            <Col span={8}>
+              <Card bordered={false} className='OverCurrentTrendCurveMonthLog_Card'>
                 <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} />
-              </Col>
-            </div>
-          </div>
+              </Card>
+            </Col>
+
+            <Col span={16}>
+              <Card bordered={false} className='OverCurrentTrendCurveMonth_LinearRegression_Card'>
+                선형회귀분석
+              </Card>
+            </Col>
+          </Row>
         </Col>
-        <Col span={16}>
-          <div style={{ position: 'relative', height: '480px', margin: '20px 35px 0 35px', padding: 0, color: 'white', borderRadius: '8px' }} className='OverCurrentTrendCurve_Card'>
-            <div className='linearRegression'>
-              <span className='OverCurrentTrendCurve_Title'>선형회귀분석</span>
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </div>
+
+      </Card>
+
+
+
+
+
+    </div >
   );
 }
 

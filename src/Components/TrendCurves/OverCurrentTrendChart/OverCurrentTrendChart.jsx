@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit }) => {
+const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }) => {
   const [data, setData] = useState([]);
   const chartDomRef = useRef(null);
-
   //selectedTimeUnit은 object여서 object내에 timeunit을 추출해서 새로운 timeunit 변수에 정수로 저장해줌
   const timeUnit = selectedTimeUnit.timeUnit;
 
@@ -35,9 +34,9 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit }) => {
 
     const xData = data.map(item => `${item.hr}:${item.min}`);
 
-    const rData = data.map(item => item.volt_r);
-    const sData = data.map(item => item.volt_s);
-    const tData = data.map(item => item.volt_t);
+    const rData = data.map(item => item[`${dataTypeForChart}_r`]);
+    const sData = data.map(item => item[`${dataTypeForChart}_s`]);
+    const tData = data.map(item => item[`${dataTypeForChart}_t`]);
 
     const option = {
       // 그래프 위에 마우스를 가져다 댈 시 나오는 팝업 설정
@@ -63,7 +62,7 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit }) => {
       },
       grid: {
         left: '5%',
-        right: '0%',
+        right: '1%',
         top: '10%'
       },
       xAxis: {
@@ -95,51 +94,6 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit }) => {
         }
       ],
 
-      //   top: -5,
-      //   right: 0,
-      //   textStyle: {
-      //     color: 'white',
-      //     fontFamily: 'NanumSquareNeoBold',
-      //     fontSize: 8 
-      //   },
-      //   pieces: [
-      //     // ex) gt:0 lte:50 color:black -> 0 초과 50 이하일 경우 색상을 black으로 설정
-      //     // gt: greater than : ~ 보다 클 경우, lte: less than or equal to : ~ 보다 작거나 같을 경우
-      //     {
-      //       gt: 0,
-      //       lte: 50,
-      //       color: '#93CE07'
-      //     },
-      //     {
-      //       gt: 50,
-      //       lte: 100,
-      //       color: '#FBDB0F'
-      //     },
-      //     {
-      //       gt: 100,
-      //       lte: 150,
-      //       color: '#FC7D02'
-      //     },
-      //     {
-      //       gt: 150,
-      //       lte: 200,
-      //       color: '#FD0100'
-      //     },
-      //     {
-      //       gt: 200,
-      //       lte: 300,
-      //       color: '#AA069F'
-      //     },
-      //     {
-      //       gt: 300,
-      //       lte: 400,
-      //       color: '#AC3B2A'
-      //     }
-      //   ],
-      //   outOfRange: { // 범위를 벗어난 경우 그래프 색 설정
-      //     color: '#999'
-      //   }
-      //},
       series: [
         {
           // 첫번째로 그려지는 그래프

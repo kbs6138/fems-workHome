@@ -18,6 +18,7 @@
     text-align: right;
     font-family: 'NanumSquareNeoLight' !important;
     font-size: 12px;
+    flex-basis:100px;
 }
 
 .ant-timeline .ant-timeline-item-head {
@@ -41,3 +42,27 @@
 .ant-timeline-item-tail {
     background-color: rgb(255, 192, 192) !important;
 }
+
+
+
+
+.timeline-container {
+    max-height: 280px; /* Ensure it takes up the full height of the parent */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.custom-timeline {
+    padding: 10px;
+    max-height: inherit; /* Inherit max-height from the container */
+}
+
+
+
+
+
+.timeline-text {
+    margin-left: 10px;
+}
+
+
+
