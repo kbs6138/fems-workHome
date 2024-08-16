@@ -9,7 +9,7 @@ export const fetchTrendVoltData = async (selectedData) => {
 };
 
 export const useTrendVoltData = (selectedData) => {
-    const { data } = useQuery(['trendData', selectedData], () => fetchTrendVoltData(selectedData), {
+    const { data } = useQuery(['trendVoltData', selectedData], () => fetchTrendVoltData(selectedData), {
         refetchInterval: 10000,
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
     });
@@ -26,7 +26,7 @@ export const fetchTrendAmData = async (selectedData) => {
 };
 
 export const useTrendAmData = (selectedData) => {
-    const { data } = useQuery(['trendData', selectedData], () => fetchTrendAmData(selectedData), {
+    const { data } = useQuery(['trendAmData', selectedData], () => fetchTrendAmData(selectedData), {
         refetchInterval: 10000,
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
     });

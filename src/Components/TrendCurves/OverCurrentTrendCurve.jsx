@@ -44,6 +44,7 @@ const OverCurrentTrendCurve = () => {
   const { data: trendAmDataFromDb } = useTrendAmData(selectedData);
 
   //db에서 data를 받아오는 변수
+  console.log(trendDataFromDb);
   console.log(trendAmDataFromDb);
   //받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
@@ -89,12 +90,12 @@ const OverCurrentTrendCurve = () => {
   useEffect(() => {
     //permitRender가 true일시 TrendData에 새로운 값을 입력하고 permitRender는 다시 false로 바꿈
     if (permitRender) {
-      setTrendData();
+      setTrendData(trendDataFromDb);
       setTimeout(() => {
         setPermitRender(false);
       }, 1000); //1초
     }
-  }, [permitRender]);
+  }, [permitRender,trendDataFromDb]);
 
   return (
     <div>
