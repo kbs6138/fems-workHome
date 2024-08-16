@@ -3,12 +3,13 @@ import { Button, Popover, Card, Col, Row, Select } from 'antd';
 import OverCurrentTrendChart from './OverCurrentTrendChart/OverCurrentTrendChart';
 import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
-import { useTrendVoltData, useTrendAmData } from '../db/Trend_db';
-import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
+import { useTrendDataMonth } from '../db/Trend_db';
+import DiagramAlertStepMonth from './DiagramAlertStep/DiagramAlertStepMonth';
+import OverCurrentTrendBarChartMonth from './OverCurrentTrendChart/OverCurrentTrendBarChartMonth';
 
 const { Option } = Select;
 
-const OverCurrentTrendCurve = () => {
+const OverCurrentTrendCurveMonth = () => {
   const [open, setOpen] = useState(false);
 
   // 현재 날짜 가져오기
@@ -40,15 +41,10 @@ const OverCurrentTrendCurve = () => {
     timeUnit
   });
 
-  const { data: trendDataFromDb } = useTrendVoltData(selectedData);
-  const { data: trendAmDataFromDb } = useTrendAmData(selectedData);
-
-  //db에서 data를 받아오는 변수
-  console.log(trendAmDataFromDb);
-  //받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
+  // db에서 data를 받아오는 변수
+  const { data: trendDataFromDb } = useTrendDataMonth(selectedData);
+  // 받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
-  //조회버튼 클릭시 permitRender를 true로 바꿔주며 TrendData에 새로운 값이 입력되어 차트로 전달됨
-
 
   const hide = () => {
     setOpen(false);
@@ -74,34 +70,34 @@ const OverCurrentTrendCurve = () => {
     setIndicatorLabel(updateIndicatorLable(indicator)); //선택된 지표값을 한글로 새로 치환하여 업데이트
   };
 
-  //지표값을 한글로 치환하는 함수
+  // 지표값을 한글로 치환하는 함수
   const updateIndicatorLable = (value) => {
     switch (value) {
       case "voltage":
-        return "전압"
+        return "전압";
       case "overCurrent":
-        return "과전류"
+        return "과전류";
       default:
         return "";
     }
   };
 
   useEffect(() => {
-    //permitRender가 true일시 TrendData에 새로운 값을 입력하고 permitRender는 다시 false로 바꿈
+    // permitRender가 true일 시 TrendData에 새로운 값을 입력하고 permitRender는 다시 false로 바꿈
     if (permitRender) {
-      setTrendData();
+      setTrendData(trendDataFromDb);
       setTimeout(() => {
         setPermitRender(false);
-      }, 1000); //1초
+      }, 1000); // 1초
     }
-  }, [permitRender]);
+  }, [permitRender, trendDataFromDb]);
 
   return (
     <div>
       <Row span={23}>
         <Col span={23} style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px', alignItems: 'center', padding: '0 2% 0 2%' }}>
-            <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 시간별</span>
+            <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 월별</span>
             <Popover
               content={
                 <div>
@@ -135,84 +131,34 @@ const OverCurrentTrendCurve = () => {
 
           <Card className='trendGraphCard OverCurrentTrendCurve_Card' bordered={false}>
             <div className='setGraphInfoWrapper'>
-              <Select className='selectCss' id="selectYear"
-                value={`${yyyy}년`} // 여기에 "년"을 추가
-                onChange={(value) => setYear(value)}>
-                <Option value="2023">2023년</Option>
-                <Option value="2024">2024년</Option>
-              </Select>
-              <Select className='selectCss' id="selectMonth"
-                value={`${mm}월`} // 여기에 "월"을 추가
-                onChange={(value) => setMonth(value)}>
-                <Option value="01">01월</Option>
-                <Option value="02">02월</Option>
-                <Option value="03">03월</Option>
-                <Option value="04">04월</Option>
-                <Option value="05">05월</Option>
-                <Option value="06">06월</Option>
-                <Option value="07">07월</Option>
-                <Option value="08">08월</Option>
-                <Option value="09">09월</Option>
-                <Option value="10">10월</Option>
-                <Option value="11">11월</Option>
-                <Option value="12">12월</Option>
-              </Select>
-              <Select className='selectCss' id="selectDay"
-                value={dd} onChange={(value) => setDay(value)}>
-                <Option value="01">1일</Option>
-                <Option value="02">2일</Option>
-                <Option value="03">3일</Option>
-                <Option value="04">4일</Option>
-                <Option value="05">5일</Option>
-                <Option value="06">6일</Option>
-                <Option value="07">7일</Option>
-                <Option value="08">8일</Option>
-                <Option value="09">9일</Option>
-                <Option value="10">10일</Option>
-                <Option value="11">11일</Option>
-                <Option value="12">12일</Option>
-                <Option value="13">13일</Option>
-                <Option value="14">14일</Option>
-                <Option value="15">15일</Option>
-                <Option value="16">16일</Option>
-                <Option value="17">17일</Option>
-                <Option value="18">18일</Option>
-                <Option value="19">19일</Option>
-                <Option value="20">20일</Option>
-                <Option value="21">21일</Option>
-                <Option value="22">22일</Option>
-                <Option value="23">23일</Option>
-                <Option value="24">24일</Option>
-                <Option value="25">25일</Option>
-                <Option value="26">26일</Option>
-                <Option value="27">27일</Option>
-                <Option value="28">28일</Option>
-                <Option value="29">29일</Option>
-                <Option value="30">30일</Option>
-                <Option value="31">31일</Option>
-              </Select>
-              <Select className='selectCss' id="selectLoad"
-                value={scp_id} onChange={(value) => setScpId(value)}>
-                <Option value="2300136001">601부하</Option>
-                <Option value="2300130203">203부하</Option>
-              </Select>
-
-              <Select className='selectCss' id="indicator"
-                value={indicator} onChange={(value) => setIndicator(value)}>
-                <Option value="voltage">전압</Option>
-                <Option value="overCurrent">과전류</Option>
-              </Select>
-
-              <Select className='selectCss' id="timeUnit"
-                value={timeUnit} onChange={(value) => setTimeUnit(value)}>
-                <Option value="1">1분 단위</Option>
-                <Option value="5">5분 단위</Option>
-                <Option value="15">15분 단위</Option>
-                <Option value="60">시간 단위</Option>
-              </Select>
+                <Select
+                  className='selectCss'
+                  value={`${yyyy}년`} // 여기에 "년"을 추가
+                  onChange={(value) => setYear(value)}
+                >
+                  <Option value="2023">2023년</Option>
+                  <Option value="2024">2024년</Option>
+                </Select>
+                <Select
+                  className='selectCss'
+                  value={scp_id}
+                  onChange={(value) => setScpId(value)}
+                >
+                  <Option value="2300136001">601부하</Option>
+                  <Option value="2300130203">203부하</Option>
+                </Select>
+                <Select
+                  className='selectCss'
+                  value={indicator}
+                  onChange={(value) => setIndicator(value)}
+                >
+                  <Option value="voltage">전압</Option>
+                  <Option value="overCurrent">과전류</Option>
+                </Select>
               <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
             </div>
-            <OverCurrentTrendChart TrendData={TrendData} selectedTimeUnit={selectedTimeUnit} />
+            <OverCurrentTrendBarChartMonth />
+            {/* <OverCurrentTrendChart TrendData={TrendData} selectedTimeUnit={selectedTimeUnit} /* permitRender={permitRender} /> */}
           </Card>
         </Col>
       </Row>
@@ -221,7 +167,7 @@ const OverCurrentTrendCurve = () => {
           <div style={{ position: 'relative', height: '480px', margin: '20px 35px 0 35px', padding: 0, color: 'white', borderRadius: '8px' }} className='OverCurrentTrendCurve_Card'>
             <div className='logInfo'>
               <Col span={24}>
-                <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} />
+                <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} />
               </Col>
             </div>
           </div>
@@ -238,4 +184,4 @@ const OverCurrentTrendCurve = () => {
   );
 }
 
-export default OverCurrentTrendCurve;
+export default OverCurrentTrendCurveMonth;

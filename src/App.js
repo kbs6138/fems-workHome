@@ -14,6 +14,11 @@ import UnbalanceRatioCurve from './Components/TrendCurves/UnbalanceRatioCurve';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import DiagramInfo from './Components/DiagramInfo/DiagramInfo';
 import DiagramDetail from './Components/DiagramInfo/DiagramDetail/DiagramDetail';
+import OverCurrentTrendCurveDay from './Components/TrendCurves/OverCurrentTrendCurveDay';
+import OverCurrentTrendCurveMonth from './Components/TrendCurves/OverCurrentTrendCurveMonth';
+
+
+
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -33,6 +38,8 @@ const App = () => {
                 <Route path="/MonitorFirst" element={<MonitorFirst />} /> {/* 모니터링 페이지 */}
                 <Route path="/LeakageCurrentCurve" element={<LeakageCurrentCurve />} /> {/* 누설전류 */}
                 <Route path="/OverCurrentTrendCurve" element={<OverCurrentTrendCurve />} /> {/* 과전류 */}
+                <Route path="/OverCurrentTrendCurveDay" element={<OverCurrentTrendCurveDay />} /> {/* 과전류 일별 */}
+                <Route path="/OverCurrentTrendCurveMonth" element={<OverCurrentTrendCurveMonth />} /> {/* 과전류 월별 */}
                 <Route path="/UnbalanceRatioCurve" element={<UnbalanceRatioCurve />} /> {/* 불평형률 */}
                 <Route path="/DiagramInfo" element={<DiagramInfo />} /> {/* 장비상세정보 */}
                 <Route path="/DiagramDetail" element={<DiagramDetail />} />
