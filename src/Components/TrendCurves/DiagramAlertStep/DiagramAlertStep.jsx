@@ -48,7 +48,7 @@ const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeF
         <div className="timeline-container">
             <Timeline
                 className="custom-timeline"
-                items={data.slice(0, 8).map((item, index) => (  // Show only the first 8 items
+                items={data.slice(0,200).map((item, index) => (  // Show only the first 8 items
                     {
                         key: index,
                         children: (

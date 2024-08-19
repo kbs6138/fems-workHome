@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Popover, Card, Col, Row, Select } from 'antd';
-import OverCurrentTrendChart from './OverCurrentTrendChart/OverCurrentTrendChart';
 import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendDataMonth } from '../db/Trend_db';

@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 export const fetchTrendData = async (selectedData, dataType) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
     const url = `http://agen072.iptime.org:8980/api/${dataType}?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`;
+    //http://agen072.iptime.org:8980/api/trend-volt?scp_id=2300136001&yyyy=2024&mm=08&dd=14
     const response = await fetch(url);
     const data = await response.json();
 

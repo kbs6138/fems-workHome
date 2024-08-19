@@ -1,5 +1,4 @@
-// Main.jsx
-import React, { useContext, useState } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { Layout, Col, Row, Card, Button } from 'antd';
@@ -13,17 +12,45 @@ import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 import { useMainDiagramData } from './MainDiagram/MainDiagram';
+import DiagPic1 from '../789456123.png'; // 이미지 경로를 자신의 것으로 변경하세요
 
-import DiagPic from '../계통도.png';
-
-//import diagramPicture from '../다이어그램.png';
 const { Content } = Layout;
+
+const ImageCanvas = ({ imageSrc, handleClick, id, scp_id, width, height }) => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = imageSrc;
+
+        img.onload = () => {
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            ctx.putImageData(imageData, 0, 0);
+        };
+    }, [imageSrc, width, height]);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            onClick={() => handleClick(id, scp_id)}
+            style={{ cursor: 'pointer' }}
+        />
+    );
+};
+const width = 75;
+const height = 240;
 
 const AppMain = () => {
     const { isDarkMode } = useContext(ThemeContext);
     const [selectedDiagramId, setSelectedDiagramId] = useState('');
     const [scpId, setScpId] = useState('2300136001'); // 먼저 scpId를 선언
-
     const { data: MainDiagramData } = useMainDiagramData(scpId); // scpId가 초기화된 후에 훅 호출
     const { data } = useRightChart3Data();
 
@@ -34,6 +61,7 @@ const AppMain = () => {
 
     const TxtTheme = isDarkMode ? 'text-light' : 'text-dark';
     const BgTheme = isDarkMode ? 'bg-light' : 'bg-dark';
+
 
 
     return (
@@ -202,33 +230,49 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={5}>
+                <Col className="gutter-row" span={6}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Row>
                             <Col span={8}>
-                                <img src={DiagPic} width='110px' id='First_Diagram' onClick={() => handleImageClick('첫번째 분전반', '2300136001')}
 
-                                // 클릭 이벤트 핸들러 연결
+                                <ImageCanvas
+                                    imageSrc={DiagPic1}
+                                    id='첫번째'
+                                    scp_id='2300136001'
+                                    handleClick={handleImageClick}
+                                    width={width}
+                                    height={height}
                                 />
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='110px' id='Second_Diagram' onClick={() => handleImageClick('두번째 분전반', '2300136002')} // 클릭 이벤트 핸들러 연결
+                                <ImageCanvas
+                                    imageSrc={DiagPic1}
+                                    id='두번째'
+                                    scp_id='2300136002'
+                                    handleClick={handleImageClick}
+                                    width={width}
+                                    height={height}
                                 />
-                                <div style={{ position: 'absolute', top: '25%', left: '70%', transform: 'translate(-50%, -50%)' }}>
-                                </div>
+
                             </Col>
 
                             <Col span={8}>
-                                <img src={DiagPic} width='110px' id='Third_Diagram' onClick={() => handleImageClick('세번째 분전반', '2300136003')}   // 클릭 이벤트 핸들러 연결
+                                <ImageCanvas
+                                    imageSrc={DiagPic1}
+                                    id='세번째'
+                                    scp_id='2300136003'
+                                    handleClick={handleImageClick}
+                                    width={width}
+                                    height={height}
                                 />
                             </Col>
                         </Row>
                     </Card>
                 </Col>
 
-                <Col className="gutter-row" span={6}>
+                <Col className="gutter-row" span={5}>
                     <Card size='medium' className={`  Card5  Main-Bottom-Content2  ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span>

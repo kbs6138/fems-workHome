@@ -24,11 +24,11 @@ const OverCurrentTrendCurve = () => {
   const [dd, setDay] = useState(currentDay);
   const [timeUnit, setTimeUnit] = useState(60);
   const [permitRender, setPermitRender] = useState(true);
-  const [indicator, setIndicator] = useState("voltage"); //지표 ex)전압, 과전류
-  const [queryKey, setQueryKey] = useState("trendVoltData"); //api에 보낼 쿼리 키
-  const [dataType, setDataType] = useState("trend-volt"); //api에 보낼 데이터 타입
-  const [dataTypeForChart, setDataTypeForChart] = useState("volt"); //그래프에 보낼 데이터 타입
-  const [indicatorLabel, setIndicatorLabel] = useState("전압"); //지표 한글로 치환
+  const [indicator, setIndicator] = useState("voltage");
+  const [indicatorLabel, setIndicatorLabel] = useState("전압");
+  const [queryKey, setQueryKey] = useState("trendVoltData");
+  const [dataType, setDataType] = useState("trend-volt");
+  const [dataTypeForChart, setDataTypeForChart] = useState("volt");
 
   // db에 요청할 정보
   const [selectedData, setSelectedData] = useState({
@@ -44,8 +44,8 @@ const OverCurrentTrendCurve = () => {
   });
 
   const { data: trendDataFromDb } = useTrendData(selectedData, queryKey, dataType);
-  //받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
+
 
   const hide = () => {
     setOpen(false);
@@ -55,7 +55,6 @@ const OverCurrentTrendCurve = () => {
     setOpen(newOpen);
   };
 
-  // 버튼 클릭 시 select된 값 업데이트
   const handleSearch = () => {
     const newSelectedData = {
       scp_id,
@@ -67,68 +66,101 @@ const OverCurrentTrendCurve = () => {
 
     setSelectedData(newSelectedData);
     setSelectedTimeUnit(newTimeUnit);
-    setPermitRender(true); //조회버튼 클릭시 permitRender를 true로 바꿔주며 TrendData에 새로운 값이 입력되어 차트로 전달됨
-    setIndicatorLabel(upDateByIndicator(indicator, 1)); //선택된 지표값을 한글로 새로 치환하여 업데이트
-    setQueryKey(upDateByIndicator(indicator, 2)); //쿼리키 업데이트
-    setDataType(upDateByIndicator(indicator, 3)); //가져올 데이터타입 업데이트
-    setDataTypeForChart(upDateByIndicator(indicator, 4)) //그래프에 보낼 데이터타입 업데이트
+    setPermitRender(true);
+    setIndicatorLabel(upDateByIndicator(indicator, 1));
+    setQueryKey(upDateByIndicator(indicator, 2));
+    setDataType(upDateByIndicator(indicator, 3));
+    setDataTypeForChart(upDateByIndicator(indicator, 4));
   };
 
-  //지표값을 한글로 치환하는 함수
   const upDateByIndicator = (value, key) => {
-    //key 1: 지표값을 한글로 치환
-    if(key == 1){ 
+    if (key === 1) {
       switch (value) {
         case "voltage":
-          return "전압"
+          return "전압";
         case "overCurrent":
-          return "과전류"
+          return "전류";
+        case "Wat":
+          return "전력";
+        case "PowerFactor":
+          return "역률";
+        case "Inner_Deg":
+          return "내부온도";
+        case "Outer_Deg":
+          return "외부온도";
         default:
           return "";
       }
-    }
-    //key 2: 쿼리키 설정 
-    else if(key == 2){
+    } else if (key === 2) {
       switch (value) {
         case "voltage":
           return "trendVoltData";
         case "overCurrent":
           return "trendAmData";
+        case "Wat":
+          return "trendWatData";
+        case "PowerFactor":
+          return "trendpfData";
+        case "Outer_Deg":
+          return "trendoutdegData";
+        case "Inner_Deg":
+          return "trendindegData";
+
         default:
           return "";
       }
-    } 
-    //key 3: 데이터 타입 설정 ex) trend-volt, trend-am....
-    else if(key == 3){
+    } else if (key === 3) {
       switch (value) {
+
         case "voltage":
           return "trend-volt";
+
         case "overCurrent":
           return "trend-am";
+
+        case "Wat":
+          return "trend-wat";
+
+        case "PowerFactor":
+          return "trend-pf";
+
+        case "Outer_Deg":
+          return "trend-out-deg";
+
+        case "Inner_Deg":
+          return "trend-in-deg";
+
+
         default:
           return "";
       }
-    }
-    //key 4: 그래프에 보낼 데이터 타입 설정
-    else if(key == 4){
+    } else if (key === 4) {
       switch (value) {
         case "voltage":
           return "volt";
         case "overCurrent":
           return "am";
+        case "Wat":
+          return "wat";
+        case "PowerFactor":
+          return "pf";
+        case "Outer_Deg":
+          return "out_deg";
+        case "Inner_Deg":
+          return "in_deg";
         default:
           return "";
       }
     }
   };
+  console.log()
 
   useEffect(() => {
-    //permitRender가 true일시 TrendData에 새로운 값을 입력하고 permitRender는 다시 false로 바꿈
     if (permitRender) {
       setTrendData(trendDataFromDb);
       setTimeout(() => {
         setPermitRender(false);
-      }, 1000); //1초
+      }, 1000);
     }
   }, [permitRender, trendDataFromDb]);
 
@@ -241,7 +273,12 @@ const OverCurrentTrendCurve = () => {
                   <Select className='selectCss' id="indicator"
                     value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
-                    <Option value="overCurrent">과전류</Option>
+                    <Option value="overCurrent">전류</Option>
+
+                    <Option value="Wat">전력</Option>
+                    <Option value="PowerFactor">역률</Option>
+                    <Option value="Outer_Deg">외부온도</Option>
+                    <Option value="Inner_Deg">내부온도</Option>
                   </Select>
 
                   <Select className='selectCss' id="timeUnit"
@@ -253,7 +290,8 @@ const OverCurrentTrendCurve = () => {
                   </Select>
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
                 </div>
-                <OverCurrentTrendChart TrendData={TrendData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart}/>
+                <OverCurrentTrendChart TrendData={TrendData} dataTypeForChart={dataTypeForChart} selectedTimeUnit={selectedTimeUnit}
+                />
               </Card>
             </Col>
           </Row>
