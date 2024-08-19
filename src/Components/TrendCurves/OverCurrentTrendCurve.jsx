@@ -78,14 +78,18 @@ const OverCurrentTrendCurve = () => {
       switch (value) {
         case "voltage":
           return "전압";
+
         case "overCurrent":
           return "전류";
         case "Wat":
           return "전력";
+
         case "PowerFactor":
           return "역률";
+
         case "Inner_Deg":
           return "내부온도";
+
         case "Outer_Deg":
           return "외부온도";
         default:
@@ -93,16 +97,22 @@ const OverCurrentTrendCurve = () => {
       }
     } else if (key === 2) {
       switch (value) {
+
         case "voltage":
           return "trendVoltData";
+
         case "overCurrent":
           return "trendAmData";
+
         case "Wat":
           return "trendWatData";
+
         case "PowerFactor":
           return "trendpfData";
+
         case "Outer_Deg":
           return "trendoutdegData";
+
         case "Inner_Deg":
           return "trendindegData";
 
