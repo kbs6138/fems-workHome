@@ -225,7 +225,7 @@ const DiagramDetail = () => {
             setPowerLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-
+    
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -237,7 +237,7 @@ const DiagramDetail = () => {
             setPFLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-
+    
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -249,7 +249,7 @@ const DiagramDetail = () => {
             setOutTempLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-
+    
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -261,6 +261,7 @@ const DiagramDetail = () => {
             setInTempLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
+    
 
     const handleTabChange = (key) => {
         setActiveTabKey(key);
