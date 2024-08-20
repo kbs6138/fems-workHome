@@ -9,9 +9,6 @@ const DiagramDetailLog = ({ logEntries = [] }) => { // 기본값으로 빈 배�
                 <Col span={7}>
                     <div style={{ color: 'white' }}>로그 이력관리</div>
                 </Col>
-                <Col span={3}></Col>
-                <Col span={5}></Col>
-                <Col span={5}></Col>
             </Row>
             <Card className='DiagramDetailLog-container' bordered={false} >
                 <Timeline className="custom-timeline">

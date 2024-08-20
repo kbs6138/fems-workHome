@@ -181,7 +181,7 @@ const OverCurrentTrendCurve = () => {
           <Row>
             <Col span={24}>
               <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 5px 10px 5px', alignItems: 'center' }}>
-                <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 시간별</span>
+                <span className='OverCurrentTrendCurve_Title'>시간별 {indicatorLabel} 추이그래프 </span>
                 <Popover
                   content={
                     <div>
@@ -308,7 +308,7 @@ const OverCurrentTrendCurve = () => {
           <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveLog_Card'>
-                <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart} />
+                <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart} indicatorLabel={indicatorLabel}/>
               </Card>
             </Col>
             <Col span={16}>

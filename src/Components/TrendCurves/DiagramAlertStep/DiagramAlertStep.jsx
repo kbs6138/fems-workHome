@@ -1,85 +1,103 @@
 import React, { useEffect, useState } from 'react';
-import { Timeline } from 'antd';
+import { Timeline, Card, Row, Col } from 'antd';
 import './DiagramAlertStep.css';
 
-const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeForChart }) => {
+const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeForChart, indicatorLabel }) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        let timeUnit = parseInt(selectedTimeUnit.timeUnit, 10); // Ensure timeUnit is an integer
+        const timeUnit = parseInt(selectedTimeUnit.timeUnit, 10);
 
-        if (Array.isArray(TrendData)) {
-            const filteredData = TrendData.filter((item, index) => {
-                if (timeUnit === 60) {
-                    return index === 0 || TrendData[index - 1].hr !== item.hr;
-                } else if (timeUnit === 1) {
-                    return item.min % 1 === 0;
-                } else if (timeUnit === 5) {
-                    return item.min % 5 === 0;
-                } else if (timeUnit === 15) {
-                    return item.min % 15 === 0;
-                } else {
-                    return true;
-                }
-            });
-
-            console.log('Filtered Data:', filteredData);
-
-            const formattedData = filteredData.map(item => {
-                let rValue, sValue, tValue, value;
-                if (['volt', 'am'].includes(dataTypeForChart)) {
-                    rValue = item[`${dataTypeForChart}_r`];
-                    sValue = item[`${dataTypeForChart}_s`];
-                    tValue = item[`${dataTypeForChart}_t`];
-                } else {
-                    value = item[`${dataTypeForChart}_r`];
-                }
-
-                return {
-                    time: `${selectedData.yyyy}.${selectedData.mm}.${selectedData.dd} ${item.hr}:${item.min}`,
-                    rValue,
-                    sValue,
-                    tValue,
-                    value
-                };
-            });
-
-            console.log('Formatted Data:', formattedData);
-            setData(formattedData);
-        } else {
+        if (!Array.isArray(TrendData)) {
             console.error('TrendData is not an array');
+            return;
         }
-    }, [TrendData, selectedTimeUnit, dataTypeForChart, selectedData]);
+
+        const filteredData = TrendData.filter((item, index) => {
+            switch (timeUnit) {
+                case 60: return index === 0 || TrendData[index - 1].hr !== item.hr;
+                case 1: return item.min % 1 === 0;
+                case 5: return item.min % 5 === 0;
+                case 15: return item.min % 15 === 0;
+                default: return true;
+            }
+        });
+
+        const formattedData = filteredData.map(item => ({
+            date: `${selectedData.yyyy}.${selectedData.mm}.${selectedData.dd}`,
+            time: `${item.hr}:${item.min}`,
+            rValue: item[`${dataTypeForChart}_r`],
+            sValue: item[`${dataTypeForChart}_s`],
+            tValue: item[`${dataTypeForChart}_t`],
+            value: item[dataTypeForChart]
+        }));
+
+        setData(formattedData);
+    }, [TrendData, selectedTimeUnit, dataTypeForChart, selectedData, indicatorLabel]);
+
+    const getColor = () => {
+        switch (dataTypeForChart) {
+            case 'wat': return '#9370DB';
+            case 'pf': return '#00BFFF';
+            case 'out_deg': return '#7CFC00';
+            case 'in_deg': return '#FF69B4';
+            default: return '#000';
+        }
+    };
+
+    const getLabel = () => {
+        switch (dataTypeForChart) {
+            case 'wat': return '전력';
+            case 'pf': return '역률';
+            case 'out_deg': return '외부온도';
+            case 'in_deg': return '내부온도';
+            default: return '';
+        }
+    };
+
+    const renderValues = (item) => (
+        ['volt', 'am'].includes(dataTypeForChart) ? (
+            <>
+                <Col span={5}><span style={{ color: '#00c700' }}>L1: {item.rValue}</span></Col>
+                <Col span={5}><span style={{ color: '#fc738a' }}>L2: {item.sValue}</span></Col>
+                <Col span={5}><span style={{ color: '#7696ff' }}>L3: {item.tValue}</span></Col>
+            </>
+        ) : (
+            <Col span={15}>
+                <span className='DiagramAlertStep_item' style={{ color: getColor() }}>
+                    {getLabel()} : {item.value}
+                </span>
+            </Col>
+        )
+    );
 
     return (
-        <div className="timeline-container">
-            <Timeline
-                className="custom-timeline"
-                items={data.slice(0, 200).map((item, index) => ({
-                    key: index,
-                    children: (
-                        <div className="timeline-item-content">
-                            <span className="timeline-time">{item.time}</span>
-                            {['volt', 'am'].includes(dataTypeForChart) ? (
-                                <>
-                                    <span className="timeline-text" style={{ color: '#00c700', fontWeight: 'bold' }}>L1: {item.rValue}</span>
-                                    <span className="timeline-text" style={{ color: '#fc738a', fontWeight: 'bold' }}>L2: {item.sValue}</span>
-                                    <span className="timeline-text" style={{ color: '#7696ff', fontWeight: 'bold' }}>L3: {item.tValue}</span>
-                                </>
-                            ) : (
-                                <span className="timeline-text" style={{ color: '#00c700', fontWeight: 'bold' }}>
-                                    {dataTypeForChart === 'wat' ? `전력: ${item.value}` :
-                                     dataTypeForChart === 'pf' ? `역률: ${item.value}` :
-                                     dataTypeForChart === 'out_deg' ? `외부온도: ${item.value}` :
-                                     dataTypeForChart === 'in_deg' ? `내부온도: ${item.value}` :
-                                     '' }
-                                </span>
-                            )}
-                        </div>
-                    ),
-                }))}
-            />
+        <div>
+            <Row style={{ padding: '0 0 5px 0', marginTop: '-10px' }}>
+                <Col span={7}>
+                    <div style={{ color: 'white' }}>{indicatorLabel} 로그 이력관리</div>
+                </Col>
+            </Row>
+            <Card className="timeline-container" bordered={false}>
+                <Timeline className="custom-timeline">
+                    {data.slice(0, 200).map((item, index) => (
+                        <Timeline.Item key={index}>
+                            <Row style={{ marginBottom: '8px' }}>
+                                <Col span={6}>
+                                    {/* 날짜와 시간을 각각 다른 줄에 표시 */}
+                                    <div className='DiagramAlertStep-timeline-text'>
+                                        <div>{item.date}</div>
+                                        <div>{item.time}</div>
+                                    </div>
+                                </Col>
+                                {renderValues(item)}
+                            </Row>
+                        </Timeline.Item>
+                    ))}
+                </Timeline>
+            </Card>
         </div>
+
     );
 };
 
