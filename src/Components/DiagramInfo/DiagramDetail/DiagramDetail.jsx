@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; // useNavigate 추가
 import { IoThermometerOutline, IoBarChartOutline } from "react-icons/io5";
 import { SlEnergy } from "react-icons/sl";
 import { VscPulse } from "react-icons/vsc";
@@ -18,11 +19,15 @@ const { Option } = Select;
 const handleChange = () => { };
 
 const DiagramDetail = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate(); // useNavigate 추가
+    const queryParams = new URLSearchParams(location.search);
+    const initialTabKey = queryParams.get('tab') || "1"; // URL에서 탭 키를 가져오고, 없으면 기본값을 1로 설정
+
     const [refreshInterval, setRefreshInterval] = useState(10000);
     const [currentTime, setCurrentTime] = useState('');
-
-
-
+    const [activeTabKey, setActiveTabKey] = useState(initialTabKey); // activeTabKey 상태 추가
 
     const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
     const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
@@ -153,9 +158,6 @@ const DiagramDetail = () => {
         ],
     ];
 
-
-
-
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
@@ -178,6 +180,10 @@ const DiagramDetail = () => {
 
     const [VoltRSTlog, setVoltRSTLog] = useState([]);
     const [AmRSTlog, setAmRSTlog] = useState([]);
+    const [PowerLog, setPowerLog] = useState([]);
+    const [PFLog, setPFLog] = useState([]);
+    const [OutTempLog, setOutTempLog] = useState([]);
+    const [InTempLog, setInTempLog] = useState([]);
 
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
@@ -207,7 +213,62 @@ const DiagramDetail = () => {
         }
     }, [DiagramInfoData]);
 
+    // 전력, 역률, 내부온도, 외부온도 로그 업데이트
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const now = new Date();
+            const newLogEntry = {
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
+                value: `전력 : ${DiagramInfoData[0]?.w_data || '-'}`,
+            };
+            setPowerLog([newLogEntry]);
+        }
+    }, [DiagramInfoData]);
+
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const now = new Date();
+            const newLogEntry = {
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
+                value: `역률 : ${DiagramInfoData[0]?.pf_data || '-'}`,
+            };
+            setPFLog([newLogEntry]);
+        }
+    }, [DiagramInfoData]);
+
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const now = new Date();
+            const newLogEntry = {
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
+                value: `외부온도 : ${DiagramInfoData[0]?.out_data || '-'}`,
+            };
+            setOutTempLog([newLogEntry]);
+        }
+    }, [DiagramInfoData]);
+
+    useEffect(() => {
+        if (DiagramInfoData.length > 0) {
+            const now = new Date();
+            const newLogEntry = {
+                date: now.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+                time: now.toLocaleTimeString('ko-KR', { hour12: false }),
+                value: `내부온도 : ${DiagramInfoData[0]?.in_data || '-'}`,
+            };
+            setInTempLog([newLogEntry]);
+        }
+    }, [DiagramInfoData]);
+
+    const handleTabChange = (key) => {
+        setActiveTabKey(key);
+        navigate(`?tab=${key}`);
+    };
+
     /************************************** 로그이력관리 useEffect ****************************************/
+
 
     const tabsItems = [
         {
@@ -216,7 +277,7 @@ const DiagramDetail = () => {
             children: (
                 DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
                     <Col span={24}>
-                        <Row> {/* 수평 16px, 수직 24px 간격 설정 */}
+                        <Row>
                             <Col span={24}>
                                 <Card bordered={false} className='DiagramDetail_V_Chart_Card'>
                                     <DiagramDetailVWChart
@@ -231,7 +292,7 @@ const DiagramDetail = () => {
                                 </Card>
                             </Col>
                         </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+                        <Row gutter={[10]} style={{ marginTop: '10px' }}>
                             <Col span={8}>
                                 <DiagramDetailVWTable data={tableDataArray[0]} />
                             </Col>
@@ -318,8 +379,9 @@ const DiagramDetail = () => {
                                 <DiagramInfoOtherTable data={tableDataArray[2]} />
                             </Col>
                             <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_W_Card'>
-                                    asdasd
+
+                                <Card bordered={false} className='DiagramDetail_W_DiagramDetailLog_Card'>
+                                    <DiagramDetailLog logEntries={PowerLog} />
                                 </Card>
                             </Col>
                         </Row>
@@ -346,14 +408,12 @@ const DiagramDetail = () => {
                                 <DiagramInfoOtherTable data={tableDataArray[3]} />
                             </Col>
                             <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_WVA_Card'>
-                                    asdasd
+                                <Card bordered={false} className='DiagramDetail_PF_DiagramDetailLog_Card'>
+                                    <DiagramDetailLog logEntries={PFLog} />
                                 </Card>
                             </Col>
                         </Row>
                     </Col>
-
-
                 )
             )
         },
@@ -375,8 +435,8 @@ const DiagramDetail = () => {
                                 <DiagramInfoOtherTable data={tableDataArray[4]} />
                             </Col>
                             <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_OutDeg_Card'>
-                                    asdasd
+                                <Card bordered={false} className='DiagramDetail_OutDeg_DiagramDetailLog_Card'>
+                                    <DiagramDetailLog logEntries={OutTempLog} />
                                 </Card>
                             </Col>
                         </Row>
@@ -403,8 +463,8 @@ const DiagramDetail = () => {
                                 <DiagramInfoOtherTable data={tableDataArray[5]} />
                             </Col>
                             <Col span={16} style={{ height: '460px' }}>
-                                <Card bordered={false} className='DiagramDetail_InnerDeg_Card'>
-                                    로그형식...
+                                <Card bordered={false} className='DiagramDetail_InnerDeg_DiagramDetailLog_Card'>
+                                    <DiagramDetailLog logEntries={InTempLog} />
                                 </Card>
                             </Col>
                         </Row>
@@ -448,15 +508,19 @@ const DiagramDetail = () => {
                         <Col span={24}>
                             <Row>
                                 <Col span={24} style={{ marginTop: '10px' }}>
-                                    <Tabs type="card" items={tabsItems} />
+                                    <Tabs
+                                        type="card"
+                                        items={tabsItems}
+                                        activeKey={activeTabKey}
+                                        onChange={handleTabChange} // onChange 핸들러 추가
+                                    />
                                 </Col>
                             </Row>
-
                         </Col>
                     </Card>
                 </Col>
-            </Row >
-        </Content >
+            </Row>
+        </Content>
     );
 };
 

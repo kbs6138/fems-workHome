@@ -216,7 +216,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_V_Card_Title'><SlEnergy className='Diagram_icon_V' />전압</div>
 
-                      <Link to="/DiagramDetail">
+                      <Link to="/DiagramDetail?tab=1">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           전압 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -241,7 +241,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_A_Card_Title'><VscPulse className='Diagram_icon_A' />전류</div>
 
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail?tab=2">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           전류 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -266,7 +266,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_W_Card_Title'><SlEnergy className='Diagram_icon_W' />전력</div>
 
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail?tab=3">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           전력 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -285,7 +285,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_WVA_Card_Title'><IoBarChartOutline className='Diagram_icon_WVA' />역률</div>
 
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail?tab=4">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           역률 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -304,7 +304,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_OutDeg_Card_Title'><IoThermometerOutline className='Diagram_icon_OutDeg' />외부온도</div>
 
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail?tab=5">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           외부온도 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -323,7 +323,7 @@ const DiagramInfo = () => {
                     <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div className='Diagram_InnerDeg_Card_Title'> <IoThermometerOutline className='Diagram_icon_InnerDeg' />내부온도 </div>
 
-                      <Link to="/DiagramInfo">
+                      <Link to="/DiagramDetail?tab=6">
                         <Button type="link" className='Diagram_Info_Button' style={{ marginTop: '-10px', background: 'rgb(42 ,63 ,97)' }}>
                           내부온도 상세조회
                           <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
@@ -351,7 +351,6 @@ const DiagramInfo = () => {
             </Row>
           </Card>
         </Col>
-
         <Col span={9} style={{ marginTop: '25px' }}>
           <span style={{ fontSize: '20px', color: 'white', marginTop: '-15px' }}>실시간 수치
             <p style={{ fontSize: '12px' }}>(최근 1분 데이터)</p>
@@ -481,6 +480,7 @@ const DiagramInfo = () => {
 
           </Row>
         </Col>
+
       </Row>
     </Content>
   );
