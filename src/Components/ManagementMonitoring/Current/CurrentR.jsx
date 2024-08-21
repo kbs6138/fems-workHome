@@ -24,7 +24,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
                 return; // 데이터가 없는 경우 차트 업데이트를 건너뜀
             }
 
-            const textColor = isDarkMode ? '#ffffff' : '#ffffff';
+            const textColor = NameColor; // Use NameColor for text
             const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
 
             const option = {
@@ -41,7 +41,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
                                 return `${statusText}\n${CurrentVolt}V`;
                             },
                             fontSize: 12,
-                            color: textColor,
+                            color: textColor, // Use NameColor for text color
                             fontFamily: 'NanumSquareNeoExtraBold',
                         },
                         data: [
@@ -76,7 +76,6 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
                                         return '#FF0000';
                                     }
                                 })(),
-
                                 shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
                                 shadowBlur: 10, // 그림자 흐림 정도
                                 shadowOffsetX: 2, // 그림자 수평 오프셋
@@ -120,7 +119,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
         if (myChart.current) {
             updateChartOptions();
         }
-    }, [isDarkMode, data, CurrentVolt, MovePointer, Name, CurrentFirstArea, CurrentSecondArea, CurrentThirdArea]);
+    }, [isDarkMode, data, CurrentVolt, MovePointer, Name, CurrentFirstArea, CurrentSecondArea, CurrentThirdArea, NameColor]);
 
     return (
         <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" style={{ left: '-20px' }} />

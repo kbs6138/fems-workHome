@@ -1,3 +1,4 @@
+// In MonitorFirst Component
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Col, Row, Card, Select, Button } from 'antd';
@@ -17,17 +18,9 @@ const { Option } = Select;
 const MonitorFirst = () => {
     const { data } = useCurrentData();
 
-
     const [Name, setName] = useState([]);
-
-
     const [CurrentValue, setCurrentValue] = useState([]);
     const [OverCurrentValue, setOverCurrentValue] = useState([]);
-
-    //const [TemperatureValue, setTemperatureValue] = useState([]); //온도
-    //const [CurrentUnbalanceRatioValue, setCurrentUnbalanceRatioValue] = useState([]); //전류불평형률
-    //const [LeakageCurrentValue, setLeakageCurrentValue] = useState([]); //누설전류
-    //const [AccumulatedOperatingTimeValue, setAccumulatedOperatingTimeValue] = useState([]); //누적가동시간
 
     /** 전압 구간 */
     const [CurrentFirstArea, setCurrentFirstArea] = useState([]);
@@ -42,7 +35,7 @@ const MonitorFirst = () => {
     /** 과전류 구간 */
 
     const [MovePointer, setMovePointer] = useState([]);
-
+    const [NameColor, setNameColor] = useState(['#00c700', '#fc738a', '#7696ff']); // Define your colors here
 
     const { isDarkMode } = useContext(ThemeContext);
 
@@ -70,9 +63,9 @@ const MonitorFirst = () => {
             setOverCurrentSecondArea([data[3].area2, data[4].area2, data[5].area2]);
             setOverCurrentThirdArea([data[3].area3, data[4].area3, data[5].area3]);
             /** 과전류 구간 */
-
         }
     }, [data]);
+
     return (
         <Content className="app-Content">
             <Row
@@ -118,6 +111,7 @@ const MonitorFirst = () => {
                                             <CurrentR
                                                 CurrentVolt={CurrentValue[0]}
                                                 Name={Name[0]}
+                                                NameColor={NameColor[0]}
                                                 MovePointer={MovePointer[0]}
                                                 CurrentFirstArea={CurrentFirstArea[0]}
                                                 CurrentSecondArea={CurrentSecondArea[0]}
@@ -128,6 +122,7 @@ const MonitorFirst = () => {
                                             <CurrentR
                                                 CurrentVolt={CurrentValue[1]}
                                                 Name={Name[1]}
+                                                NameColor={NameColor[1]}
                                                 MovePointer={MovePointer[1]}
                                                 CurrentFirstArea={CurrentFirstArea[1]}
                                                 CurrentSecondArea={CurrentSecondArea[1]}
@@ -138,6 +133,7 @@ const MonitorFirst = () => {
                                             <CurrentR
                                                 CurrentVolt={CurrentValue[2]}
                                                 Name={Name[2]}
+                                                NameColor={NameColor[2]}
                                                 MovePointer={MovePointer[2]}
                                                 CurrentFirstArea={CurrentFirstArea[2]}
                                                 CurrentSecondArea={CurrentSecondArea[2]}
@@ -169,6 +165,7 @@ const MonitorFirst = () => {
                                         <Col span={8}>
                                             <OverCurrentR
                                                 Name={Name[0]}
+                                                NameColor={NameColor[0]}
                                                 OverCurrentValue={OverCurrentValue[0]}
                                                 OverCurrentFirstArea={OverCurrentFirstArea[0]}
                                                 OverCurrentSecondArea={OverCurrentSecondArea[0]}
@@ -178,6 +175,7 @@ const MonitorFirst = () => {
                                         <Col span={8}>
                                             <OverCurrentR
                                                 Name={Name[1]}
+                                                NameColor={NameColor[1]}
                                                 OverCurrentValue={OverCurrentValue[1]}
                                                 OverCurrentFirstArea={OverCurrentFirstArea[1]}
                                                 OverCurrentSecondArea={OverCurrentSecondArea[1]}
@@ -187,6 +185,7 @@ const MonitorFirst = () => {
                                         <Col span={8}>
                                             <OverCurrentR
                                                 Name={Name[2]}
+                                                NameColor={NameColor[2]}
                                                 OverCurrentValue={OverCurrentValue[2]}
                                                 OverCurrentFirstArea={OverCurrentFirstArea[2]}
                                                 OverCurrentSecondArea={OverCurrentSecondArea[2]}
@@ -207,48 +206,36 @@ const MonitorFirst = () => {
                         >
                             <Col span={6}>
                                 <Card className={`Temperature_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
-                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 온도 </span>
-                                    <Temperature />
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>온도</span>
+                                    <Temperature key={1} />
                                 </Card>
                             </Col>
-                            <Col span={6} >
+
+                            <Col span={6}>
                                 <Card className={`CurrentUnbalanceRatio_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
-                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 전류 불평형률
-                                        <Link to="/UnbalanceRatioCurve">
-                                            <Button type="link" className='CurrentUnbalanceRatio_Button'>
-                                                전류불평형률  추이그래프
-                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                            </Button>
-                                        </Link>
-                                    </span>
-                                    <CurrentUnbalanceRatio />
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>전류불평형률</span>
+                                    <CurrentUnbalanceRatio key={2} />
                                 </Card>
                             </Col>
+
                             <Col span={6}>
                                 <Card className={`LeakageCurrent_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
-                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누설전류
-                                        <Link to="/LeakageCurrentCurve">
-                                            <Button type="link" className='LeakageCurrent_Button'>
-                                                누설전류 추이그래프
-                                                <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                            </Button>
-                                        </Link>
-                                    </span>
-                                    <LeakageCurrent />
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>누설전류</span>
+                                    <LeakageCurrent key={3} />
                                 </Card>
                             </Col>
+
                             <Col span={6}>
                                 <Card className={`AccumulatedOperatingTime_Card ${TxtTheme} ${BgTheme}`} size='medium' bordered={false} >
-                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> 누적가동시간 </span>
-                                    <AccumulatedOperatingTime />
+                                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: '10px', marginTop: '10px' }}>누적가동시간</span>
+                                    <AccumulatedOperatingTime key={4} />
                                 </Card>
-
                             </Col>
                         </Row>
                     </Card>
                 </Col>
-            </Row >
-        </Content >
+            </Row>
+        </Content>
     );
 };
 

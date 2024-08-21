@@ -7,7 +7,7 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
     const { data } = useGaugeData();
     const chartRef = useRef(null);
     const { isDarkMode } = useContext(ThemeContext);
-    const myChart = useRef(null); // 차트 인스턴스를 useRef로 관리
+    const myChart = useRef(null);
 
     useEffect(() => {
         const chartDom = chartRef.current;
@@ -16,14 +16,16 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
         return () => {
             myChart.current.dispose();
         };
-    }, [isDarkMode, Name, OverCurrentValue, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]); // 빈 배열로 초기화만 한 번 실행되도록 설정
+    }, [isDarkMode, Name, OverCurrentValue, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]);
 
     useEffect(() => {
         const updateChartOptions = () => {
-            const textColor = isDarkMode ? '#ffffff' : '#ffffff';
-            const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
+            if (!data) {
+                return;
+            }
 
-            console.log(OverCurrentThirdArea);
+            const textColor = NameColor; // NameColor로 텍스트 색상 설정
+            const axisLineColor = isDarkMode ? '#ffffff' : '#ffffff';
 
             const option = {
                 animation: true,
@@ -42,7 +44,7 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
                                 return `${statusText}\n${OverCurrentValue}A`;
                             },
                             fontSize: 12,
-                            color: textColor,
+                            color: textColor, // NameColor로 텍스트 색상 적용
                             fontFamily: 'NanumSquareNeoExtraBold',
                         },
                         data: [
@@ -56,7 +58,6 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
                                     [OverCurrentFirstArea, '#33cc33'],
                                     [OverCurrentSecondArea, '#ffcc00'],
                                     [OverCurrentThirdArea, '#ff3300']
-
                                 ],
                                 width: 3
                             }
@@ -75,7 +76,6 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
                                         return '#ff3300'; // 위험 구간 바늘 색상
                                     }
                                 })(),
-
                                 shadowColor: 'rgba(0, 0, 0, 0.5)', // 그림자 색상
                                 shadowBlur: 10, // 그림자 흐림 정도
                                 shadowOffsetX: 2, // 그림자 수평 오프셋
@@ -84,7 +84,6 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
                             animation: true,
                             animationDuration: 300,
                             animationEasing: 'linear'
-
                         }
                     }
                 ]
@@ -96,7 +95,7 @@ const OverCurrentR = ({ Name, OverCurrentValue, NameColor, OverCurrentFirstArea,
         if (myChart.current) {
             updateChartOptions();
         }
-    }, [isDarkMode, data, OverCurrentValue, Name, NameColor, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]); // 의존성 배열에 isDarkMode와 data 포함
+    }, [isDarkMode, data, OverCurrentValue, Name, NameColor, OverCurrentFirstArea, OverCurrentSecondArea, OverCurrentThirdArea]);
 
     return (
         <div id="OverCurrentR" ref={chartRef} className="OverCurrentR" />
