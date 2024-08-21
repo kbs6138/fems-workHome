@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
 export const fetchGaugeData = async () => {
-    const response = await fetch('http://agen072.iptime.org:8980/api/scp_m?scp_id=2300130203');
+    const response = await fetch('http://118.43.32.5:8980/api/scp_m?scp_id=2300130203');
     const data = await response.json();
     //console.log('apiData:', data);
     return data; // 데이터 구조를 그대로 반환

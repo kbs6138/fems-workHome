@@ -18,8 +18,10 @@ import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './Diag
 
 const { Content } = Layout;
 const { Option } = Select;
+
 const handleChange = () => {
 };
+
 const DiagramInfo = () => {
   const [refreshInterval, setRefreshInterval] = useState(10000); // 초기값 설정
   const [currentTime, setCurrentTime] = useState('');
@@ -27,8 +29,6 @@ const DiagramInfo = () => {
   const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
   const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
   const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
-
-
 
   const handleMenuClick = (key) => {
     setRefreshInterval(key); // 클릭한 메뉴의 키로 refreshInterval 업데이트
@@ -343,11 +343,9 @@ const DiagramInfo = () => {
                     <Col span={24}>
                       <DiagramAlertStep />
                     </Col>
-
                   </Row>
                 </Card>
               </Col>
-
             </Row>
           </Card>
         </Col>
@@ -476,11 +474,8 @@ const DiagramInfo = () => {
                 </Row>
               </Card>
             </Col>
-
-
           </Row>
         </Col>
-
       </Row>
     </Content>
   );

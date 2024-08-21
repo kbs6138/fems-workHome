@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 // 전압 데이터 가져오기
 export const fetchMainDiagramData = async (scpId) => {
-    const response = await fetch(`http://agen072.iptime.org:8980/api/main-diagram?scp_id=${scpId}`);
+    const response = await fetch(`http://118.43.32.5:8980/api/main-diagram?scp_id=${scpId}`);
     const data = await response.json();
     return data; // 데이터 구조를 그대로 반환
 };
