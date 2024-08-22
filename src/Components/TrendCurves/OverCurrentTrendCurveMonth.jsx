@@ -4,7 +4,9 @@ import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendDataMonth } from '../db/Trend_db';
 import DiagramAlertStepMonth from './DiagramAlertStep/DiagramAlertStepMonth';
-import OverCurrentTrendBarChartMonth from './OverCurrentTrendChart/OverCurrentTrendBarChartMonth';
+import OverCurrentTrendChartMonth from './OverCurrentTrendChart/OverCurrentTrendChartMonth';
+import TestChartMonth from './OverCurrentTrendChart/testChartMonth';
+import TestDiagramMonth from './DiagramAlertStep/OverCurrentTrendChartMonth';
 
 const { Option } = Select;
 
@@ -14,34 +16,25 @@ const OverCurrentTrendCurveMonth = () => {
   // 현재 날짜 가져오기
   const today = new Date();
   const currentYear = today.getFullYear();
-  const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
-  const currentDay = String(today.getDate()).padStart(2, '0');
 
   // 상태 값
   const [scp_id, setScpId] = useState('2300136001');
   const [yyyy, setYear] = useState(currentYear);
-  const [mm, setMonth] = useState(currentMonth);
-  const [dd, setDay] = useState(currentDay);
-  const [timeUnit, setTimeUnit] = useState(60);
   const [permitRender, setPermitRender] = useState(true);
   const [indicator, setIndicator] = useState("voltage"); //지표
   const [indicatorLabel, setIndicatorLabel] = useState("전압"); //지표 한글로 치환
+  const [queryKey, setQueryKey] = useState("trendVoltData");
+  const [dataType, setDataType] = useState("trend-volt");
+  const [dataTypeForChart, setDataTypeForChart] = useState("volt");
 
   // db에 요청할 정보
   const [selectedData, setSelectedData] = useState({
     scp_id,
     yyyy,
-    mm,
-    dd,
-  });
-
-  // 실질적으로 차트에 보낼 시간 변수
-  const [selectedTimeUnit, setSelectedTimeUnit] = useState({
-    timeUnit
   });
 
   // db에서 data를 받아오는 변수
-  const { data: trendDataFromDb } = useTrendDataMonth(selectedData);
+  const { data: trendDataFromDb } = useTrendDataMonth(selectedData, queryKey, dataType);
   // 받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
 
@@ -58,26 +51,104 @@ const OverCurrentTrendCurveMonth = () => {
     const newSelectedData = {
       scp_id,
       yyyy,
-      mm,
-      dd,
     };
-    const newTimeUnit = { timeUnit };
 
     setSelectedData(newSelectedData);
-    setSelectedTimeUnit(newTimeUnit);
     setPermitRender(true);
-    setIndicatorLabel(updateIndicatorLable(indicator)); //선택된 지표값을 한글로 새로 치환하여 업데이트
+    setIndicatorLabel(upDateByIndicator(indicator, 1));
+    setQueryKey(upDateByIndicator(indicator, 2));
+    setDataType(upDateByIndicator(indicator, 3));
+    setDataTypeForChart(upDateByIndicator(indicator, 4));
   };
 
-  // 지표값을 한글로 치환하는 함수
-  const updateIndicatorLable = (value) => {
-    switch (value) {
-      case "voltage":
-        return "전압";
-      case "overCurrent":
-        return "과전류";
-      default:
-        return "";
+  const upDateByIndicator = (value, key) => {
+    if (key === 1) {
+      switch (value) {
+        case "voltage":
+          return "전압";
+
+        case "overCurrent":
+          return "전류";
+        case "Wat":
+          return "전력";
+
+        case "PowerFactor":
+          return "역률";
+
+        case "Inner_Deg":
+          return "내부온도";
+
+        case "Outer_Deg":
+          return "외부온도";
+        default:
+          return "";
+      }
+    } else if (key === 2) {
+      switch (value) {
+
+        case "voltage":
+          return "trendVoltData";
+
+        case "overCurrent":
+          return "trendAmData";
+
+        case "Wat":
+          return "trendWatData";
+
+        case "PowerFactor":
+          return "trendpfData";
+
+        case "Outer_Deg":
+          return "trendoutdegData";
+
+        case "Inner_Deg":
+          return "trendindegData";
+
+        default:
+          return "";
+      }
+    } else if (key === 3) {
+      switch (value) {
+
+        case "voltage":
+          return "trend-volt";
+
+        case "overCurrent":
+          return "trend-am";
+
+        case "Wat":
+          return "trend-wat";
+
+        case "PowerFactor":
+          return "trend-pf";
+
+        case "Outer_Deg":
+          return "trend-out-deg";
+
+        case "Inner_Deg":
+          return "trend-in-deg";
+
+
+        default:
+          return "";
+      }
+    } else if (key === 4) {
+      switch (value) {
+        case "voltage":
+          return "volt";
+        case "overCurrent":
+          return "am";
+        case "Wat":
+          return "wat";
+        case "PowerFactor":
+          return "pf";
+        case "Outer_Deg":
+          return "out_deg";
+        case "Inner_Deg":
+          return "in_deg";
+        default:
+          return "";
+      }
     }
   };
 
@@ -159,8 +230,8 @@ const OverCurrentTrendCurveMonth = () => {
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
                 </div>
 
-                <OverCurrentTrendBarChartMonth />
-
+                {/* <OverCurrentTrendChartMonth TrendData={TrendData} dataTypeForChart={dataTypeForChart}/> */}
+                  <TestChartMonth/>
               </Card>
             </Col>
           </Row>
@@ -168,7 +239,8 @@ const OverCurrentTrendCurveMonth = () => {
 
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveMonthLog_Card'>
-                <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} />
+                <TestDiagramMonth/>
+                {/* <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} /> */}
               </Card>
             </Col>
 

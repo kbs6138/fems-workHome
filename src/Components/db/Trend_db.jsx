@@ -25,7 +25,7 @@ export const fetchTrendDataDay = async (selectedData) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
     const response = await fetch(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`);
     const data = await response.json();
-    console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
+    //console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
     return data; // 데이터 구조를 그대로 반환
 };
 
@@ -43,7 +43,7 @@ export const fetchTrendDataMonth = async (selectedData) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
     const response = await fetch(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`);
     const data = await response.json();
-    console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
+    //console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
     return data; // 데이터 구조를 그대로 반환
 };
 

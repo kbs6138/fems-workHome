@@ -22,13 +22,13 @@ const OverCurrentTrendCurve = () => {
   const [yyyy, setYear] = useState(currentYear);
   const [mm, setMonth] = useState(currentMonth);
   const [dd, setDay] = useState(currentDay);
-  const [timeUnit, setTimeUnit] = useState(60);
-  const [permitRender, setPermitRender] = useState(true);
-  const [indicator, setIndicator] = useState("voltage");
-  const [indicatorLabel, setIndicatorLabel] = useState("전압");
-  const [queryKey, setQueryKey] = useState("trendVoltData");
-  const [dataType, setDataType] = useState("trend-volt");
-  const [dataTypeForChart, setDataTypeForChart] = useState("volt");
+  const [timeUnit, setTimeUnit] = useState(60); 
+  const [permitRender, setPermitRender] = useState(true); //boolean타입으로 데이터 업데이트를 위한 변수
+  const [indicator, setIndicator] = useState("voltage"); //select dropdown에서 선택된 데이터 타입
+  const [indicatorLabel, setIndicatorLabel] = useState("전압"); //현재 데이터 타입을 한글로 나타내기 위한 변수
+  const [queryKey, setQueryKey] = useState("trendVoltData"); //api에 보낼 쿼리키
+  const [dataType, setDataType] = useState("trend-volt"); //api에 보낼 데이터 타입
+  const [dataTypeForChart, setDataTypeForChart] = useState("volt"); //차트에 보낼 데이터 타입
 
   // db에 요청할 정보
   const [selectedData, setSelectedData] = useState({
@@ -43,9 +43,10 @@ const OverCurrentTrendCurve = () => {
     timeUnit
   });
 
+  //api로부터 원하는 데이터를 받아서 변수로 저장
   const { data: trendDataFromDb } = useTrendData(selectedData, queryKey, dataType);
+  //차트에 보낼 데이터
   const [TrendData, setTrendData] = useState([]);
-
 
   const hide = () => {
     setOpen(false);
@@ -55,6 +56,7 @@ const OverCurrentTrendCurve = () => {
     setOpen(newOpen);
   };
 
+  //조회 클릭 이벤트
   const handleSearch = () => {
     const newSelectedData = {
       scp_id,
@@ -66,7 +68,7 @@ const OverCurrentTrendCurve = () => {
 
     setSelectedData(newSelectedData);
     setSelectedTimeUnit(newTimeUnit);
-    setPermitRender(true);
+    setPermitRender(true); //permitRender를 true로 
     setIndicatorLabel(upDateByIndicator(indicator, 1));
     setQueryKey(upDateByIndicator(indicator, 2));
     setDataType(upDateByIndicator(indicator, 3));
@@ -74,6 +76,7 @@ const OverCurrentTrendCurve = () => {
   };
 
   const upDateByIndicator = (value, key) => {
+    //현재 데이터 타입을 한글로 업데이트
     if (key === 1) {
       switch (value) {
         case "voltage":
@@ -95,7 +98,9 @@ const OverCurrentTrendCurve = () => {
         default:
           return "";
       }
-    } else if (key === 2) {
+    }
+    //쿼리키 업데이트 
+    else if (key === 2) {
       switch (value) {
 
         case "voltage":
@@ -119,7 +124,9 @@ const OverCurrentTrendCurve = () => {
         default:
           return "";
       }
-    } else if (key === 3) {
+    }
+    //api에 보낼 데이터 타입 업데이트
+    else if (key === 3) {
       switch (value) {
 
         case "voltage":
@@ -140,11 +147,12 @@ const OverCurrentTrendCurve = () => {
         case "Inner_Deg":
           return "trend-in-deg";
 
-
         default:
           return "";
       }
-    } else if (key === 4) {
+    } 
+    //차트에 보낼 데이터 타입 업데이트
+    else if (key === 4) {
       switch (value) {
         case "voltage":
           return "volt";
@@ -163,9 +171,9 @@ const OverCurrentTrendCurve = () => {
       }
     }
   };
-  console.log()
 
   useEffect(() => {
+    //permitRender가 true일 경우에만 상태 업데이트 (실시간으로 업데이트 되는 것 방지)
     if (permitRender) {
       setTrendData(trendDataFromDb);
       setTimeout(() => {
@@ -181,7 +189,7 @@ const OverCurrentTrendCurve = () => {
           <Row>
             <Col span={24}>
               <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 5px 10px 5px', alignItems: 'center' }}>
-                <span className='OverCurrentTrendCurve_Title'>시간별 {indicatorLabel} 추이그래프 </span>
+                <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 시간별</span>
                 <Popover
                   content={
                     <div>
@@ -305,10 +313,10 @@ const OverCurrentTrendCurve = () => {
               </Card>
             </Col>
           </Row>
-          <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+          <Row gutter={[10]} style={{ marginTop: '10px' }}>
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveLog_Card'>
-                <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart} indicatorLabel={indicatorLabel}/>
+                <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart} />
               </Card>
             </Col>
             <Col span={16}>

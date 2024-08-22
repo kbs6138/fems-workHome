@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 // 전압 데이터 가져오기
 export const fetchDiagramInfoData = async () => {
-    const response = await fetch('http://118.43.32.5:8980/api/diagraminfo?scp_id=2300136001');
+    const response = await fetch('http://118.43.32.5:8980/api/diagraminfo?scp_id=2200138303_303');
     const data = await response.json();
     return data; // 데이터 구조를 그대로 반환
 };
@@ -17,7 +17,7 @@ export const useDiagramInfoData = (interval = 10000) => { // interval 매개변�
 
 /*****************************************************************************/
 export const fetchDiagramCurrentData = async () => {
-    const response = await fetch('http://118.43.32.5:8980/api/diagram_current?scp_id=2300136001'); // URL 수정
+    const response = await fetch('http://118.43.32.5:8980/api/diagram_current?scp_id=2200138303_303'); // URL 수정
     const data = await response.json();
     return data; // 데이터 구조를 그대로 반환
 };
@@ -33,7 +33,7 @@ export const useDiagramCurrentData = (interval = 10000) => { // interval 매개�
 /*****************************************************************************/
 
 export const fetchMinMaxData = async () => {
-    const response = await fetch('http://118.43.32.5:8980/api/minmax?scp_id=2300136001'); // URL 수정
+    const response = await fetch('http://118.43.32.5:8980/api/minmax?scp_id=2200138303_303'); // URL 수정
     const data = await response.json();
     return data; // 데이터 구조를 그대로 반환
 };
