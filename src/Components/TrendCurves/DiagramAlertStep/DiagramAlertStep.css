@@ -13,22 +13,18 @@
     font-family: 'NanumSquareNeoLight' !important;
 }
 
-.DiagramAlertStep-timeline-text {
+.timeline-text {
     flex-grow: 1;
+    text-align: right;
     font-family: 'NanumSquareNeoLight' !important;
-    font-size: 10.5px;
-    flex-basis: 100px;
-    color: white;
-    text-align: left;
-}
-.DiagramAlertStep_item{
     font-size: 12px;
+    flex-basis:100px;
 }
 
 .ant-timeline .ant-timeline-item-head {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background-color: #f50000;
     border: 3px solid transparent;
     border-radius: 50%;
@@ -39,34 +35,48 @@
     border-color: #f16d6d !important;
 }
 
-.ant-timeline-item-last {
-    height: 10px !important;
+.ant-timeline-item-last{
+    height:10px !important;
 }
 
 .ant-timeline-item-tail {
     background-color: rgb(255, 192, 192) !important;
 }
 
-
-
-
 .timeline-container {
-    max-height: 280px;
-    overflow-y: auto;
-    background: transparent;
-    box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
+    max-height: 280px; /* Ensure it takes up the full height of the parent */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.timeline-container::-webkit-scrollbar {
+    width: 10px;
+    /* 스크롤바의 너비 */
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    height: 30%;
+    /* 스크롤바의 길이 */
+    background: rgb(170, 170, 170);
+    /* 스크롤바의 색상 */
+    border-radius: 3px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241, 1);
+    /* 스크롤바의 색상 */
+    border-radius: 3px;
+
 }
 
 .custom-timeline {
     padding: 10px;
-    max-height: inherit;
-    /* Inherit max-height from the container */
+    max-height: inherit; /* Inherit max-height from the container */
 }
-
-
-
 
 
 .timeline-text {
     margin-left: 10px;
 }
+
+
+

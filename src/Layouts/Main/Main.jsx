@@ -368,29 +368,6 @@ const AppMain = () => {
 
 
                         </Card>
-
-                        {/* <Col span={8}>
-                                <ImageCanvas
-                                    imageSrc={DiagPic1}
-                                    id='두번째'
-                                    scp_id='2300136002'
-                                    handleClick={handleImageClick}
-                                    width={width}
-                                    height={height}
-                                />
-
-                            </Col>
-
-                            <Col span={8}>
-                                <ImageCanvas
-                                    imageSrc={DiagPic1}
-                                    id='세번째'
-                                    scp_id='2300136003'
-                                    handleClick={handleImageClick}
-                                    width={width}
-                                    height={height}
-                                />
-                            </Col> */}
                     </Card>
                 </Col>
 
@@ -399,7 +376,7 @@ const AppMain = () => {
                         <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span>
                                 {selectedDiagramId && <span>{selectedDiagramId}</span>}
-                                &nbsp; 상세정보</span>
+                                &nbsp;상세정보</span>
                             <Link to="/DiagramInfo">
                                 <Button type="link" className='Diagram_Info_Button'>
                                     상세조회
@@ -448,9 +425,7 @@ const AppMain = () => {
                     <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <RightBottomMainTabs />
                     </Card>
-
                 </Col>
-
             </Row>
         </Content>
     );
