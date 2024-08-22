@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_VWMinuteChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
+const DiagramInfoVWMinuteChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     dataR: [],
@@ -242,4 +242,4 @@ const DiagramInfo_VWMinuteChart = ({ dataR, dataS, dataT, chartColor, Min, Max, 
   return <div ref={chartRef} style={{ width: '100%', height: '80px', background: 'rgb(42 ,63 ,97)', boxShadow: '0px 0px 10px 2px rgb(22, 42, 69)', borderRadius: '10px', marginTop: '5px', backgroundColor: '#263752' }} />;
 };
 
-export default DiagramInfo_VWMinuteChart;
+export default DiagramInfoVWMinuteChart;

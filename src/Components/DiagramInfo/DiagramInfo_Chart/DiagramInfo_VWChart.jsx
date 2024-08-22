@@ -1,8 +1,8 @@
-// DiagramInfo_VWChart.js
+// DiagramInfoVWChart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
+const DiagramInfoVWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState({
     dataR: [],
@@ -248,4 +248,4 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
   return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
 };
 
-export default DiagramInfo_VWChart;
+export default DiagramInfoVWChart;

@@ -1,8 +1,8 @@
-// DiagramInfo_Chart.js
+// DiagramInfoChart.js
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
+const DiagramInfoChart = ({ dataS, chartColor, Min, Max, data }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState([]);
 
@@ -175,4 +175,4 @@ const DiagramInfo_Chart = ({ dataS, chartColor, Min, Max, data }) => {
   return <div ref={chartRef} style={{ width: '100%', height: '230px', marginTop: '-50px' }} />;
 };
 
-export default DiagramInfo_Chart;
+export default DiagramInfoChart;
