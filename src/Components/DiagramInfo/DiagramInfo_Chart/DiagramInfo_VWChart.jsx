@@ -238,7 +238,7 @@ const DiagramInfo_VWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCol
           { data: chartData.dataT }
         ]
       });
-    }, 1000);
+    }, 10000);
 
     return () => {
       clearInterval(interval);

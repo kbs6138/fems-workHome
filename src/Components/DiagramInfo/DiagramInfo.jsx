@@ -191,7 +191,12 @@ const DiagramInfo = () => {
                 <Select
                   defaultValue={menuItems.find(item => item.key === refreshInterval)?.label || '10초'}
                   style={{ width: 120, color: 'white', marginRight: '10px' }}
-                  onChange={value => handleMenuClick(menuItems.find(item => item.label === value).key)}
+                  onChange={value => {
+                    const selectedItem = menuItems.find(item => item.label === value);
+                    if (selectedItem) {
+                      handleMenuClick(selectedItem.key);
+                    }
+                  }}
                   dropdownStyle={{ color: 'white' }} // Dropdown 메뉴의 스타일을 설정
                 >
                   {menuItems.map(({ key, label }) => (
@@ -200,6 +205,7 @@ const DiagramInfo = () => {
                     </Option>
                   ))}
                 </Select>
+
                 <Select defaultValue="Option0" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
                   <Option value="Option0" >장비선택</Option>
                   <Option value="Option1" >장비1</Option>
@@ -369,8 +375,8 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.v_data_s}
                         dataT={DiagramInfoData[0]?.v_data_t}
                         rstColor={rstchartColors}
-                        Min={'215'}
-                        Max={'225'}
+                        Min={DiagramCurrentData[0].min}
+                        Max={DiagramCurrentData[2].max}
                         /*
                         /*Min={DiagramCurrentData[0].min}
                         Max={DiagramCurrentData[2].max}*/ />
@@ -394,8 +400,8 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.am_data_s}
                         dataT={DiagramInfoData[0]?.am_data_t}
                         rstColor={rstchartColors}
-                        Min={'415'}
-                        Max={'460'}
+                        Min={DiagramCurrentData[5].min}
+                        Max={DiagramCurrentData[5].max}
                       /**
                       Min={DiagramCurrentData[5].min}
                       Max={DiagramCurrentData[5].max}  */
