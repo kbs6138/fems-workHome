@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<svg width="224" height="186" xmlns="http://www.w3.org/2000/svg" viewBox="42 48 137 95">
+  <g class="layer">
+    <title>Layer 1</title>
+    <g id="page1">
+      <rect fill="none" height="176" id="svg_1" width="214" x="5.5" y="5.5" />
+      <path d="m5.5,5.5l13.8,0l0,13.8l-13.8,0l0,-13.8z" fill="#000000" fill-rule="nonzero" id="shape1" stroke="#000000" stroke-width="2.67" transform="translate(39.4355 122.645)" />
+      <g id="group2" transform="matrix(0 -1 1 0 53.2015 135.761)">
+        <g id="group3" transform="translate(-1.27508 41.2952)">
+          <path d="m-5.5,11.3c0,-3.2 2.8,-5.8 6.3,-5.8c3.5,0 6.3,2.6 6.3,5.8c0,3.1 -2.8,5.7 -6.3,5.7c-3.5,0 -6.3,-2.6 -6.3,-5.7z" fill="#ffffff" fill-rule="nonzero" id="shape4" stroke="#000000" stroke-width="2.67" transform="translate(1.27507 36.6415)" />
+          <path d="m-5.5,11.3c0,-3.2 2.8,-5.8 6.3,-5.8c3.5,0 6.3,2.6 6.3,5.8c0,3.1 -2.8,5.7 -6.3,5.7c-3.5,0 -6.3,-2.6 -6.3,-5.7z" fill="#ffffff" fill-rule="nonzero" id="shape5" stroke="#000000" stroke-width="2.67" transform="translate(1.27507 -5.75482)" />
+        </g>
+        <g id="group6" transform="translate(-2.50197 -0.0001)">
+          <path d="m-5.5,5.5l0,35.3" fill="none" id="shape7" stroke="#000000" stroke-width="2.67" transform="translate(8.79765 0)" />
+          <path d="m-5.5,5.5l0,32.6" fill="none" id="shape8" stroke="#000000" stroke-width="2.67" transform="translate(8.79765 89.2609)" />
+          <path d="m-5.5,5.5c0,0 13.2,4 13.2,21.2c0,17.8 -13.2,21.2 -13.2,21.2" fill="none" id="shape9" stroke="#000000" stroke-width="2.67" transform="translate(14.8423 41.2951)" />
+        </g>
+      </g>
+      <path d="m5.5,5.5l0,84" fill="none" id="shape10" stroke="#000000" stroke-width="2.67" transform="translate(46.085 39.294)" />
+    </g>
+  </g>
+</svg>

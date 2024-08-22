@@ -1,0 +1,23 @@
+<svg width="140" height="269" xmlns="http://www.w3.org/2000/svg" viewBox="46 42 64 188">
+  <g class="layer">
+    <title>Layer 1</title>
+    <g id="page1" transform="translate(5.5,5.5)">
+      <rect fill="none" height="259" id="svg_1" width="130" x="0" y="0" />
+      <g id="group1" transform="translate(58.595600,130.205600)">
+        <g id="group2" transform="translate(-1.275080,41.295100)">
+          <path d="m0,5.8c0,-3.2 2.8,-5.8 6.3,-5.8c3.5,0 6.3,2.6 6.3,5.8c0,3.1 -2.8,5.7 -6.3,5.7c-3.5,0 -6.3,-2.6 -6.3,-5.7z" fill="#ffffff" fill-rule="nonzero" id="shape3" stroke="#000000" stroke-width="2.67" transform="translate(1.275070,36.641470)" />
+          <path d="m0,5.8c0,-3.2 2.8,-5.8 6.3,-5.8c3.5,0 6.3,2.6 6.3,5.8c0,3.1 -2.8,5.7 -6.3,5.7c-3.5,0 -6.3,-2.6 -6.3,-5.7z" fill="#ffffff" fill-rule="nonzero" id="shape4" stroke="#000000" stroke-width="2.67" transform="translate(1.275070,-5.754830)" />
+        </g>
+        <g id="group5" transform="translate(-2.501970,0.000000)">
+          <path d="m0,0l0,26" fill="none" id="shape6" stroke="#000000" stroke-width="2.67" transform="translate(8.797650,9.231100)" />
+          <path d="m0,0c0,0 13.2,4 13.2,21.2c0,17.8 -13.2,21.2 -13.2,21.2" fill="none" id="shape7" stroke="#000000" stroke-width="2.67" transform="translate(14.842300,41.295100)" />
+        </g>
+      </g>
+      <g id="group8" transform="translate(39.162300,39.436200)">
+        <path d="m25.7,51.5l0,0l0,0c14.2,0 25.8,-11.6 25.8,-25.8c0,-14.2 -11.6,-25.7 -25.8,-25.7l0,0l0,0c-14.2,0 -25.7,11.5 -25.7,25.7c0,14.2 11.5,25.8 25.7,25.8z" fill="none" id="shape9" stroke="#000000" stroke-width="2.67" transform="translate(0.000000,48.311500)" />
+        <path d="m0,0l27,0" fill="none" id="shape10" stroke="#303030" stroke-width="2.67" transform="matrix(0.000000,1.000000,-1.000000,0.000000,25.837400,0.000000)" />
+        <path d="m25.7,51.5l0,0l0,0c14.2,0 25.8,-11.6 25.8,-25.8c0,-14.2 -11.6,-25.7 -25.8,-25.7l0,0l0,0c-14.2,0 -25.7,11.5 -25.7,25.7c0,14.2 11.5,25.8 25.7,25.8z" fill="none" id="shape11" stroke="#000000" stroke-width="2.67" transform="translate(0.000000,27.120500)" />
+      </g>
+    </g>
+  </g>
+</svg>

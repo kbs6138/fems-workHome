@@ -1,0 +1,114 @@
+.connectWrapper {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    color: black;
+    transform: translateY("-10px");
+
+    & img {
+        position: relative;
+        width: 80px;
+        left: 23px;
+    }
+
+    &:last-child {
+        margin-bottom: 16px;
+    }
+}
+.connectWrapper_Parentdiv{
+    margin-top: -10px;
+}
+
+.connectWrapper_table1,
+.connectWrapper_table2,
+.connectWrapper_table3,
+.connectWrapper_table4,
+.connectWrapper_table5,
+.connectWrapper_table6 {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    height: 40px;
+    left: 15px;
+    margin-top: 20px;
+}
+.connectWrapper_table1:hover,
+.connectWrapper_table2:hover,
+.connectWrapper_table3:hover,
+.connectWrapper_table4:hover,
+.connectWrapper_table5:hover,
+.connectWrapper_table6:hover {
+    transition: 0.2s ease-out;
+    background-color: rgb(177, 177, 177);
+    color: rgb(5, 5, 5);
+}
+.connectWrapper_table1:not(:hover) ,
+.connectWrapper_table2:not(:hover) ,
+.connectWrapper_table3:not(:hover) ,
+.connectWrapper_table4:not(:hover) ,
+.connectWrapper_table5:not(:hover) ,
+.connectWrapper_table6:not(:hover) {
+    transition: 0.2s ease-out;
+    color: black !important;
+} 
+
+.ElectricDiagramTable tr> td{
+    font-size: 10.5px;
+}
+
+.ElectricDiagramTable {
+    position: relative;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: auto;
+    height: 40px;
+
+    & td {
+        text-align: center;
+        font-size: 0.7em;
+        color: black;
+        border: 1px solid black;
+        padding: 0px;
+    }
+
+    & td:first-child {
+        width: 90px;
+    }
+
+    & td:nth-of-type(2) {
+        width: 40px;
+    }
+
+    & td:last-child {
+        width: 30px;
+    }
+}
+
+.Diagram_pic_Card{
+    background-color: rgb(247, 247, 247);
+    position: relative;
+    display: block;
+    max-height: 270px;
+    overflow-y: auto;
+}
+
+.Diagram_pic_Card::-webkit-scrollbar {
+    width: 10px;
+    /* 스크롤바의 너비 */
+}
+
+.Diagram_pic_Card::-webkit-scrollbar-thumb {
+    height: 30%;
+    /* 스크롤바의 길이 */
+    background: rgb(193, 193, 193);
+    /* 스크롤바의 색상 */
+    border-radius: 5px;
+}
+
+.Diagram_pic_Card::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241, 1);
+    /* 스크롤바의 색상 */
+    border-radius: 10px;
+
+}
+

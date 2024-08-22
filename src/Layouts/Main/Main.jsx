@@ -12,7 +12,9 @@ import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 import { useMainDiagramData } from './MainDiagram/MainDiagram';
-import DiagPic1 from '../789456123.png'; // 이미지 경로를 자신의 것으로 변경하세요
+import mainSvg from '../main.svg'; // 이미지 경로를 자신의 것으로 변경하세요
+import connectSvg from '../Crop_connect.svg'; // 이미지 경로를 자신의 것으로 변경하세요
+import './Main.css';
 
 const { Content } = Layout;
 
@@ -40,12 +42,12 @@ const ImageCanvas = ({ imageSrc, handleClick, id, scp_id, width, height }) => {
         <canvas
             ref={canvasRef}
             onClick={() => handleClick(id, scp_id)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', width: `${width}px`, height: `${height}px` }}
         />
     );
 };
-const width = 75;
-const height = 240;
+const width = 85;
+const height = 110;
 
 const AppMain = () => {
     const { isDarkMode } = useContext(ThemeContext);
@@ -61,8 +63,6 @@ const AppMain = () => {
 
     const TxtTheme = isDarkMode ? 'text-light' : 'text-dark';
     const BgTheme = isDarkMode ? 'bg-light' : 'bg-dark';
-
-
 
     return (
         <Content className="app-Content">
@@ -233,20 +233,143 @@ const AppMain = () => {
                 <Col className="gutter-row" span={6}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
-                        <Row>
-                            <Col span={8}>
+                        <Card span={24} bordered={false} className='Diagram_pic_Card'>
+                            
 
-                                <ImageCanvas
-                                    imageSrc={DiagPic1}
-                                    id='첫번째'
-                                    scp_id='2300136001'
-                                    handleClick={handleImageClick}
-                                    width={width}
-                                    height={height}
-                                />
-                            </Col>
+                            <ImageCanvas
+                                imageSrc={mainSvg}
+                                id='1 배전반'
+                                scp_id='2300136001'
+                                handleClick={handleImageClick}
+                                width={width}
+                                height={height}
+                            />
+                            <div className='connectWrapper_Parentdiv'>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table1'>
+                                        <table className='ElectricDiagramTable'
+                                            id='1-1'
+                                            scp_id='2300136001'
+                                            onClick={() => handleImageClick('1-1 분전반', '2300136001')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table2'>
 
-                            <Col span={8}>
+                                        <table className='ElectricDiagramTable'
+                                            id='1-2'
+                                            scp_id='2300136002'
+                                            onClick={() => handleImageClick('1-2 분전반', '2300136002')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table3'>
+
+                                        <table className='ElectricDiagramTable'
+                                            id='1-3 분전반'
+                                            scp_id='2300136003'
+                                            onClick={() => handleImageClick('1-3 분전반', '2300136003')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table4'>
+
+                                        <table className='ElectricDiagramTable'
+                                            id='1-4 분전반'
+                                            scp_id='2300136004'
+                                            onClick={() => handleImageClick('1-4 분전반', '2300136004')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table5'>
+
+                                        <table className='ElectricDiagramTable'
+                                            id='1-5 분전반'
+                                            scp_id='2300136005'
+                                            onClick={() => handleImageClick('1-5 분전반', '2300136005')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }} >분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className='connectWrapper'>
+                                    <img src={connectSvg} alt="" />
+                                    <div className='connectWrapper_table6'>
+                                        <table className='ElectricDiagramTable'
+                                            id='1-6 분전반'
+                                            scp_id='2300136006'
+                                            onClick={() => handleImageClick('1-6 분전반', '2300136006')}>
+                                            <tr>
+                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
+                                                <td>MCCB</td>
+                                                <td>KA</td>
+                                            </tr>
+                                            <tr>
+                                                <td>000AF/00AT</td>
+                                                <td>00</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </Card>
+
+                        {/* <Col span={8}>
                                 <ImageCanvas
                                     imageSrc={DiagPic1}
                                     id='두번째'
@@ -267,8 +390,7 @@ const AppMain = () => {
                                     width={width}
                                     height={height}
                                 />
-                            </Col>
-                        </Row>
+                            </Col> */}
                     </Card>
                 </Col>
 

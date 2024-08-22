@@ -74,29 +74,27 @@ const columns = (animateKey) => [
     className: 'DiagramDetailVWTable-column DiagramDetailVWTable_RateOfChange',
     render: (text) => {
       const rate = parseFloat(text);
-      let color;
-      let backgroundColor;
+      let color = 'inherit';
+      let backgroundColor = 'inherit';
       let Icon = null;
 
-      if (rate > 0) {
-        color = '#FF1846';
-        backgroundColor = '#55203D';
-        Icon = BiSolidUpvote;
-      } else if (rate < 0) {
-        color = '#1CCD2D';
-        backgroundColor = '#1E4532';
-        Icon = BiSolidDownvote;
-      } else {
-        color = 'inherit';
-        backgroundColor = 'inherit';
-        Icon = null;
+      if (!isNaN(rate)) {
+        if (rate > 0) {
+          color = '#FF1846';
+          backgroundColor = '#55203D';
+          Icon = BiSolidUpvote;
+        } else if (rate < 0) {
+          color = '#1CCD2D';
+          backgroundColor = '#1E4532';
+          Icon = BiSolidDownvote;
+        }
       }
 
-      return (
-        <div className={`DiagramDetailVWTable_RateOfChange ${animateKey}`} style={{ color, backgroundColor, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', padding: '5px', borderRadius: '10px' }}>
-          {text !== '0.0' ? `${text}%` : '0.0'}
-          {Icon && <Icon size={12} style={{ color }} />}
-        </div>
+  return (
+    <div className={`DiagramDetailVWTable_RateOfChange ${animateKey}`} style={{ color, backgroundColor, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', padding: '5px', borderRadius: '10px' }}>
+      {text !== '0.0' ? `${text}%` : '0.0'}
+      {Icon && <Icon size={12} style={{ color }} />}
+    </div>
       );
     },
   },
@@ -106,11 +104,13 @@ const DiagramDetailVWTable = ({ data }) => {
   const [animateKey, setAnimateKey] = useState('');
 
   useEffect(() => {
-    setAnimateKey('DiagramDetailVWTable_RateOfChange_animate');
-    const timer = setTimeout(() => {
-      setAnimateKey('');
-    }, 500);
-    return () => clearTimeout(timer);
+    if (data) {
+      setAnimateKey('DiagramDetailVWTable_RateOfChange_animate');
+      const timer = setTimeout(() => {
+        setAnimateKey('');
+      }, 500);
+      return () => clearTimeout(timer);
+    }
   }, [data]);
 
   return (
@@ -127,3 +127,4 @@ const DiagramDetailVWTable = ({ data }) => {
 };
 
 export default DiagramDetailVWTable;
+
