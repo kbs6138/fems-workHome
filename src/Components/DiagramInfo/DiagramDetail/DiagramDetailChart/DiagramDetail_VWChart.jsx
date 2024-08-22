@@ -23,7 +23,7 @@ const DiagramDetailVWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCo
       const initialDataR = [];
       const initialDataS = [];
       const initialDataT = [];
-      for (let i = 0; i < 60000; i++) {
+      for (let i = 0; i < 1440; i++) {
         initialDataR.push(randomData(dataR));
         initialDataS.push(randomData(dataS));
         initialDataT.push(randomData(dataT));
@@ -238,7 +238,7 @@ const DiagramDetailVWChart = ({ dataR, dataS, dataT, chartColor, Min, Max, rstCo
           { data: chartData.dataT }
         ]
       });
-    }, 1000);
+    }, 10000);
 
     return () => {
       clearInterval(interval);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Timeline } from 'antd';
 import './DiagramAlertStep.css';
 
-const TestDiagramMonth = () => {
+const DiagramMonthAlertStep = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -45,4 +45,4 @@ const TestDiagramMonth = () => {
     );
 };
 
-export default TestDiagramMonth;
+export default DiagramMonthAlertStep;

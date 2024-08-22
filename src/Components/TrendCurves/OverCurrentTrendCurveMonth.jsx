@@ -4,9 +4,8 @@ import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendDataMonth } from '../db/Trend_db';
 import DiagramAlertStepMonth from './DiagramAlertStep/DiagramAlertStepMonth';
-import OverCurrentTrendChartMonth from './OverCurrentTrendChart/OverCurrentTrendChartMonth';
-import TestChartMonth from './OverCurrentTrendChart/testChartMonth';
-import TestDiagramMonth from './DiagramAlertStep/OverCurrentTrendChartMonth';
+import TestChartMonth from './OverCurrentTrendChart/testChartMonth';/*차트*/ 
+import DiagramMonthAlertStep from './DiagramAlertStep/DiagramMonthAlertStep'; /*로그*/
 
 const { Option } = Select;
 
@@ -239,7 +238,7 @@ const OverCurrentTrendCurveMonth = () => {
 
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveMonthLog_Card'>
-                <TestDiagramMonth/>
+                < DiagramMonthAlertStep/>
                 {/* <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} /> */}
               </Card>
             </Col>

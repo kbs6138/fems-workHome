@@ -1,3 +1,4 @@
+/*
 import { useQuery } from 'react-query';
 
 export const fetchTrendData = async (selectedData, dataType) => {
@@ -55,4 +56,4 @@ export const useTrendDataMonth = (selectedData) => {
     return { data };
 };
 
-//....................................................................월별
+//....................................................................월별*/
