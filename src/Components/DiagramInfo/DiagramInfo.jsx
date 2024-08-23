@@ -375,12 +375,11 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.v_data_s}
                         dataT={DiagramInfoData[0]?.v_data_t}
                         rstColor={rstchartColors}
-                        Min={DiagramCurrentData[0]?.min || 0}
-                        Max={DiagramCurrentData[0]?.max || 0}
-
-                        
+                        Min={DiagramCurrentData[0].min}
+                        Max={DiagramCurrentData[2].max}
+                        /*
                         /*Min={DiagramCurrentData[0].min}
-                    Max={DiagramCurrentData[2].max}*/ />
+                        Max={DiagramCurrentData[2].max}*/ />
                     )}
                   </Col>
                 </Row>

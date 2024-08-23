@@ -12,29 +12,44 @@ import DiagramDetailVWTable from './DiagramDetailTable/DiagramDetailVWTable';
 import DiagramInfoOtherTable from './DiagramDetailTable/DiagramInfoOtherTable';
 import '../DiagramInfo.css';
 import { useDiagramInfoData, useMinMaxData, useDiagramCurrentData } from '../DiagramInfo_DB/DiagramInfo_DB';
+import { useDeviceData } from '../../db/Device-m';
 
 const { Content } = Layout;
 const { Option } = Select;
 
-const handleChange = () => { };
+
 
 const DiagramDetail = () => {
 
     const location = useLocation();
-    const navigate = useNavigate(); // useNavigate 추가
+    const navigate = useNavigate(); 
     const queryParams = new URLSearchParams(location.search);
-    const initialTabKey = queryParams.get('tab') || "1"; // URL에서 탭 키를 가져오고, 없으면 기본값을 1로 설정
+    const initialTabKey = queryParams.get('tab') || "1";
 
     const [refreshInterval, setRefreshInterval] = useState(10000);
     const [currentTime, setCurrentTime] = useState('');
-    const [activeTabKey, setActiveTabKey] = useState(initialTabKey); // activeTabKey 상태 추가
+    const [activeTabKey, setActiveTabKey] = useState(initialTabKey); 
+    const [selectedDevice, setSelectedDevice] = useState(''); 
 
-    const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
-    const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
-    const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
+    const { data: DeviceData } = useDeviceData(refreshInterval);
+    useEffect(() => {
+        if (DeviceData && DeviceData.length > 0) {
+            setSelectedDevice(DeviceData[0].scp_vid);
+        }
+    }, [DeviceData]);
+
+    // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
+    const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval, selectedDevice);
+    const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval, selectedDevice);
+    const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice); 
+
 
     const handleMenuClick = (key) => {
         setRefreshInterval(key);
+    };
+
+    const handleChange = (value) => {
+        setSelectedDevice(value);
     };
 
     const menuItems = [
@@ -176,6 +191,7 @@ const DiagramDetail = () => {
         return () => clearInterval(interval);
     }, []);
 
+
     /************************************** 로그이력관리 useEffect ****************************************/
 
     const [VoltRSTlog, setVoltRSTLog] = useState([]);
@@ -225,7 +241,7 @@ const DiagramDetail = () => {
             setPowerLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-    
+
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -237,7 +253,7 @@ const DiagramDetail = () => {
             setPFLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-    
+
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -249,7 +265,7 @@ const DiagramDetail = () => {
             setOutTempLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-    
+
     useEffect(() => {
         if (DiagramInfoData.length > 0) {
             const now = new Date();
@@ -261,7 +277,7 @@ const DiagramDetail = () => {
             setInTempLog([newLogEntry]);
         }
     }, [DiagramInfoData]);
-    
+
 
     const handleTabChange = (key) => {
         setActiveTabKey(key);
@@ -497,11 +513,16 @@ const DiagramDetail = () => {
                                         </Option>
                                     ))}
                                 </Select>
-                                <Select defaultValue="Option0" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
-                                    <Option value="Option0" >장비선택</Option>
-                                    <Option value="Option1" >장비1</Option>
-                                    <Option value="Option2" >장비2</Option>
-                                    <Option value="Option3" >장비3</Option>
+                                <Select
+                                    value={selectedDevice}
+                                    style={{ width: 120, background: 'none', color: '#FFFFFF' }}
+                                    onChange={handleChange}
+                                >
+                                    {DeviceData && DeviceData.map((device, index) => (
+                                        <Option key={index} value={device.scp_vid}>
+                                            {device.device_name}
+                                        </Option>
+                                    ))}
                                 </Select>
                             </div>
                         </div>
