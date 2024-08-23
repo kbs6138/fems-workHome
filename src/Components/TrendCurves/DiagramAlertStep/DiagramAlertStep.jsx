@@ -32,7 +32,7 @@ const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeF
                     sValue = item[`${dataTypeForChart}_s`];
                     tValue = item[`${dataTypeForChart}_t`];
                 } else {
-                    value = item[`${dataTypeForChart}_r`];
+                    value = item[`${dataTypeForChart}`];
                 }
 
                 return {

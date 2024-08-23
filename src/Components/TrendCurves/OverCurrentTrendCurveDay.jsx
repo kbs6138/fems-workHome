@@ -3,10 +3,10 @@ import { Button, Popover, Card, Col, Row, Select } from 'antd';
 import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendDataDay } from '../db/Trend_db';
+import { useDeviceData } from '../db/Device-m';
+
 import DiagramAlertStepDay from './DiagramAlertStep/DiagramAlertStepDay';
 import OverCurrentTrendChartDay from './OverCurrentTrendChart/OverCurrentTrendChartDay';
-import TestChartDay from './OverCurrentTrendChart/testChartDay';
-import TestDiagramDay from './DiagramAlertStep/testDiagramDay'
 
 const { Option } = Select;
 
@@ -19,14 +19,14 @@ const OverCurrentTrendCurveDay = () => {
   const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
 
   // 상태 값
-  const [scp_id, setScpId] = useState('2300136001');
+  const [scp_id, setScpId] = useState('2200138303_303');
   const [yyyy, setYear] = useState(currentYear);
   const [mm, setMonth] = useState(currentMonth);
   const [permitRender, setPermitRender] = useState(true);
   const [indicator, setIndicator] = useState("voltage"); // 지표
   const [indicatorLabel, setIndicatorLabel] = useState("전압"); // 지표 한글로 치환
-  const [queryKey, setQueryKey] = useState("trendVoltData");
-  const [dataType, setDataType] = useState("trend-volt");
+  const [queryKey, setQueryKey] = useState("ddVoltData");
+  const [dataType, setDataType] = useState("dd-volt");
   const [dataTypeForChart, setDataTypeForChart] = useState("volt");
 
   // db에 요청할 정보
@@ -38,6 +38,8 @@ const OverCurrentTrendCurveDay = () => {
 
   // db에서 data를 받아오는 변수
   const { data: trendDataFromDb } = useTrendDataDay(selectedData, queryKey, dataType);
+  const { data: deviceData } = useDeviceData(selectedData, queryKey, dataType);
+
   // 받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
   // 조회버튼 클릭 시 permitRender를 true로 바꿔주며 TrendData에 새로운 값이 입력되어 차트로 전달됨
@@ -92,22 +94,22 @@ const OverCurrentTrendCurveDay = () => {
       switch (value) {
 
         case "voltage":
-          return "trendVoltData";
+          return "ddVoltData";
 
         case "overCurrent":
-          return "trendAmData";
+          return "ddAmData";
 
         case "Wat":
-          return "trendWatData";
+          return "ddWatData";
 
         case "PowerFactor":
-          return "trendpfData";
+          return "ddpfData";
 
         case "Outer_Deg":
-          return "trendoutdegData";
+          return "ddoutdegData";
 
         case "Inner_Deg":
-          return "trendindegData";
+          return "ddindegData";
 
         default:
           return "";
@@ -116,22 +118,22 @@ const OverCurrentTrendCurveDay = () => {
       switch (value) {
 
         case "voltage":
-          return "trend-volt";
+          return "dd-volt";
 
         case "overCurrent":
-          return "trend-am";
+          return "dd-am";
 
         case "Wat":
-          return "trend-wat";
+          return "dd-wat";
 
         case "PowerFactor":
-          return "trend-pf";
+          return "dd-pf";
 
         case "Outer_Deg":
-          return "trend-out-deg";
+          return "dd-out-deg";
 
         case "Inner_Deg":
-          return "trend-in-deg";
+          return "dd-in-deg";
 
 
         default:
@@ -210,14 +212,7 @@ const OverCurrentTrendCurveDay = () => {
               <Card bordered={false} className='OverCurrentTrendCurveDay_Chart_Card'>
 
                 <div className='setGraphInfoWrapper' style={{ marginTop: '10px ' }}>
-                  <Select
-                    className='selectCss'
-                    value={`${yyyy}년`} // 여기에 "년"을 추가
-                    onChange={(value) => setYear(value)}
-                  >
-                    <Option value="2023">2023년</Option>
-                    <Option value="2024">2024년</Option>
-                  </Select>
+
                   <Select
                     className='selectCss'
                     value={`${mm}월`} // 여기에 "월"을 추가
@@ -236,27 +231,28 @@ const OverCurrentTrendCurveDay = () => {
                     <Option value="11">11월</Option>
                     <Option value="12">12월</Option>
                   </Select>
-                  <Select
-                    className='selectCss'
-                    value={scp_id}
-                    onChange={(value) => setScpId(value)}
-                  >
-                    <Option value="2300136001">601부하</Option>
-                    <Option value="2300130203">203부하</Option>
+                  <Select className='selectCss' id="selectLoad"
+                    value={scp_id} onChange={(value) => setScpId(value)}>
+                    {deviceData?.map((device) => (
+                      <Option key={device.scp_vid} value={device.scp_vid}>
+                        {device.device_name}
+                      </Option>
+                    ))}
                   </Select>
-                  <Select
-                    className='selectCss'
-                    value={indicator}
-                    onChange={(value) => setIndicator(value)}
-                  >
+                  <Select className='selectCss' id="indicator"
+                    value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
-                    <Option value="overCurrent">과전류</Option>
+                    <Option value="overCurrent">전류</Option>
+                    <Option value="Wat">전력</Option>
+                    <Option value="PowerFactor">역률</Option>
+                    <Option value="Outer_Deg">외부온도</Option>
+                    <Option value="Inner_Deg">내부온도</Option>
                   </Select>
+                  
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
 
                 </div>
-                {/* <OverCurrentTrendChartDay TrendData={TrendData} dataTypeForChart={dataTypeForChart}/> */}
-                <TestChartDay/>
+                <OverCurrentTrendChartDay TrendData={TrendData} dataTypeForChart={dataTypeForChart}/>
               </Card>
             </Col>
           </Row>
@@ -264,8 +260,7 @@ const OverCurrentTrendCurveDay = () => {
 
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveDayLog_Card'>
-                <TestDiagramDay/>
-                {/* <DiagramAlertStepDay TrendData={TrendData} selectedData={selectedData} dataTypeForChart={dataTypeForChart} /> */}
+                <DiagramAlertStepDay TrendData={TrendData} selectedData={selectedData} dataTypeForChart={dataTypeForChart} />
               </Card>
             </Col>
 

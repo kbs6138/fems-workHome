@@ -5,6 +5,7 @@ import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendData } from '../db/Trend_db';
 import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
+import { useDeviceData } from '../db/Device-m';
 
 const { Option } = Select;
 
@@ -18,11 +19,11 @@ const OverCurrentTrendCurve = () => {
   const currentDay = String(today.getDate()).padStart(2, '0');
 
   // 상태 값
-  const [scp_id, setScpId] = useState('2300136001');
+  const [scp_id, setScpId] = useState('2200138303_303');
   const [yyyy, setYear] = useState(currentYear);
   const [mm, setMonth] = useState(currentMonth);
   const [dd, setDay] = useState(currentDay);
-  const [timeUnit, setTimeUnit] = useState(60); 
+  const [timeUnit, setTimeUnit] = useState(60);
   const [permitRender, setPermitRender] = useState(true); //boolean타입으로 데이터 업데이트를 위한 변수
   const [indicator, setIndicator] = useState("voltage"); //select dropdown에서 선택된 데이터 타입
   const [indicatorLabel, setIndicatorLabel] = useState("전압"); //현재 데이터 타입을 한글로 나타내기 위한 변수
@@ -45,7 +46,10 @@ const OverCurrentTrendCurve = () => {
 
   //api로부터 원하는 데이터를 받아서 변수로 저장
   const { data: trendDataFromDb } = useTrendData(selectedData, queryKey, dataType);
+  const { data: deviceData } = useDeviceData(selectedData, queryKey, dataType);
   //차트에 보낼 데이터
+
+
   const [TrendData, setTrendData] = useState([]);
 
   const hide = () => {
@@ -150,7 +154,7 @@ const OverCurrentTrendCurve = () => {
         default:
           return "";
       }
-    } 
+    }
     //차트에 보낼 데이터 타입 업데이트
     else if (key === 4) {
       switch (value) {
@@ -284,15 +288,18 @@ const OverCurrentTrendCurve = () => {
 
                   <Select className='selectCss' id="selectLoad"
                     value={scp_id} onChange={(value) => setScpId(value)}>
-                    <Option value="2300136001">601부하</Option>
-                    <Option value="2300130203">203부하</Option>
+                    {deviceData?.map((device) => (
+                      <Option key={device.scp_vid} value={device.scp_vid}>
+                        {device.device_name}
+                      </Option>
+                    ))}
                   </Select>
+
 
                   <Select className='selectCss' id="indicator"
                     value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
                     <Option value="overCurrent">전류</Option>
-
                     <Option value="Wat">전력</Option>
                     <Option value="PowerFactor">역률</Option>
                     <Option value="Outer_Deg">외부온도</Option>

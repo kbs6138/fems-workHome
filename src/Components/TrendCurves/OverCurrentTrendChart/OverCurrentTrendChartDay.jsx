@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
-const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
+const OverCurrentTrendChartDay = ({ TrendData, dataTypeForChart }) => {
   const [data, setData] = useState([]);
   const chartDomRef = useRef(null);
 
-  console.log(TrendData)
-
   useEffect(() => {
-    setData(TrendData);
+    if (Array.isArray(TrendData)) {
+      setData(TrendData);
+    } else {
+      console.error("TrendData is not an array");
+    }
   }, [TrendData]);
 
   useEffect(() => {
@@ -19,12 +21,11 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
     const chartDom = chartDomRef.current;
     const myChart = echarts.init(chartDom);
 
-    const xData = data.map(item => ``);
-    const rData = data.map(item => item[`${dataTypeForChart}_r`]);
-    const sData = data.map(item => item[`${dataTypeForChart}_s`]);
-    const tData = data.map(item => item[`${dataTypeForChart}_t`]);
+    const xData = data.map(item => `${item.dd}일`);
+    const rData = data.map(item => item[`${dataTypeForChart}_r`]?.toFixed(1));
+    const sData = data.map(item => item[`${dataTypeForChart}_s`]?.toFixed(1));
+    const tData = data.map(item => item[`${dataTypeForChart}_t`]?.toFixed(1));
 
-    // Conditional legend and series configuration
     let legendData = [];
     let seriesData = [];
 
@@ -67,7 +68,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
             name: '전력',
             type: 'line',
             data: data.map(item => item['wat']),
-            itemStyle: { color: '#9370DB' } // 전력의 색상 설정
+            itemStyle: { color: '#9370DB' }
           }
         ];
         break;
@@ -79,7 +80,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
             name: '내부온도',
             type: 'line',
             data: data.map(item => item['in_deg']),
-            itemStyle: { color: '#FF69B4' } // 내부온도의 색상 설정
+            itemStyle: { color: '#FF69B4' }
           }
         ];
         break;
@@ -91,7 +92,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
             name: '외부온도',
             type: 'line',
             data: data.map(item => item['out_deg']),
-            itemStyle: { color: '#7CFC00' } // 외부온도의 색상 설정
+            itemStyle: { color: '#7CFC00' }
           }
         ];
         break;
@@ -103,7 +104,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
             name: '역률',
             type: 'line',
             data: data.map(item => item['pf']),
-            itemStyle: { color: '#00BFFF' } // 역률의 색상 설정
+            itemStyle: { color: '#00BFFF' }
           }
         ];
         break;
@@ -117,7 +118,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
       tooltip: {
         trigger: 'axis',
         textStyle: { color: 'black', fontFamily: 'NanumSquareNeoBold' },
-        formatter: function(params) {
+        formatter: function (params) {
           let tooltipText = `<div style="font-family: 'NanumSquareNeoBold';">${params[0].axisValueLabel}</div>`;
           params.forEach(param => {
             tooltipText += `
@@ -138,7 +139,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
         splitLine: {
           show: true,
           lineStyle: {
-            color: 'rgba(255, 255, 255, 0.2)', // Light gridline color
+            color: 'rgba(255, 255, 255, 0.2)',
             width: 1
           }
         }
@@ -148,7 +149,7 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
         splitLine: {
           show: true,
           lineStyle: {
-            color: 'rgba(255, 255, 255, 0.2)', // Light gridline color
+            color: 'rgba(255, 255, 255, 0.2)',
             width: 1
           }
         }
@@ -183,4 +184,4 @@ const OverCurrentTrendChart = ({ TrendData, dataTypeForChart }) => {
   return <div id='OverCurrentTrendChart' ref={chartDomRef} className="OverCurrentTrendChart" style={{ width: '100%', height: '330px' }} />;
 };
 
-export default OverCurrentTrendChart;
+export default OverCurrentTrendChartDay;

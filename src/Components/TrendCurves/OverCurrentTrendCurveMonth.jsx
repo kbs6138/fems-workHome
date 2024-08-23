@@ -3,9 +3,9 @@ import { Button, Popover, Card, Col, Row, Select } from 'antd';
 import { AiOutlineWarning } from "react-icons/ai";
 import './TrendCurves.css';
 import { useTrendDataMonth } from '../db/Trend_db';
+import { useDeviceData } from '../db/Device-m';
 import DiagramAlertStepMonth from './DiagramAlertStep/DiagramAlertStepMonth';
-import TestChartMonth from './OverCurrentTrendChart/testChartMonth';/*차트*/ 
-import DiagramMonthAlertStep from './DiagramAlertStep/DiagramMonthAlertStep'; /*로그*/
+import OverCurrentTrendChartMonth from './OverCurrentTrendChart/OverCurrentTrendChartMonth';
 
 const { Option } = Select;
 
@@ -17,13 +17,13 @@ const OverCurrentTrendCurveMonth = () => {
   const currentYear = today.getFullYear();
 
   // 상태 값
-  const [scp_id, setScpId] = useState('2300136001');
+  const [scp_id, setScpId] = useState('2200138303_303');
   const [yyyy, setYear] = useState(currentYear);
   const [permitRender, setPermitRender] = useState(true);
   const [indicator, setIndicator] = useState("voltage"); //지표
   const [indicatorLabel, setIndicatorLabel] = useState("전압"); //지표 한글로 치환
-  const [queryKey, setQueryKey] = useState("trendVoltData");
-  const [dataType, setDataType] = useState("trend-volt");
+  const [queryKey, setQueryKey] = useState("mmVoltData");
+  const [dataType, setDataType] = useState("mm-volt");
   const [dataTypeForChart, setDataTypeForChart] = useState("volt");
 
   // db에 요청할 정보
@@ -34,6 +34,8 @@ const OverCurrentTrendCurveMonth = () => {
 
   // db에서 data를 받아오는 변수
   const { data: trendDataFromDb } = useTrendDataMonth(selectedData, queryKey, dataType);
+  const { data: deviceData } = useDeviceData(selectedData, queryKey, dataType);
+
   // 받아온 data를 따로 저장하여 차트로 보낼 변수 (데이터가 실시간으로 입력되는 것을 방지하기 위함)
   const [TrendData, setTrendData] = useState([]);
 
@@ -86,22 +88,22 @@ const OverCurrentTrendCurveMonth = () => {
       switch (value) {
 
         case "voltage":
-          return "trendVoltData";
+          return "mmVoltData";
 
         case "overCurrent":
-          return "trendAmData";
+          return "mmAmData";
 
         case "Wat":
-          return "trendWatData";
+          return "mmWatData";
 
         case "PowerFactor":
-          return "trendpfData";
+          return "mmpfData";
 
         case "Outer_Deg":
-          return "trendoutdegData";
+          return "mmoutdegData";
 
         case "Inner_Deg":
-          return "trendindegData";
+          return "mmindegData";
 
         default:
           return "";
@@ -110,22 +112,22 @@ const OverCurrentTrendCurveMonth = () => {
       switch (value) {
 
         case "voltage":
-          return "trend-volt";
+          return "mm-volt";
 
         case "overCurrent":
-          return "trend-am";
+          return "mm-am";
 
         case "Wat":
-          return "trend-wat";
+          return "mm-wat";
 
         case "PowerFactor":
-          return "trend-pf";
+          return "mm-pf";
 
         case "Outer_Deg":
-          return "trend-out-deg";
+          return "mm-out-deg";
 
         case "Inner_Deg":
-          return "trend-in-deg";
+          return "mm-in-deg";
 
 
         default:
@@ -210,27 +212,30 @@ const OverCurrentTrendCurveMonth = () => {
                     <Option value="2023">2023년</Option>
                     <Option value="2024">2024년</Option>
                   </Select>
-                  <Select
-                    className='selectCss'
-                    value={scp_id}
-                    onChange={(value) => setScpId(value)}
-                  >
-                    <Option value="2300136001">601부하</Option>
-                    <Option value="2300130203">203부하</Option>
+
+
+                  <Select className='selectCss' id="selectLoad"
+                    value={scp_id} onChange={(value) => setScpId(value)}>
+                    {deviceData?.map((device) => (
+                      <Option key={device.scp_vid} value={device.scp_vid}>
+                        {device.device_name}
+                      </Option>
+                    ))}
                   </Select>
-                  <Select
-                    className='selectCss'
-                    value={indicator}
-                    onChange={(value) => setIndicator(value)}
-                  >
+
+                  <Select className='selectCss' id="indicator"
+                    value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
-                    <Option value="overCurrent">과전류</Option>
+                    <Option value="overCurrent">전류</Option>
+                    <Option value="Wat">전력</Option>
+                    <Option value="PowerFactor">역률</Option>
+                    <Option value="Outer_Deg">외부온도</Option>
+                    <Option value="Inner_Deg">내부온도</Option>
                   </Select>
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
                 </div>
 
-                {/* <OverCurrentTrendChartMonth TrendData={TrendData} dataTypeForChart={dataTypeForChart}/> */}
-                  <TestChartMonth/>
+                <OverCurrentTrendChartMonth TrendData={TrendData} dataTypeForChart={dataTypeForChart}/>
               </Card>
             </Col>
           </Row>
@@ -238,8 +243,7 @@ const OverCurrentTrendCurveMonth = () => {
 
             <Col span={8}>
               <Card bordered={false} className='OverCurrentTrendCurveMonthLog_Card'>
-                < DiagramMonthAlertStep/>
-                {/* <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} /> */}
+                <DiagramAlertStepMonth TrendData={TrendData} selectedData={selectedData} dataTypeForChart={dataTypeForChart}/>
               </Card>
             </Col>
 

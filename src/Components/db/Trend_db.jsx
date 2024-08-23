@@ -1,10 +1,12 @@
-/*
 import { useQuery } from 'react-query';
+
+
+/********************************************************************************************************** */
 
 export const fetchTrendData = async (selectedData, dataType) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
     const url = `http://118.43.32.5:8980/api/${dataType}?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`;
-    //http://118.43.32.5:8980/api/trend-volt?scp_id=2300136001&yyyy=2024&mm=08&dd=14
+    //http://agen072.iptime.org:8980/api/trend-volt?scp_id=2300136001&yyyy=2024&mm=08&dd=14
     const response = await fetch(url);
     const data = await response.json();
 
@@ -22,16 +24,17 @@ export const useTrendData = (selectedData, queryKey, dataType) => {
 
 //....................................................................시간별
 
-export const fetchTrendDataDay = async (selectedData) => {
+export const fetchTrendDataDay = async (selectedData, dataType) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
-    const response = await fetch(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`);
+    const url = `http://118.43.32.5:8980/api/${dataType}?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}`;
+    const response = await fetch(url);
+    console.log(url);
     const data = await response.json();
-    //console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
     return data; // 데이터 구조를 그대로 반환
 };
 
-export const useTrendDataDay = (selectedData) => {
-    const { data } = useQuery(['trendData', selectedData], () => fetchTrendDataDay(selectedData), {
+export const useTrendDataDay = (selectedData, queryKey, dataType) => {
+    const { data } = useQuery([queryKey, selectedData], () => fetchTrendDataDay(selectedData,dataType), {
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
     });
     
@@ -40,20 +43,20 @@ export const useTrendDataDay = (selectedData) => {
 
 //....................................................................일별
 
-export const fetchTrendDataMonth = async (selectedData) => {
+export const fetchTrendDataMonth = async (selectedData, dataType) => {
     //주소칸 작은 따옴표 ''에서 백틱 ``로 변경
-    const response = await fetch(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`);
+    const url = `http://118.43.32.5:8980/api/${dataType}?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}`;
+    const response = await fetch(url);
     const data = await response.json();
-    //console.log(`http://118.43.32.5:8980/api/trend?scp_id=${selectedData.scp_id}&yyyy=${selectedData.yyyy}&mm=${selectedData.mm}&dd=${selectedData.dd}`)
     return data; // 데이터 구조를 그대로 반환
 };
 
-export const useTrendDataMonth = (selectedData) => {
-    const { data } = useQuery(['trendData', selectedData], () => fetchTrendDataMonth(selectedData), {
+export const useTrendDataMonth = (selectedData, queryKey, dataType) => {
+    const { data } = useQuery([queryKey, selectedData], () => fetchTrendDataMonth(selectedData,dataType), {
         initialData: { wat: 0 }, // 초기값을 단순한 객체로 변경
     });
     
     return { data };
 };
 
-//....................................................................월별*/
+//....................................................................월별
