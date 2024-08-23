@@ -15,23 +15,39 @@ import DiagramInfoMinuteTable from './DiagramTable/DiagramInfoMinuteTable';
 import DiagramAlertStep from './DiagramAlertStep/DiagramAlertStep';
 import './DiagramInfo.css';
 import { useDiagramInfoData, useDiagramCurrentData, useMinMaxData } from './DiagramInfo_DB/DiagramInfo_DB';
+import { useDeviceData } from '../db/Device-m';
 
 const { Content } = Layout;
 const { Option } = Select;
 
-const handleChange = () => {
-};
+
 
 const DiagramInfo = () => {
-  const [refreshInterval, setRefreshInterval] = useState(10000); // 초기값 설정
-  const [currentTime, setCurrentTime] = useState('');
 
-  const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval);
-  const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval);
-  const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval);
+  const [refreshInterval, setRefreshInterval] = useState(10000);
+  const [currentTime, setCurrentTime] = useState('');
+  const [selectedDevice, setSelectedDevice] = useState('');
+
+  const { data: DeviceData } = useDeviceData(refreshInterval);
+  useEffect(() => {
+    if (DeviceData && DeviceData.length > 0) {
+      setSelectedDevice(DeviceData[0].scp_vid);
+    }
+  }, [DeviceData]);
+
+  // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
+
+
+  // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
+  const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval, selectedDevice);
+  const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval, selectedDevice);
+  const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice);
 
   const handleMenuClick = (key) => {
     setRefreshInterval(key); // 클릭한 메뉴의 키로 refreshInterval 업데이트
+  };
+  const handleChange = (value) => {
+    setSelectedDevice(value);
   };
 
   const menuItems = [
@@ -206,11 +222,16 @@ const DiagramInfo = () => {
                   ))}
                 </Select>
 
-                <Select defaultValue="Option0" style={{ width: 120, background: 'none', color: '#FFFFFF' }} onChange={handleChange}>
-                  <Option value="Option0" >장비선택</Option>
-                  <Option value="Option1" >장비1</Option>
-                  <Option value="Option2" >장비2</Option>
-                  <Option value="Option3" >장비3</Option>
+                <Select
+                  value={selectedDevice}
+                  style={{ width: 120, background: 'none', color: '#FFFFFF' }}
+                  onChange={handleChange}
+                >
+                  {DeviceData && DeviceData.map((device, index) => (
+                    <Option key={index} value={device.scp_vid}>
+                      {device.device_name}
+                    </Option>
+                  ))}
                 </Select>
               </div>
             </div>
