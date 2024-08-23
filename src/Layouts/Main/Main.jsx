@@ -12,13 +12,14 @@ import RightChart3 from '../../Components/Charts/RightChart3';
 import { useRightChart3Data } from '../../Components/db/RightChart3_db';
 import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 import { useMainDiagramData } from './MainDiagram/MainDiagram';
+import { useDeviceData } from '../../Components/db/Device-m';
 import mainSvg from '../main.svg'; // 이미지 경로를 자신의 것으로 변경하세요
 import connectSvg from '../Crop_connect.svg'; // 이미지 경로를 자신의 것으로 변경하세요
 import './Main.css';
 
 const { Content } = Layout;
 
-const ImageCanvas = ({ imageSrc, handleClick, id, scp_id, width, height }) => {
+const ImageCanvas = ({ imageSrc, handleClick, id, scp_vid, width, height }) => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -41,7 +42,7 @@ const ImageCanvas = ({ imageSrc, handleClick, id, scp_id, width, height }) => {
     return (
         <canvas
             ref={canvasRef}
-            onClick={() => handleClick(id, scp_id)}
+            onClick={() => handleClick(id, scp_vid)}
             style={{ cursor: 'pointer', width: `${width}px`, height: `${height}px` }}
         />
     );
@@ -50,19 +51,34 @@ const width = 85;
 const height = 110;
 
 const AppMain = () => {
+
+    const { data: DeviceData } = useDeviceData();
     const { isDarkMode } = useContext(ThemeContext);
-    const [selectedDiagramId, setSelectedDiagramId] = useState('');
-    const [scpId, setScpId] = useState('2300136001'); // 먼저 scpId를 선언
-    const { data: MainDiagramData } = useMainDiagramData(scpId); // scpId가 초기화된 후에 훅 호출
     const { data } = useRightChart3Data();
 
-    const handleImageClick = (id, scp_id) => {
+    const [selectedDiagramId, setSelectedDiagramId] = useState('');
+    const [scpId, setScpId] = useState();
+    const [selectedDevice, setSelectedDevice] = useState('');
+    const { data: MainDiagramData } = useMainDiagramData(scpId, selectedDevice);
+
+    useEffect(() => {
+        if (DeviceData && DeviceData.length > 0) {
+            setSelectedDevice(DeviceData[0].scp_vid);
+        }
+    }, [DeviceData]);
+
+    const handleImageClick = (id, scp_vid) => {
         setSelectedDiagramId(id);
-        setScpId(scp_id); // 클릭된 이미지에 따라 scp_id 설정
+        setScpId(scp_vid);
     };
+
+
 
     const TxtTheme = isDarkMode ? 'text-light' : 'text-dark';
     const BgTheme = isDarkMode ? 'bg-light' : 'bg-dark';
+
+
+
 
     return (
         <Content className="app-Content">
@@ -234,139 +250,41 @@ const AppMain = () => {
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Card span={24} bordered={false} className='Diagram_pic_Card'>
-                            
-
                             <ImageCanvas
                                 imageSrc={mainSvg}
                                 id='1 배전반'
-                                scp_id='2300136001'
+                                scp_vid='2300136001'
                                 handleClick={handleImageClick}
                                 width={width}
                                 height={height}
                             />
                             <div className='connectWrapper_Parentdiv'>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table1'>
-                                        <table className='ElectricDiagramTable'
-                                            id='1-1'
-                                            scp_id='2300136001'
-                                            onClick={() => handleImageClick('1-1 분전반', '2300136001')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
+                                {DeviceData && DeviceData.map((device, index) => (
+                                    <div className='connectWrapper'>
+                                        <div key={device.scp_vid} className='connectWrapper'>
+                                            <img src={connectSvg} alt="" />
+                                            <div className={`connectWrapper_table`}>
+                                                <table
+                                                    className='ElectricDiagramTable'
+                                                    id={`${device.device_name} ${index}`}
+                                                    scp_vid={device.scp_vid}
+                                                    onClick={() => handleImageClick(device.device_name, device.scp_vid)}
+                                                >
+                                                    <tr>
+                                                        <td rowSpan={2} style={{ fontSize: '13PX' }}>{device.device_name}</td>
+                                                        <td>MCCB</td>
+                                                        <td>KA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>000AF/00AT</td>
+                                                        <td>00</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table2'>
-
-                                        <table className='ElectricDiagramTable'
-                                            id='1-2'
-                                            scp_id='2300136002'
-                                            onClick={() => handleImageClick('1-2 분전반', '2300136002')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table3'>
-
-                                        <table className='ElectricDiagramTable'
-                                            id='1-3 분전반'
-                                            scp_id='2300136003'
-                                            onClick={() => handleImageClick('1-3 분전반', '2300136003')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table4'>
-
-                                        <table className='ElectricDiagramTable'
-                                            id='1-4 분전반'
-                                            scp_id='2300136004'
-                                            onClick={() => handleImageClick('1-4 분전반', '2300136004')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table5'>
-
-                                        <table className='ElectricDiagramTable'
-                                            id='1-5 분전반'
-                                            scp_id='2300136005'
-                                            onClick={() => handleImageClick('1-5 분전반', '2300136005')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }} >분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div className='connectWrapper'>
-                                    <img src={connectSvg} alt="" />
-                                    <div className='connectWrapper_table6'>
-                                        <table className='ElectricDiagramTable'
-                                            id='1-6 분전반'
-                                            scp_id='2300136006'
-                                            onClick={() => handleImageClick('1-6 분전반', '2300136006')}>
-                                            <tr>
-                                                <td rowSpan={2} style={{ fontSize: '13PX' }}>분전반명</td>
-                                                <td>MCCB</td>
-                                                <td>KA</td>
-                                            </tr>
-                                            <tr>
-                                                <td>000AF/00AT</td>
-                                                <td>00</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
-
-
-
                         </Card>
                     </Card>
                 </Col>

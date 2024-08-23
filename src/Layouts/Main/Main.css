@@ -15,16 +15,12 @@
         margin-bottom: 16px;
     }
 }
-.connectWrapper_Parentdiv{
+
+.connectWrapper_Parentdiv {
     margin-top: -10px;
 }
 
-.connectWrapper_table1,
-.connectWrapper_table2,
-.connectWrapper_table3,
-.connectWrapper_table4,
-.connectWrapper_table5,
-.connectWrapper_table6 {
+.connectWrapper_table {
     cursor: pointer;
     position: relative;
     width: auto;
@@ -32,27 +28,19 @@
     left: 15px;
     margin-top: 20px;
 }
-.connectWrapper_table1:hover,
-.connectWrapper_table2:hover,
-.connectWrapper_table3:hover,
-.connectWrapper_table4:hover,
-.connectWrapper_table5:hover,
-.connectWrapper_table6:hover {
+
+.connectWrapper_table:hover {
     transition: 0.2s ease-out;
     background-color: rgb(177, 177, 177);
     color: rgb(5, 5, 5);
 }
-.connectWrapper_table1:not(:hover) ,
-.connectWrapper_table2:not(:hover) ,
-.connectWrapper_table3:not(:hover) ,
-.connectWrapper_table4:not(:hover) ,
-.connectWrapper_table5:not(:hover) ,
-.connectWrapper_table6:not(:hover) {
+
+.connectWrapper_table:not(:hover) {
     transition: 0.2s ease-out;
     color: black !important;
-} 
+}
 
-.ElectricDiagramTable tr> td{
+.ElectricDiagramTable tr>td {
     font-size: 10.5px;
 }
 
@@ -84,7 +72,7 @@
     }
 }
 
-.Diagram_pic_Card{
+.Diagram_pic_Card {
     background-color: rgb(247, 247, 247);
     position: relative;
     display: block;
@@ -111,4 +99,3 @@
     border-radius: 10px;
 
 }
-
