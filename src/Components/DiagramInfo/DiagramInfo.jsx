@@ -36,9 +36,6 @@ const DiagramInfo = () => {
   }, [DeviceData]);
 
   // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
-
-
-  // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
   const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval, selectedDevice);
   const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval, selectedDevice);
   const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice);
@@ -190,6 +187,8 @@ const DiagramInfo = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  console.log(DiagramMinmaxData);
 
   return (
     <Content className="app-Content">
