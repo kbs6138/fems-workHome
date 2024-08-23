@@ -79,7 +79,7 @@ const AppMain = () => {
 
 
 
-
+    console.log(MainDiagramData[0]?.ithd_r)
     return (
         <Content className="app-Content">
 
@@ -341,7 +341,7 @@ const AppMain = () => {
 
                 <Col className="gutter-row" span={13}>
                     <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`} bordered={false}>
-                        <RightBottomMainTabs />
+                        <RightBottomMainTabs MainDiagramData={MainDiagramData} />
                     </Card>
                 </Col>
             </Row>
