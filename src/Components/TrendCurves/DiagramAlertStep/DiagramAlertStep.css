@@ -44,7 +44,9 @@
 }
 
 .timeline-container {
-    max-height: 280px; /* Ensure it takes up the full height of the parent */
+    padding-top: 5px;
+    height:280px;
+    /* max-height: 280px; Ensure it takes up the full height of the parent */
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
 }
 
@@ -78,5 +80,6 @@
     margin-left: 10px;
 }
 
-
-
+.ant-timeline-item-content{
+    min-height: 0px !important;
+}

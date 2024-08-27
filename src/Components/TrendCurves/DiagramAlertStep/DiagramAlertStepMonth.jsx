@@ -11,11 +11,11 @@ const DiagramAlertStepMonth = ({ TrendData, selectedData, dataTypeForChart }) =>
                 let rValue, sValue, tValue, value;
 
                 if (['volt', 'am'].includes(dataTypeForChart)) {
-                    rValue = item[`${dataTypeForChart}_r`];
-                    sValue = item[`${dataTypeForChart}_s`];
-                    tValue = item[`${dataTypeForChart}_t`];
+                    rValue = item[`${dataTypeForChart}_r`]?.toFixed(1);
+                    sValue = item[`${dataTypeForChart}_s`]?.toFixed(1);
+                    tValue = item[`${dataTypeForChart}_t`]?.toFixed(1);
                 } else {
-                    value = item[`${dataTypeForChart}`];
+                    value = item[`${dataTypeForChart}`]?.toFixed(1);
                 }
 
                 return {
@@ -49,12 +49,19 @@ const DiagramAlertStepMonth = ({ TrendData, selectedData, dataTypeForChart }) =>
                                     <span className="timeline-text" style={{ color: '#7696ff', fontWeight: 'bold' }}>L3: {item.tValue}</span>
                                 </>
                             ) : (
-                                <span className="timeline-text" style={{ color: '#00c700', fontWeight: 'bold' }}>
+                                <span className="timeline-text" style={{ 
+                                    color: dataTypeForChart === 'wat' ? '#9370DB' : 
+                                        dataTypeForChart === 'pf' ? '#00BFFF' : 
+                                        dataTypeForChart === 'out_deg' ? '#7CFC00' : 
+                                        dataTypeForChart === 'in_deg' ? '#FF69B4' : 
+                                        '#00c700', // 기본 색상
+                                    fontWeight: 'bold' 
+                                }}>
                                     {dataTypeForChart === 'wat' ? `전력: ${item.value}` :
-                                     dataTypeForChart === 'pf' ? `역률: ${item.value}` :
-                                     dataTypeForChart === 'out_deg' ? `외부온도: ${item.value}` :
-                                     dataTypeForChart === 'in_deg' ? `내부온도: ${item.value}` :
-                                     '' }
+                                    dataTypeForChart === 'pf' ? `역률: ${item.value}` :
+                                    dataTypeForChart === 'out_deg' ? `외부온도: ${item.value}` :
+                                    dataTypeForChart === 'in_deg' ? `내부온도: ${item.value}` :
+                                    '' }
                                 </span>
                             )}
                         </div>

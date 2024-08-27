@@ -67,12 +67,19 @@ const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeF
                                     <span className="timeline-text" style={{ color: '#7696ff', fontWeight: 'bold' }}>L3: {item.tValue}</span>
                                 </>
                             ) : (
-                                <span className="timeline-text" style={{ color: '#00c700', fontWeight: 'bold' }}>
+                                <span className="timeline-text" style={{ 
+                                    color: dataTypeForChart === 'wat' ? '#9370DB' : 
+                                        dataTypeForChart === 'pf' ? '#00BFFF' : 
+                                        dataTypeForChart === 'out_deg' ? '#7CFC00' : 
+                                        dataTypeForChart === 'in_deg' ? '#FF69B4' : 
+                                        '#00c700', // 기본 색상
+                                    fontWeight: 'bold' 
+                                }}>
                                     {dataTypeForChart === 'wat' ? `전력: ${item.value}` :
-                                     dataTypeForChart === 'pf' ? `역률: ${item.value}` :
-                                     dataTypeForChart === 'out_deg' ? `외부온도: ${item.value}` :
-                                     dataTypeForChart === 'in_deg' ? `내부온도: ${item.value}` :
-                                     '' }
+                                    dataTypeForChart === 'pf' ? `역률: ${item.value}` :
+                                    dataTypeForChart === 'out_deg' ? `외부온도: ${item.value}` :
+                                    dataTypeForChart === 'in_deg' ? `내부온도: ${item.value}` :
+                                    '' }
                                 </span>
                             )}
                         </div>
