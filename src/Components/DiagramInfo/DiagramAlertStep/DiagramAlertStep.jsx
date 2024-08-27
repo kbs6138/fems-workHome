@@ -6,20 +6,20 @@ const DiagramAlertStep = () => (
     <Timeline className="custom-timeline">
         <Timeline.Item>
             <div className="timeline-item-content">
-                <span className="timeline-time">2024-07-22</span>
-                <span className="timeline-text">과부하 발생</span>
+                <span className="timeline-time">2024-08-22</span>
+                <span className="timeline-text">-</span>
             </div>
         </Timeline.Item>
         <Timeline.Item>
             <div className="timeline-item-content">
-                <span className="timeline-time">2024-07-23</span>
-                <span className="timeline-text">~장비 ~이상발생</span>
+                <span className="timeline-time">2024-08-23</span>
+                <span className="timeline-text">-</span>
             </div>
         </Timeline.Item>
         <Timeline.Item>
             <div className="timeline-item-content">
-                <span className="timeline-time">2024-07-24</span>
-                <span className="timeline-text">Technical testing</span>
+                <span className="timeline-time">2024-08-24</span>
+                <span className="timeline-text">-</span>
             </div>
         </Timeline.Item>
 

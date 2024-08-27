@@ -15,6 +15,7 @@ import { useMainDiagramData } from './MainDiagram/MainDiagram';
 import { useDeviceData } from '../../Components/db/Device-m';
 import mainSvg from '../main.svg'; // 이미지 경로를 자신의 것으로 변경하세요
 import connectSvg from '../Crop_connect.svg'; // 이미지 경로를 자신의 것으로 변경하세요
+import ThermometerComponent from '../../Components/Charts/Thermometer';
 import './Main.css';
 
 const { Content } = Layout;

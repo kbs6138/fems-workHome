@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
 export const fetchCurrentRData = async () => {
-    const response = await fetch('http://agen072.iptime.org:8980/api/volt_r?scp_id=2300130203');
+    const response = await fetch('http://118.43.32.5:8980/api/volt_r?scp_id=2200130501_302');
     
     const data = await response.json();
     //console.log('apiData:', data);

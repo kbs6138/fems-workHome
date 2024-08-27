@@ -56,6 +56,8 @@ const MonitorFirst = () => {
             setCurrentSecondArea([data[0].area2, data[1].area2, data[2].area2]);
             setCurrentThirdArea([data[0].area3, data[1].area3, data[2].area3]);
             /** 전압 구간 */
+            
+            console.log(CurrentValue[0])
 
             /** 과전류 구간 */
             setOverCurrentValue([data[3].value, data[4].value, data[5].value]);
