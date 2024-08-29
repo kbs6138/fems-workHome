@@ -120,7 +120,7 @@ const AppMain = () => {
                     }}
                 >
                     {/* 첫 번째 줄 */}
-                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                    <Col className="gutter-row" xs={12} sm={12} md={12} lg={6}>
                         <div className='Main-Top-Info1' style={{ display: 'flex', flexDirection: 'row' }}>
                             <Col className={`Main-Top-Info1-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info1-span'>적산 전력량</span>
@@ -132,7 +132,7 @@ const AppMain = () => {
                         </div>
                     </Col>
 
-                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                    <Col className="gutter-row" xs={12} sm={12} md={12} lg={6}>
                         <div className='Main-Top-Info2' style={{ display: 'flex', flexDirection: 'row' }}>
                             <Col className={`Main-Top-Info2-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info2-span'>수전 용량</span>
@@ -145,7 +145,7 @@ const AppMain = () => {
                     </Col>
 
                     {/* 두 번째 줄 */}
-                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                    <Col className="gutter-row" xs={12} sm={12} md={12} lg={6}>
                         <div className='Main-Top-Info3' style={{ display: 'flex', flexDirection: 'row' }}>
                             <Col className={`Main-Top-Info3-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info3-span'>계약 전력</span>
@@ -157,7 +157,7 @@ const AppMain = () => {
                         </div>
                     </Col>
 
-                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                    <Col className="gutter-row" xs={12} sm={12} md={12} lg={6}>
                         <div className='Main-Top-Info4' style={{ display: 'flex', flexDirection: 'row' }}>
                             <Col className={`Main-Top-Info4-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info4-span'>목표피크전력</span>
