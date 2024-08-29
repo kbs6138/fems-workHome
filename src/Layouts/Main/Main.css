@@ -1,41 +1,40 @@
 .connectWrapper {
     display: flex;
     width: 100%;
-    height: 45px;
+    height: auto;
     color: black;
-    transform: translateY("-10px");
-
+    align-items: center;
     & img {
         position: relative;
         width: 80px;
-        left: 23px;
-    }
-
-    &:last-child {
-        margin-bottom: 16px;
     }
 }
 
 .connectWrapper_Parentdiv {
     margin-top: -10px;
+    display: block;
+    width:100%;
+    height:auto;
+    position: relative;
+    /* left:31px; */
 }
 
 .connectWrapper_table {
     cursor: pointer;
     position: relative;
-    width: auto;
-    height: 40px;
-    left: 15px;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: auto;
 }
 
-.connectWrapper_table:hover {
+.ElectricDiagramTable:hover {
     transition: 0.2s ease-out;
     background-color: rgb(177, 177, 177);
     color: rgb(5, 5, 5);
 }
 
-.connectWrapper_table:not(:hover) {
+.ElectricDiagramTable:not(:hover) {
     transition: 0.2s ease-out;
     color: black !important;
 }
@@ -49,7 +48,7 @@
     border-collapse: collapse;
     border: 1px solid black;
     width: auto;
-    height: 40px;
+    height: 50px;
 
     & td {
         text-align: center;
@@ -76,12 +75,16 @@
     background-color: rgb(247, 247, 247);
     position: relative;
     display: block;
+    width:100%;
     max-height: 270px;
+    padding-left:30px;
+    /* overflow-x: auto; */
     overflow-y: auto;
 }
 
 .Diagram_pic_Card::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
     /* 스크롤바의 너비 */
 }
 
