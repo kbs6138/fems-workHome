@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
-import '/fems-workHome/src/Components/DiagramInfo/DiagramInfo.css';
+import '../../DiagramInfo.css';
 import { BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
 
 const formatNumber = (number) => {

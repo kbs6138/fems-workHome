@@ -35,11 +35,11 @@ const items = [
     //getItem('장비2', '8', null, null, ''),
     //getItem('장비3', '9', null, null, ''),
   ]),
-
-  getItem('관리/사용자 전환', 'sub4', <UserOutlined />, [
-    getItem('관리자', '9', null, null, '/AppAdmin'),
-    getItem('사용자', '10', null, null, ''),
-  ]),
+  /*
+    getItem('관리/사용자 전환', 'sub4', <UserOutlined />, [
+      getItem('관리자', '9', null, null, '/AppAdmin'),
+      getItem('사용자', '10', null, null, ''),
+    ]),*/
 ];
 
 const AppSider = () => {

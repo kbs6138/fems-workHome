@@ -23,17 +23,8 @@ const RightBottomMainTabs = ({ MainDiagramData }) => {
             key: '2',
             label: '단상분기정보',
             children: <PhaseQuarterlyInfo/>,
-        },
-        {
-            key: '3',
-            label: '부하별 금일 사용량',
-            children: 'Content of Tab Pane 1',
-        },
-        {
-            key: '4',
-            label: '전류 / 과전류',
-            children: 'Content of Tab Pane 4',
-        },
+        }
+
     ];
 
     return (

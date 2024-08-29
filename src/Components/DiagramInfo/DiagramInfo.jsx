@@ -20,10 +20,7 @@ import { useDeviceData } from '../db/Device-m';
 const { Content } = Layout;
 const { Option } = Select;
 
-
-
 const DiagramInfo = () => {
-
   const [refreshInterval, setRefreshInterval] = useState(10000);
   const [currentTime, setCurrentTime] = useState('');
   const [selectedDevice, setSelectedDevice] = useState('');
@@ -31,17 +28,16 @@ const DiagramInfo = () => {
   const { data: DeviceData } = useDeviceData(refreshInterval);
   useEffect(() => {
     if (DeviceData && DeviceData.length > 0) {
-      setSelectedDevice(DeviceData[0].scp_vid);
+      setSelectedDevice(DeviceData[0]?.scp_vid);
     }
   }, [DeviceData]);
 
-  // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
   const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval, selectedDevice);
   const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval, selectedDevice);
   const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice);
 
   const handleMenuClick = (key) => {
-    setRefreshInterval(key); // 클릭한 메뉴의 키로 refreshInterval 업데이트
+    setRefreshInterval(key);
   };
   const handleChange = (value) => {
     setSelectedDevice(value);
@@ -57,21 +53,20 @@ const DiagramInfo = () => {
   const [chartColors, setChartColors] = useState([]);
   const [rstchartColors, setRSTColors] = useState([]);
 
-
   const calculateRateOfChange = (currentValue, previousValue) => {
-    if (previousValue === 0) return 0; // 이전 값이 0일 때, 비율 변화는 0으로 처리
+    if (previousValue === 0 || previousValue === undefined) return 0;
     const rateOfChange = ((currentValue / previousValue) * 100) - 100;
-    return rateOfChange.toFixed(1); // 소수점 첫째 자리까지 표시
+    return rateOfChange.toFixed(1);
   };
 
   const formatNumber = (number) => {
     if (number === undefined || number === null) {
-      return '-'; // 기본값 설정
+      return '-';
     }
-    return number.toLocaleString(); // Add commas to the number
+    return number.toLocaleString();
   };
 
-  const tableDataArray = [
+  const tableDataArray = DiagramInfoData && DiagramCurrentData ? [
     [
       {
         key: '1',
@@ -167,20 +162,18 @@ const DiagramInfo = () => {
         rateOfChange: calculateRateOfChange(DiagramInfoData[0]?.in_data, DiagramCurrentData[9]?.avg),
       },
     ],
-  ];
+  ] : [];
 
   useEffect(() => {
-    // 현재 시간 업데이트
     const updateTime = () => {
       const now = new Date();
-      setCurrentTime(now.toLocaleString()); // 날짜와 시간을 문자열로 변환
+      setCurrentTime(now.toLocaleString());
     };
 
-    updateTime(); // 처음 렌더링 시 시간 설정
-    const interval = setInterval(updateTime, 1000); // 1초마다 시간 업데이트
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
     const colors = ['#FF6B6B', '#FFD700', '#9370DB', '#00BFFF', '#7CFC00', '#FF69B4'];
     setChartColors(colors);
-
 
     const rstcolors = ['#00C700', '#FC738A', '#7696FF'];
     setRSTColors(rstcolors);
@@ -188,7 +181,9 @@ const DiagramInfo = () => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log(DiagramMinmaxData);
+  if (!DiagramInfoData || !DiagramCurrentData || !DiagramMinmaxData) {
+    return <div>Loading...</div>; // 로딩 중일 때 보여줄 내용
+  }
 
   return (
     <Content className="app-Content">
