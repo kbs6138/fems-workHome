@@ -22,14 +22,14 @@ const { Option } = Select;
 const DiagramDetail = () => {
 
     const location = useLocation();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const initialTabKey = queryParams.get('tab') || "1";
 
     const [refreshInterval, setRefreshInterval] = useState(10000);
     const [currentTime, setCurrentTime] = useState('');
-    const [activeTabKey, setActiveTabKey] = useState(initialTabKey); 
-    const [selectedDevice, setSelectedDevice] = useState(''); 
+    const [activeTabKey, setActiveTabKey] = useState(initialTabKey);
+    const [selectedDevice, setSelectedDevice] = useState('');
 
     const { data: DeviceData } = useDeviceData(refreshInterval);
     useEffect(() => {
@@ -41,7 +41,7 @@ const DiagramDetail = () => {
     // useDiagramInfoData와 함께 selectedDevice를 사용하여 데이터를 가져옵니다.
     const { data: DiagramInfoData } = useDiagramInfoData(refreshInterval, selectedDevice);
     const { data: DiagramCurrentData } = useDiagramCurrentData(refreshInterval, selectedDevice);
-    const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice); 
+    const { data: DiagramMinmaxData } = useMinMaxData(refreshInterval, selectedDevice);
 
 
     const handleMenuClick = (key) => {
@@ -293,9 +293,9 @@ const DiagramDetail = () => {
             key: "1",
             children: (
                 DiagramMinmaxData[0]?.min !== undefined && DiagramMinmaxData[0]?.max !== undefined && (
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_V_Chart_Card'>
                                     <DiagramDetailVWChart
                                         key={1}
@@ -308,17 +308,15 @@ const DiagramDetail = () => {
                                     />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}>
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramDetailVWTable data={tableDataArray[0]} />
                             </Col>
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Card bordered={false} className='DiagramDetail_V_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={VoltRSTlog} />
                                 </Card>
                             </Col>
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Card bordered={false} className='DiagramDetail_V_RSTChart_Card'>
                                     <DiagramDetailRSTChart
                                         key="1"
@@ -338,9 +336,9 @@ const DiagramDetail = () => {
             key: "2",
             children: (
                 DiagramMinmaxData[1]?.min !== undefined && DiagramMinmaxData[1]?.max !== undefined && (
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_A_Chart_Card'>
                                     <DiagramDetailVWChart key={2}
                                         dataR={DiagramInfoData[0]?.am_data_r}
@@ -348,22 +346,19 @@ const DiagramDetail = () => {
                                         dataT={DiagramInfoData[0]?.am_data_t}
                                         rstColor={rstchartColors}
                                         Min={DiagramMinmaxData[1]?.min || 0}
-                                        Max={DiagramMinmaxData[1]?.max || 0} />
-
+                                        Max={DiagramMinmaxData[1]?.max || 0}
+                                    />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramDetailVWTable data={tableDataArray[1]} />
                             </Col>
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Card bordered={false} className='DiagramDetail_A_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={AmRSTlog} />
                                 </Card>
                             </Col>
-
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Card bordered={false} className='DiagramDetail_A_RSTChart_Card'>
                                     <DiagramDetailRSTChart
                                         key="2"
@@ -383,20 +378,17 @@ const DiagramDetail = () => {
             key: "3",
             children: (
                 DiagramMinmaxData[2]?.min !== undefined && DiagramMinmaxData[2]?.max !== undefined && (
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_W_Chart_Card' size='large'>
                                     <DiagramDetailChart key={3} data={DiagramInfoData[0]?.w_data} chartColor={chartColors[2]} Min={DiagramMinmaxData[2]?.min || 0} Max={DiagramMinmaxData[2]?.max || 0} />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[2]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
-
+                            <Col xs={24} sm={24} md={16} lg={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_W_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={PowerLog} />
                                 </Card>
@@ -411,20 +403,17 @@ const DiagramDetail = () => {
             key: "4",
             children: (
                 DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_WVA_Chart_Card'>
                                     <DiagramDetailChart key={4} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramMinmaxData[3]?.min || 0} Max={DiagramMinmaxData[3]?.max || 0} />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[3]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
+                            <Col xs={24} sm={24} md={16} lg={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_PF_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={PFLog} />
                                 </Card>
@@ -439,19 +428,17 @@ const DiagramDetail = () => {
             key: "5",
             children: (
                 DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_OutDeg_Chart_Card'>
                                     <DiagramDetailChart key={5} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramMinmaxData[4]?.min || 0} Max={DiagramMinmaxData[4]?.max || 0} />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[4]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
+                            <Col xs={24} sm={24} md={16} lg={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_OutDeg_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={OutTempLog} />
                                 </Card>
@@ -466,20 +453,17 @@ const DiagramDetail = () => {
             key: "6",
             children: (
                 DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-
-                    <Col span={24}>
-                        <Row>
-                            <Col span={24}>
+                    <Col xs={24} sm={24} md={24} lg={24}>
+                        <Row gutter={[16, 16]}>
+                            <Col xs={24} sm={24} md={24} lg={24}>
                                 <Card bordered={false} className='DiagramDetail_InnerDeg_Chart_Card'>
                                     <DiagramDetailChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramMinmaxData[5]?.min || 0} Max={DiagramMinmaxData[5]?.max || 0} />
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <DiagramInfoOtherTable data={tableDataArray[5]} />
                             </Col>
-                            <Col span={16} style={{ height: '460px' }}>
+                            <Col xs={24} sm={24} md={16} lg={16} style={{ height: '460px' }}>
                                 <Card bordered={false} className='DiagramDetail_InnerDeg_DiagramDetailLog_Card'>
                                     <DiagramDetailLog logEntries={InTempLog} />
                                 </Card>
@@ -490,6 +474,7 @@ const DiagramDetail = () => {
             )
         }
     ];
+
 
     return (
         <Content className="app-Content">
