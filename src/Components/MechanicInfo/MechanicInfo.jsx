@@ -4,13 +4,17 @@ import '../Tabs/MainTabs/Tabs.css';
 
 const MechanicInfo = ({ MainDiagramData }) => {
     return (
-
-
-        <div>
-
-
-            <Row>
-                <Col span={16}>
+        <div className="table_container">
+            <Row
+                gutter={{
+                    xs: 10,
+                    sm: 10,
+                    md: 20,
+                    lg: 10,
+                }}
+            >
+                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+                    {/* L1 Table */}
                     <table className="table table1">
                         <thead>
                             <tr>
@@ -23,7 +27,7 @@ const MechanicInfo = ({ MainDiagramData }) => {
                                 <td>전류(A)<span id="am_r" className='L1_Span_str'>{MainDiagramData[0]?.am_r}</span></td>
                                 <td>피상(VA)<span id="wat_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_r}</span></td>
                                 <td>유효(W)<span id="wat_p_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_p_r}</span></td>
-                                <td>무효(Var)<span id="wat_n_r" className='L1_Span_str' >{MainDiagramData[0]?.wat_n_r}</span></td>
+                                <td>무효(Var)<span id="wat_n_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_n_r}</span></td>
                                 <td>역률(%)<span id="pf_r" className='L1_Span_str'>{MainDiagramData[0]?.pf_r}</span></td>
                                 <td>I-THD(%)<span id="ithd_r" className='L1_Span_str'>{MainDiagramData[0]?.ithd_r}</span></td>
                                 <td>V-THD(%)<span id="vthd_r" className='L1_Span_str'>{MainDiagramData[0]?.vthd_r}</span></td>
@@ -31,23 +35,20 @@ const MechanicInfo = ({ MainDiagramData }) => {
                         </tbody>
                     </table>
 
-
-
-
-                    {/* L2 정보 */}
+                    {/* L2 Table */}
                     <table className="table table2">
                         <thead>
                             <tr>
-                                <th >L2 정보</th>
+                                <th>L2 정보</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
+                            <tr>
                                 <td>전압(V)<span id="volt_s" className='L2_Span_str'> {MainDiagramData[0]?.volt_s}</span></td>
                                 <td>전류(A)<span id="am_s" className='L2_Span_str'>{MainDiagramData[0]?.am_s}</span></td>
                                 <td>피상(VA)<span id="wat_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_s}</span></td>
                                 <td>유효(W)<span id="wat_p_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_p_s}</span></td>
-                                <td>무효(Var)<span id="wat_n_s" className='L2_Span_str' >{MainDiagramData[0]?.wat_n_s}</span></td>
+                                <td>무효(Var)<span id="wat_n_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_n_s}</span></td>
                                 <td>역률(%)<span id="pf_s" className='L2_Span_str'>{MainDiagramData[0]?.pf_s}</span></td>
                                 <td>I-THD(%)<span id="ithd_s" className='L2_Span_str'>{MainDiagramData[0]?.ithd_s}</span></td>
                                 <td>V-THD(%)<span id="vthd_s" className='L2_Span_str'>{MainDiagramData[0]?.vthd_s}</span></td>
@@ -55,7 +56,7 @@ const MechanicInfo = ({ MainDiagramData }) => {
                         </tbody>
                     </table>
 
-                    {/* L3 정보 */}
+                    {/* L3 Table */}
                     <table className="table table3">
                         <thead>
                             <tr>
@@ -64,27 +65,21 @@ const MechanicInfo = ({ MainDiagramData }) => {
                         </thead>
                         <tbody>
                             <tr>
-
                                 <td>전압(V)<span id="volt_t" className='L3_Span_str'> {MainDiagramData[0]?.volt_t}</span></td>
                                 <td>전류(A)<span id="am_t" className='L3_Span_str'>{MainDiagramData[0]?.am_s}</span></td>
                                 <td>피상(VA)<span id="wat_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_t}</span></td>
                                 <td>유효(W)<span id="wat_p_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_p_t}</span></td>
-                                <td>무효(Var)<span id="wat_n_t" className='L3_Span_str' >{MainDiagramData[0]?.wat_n_t}</span></td>
+                                <td>무효(Var)<span id="wat_n_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_n_t}</span></td>
                                 <td>역률(%)<span id="pf_t" className='L3_Span_str'>{MainDiagramData[0]?.pf_t}</span></td>
                                 <td>I-THD(%)<span id="ithd_t" className='L3_Span_str'>{MainDiagramData[0]?.ithd_t}</span></td>
                                 <td>V-THD(%)<span id="vthd_t" className='L3_Span_str'>{MainDiagramData[0]?.vthd_t}</span></td>
-
                             </tr>
                         </tbody>
                     </table>
-
                 </Col>
 
-
-
-
-                <Col span={8}>
-                    <table className="table">
+                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+                    <table className="table table4">
                         <tbody>
                             <tr>
                                 <td style={{ paddingBottom: '15px' }}>주파수(Hz) <span style={{ fontWeight: 'bolder', marginTop: '5px' }} id="hz">{MainDiagramData[0]?.hz}</span></td>
@@ -105,8 +100,6 @@ const MechanicInfo = ({ MainDiagramData }) => {
                     </table>
                 </Col>
             </Row>
-
-
         </div>
     );
 };

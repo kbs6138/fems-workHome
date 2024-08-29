@@ -302,7 +302,7 @@ const AppMain = () => {
                                                         onClick={() => handleImageClick(parent.device_name, parent.scp_vid)}
                                                     >
                                                         <tr>
-                                                            <td rowSpan={2} style={{ fontSize: '13px' }}>{parent.device_name}</td>
+                                                            <td rowSpan={2} style={{ fontSize: '12px' }}>{parent.device_name}</td>
                                                             <td>MCCB</td>
                                                             <td>KA</td>
                                                         </tr>
@@ -344,7 +344,7 @@ const AppMain = () => {
                                                                 onClick={() => handleImageClick(child.device_name, child.scp_vid)}
                                                             >
                                                                 <tr>
-                                                                    <td rowSpan={2} style={{ fontSize: '13px' }}>{child.device_name}</td>
+                                                                    <td rowSpan={2} style={{ fontSize: '12px' }}>{child.device_name}</td>
                                                                     <td>MCCB</td>
                                                                     <td>KA</td>
                                                                 </tr>
