@@ -13,72 +13,107 @@ const MechanicInfo = ({ MainDiagramData }) => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+                <Col className="gutter-row" xs={24} sm={24} md={15} lg={15}>
                     {/* L1 Table */}
-                    <table className="table table1">
-                        <thead>
-                            <tr>
-                                <th>L1 정보</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>전압(V)<span id="volt_r" className='L1_Span_str'> {MainDiagramData[0]?.volt_r}</span></td>
-                                <td>전류(A)<span id="am_r" className='L1_Span_str'>{MainDiagramData[0]?.am_r}</span></td>
-                                <td>피상(VA)<span id="wat_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_r}</span></td>
-                                <td>유효(W)<span id="wat_p_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_p_r}</span></td>
-                                <td>무효(Var)<span id="wat_n_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_n_r}</span></td>
-                                <td>역률(%)<span id="pf_r" className='L1_Span_str'>{MainDiagramData[0]?.pf_r}</span></td>
-                                <td>I-THD(%)<span id="ithd_r" className='L1_Span_str'>{MainDiagramData[0]?.ithd_r}</span></td>
-                                <td>V-THD(%)<span id="vthd_r" className='L1_Span_str'>{MainDiagramData[0]?.vthd_r}</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <thead>
+                        <tr>
+                            <span className='L1_span'>L1 정보</span>
+                        </tr>
+                    </thead>
+                    <Row gutter={[5, 5]} style={{marginBottom:'20px'}}>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>전압(V)<span id="volt_r" className='L1_Span_str'> {MainDiagramData[0]?.volt_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>전류(A)<span id="am_r" className='L1_Span_str'>{MainDiagramData[0]?.am_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>피상(VA)<span id="wat_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>유효(W)<span id="wat_p_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_p_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>무효(Var)<span id="wat_n_r" className='L1_Span_str'>{MainDiagramData[0]?.wat_n_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>역률(%)<span id="pf_r" className='L1_Span_str'>{MainDiagramData[0]?.pf_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>I-THD(%)<span id="ithd_r" className='L1_Span_str'>{MainDiagramData[0]?.ithd_r}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L1_div'>V-THD(%)<span id="vthd_r" className='L1_Span_str'>{MainDiagramData[0]?.vthd_r}</span></div>
+                        </Col>
+                    </Row>
 
                     {/* L2 Table */}
-                    <table className="table table2">
-                        <thead>
-                            <tr>
-                                <th>L2 정보</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>전압(V)<span id="volt_s" className='L2_Span_str'> {MainDiagramData[0]?.volt_s}</span></td>
-                                <td>전류(A)<span id="am_s" className='L2_Span_str'>{MainDiagramData[0]?.am_s}</span></td>
-                                <td>피상(VA)<span id="wat_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_s}</span></td>
-                                <td>유효(W)<span id="wat_p_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_p_s}</span></td>
-                                <td>무효(Var)<span id="wat_n_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_n_s}</span></td>
-                                <td>역률(%)<span id="pf_s" className='L2_Span_str'>{MainDiagramData[0]?.pf_s}</span></td>
-                                <td>I-THD(%)<span id="ithd_s" className='L2_Span_str'>{MainDiagramData[0]?.ithd_s}</span></td>
-                                <td>V-THD(%)<span id="vthd_s" className='L2_Span_str'>{MainDiagramData[0]?.vthd_s}</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <thead >
+                        <tr>
+                            <span className='L2_span'>L2 정보</span>
+                        </tr>
+                    </thead>
+                    <Row gutter={[5, 5]} style={{marginBottom:'20px'}}>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>전압(V)<span id="volt_s" className='L2_Span_str'> {MainDiagramData[0]?.volt_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>전류(A)<span id="am_s" className='L2_Span_str'>{MainDiagramData[0]?.am_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>피상(VA)<span id="wat_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>유효(W)<span id="wat_p_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_p_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>무효(Var)<span id="wat_n_s" className='L2_Span_str'>{MainDiagramData[0]?.wat_n_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>역률(%)<span id="pf_s" className='L2_Span_str'>{MainDiagramData[0]?.pf_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>I-THD(%)<span id="ithd_s" className='L2_Span_str'>{MainDiagramData[0]?.ithd_s}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L2_div'>V-THD(%)<span id="vthd_s" className='L2_Span_str'>{MainDiagramData[0]?.vthd_s}</span></div>
+                        </Col>
+                    </Row>
 
                     {/* L3 Table */}
-                    <table className="table table3">
-                        <thead>
-                            <tr>
-                                <th>L3 정보</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>전압(V)<span id="volt_t" className='L3_Span_str'> {MainDiagramData[0]?.volt_t}</span></td>
-                                <td>전류(A)<span id="am_t" className='L3_Span_str'>{MainDiagramData[0]?.am_s}</span></td>
-                                <td>피상(VA)<span id="wat_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_t}</span></td>
-                                <td>유효(W)<span id="wat_p_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_p_t}</span></td>
-                                <td>무효(Var)<span id="wat_n_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_n_t}</span></td>
-                                <td>역률(%)<span id="pf_t" className='L3_Span_str'>{MainDiagramData[0]?.pf_t}</span></td>
-                                <td>I-THD(%)<span id="ithd_t" className='L3_Span_str'>{MainDiagramData[0]?.ithd_t}</span></td>
-                                <td>V-THD(%)<span id="vthd_t" className='L3_Span_str'>{MainDiagramData[0]?.vthd_t}</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <thead>
+                        <tr>
+                            <span className='L3_span'>L3 정보</span>
+                        </tr>
+                    </thead>
+                    <Row gutter={[5, 5]}>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>전압(V)<span id="volt_t" className='L3_Span_str'> {MainDiagramData[0]?.volt_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>전류(A)<span id="am_t" className='L3_Span_str'>{MainDiagramData[0]?.am_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>피상(VA)<span id="wat_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>유효(W)<span id="wat_p_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_p_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>무효(Var)<span id="wat_n_t" className='L3_Span_str'>{MainDiagramData[0]?.wat_n_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>역률(%)<span id="pf_t" className='L3_Span_str'>{MainDiagramData[0]?.pf_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>I-THD(%)<span id="ithd_t" className='L3_Span_str'>{MainDiagramData[0]?.ithd_t}</span></div>
+                        </Col>
+                        <Col span={24} xs={6} sm={6} md={3} lg={3}>
+                            <div className='L3_div'>V-THD(%)<span id="vthd_t" className='L3_Span_str'>{MainDiagramData[0]?.vthd_t}</span></div>
+                        </Col>
+                    </Row>
                 </Col>
 
-                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
                     <table className="table table4">
                         <tbody>
                             <tr>
@@ -98,7 +133,6 @@ const MechanicInfo = ({ MainDiagramData }) => {
                             </tr>
                         </tbody>
                     </table>
-                </Col>
             </Row>
         </div>
     );

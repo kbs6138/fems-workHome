@@ -1,92 +1,40 @@
-/* 기본 스타일 설정 */
-.table1,
-.table2,
-.table3,
-.table4 {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden; /* 테이블의 스크롤을 내부에 포함시킵니다 */
+.ant-tabs-tab-btn {
+  color: #FFFFFF;
 }
 
-/* 공통 테이블 셀 스타일 */
-.table1 th,
-.table1 td,
-.table2 th,
-.table2 td,
-.table3 th,
-.table3 td,
-.table4 th,
-.table4 td {
+.ant-tabs-tab-dark {
+  color: #fff;
+}
+
+/* Tabs.css */
+.ant-tabs-tab-dark .ant-tabs-tab-btn {
+  color: #fff !important;
+}
+
+/*분전반 정보*/
+
+
+td {
   padding-left: 15px;
+  font-size: 12px !important;
   color: white;
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
 }
 
-/* 각 테이블의 헤더 스타일 */
-.table1 th,
-.table2 th,
-.table3 th,
-.table4 th {
-  padding-bottom: 5px;
-  font-size: 14px; /* 기본 폰트 사이즈 */
+.L1_span,
+.L2_span,
+.L3_span {
+  color: white;
+  font-size: 15px;
 }
 
-/* 각 테이블의 셀 스타일 */
-.table1 td,
-.table2 td,
-.table3 td,
-.table4 td {
-  padding-bottom: 10px;
-  font-size: 12px; /* 기본 폰트 사이즈 */
+.L1_div,
+.L2_div,
+.L3_div {
+  color: white;
+  font-size: 13px;
+ 
 }
 
-/* 반응형 폰트 사이즈 조정 */
-@media (max-width: 1200px) {
-  .table1 th,
-  .table1 td,
-  .table2 th,
-  .table2 td,
-  .table3 th,
-  .table3 td,
-  .table4 th,
-  .table4 td {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 768px) {
-  .table1 th,
-  .table1 td,
-  .table2 th,
-  .table2 td,
-  .table3 th,
-  .table3 td,
-  .table4 th,
-  .table4 td {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .table1 th,
-  .table1 td,
-  .table2 th,
-  .table2 td,
-  .table3 th,
-  .table3 td,
-  .table4 th,
-  .table4 td {
-    font-size: 9px;
-  }
-}
-
-/* 테이블 스크롤 설정 */
-.table-container {
-  max-height: 400px; /* 최대 높이를 설정합니다 (필요에 따라 조정) */
-  overflow-y: auto; /* 상하 스크롤을 추가합니다 */
-}
-
-/* 테이블 셀 색상 설정 */
 .L1_Span_str {
   color: #00C700 !important;
   font-weight: bolder;
@@ -102,15 +50,60 @@
   font-weight: bolder;
 }
 
-/* 탭 버튼 스타일 설정 */
-.ant-tabs-tab-btn {
-  color: #FFFFFF;
+
+
+/* 기본 스타일 설정 */
+
+.table4 {
+  width: 200px;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.ant-tabs-tab-dark {
-  color: #fff;
+/* 공통 테이블 셀 스타일 */
+
+.table4 th,
+.table4 td {
+font-size: 13.5px !important;
+  color: white;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
 }
 
-.ant-tabs-tab-dark .ant-tabs-tab-btn {
-  color: #fff !important;
+/* 각 테이블의 헤더 스타일 */
+
+.table4 th {
+  padding-bottom: 5px;
+  font-size: 14px; /* 기본 폰트 사이즈 */
+}
+
+/* 각 테이블의 셀 스타일 */
+
+.table4 td {
+  padding-bottom: 10px;
+  font-size: 12px; /* 기본 폰트 사이즈 */
+}
+
+/* 반응형 폰트 사이즈 조정 */
+@media (max-width: 1200px) {
+
+  .table4 th,
+  .table4 td {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .table4 th,
+  .table4 td {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .table4 th,
+  .table4 td {
+    font-size: 9px;
+  }
 }
