@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineSwapRight } from "react-icons/ai";
-import { Layout, Col, Row, Card, Button } from 'antd';
+//import { Link } from 'react-router-dom';
+//import { AiOutlineSwapRight } from "react-icons/ai";
+import { Layout, Col, Row, Card /*Button*/ } from 'antd';
 import RightBottomMainTabs from '../../Components/Tabs/MainTabs/Right-Bottom-MainTabs';
 import CenterMainTabs from '../../Components/Tabs/MainTabs/Center-MainTabs';
 import { ThemeContext } from '../../Components/ThemeContext';
@@ -14,16 +14,16 @@ import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 import { useMainDiagramData } from './MainDiagram/MainDiagram';
 import { useDeviceData } from '../../Components/db/Device-m';
 import mainSvg from '../main.svg'; // 이미지 경로를 자신의 것으로 변경하세요
-import connectSvg from '../Crop_connect.svg'; // 이미지 경로를 자신의 것으로 변경하세요
+//import connectSvg from '../Crop_connect.svg'; // 이미지 경로를 자신의 것으로 변경하세요
 import connectSvgNoLine from '../Crop_connectNoLine.svg'; // 이미지 경로를 자신의 것으로 변경하세요
-import lineSvg from '../line.svg'; 
-import connectChildSvg from '../connectChild.svg'; 
-import connectFirstChildSvg from '../connectFirstChild.svg'; 
-import connectLastChildSvg from '../connectLastChild.svg'; 
-import verticalLineSvg from '../verticalLine.svg'; 
-import ThermometerComponent from '../../Components/Charts/Thermometer';
+import lineSvg from '../line.svg';
+import connectChildSvg from '../connectChild.svg';
+import connectFirstChildSvg from '../connectFirstChild.svg';
+import connectLastChildSvg from '../connectLastChild.svg';
+import verticalLineSvg from '../verticalLine.svg';
+//import ThermometerComponent from '../../Components/Charts/Thermometer';
 import './Main.css';
-import { connect } from 'echarts';
+//import { connect } from 'echarts';
 
 const { Content } = Layout;
 
@@ -51,7 +51,7 @@ const ImageCanvas = ({ imageSrc, handleClick, id, scp_vid, width, height }) => {
         <canvas
             ref={canvasRef}
             onClick={() => handleClick(id, scp_vid)}
-            style={{position:"relative", left:"-31px", cursor: 'pointer', width: `${width}px`, height: `${height}px` }}
+            style={{ position: "relative", left: "-31px", cursor: 'pointer', width: `${width}px`, height: `${height}px` }}
         />
     );
 };
@@ -67,7 +67,7 @@ const AppMain = () => {
     const [selectedDiagramId, setSelectedDiagramId] = useState('');
     const [scpId, setScpId] = useState();
     const [selectedDevice, setSelectedDevice] = useState('');
-    const { data: MainDiagramData } = useMainDiagramData(scpId, selectedDevice);
+    const { data: MainDiagramData } = useMainDiagramData(scpId, selectedDevice, selectedDiagramId);
 
     useEffect(() => {
         if (DeviceData && DeviceData.length > 0) {
@@ -88,20 +88,20 @@ const AppMain = () => {
     //-----------------------------------------------------------------------
     const groupedDevices = DeviceData.reduce((acc, device) => {
         const [parentVid] = device.scp_vid.split('_');
-        
+
         if (!acc[parentVid]) {
             acc[parentVid] = {
                 parent: null,
                 children: []
             };
         }
-        
+
         if (device.scp_vid.includes('_')) {
             acc[parentVid].children.push(device);
         } else {
             acc[parentVid].parent = device;
         }
-        
+
         return acc;
     }, {});
     //-----------------------------------------------------------------------
@@ -287,9 +287,9 @@ const AppMain = () => {
                             />
                             <div className='connectWrapper_Parentdiv'>
                                 {Object.values(groupedDevices).map(({ parent, children }, parentIndex, parentArray) => (
-                                    <div key={parent?.scp_vid} className='connectWrapper' style={{ display: 'flex'}}>
-                                        <div style={{position:"relative", display:"flex", height:"auto", width:"auto", alignItems:"center"}}>
-                                            <img style={{width:"90px"}} src={connectSvgNoLine} alt="" />
+                                    <div key={parent?.scp_vid} className='connectWrapper' style={{ display: 'flex' }}>
+                                        <div style={{ position: "relative", display: "flex", height: "auto", width: "auto", alignItems: "center" }}>
+                                            <img style={{ width: "90px" }} src={connectSvgNoLine} alt="" />
                                             <div className='connectWrapper_table'>
                                                 {parent && (
                                                     <table
@@ -310,57 +310,57 @@ const AppMain = () => {
                                                     </table>
                                                 )}
                                             </div>
-                                            <img style={{width:"40px"}} src={lineSvg} alt="" />
+                                            <img style={{ width: "40px" }} src={lineSvg} alt="" />
                                         </div>
-                                        
+
                                         <div>
-                                        {children.map((child, index) => {
-                                            // 첫 번째 요소인지 확인
-                                            const isFirstChild = index === 0;
-                                            // 마지막 요소인지 확인
-                                            const isLastChild = index === children.length - 1;
-                                            // 마지막 부모 요소인지 확인
-                                            const isLastParent = parentIndex === parentArray.length - 1;
-                                            // 자식 요소의 수
-                                            const totalChildren = children.length;
-                                            // 가운데 이후의 요소인지 확인
-                                            const isAfterMiddle = index >= Math.ceil(totalChildren / 2)-1;
+                                            {children.map((child, index) => {
+                                                // 첫 번째 요소인지 확인
+                                                const isFirstChild = index === 0;
+                                                // 마지막 요소인지 확인
+                                                const isLastChild = index === children.length - 1;
+                                                // 마지막 부모 요소인지 확인
+                                                const isLastParent = parentIndex === parentArray.length - 1;
+                                                // 자식 요소의 수
+                                                const totalChildren = children.length;
+                                                // 가운데 이후의 요소인지 확인
+                                                const isAfterMiddle = index >= Math.ceil(totalChildren / 2) - 1;
 
-                                            // 이미지 소스 결정
-                                            const imgSrc = isFirstChild
-                                                ? connectFirstChildSvg
-                                                : isLastChild
-                                                ? connectLastChildSvg
-                                                : connectChildSvg;
+                                                // 이미지 소스 결정
+                                                const imgSrc = isFirstChild
+                                                    ? connectFirstChildSvg
+                                                    : isLastChild
+                                                        ? connectLastChildSvg
+                                                        : connectChildSvg;
 
-                                            return (
-                                                <div style={{ display: "flex" }} key={child.scp_vid}>
-                                                    {/* 마지막 부모의 자식 요소들 중에서 가운데 이후의 요소가 아닌 경우에만 verticalLineSvg를 출력 */}
-                                                    {!(isLastParent && isAfterMiddle) && (
-                                                        <img style={{position:"absolute",width:"auto" , height:"70px", left:"3px"}} src={verticalLineSvg} alt="" />   
-                                                    )}
-                                                    <img style={{ width: "40px" }} src={imgSrc} alt="" />
-                                                    <div className='connectWrapper_table'>
-                                                        <table
-                                                            className='ElectricDiagramTable'
-                                                            id={child.device_name}
-                                                            scp_vid={child.scp_vid}
-                                                            onClick={() => handleImageClick(child.device_name, child.scp_vid)}
-                                                        >
-                                                            <tr>
-                                                                <td rowSpan={2} style={{ fontSize: '13px' }}>{child.device_name}</td>
-                                                                <td>MCCB</td>
-                                                                <td>KA</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>000AF/00AT</td>
-                                                                <td>00</td>
-                                                            </tr>
-                                                        </table>
+                                                return (
+                                                    <div style={{ display: "flex" }} key={child.scp_vid}>
+                                                        {/* 마지막 부모의 자식 요소들 중에서 가운데 이후의 요소가 아닌 경우에만 verticalLineSvg를 출력 */}
+                                                        {!(isLastParent && isAfterMiddle) && (
+                                                            <img style={{ position: "absolute", width: "auto", height: "70px", left: "3px" }} src={verticalLineSvg} alt="" />
+                                                        )}
+                                                        <img style={{ width: "40px" }} src={imgSrc} alt="" />
+                                                        <div className='connectWrapper_table'>
+                                                            <table
+                                                                className='ElectricDiagramTable'
+                                                                id={child.device_name}
+                                                                scp_vid={child.scp_vid}
+                                                                onClick={() => handleImageClick(child.device_name, child.scp_vid)}
+                                                            >
+                                                                <tr>
+                                                                    <td rowSpan={2} style={{ fontSize: '13px' }}>{child.device_name}</td>
+                                                                    <td>MCCB</td>
+                                                                    <td>KA</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>000AF/00AT</td>
+                                                                    <td>00</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            );
-                                        })}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 ))}

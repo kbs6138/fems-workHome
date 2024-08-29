@@ -6,7 +6,7 @@
 
 .gauge {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   /* 최대 크기 설정 */
   height: 400px;
   display: flex;
