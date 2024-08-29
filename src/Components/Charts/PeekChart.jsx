@@ -16,7 +16,7 @@ const PeekChart = () => {
     }
     let myChart = chartInstance.current;
     let option;
-
+  
     const formatData = () => {
       const formattedData = [];
       const now = new Date(); // 현재 날짜로 설정
@@ -29,21 +29,21 @@ const PeekChart = () => {
       }
       return formattedData;
     };
-
+  
     const getTextColor = () => {
       return isDarkMode ? '#000000' : '#ffffff';
     };
-
+  
     const getGridLineColor = () => {
       return isDarkMode ? '#e0e0e0' : '#d0d0d0'; // 밝은 색으로 설정
     };
-
+  
     const updateChartOptions = () => {
       const textColor = getTextColor();
       const gridLineColor = getGridLineColor();
       const fontFamily = 'NanumSquareNeo';
       const formattedData = formatData();
-
+  
       option = {
         tooltip: {
           trigger: 'axis',
@@ -111,16 +111,26 @@ const PeekChart = () => {
           fontFamily: fontFamily
         }
       };
-
+  
       myChart.setOption(option);
     };
-
+  
     updateChartOptions();
-
+  
+    const handleResize = () => {
+      if (myChart) {
+        myChart.resize();
+      }
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
     return () => {
+      window.removeEventListener('resize', handleResize);
       // 언마운트 시 차트 인스턴스를 폐기하지 않음
     };
   }, [isDarkMode, data]);
+  
 
   return (
     <div id="Peekchart" className="Peekchart" ref={chartRef} />
