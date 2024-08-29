@@ -110,7 +110,7 @@ const AppMain = () => {
     return (
         <Content className="app-Content">
 
-            <Card className={` Main-Top-Info-Card ${BgTheme}`} bordered={false}>
+            <Card className={`Main-Top-Info-Card ${BgTheme}`} bordered={false}>
                 <Row className={`Main-Top-Info-Row ${BgTheme}`}
                     gutter={{
                         xs: 10,
@@ -119,56 +119,59 @@ const AppMain = () => {
                         lg: 5,
                     }}
                 >
-                    <Col className="gutter-row" span={6}>
-                        <div className='Main-Top-Info1'>
-                            <Col className={`Main-Top-Info1-Col1 ${TxtTheme} ${BgTheme}`} span={12} >
-                                <span className='Main-Top-Info1-span' >적산 전력량</span>
+                    {/* 첫 번째 줄 */}
+                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                        <div className='Main-Top-Info1' style={{ display: 'flex', flexDirection: 'row' }}>
+                            <Col className={`Main-Top-Info1-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
+                                <span className='Main-Top-Info1-span'>적산 전력량</span>
                                 <p className='Main-Top-Info1-p'>All Wat Value</p>
                             </Col>
-                            <Col span={12} className={` Main-Top-Info1-Col2 ${TxtTheme} ${BgTheme}`}>
+                            <Col span={12} className={`Main-Top-Info1-Col2 ${TxtTheme} ${BgTheme}`}>
                                 <h1 className='Main-Top-Info1-h1'>2,635 Kwh</h1>
                             </Col>
                         </div>
                     </Col>
 
-                    <Col className="gutter-row" span={6}>
-                        <div className='Main-Top-Info2' style={{ display: 'flex' }}>
-                            <Col className={` Main-Top-Info2-Col1 ${TxtTheme} ${BgTheme}`} span={12} >
+                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                        <div className='Main-Top-Info2' style={{ display: 'flex', flexDirection: 'row' }}>
+                            <Col className={`Main-Top-Info2-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info2-span'>수전 용량</span>
                                 <p className='Main-Top-Info2-p'>Recieve Energy</p>
                             </Col>
-                            <Col className={` Main-Top-Info2-Col2 ${TxtTheme} ${BgTheme}`} span={12} >
+                            <Col className={`Main-Top-Info2-Col2 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <h1 className='Main-Top-Info2-h1'>1,000 Kw</h1>
                             </Col>
                         </div>
                     </Col>
 
-                    <Col className="gutter-row" span={6}>
-                        <div className='Main-Top-Info3' style={{ display: 'flex' }}>
-                            <Col className={` Main-Top-Info3-Col1 ${TxtTheme} ${BgTheme}`} span={12} >
+                    {/* 두 번째 줄 */}
+                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                        <div className='Main-Top-Info3' style={{ display: 'flex', flexDirection: 'row' }}>
+                            <Col className={`Main-Top-Info3-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info3-span'>계약 전력</span>
                                 <p className='Main-Top-Info3-p'>Reservation Amount</p>
                             </Col>
-                            <Col className={` Main-Top-Info3-Col2 ${TxtTheme} ${BgTheme}`} span={12} >
+                            <Col className={`Main-Top-Info3-Col2 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <h1 className='Main-Top-Info3-h1'>1,000 Kw</h1>
                             </Col>
                         </div>
                     </Col>
 
-                    <Col className="gutter-row" span={6}>
-                        <div className='Main-Top-Info4' style={{ display: 'flex' }}>
-                            <Col className={` Main-Top-Info4-Col1 ${TxtTheme} ${BgTheme}`} span={12} >
+                    <Col className="gutter-row" xs={24} sm={12} md={12} lg={6}>
+                        <div className='Main-Top-Info4' style={{ display: 'flex', flexDirection: 'row' }}>
+                            <Col className={`Main-Top-Info4-Col1 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <span className='Main-Top-Info4-span'>목표피크전력</span>
                                 <p className='Main-Top-Info4-p'>Target Peek Amount</p>
                             </Col>
-                            <Col className={` Main-Top-Info4-Col2 ${TxtTheme} ${BgTheme}`} span={12} >
+                            <Col className={`Main-Top-Info4-Col2 ${TxtTheme} ${BgTheme}`} span={12}>
                                 <h1 className='Main-Top-Info4-h1'>80 Kw</h1>
                             </Col>
                         </div>
                     </Col>
-
                 </Row>
             </Card>
+
+
             {/********************************************** 최상단 끝 **********************************************/}
             <Row className='Main-Center-Content-Row'
                 gutter={{
@@ -178,18 +181,17 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={9}>
+                <Col className="gutter-row" xs={24} md={9}>
                     <div className='Main-Center-Content1'>
                         <Card className={`Card1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <span className='Card1-Title'>Peek Monitor</span>
                             <PeekChart style={{ display: 'flex', justifyContent: 'center' }} />
-
                         </Card>
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={9}>
-                    <div className='Main-Center-Content2' >
+                <Col className="gutter-row" xs={24} md={9}>
+                    <div className='Main-Center-Content2'>
                         <Card size='medium' className={`Card2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <span className='Card2-Title'> Trend Analysis Monitor</span>
                             <CenterMainTabs />
@@ -197,7 +199,7 @@ const AppMain = () => {
                     </div>
                 </Col>
 
-                <Col className="gutter-row" span={6}>
+                <Col className="gutter-row" xs={24} md={6}>
                     <div className="card-container">
                         <Card className={`Card3-top ${TxtTheme} ${BgTheme}`} bordered={false}>
                             <Row gutter={[16, 12]} justify="center" align="middle">
@@ -206,8 +208,9 @@ const AppMain = () => {
                                         <span className="Card1-grid-Title-text">당일 사용량</span>
                                         <p className="Card1-grid-SubTitle-text">전일 사용량 대비
                                             <span className="Card1-grid-Percent-text">
-                                                <span className="Card1-grid-Percent-value">20.65%</span>{/*데이터 연결해야함*/}
-                                                <span className="Card1-grid-Percent-Near-text">증가</span><BiUpArrowAlt size={30} color='red' />
+                                                <span className="Card1-grid-Percent-value">20.65%</span>
+                                                <span className="Card1-grid-Percent-Near-text">증가</span>
+                                                <BiUpArrowAlt size={30} color='red' />
                                             </span>
                                         </p>
                                     </div>
@@ -226,9 +229,9 @@ const AppMain = () => {
                                         <span className="Card2-grid-Title-text">당일 역률 평균</span>
                                         <p className="Card2-grid-SubTitle-text">전일 역률 대비
                                             <span className="Card2-grid-Percent-text">
-                                                <span className="Card2-grid-Percent-value">12%</span>{/*데이터 연결해야함*/}
-                                                <span className="Card2-grid-Percent-Near-text">감소</span><BiDownArrowAlt size={30} color='#667EFE' />
-
+                                                <span className="Card2-grid-Percent-value">12%</span>
+                                                <span className="Card2-grid-Percent-Near-text">감소</span>
+                                                <BiDownArrowAlt size={30} color='#667EFE' />
                                             </span>
                                         </p>
                                     </div>
@@ -263,8 +266,8 @@ const AppMain = () => {
                         </Card>
                     </div>
                 </Col>
-
             </Row>
+
             <Row className='Main-Bottom-Content-Row'
                 gutter={{
                     xs: 10,
@@ -273,7 +276,7 @@ const AppMain = () => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
                     <Card className={`Card4 Main-Bottom-Content1 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <span className='Card3-Title'>Electric Diagram</span>
                         <Card span={24} bordered={false} className='Diagram_pic_Card'>
@@ -315,18 +318,12 @@ const AppMain = () => {
 
                                         <div>
                                             {children.map((child, index) => {
-                                                // 첫 번째 요소인지 확인
                                                 const isFirstChild = index === 0;
-                                                // 마지막 요소인지 확인
                                                 const isLastChild = index === children.length - 1;
-                                                // 마지막 부모 요소인지 확인
                                                 const isLastParent = parentIndex === parentArray.length - 1;
-                                                // 자식 요소의 수
                                                 const totalChildren = children.length;
-                                                // 가운데 이후의 요소인지 확인
                                                 const isAfterMiddle = index >= Math.ceil(totalChildren / 2) - 1;
 
-                                                // 이미지 소스 결정
                                                 const imgSrc = isFirstChild
                                                     ? connectFirstChildSvg
                                                     : isLastChild
@@ -335,8 +332,7 @@ const AppMain = () => {
 
                                                 return (
                                                     <div style={{ display: "flex" }} key={child.scp_vid}>
-                                                        {/* 마지막 부모의 자식 요소들 중에서 가운데 이후의 요소가 아닌 경우에만 verticalLineSvg를 출력 */}
-                                                        {!(isLastParent && isAfterMiddle) && (
+                                                        {!((isLastParent && isAfterMiddle)) && (
                                                             <img style={{ position: "absolute", width: "auto", height: "70px", left: "3px" }} src={verticalLineSvg} alt="" />
                                                         )}
                                                         <img style={{ width: "40px" }} src={imgSrc} alt="" />
@@ -370,62 +366,13 @@ const AppMain = () => {
                     </Card>
                 </Col>
 
-                {/* <Col className="gutter-row" span={5}>
-                    <Card size='medium' className={`  Card5  Main-Bottom-Content2  ${TxtTheme} ${BgTheme}`} bordered={false}>
-                        <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>
-                                {selectedDiagramId && <span>{selectedDiagramId}</span>}
-                                &nbsp;상세정보</span>
-                            <Link to="/DiagramInfo">
-                                <Button type="link" className='Diagram_Info_Button'>
-                                    상세조회
-                                    <AiOutlineSwapRight style={{ fontSize: '20px', color: 'lightgrey' }} />
-                                </Button>
-                            </Link>
-                        </span>
-
-
-                        <Row style={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px' }} gutter={[22, 5]}>
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>전압</p>
-                                <span>{MainDiagramData[0]?.volt_r} V</span>
-                            </Col>
-
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>전류</p>
-                                <span>{MainDiagramData[0]?.am} A</span>
-                            </Col>
-
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>전력</p>
-                                <span>{MainDiagramData[0]?.wat} W</span>
-                            </Col>
-
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>역률</p>
-                                <span>{MainDiagramData[0]?.pf} W/VA</span>
-                            </Col>
-
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>외부온도</p>
-                                <span>{MainDiagramData[0]?.out_deg} °C</span>
-                            </Col>
-
-                            <Col span={12} className='Diagram_Info_Col'>
-                                <p>내부온도</p>
-                                <span>{MainDiagramData[0]?.in_deg} °C</span>
-                            </Col>
-                        </Row>
-                    </Card>
-                </Col> */}
-
-
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
                     <Card size='medium' className={` Card5  Main-Bottom-Content2 ${TxtTheme} ${BgTheme}`} bordered={false}>
                         <RightBottomMainTabs MainDiagramData={MainDiagramData} />
                     </Card>
                 </Col>
             </Row>
+
         </Content>
     );
 };
