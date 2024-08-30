@@ -26,8 +26,10 @@ const items = [
     getItem(' 시간별 추이그래프', '3', null, null, '/OverCurrentTrendCurve'),
     getItem('일별 추이그래프', '4', null, null, '/OverCurrentTrendCurveDay'),
     getItem('월별 추이그래프', '5', null, null, '/OverCurrentTrendCurveMonth'),
+    /*
     getItem('전류불평형률 추이그래프', '6', null, null, '/UnbalanceRatioCurve'),
     getItem('누설전류 추이그래프', '7', null, null, '/LeakageCurrentCurve'),
+    */
     //getItem('15분 피크추이', '8', null, null, ''),
   ]),
   getItem('설비관리모니터링', 'sub3', <FundOutlined />, [

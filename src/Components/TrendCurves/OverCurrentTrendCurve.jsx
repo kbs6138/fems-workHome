@@ -202,10 +202,10 @@ const OverCurrentTrendCurve = () => {
 
                         과전류의 원인은 부하 사용 전류가 전선의 허용전류를 초과하거나 전선의 절연 허용 온도를 초과하는 것이며,
                         과부하, 지락, 단락이 과전류의 원인이 될 수 있으며,
-   
+
                         단상 부하가 한 상에 집중되는 경우 그 상에 과전류가 발생할 수 있으며,
                         지속적인 한 상의 과전류는 전선 과열과 화재 위험이 있다.
-    
+
                         정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
                       </span>
                       <a onClick={hide}>닫기</a>
@@ -294,7 +294,7 @@ const OverCurrentTrendCurve = () => {
                   </Select>
 
 
-                  <Select className='selectCss' id="indicator" style={{ width: '80px' }}
+                  <Select className='selectCss' id="indicator" style={{ width: '100px' }}
                     value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
                     <Option value="overCurrent">전류</Option>
@@ -304,13 +304,19 @@ const OverCurrentTrendCurve = () => {
                     <Option value="Inner_Deg">내부온도</Option>
                   </Select>
 
-                  <Select className='selectCss' id="timeUnit" style={{ width: '100px' }}
-                    value={timeUnit} onChange={(value) => setTimeUnit(value)}>
-                    <Option value="1">1분 단위</Option>
-                    <Option value="5">5분 단위</Option>
-                    <Option value="15">15분 단위</Option>
-                    <Option value="60">시간 단위</Option>
+                  <Select
+                    className='selectCss'
+                    id="timeUnit"
+                    style={{ width: '90px' }}
+                    value={timeUnit === 60 ? "한시간" : timeUnit} // 여기에서 조건부로 값을 설정
+                    onChange={(value) => setTimeUnit(value === "한 시간" ? 60 : value)} // 선택된 값을 업데이트
+                  >
+                    <Option value="1">1분</Option>
+                    <Option value="5">5분</Option>
+                    <Option value="15">15분</Option>
+                    <Option value="60">한시간</Option>
                   </Select>
+
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

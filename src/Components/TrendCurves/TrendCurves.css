@@ -230,11 +230,12 @@
         flex-direction: column;
     }
 
-    .OverCurrentTrendCurve_LinearRegression_Card {
+    .OverCurrentTrendCurve_LinearRegression_Card,
+    .OverCurrentTrendCurveDay_LinearRegression_Card {
         margin-top: 10px;
     }
 
-    .OverCurrentTrendCurve_Chart_Card {
+    .OverCurrentTrendCurve_Chart_Card{
         height: 430px;
     }
 

@@ -176,23 +176,20 @@ const OverCurrentTrendCurveDay = () => {
         <Col span={24}>
           <Row>
             <Col span={24}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 5px 10px 5px', alignItems: 'center' }}>
+              <div className='OverCurrentTrendCurve_TitlePop_div'>
                 <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 일별</span>
                 <Popover
                   content={
-                    <div>
+                    <div className="popover-content">
                       <span>
                         정격전류를 초과하여 연속적으로 흐르는 경우를 과전류라고 한다.
-                      </span>
-                      <span>
+
                         과전류의 원인은 부하 사용 전류가 전선의 허용전류를 초과하거나 전선의 절연 허용 온도를 초과하는 것이며,
                         과부하, 지락, 단락이 과전류의 원인이 될 수 있으며,
-                      </span>
-                      <span>
+
                         단상 부하가 한 상에 집중되는 경우 그 상에 과전류가 발생할 수 있으며,
                         지속적인 한 상의 과전류는 전선 과열과 화재 위험이 있다.
-                      </span>
-                      <span>
+
                         정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
                       </span>
                       <a onClick={hide}>닫기</a>
@@ -203,7 +200,8 @@ const OverCurrentTrendCurveDay = () => {
                   open={open}
                   onOpenChange={handleOpenChange}
                 >
-                  <Button className='OverCurrentTrendCurve_Button'>과전류 상승에 따른 위험
+                  <Button className='OverCurrentTrendCurve_Button'>
+                    <span className='OverCurrentTrendCurve_Button_Title'>과전류 상승에 따른 위험</span>
                     <AiOutlineWarning size={'22px'} />
                   </Button>
                 </Popover>
@@ -217,6 +215,7 @@ const OverCurrentTrendCurveDay = () => {
                     className='selectCss'
                     value={`${mm}월`} // 여기에 "월"을 추가
                     onChange={(value) => setMonth(value)}
+                    style={{ width: '80px' }}
                   >
                     <Option value="01">01월</Option>
                     <Option value="02">02월</Option>
@@ -231,7 +230,7 @@ const OverCurrentTrendCurveDay = () => {
                     <Option value="11">11월</Option>
                     <Option value="12">12월</Option>
                   </Select>
-                  <Select className='selectCss' id="selectLoad"
+                  <Select className='selectCss' id="selectLoad" style={{ width: '100px' }}
                     value={scp_id} onChange={(value) => setScpId(value)}>
                     {deviceData?.map((device) => (
                       <Option key={device.scp_vid} value={device.scp_vid}>
@@ -239,7 +238,7 @@ const OverCurrentTrendCurveDay = () => {
                       </Option>
                     ))}
                   </Select>
-                  <Select className='selectCss' id="indicator"
+                  <Select className='selectCss' id="indicator" style={{ width: '100px' }}
                     value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
                     <Option value="overCurrent">전류</Option>
@@ -248,23 +247,23 @@ const OverCurrentTrendCurveDay = () => {
                     <Option value="Outer_Deg">외부온도</Option>
                     <Option value="Inner_Deg">내부온도</Option>
                   </Select>
-                  
+
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
 
                 </div>
-                <OverCurrentTrendChartDay TrendData={TrendData} dataTypeForChart={dataTypeForChart}/>
+                <OverCurrentTrendChartDay TrendData={TrendData} dataTypeForChart={dataTypeForChart} />
               </Card>
             </Col>
           </Row>
-          <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
 
-            <Col span={8}>
+          <Row gutter={[10]} style={{ marginTop: '10px' }}> {/* 수평 16px, 수직 24px 간격 설정 */}
+            <Col className="gutter-row" xs={24} sm={24} md={8} lg={8}>
               <Card bordered={false} className='OverCurrentTrendCurveDayLog_Card'>
                 <DiagramAlertStepDay TrendData={TrendData} selectedData={selectedData} dataTypeForChart={dataTypeForChart} />
               </Card>
             </Col>
 
-            <Col span={16}>
+            <Col className="gutter-row" xs={24} sm={24} md={16} lg={16}>
               <Card bordered={false} className='OverCurrentTrendCurveDay_LinearRegression_Card'>
                 선형회귀분석
               </Card>

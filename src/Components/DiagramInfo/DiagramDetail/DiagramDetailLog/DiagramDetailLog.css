@@ -73,10 +73,30 @@
     background: transparent;
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
+
 .ant-timeline .ant-timeline-item {
     position: relative;
     margin: 0;
     padding-bottom: 12px;
     font-size: 14px;
     list-style: none;
+}
+
+/* 화면 크기가 576px 이하일 때 */
+@media (max-width: 576px) {
+    .timeline-time {
+        flex-shrink: 0;
+        width: 80px;
+        /* 시간 표시 영역의 너비를 조정할 수 있습니다 */
+        text-align: left;
+        font-size: 11px;
+        font-family: 'NanumSquareNeoLight' !important;
+    }
+
+    .timeline-text {
+        flex-grow: 1;
+        text-align: right;
+        font-family: 'NanumSquareNeoLight' !important;
+        font-size: 11.5px;
+    }
 }
