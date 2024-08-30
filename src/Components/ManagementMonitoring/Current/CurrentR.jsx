@@ -92,27 +92,12 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
             myChart.current.setOption(option);
 
             // 애니메이션 반복 설정
-            const animatePointer = () => {
-                const currentValue = CurrentVolt;
-                myChart.current.setOption({
-                    series: [{
-                        data: [{ value: CurrentVolt - 2 }]
-                    }]
-                });
 
-                setTimeout(() => {
-                    myChart.current.setOption({
-                        series: [{
-                            data: [{ value: currentValue + 2 }]
-                        }]
-                    });
-                }, 100);
-            };
 
-            const intervalId = setInterval(animatePointer, 500);
+           
 
             return () => {
-                clearInterval(intervalId);
+                clearInterval();
             };
         };
 
@@ -122,7 +107,7 @@ const CurrentGauge = ({ CurrentVolt, Name, NameColor, MovePointer, CurrentFirstA
     }, [isDarkMode, data, CurrentVolt, MovePointer, Name, CurrentFirstArea, CurrentSecondArea, CurrentThirdArea, NameColor]);
 
     return (
-        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" style={{ left: '-20px' }} />
+        <div id="CurrentgaugeR" ref={chartRef} className="CurrentgaugeR" />
     );
 };
 

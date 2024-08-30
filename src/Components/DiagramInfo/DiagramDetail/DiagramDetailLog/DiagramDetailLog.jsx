@@ -43,18 +43,18 @@ const DiagramDetailLog = ({ logEntries = [] }) => {
                     {combinedEntries.map((entry, index) => (
                         <Timeline.Item key={index}>
                             <Row style={{ marginBottom: '8px' }}> {/* Adjust spacing */}
-                                <Col span={6}>
-                                    <div>
+                                <Col span={8}>
+                                    <div className='DiagramDetailLog_timeline_div'>
                                         <span className="DiagramDetailLog-timeline-date">{entry.date}</span>
                                         <span className="DiagramDetailLog-timeline-time">{entry.time}</span>
                                     </div>
                                 </Col>
-                                <Col span={18}>
+                                <Col className='DiagramDetailLog_timeline_Col2' span={16}>
                                     <Row>
-                                        {entry.L1 && <Col span={6}><span className="DiagramDetailLog-timeline-text" style={{ color: '#00C700' }}>{entry.L1}</span></Col>}
-                                        {entry.L2 && <Col span={6}><span className="DiagramDetailLog-timeline-text" style={{ color: '#FC738A' }}>{entry.L2}</span></Col>}
-                                        {entry.L3 && <Col span={6}><span className="DiagramDetailLog-timeline-text" style={{ color: '#7696FF' }}>{entry.L3}</span></Col>}
-                                        {entry.value && <Col span={6}><span className="DiagramDetailLog-timeline-text">{entry.value}</span></Col>}
+                                        {entry.L1 && <Col span={7}><span className="DiagramDetailLog-timeline-text" style={{ color: '#00C700' }}>{entry.L1}</span></Col>}
+                                        {entry.L2 && <Col span={7}><span className="DiagramDetailLog-timeline-text" style={{ color: '#FC738A' }}>{entry.L2}</span></Col>}
+                                        {entry.L3 && <Col span={7}><span className="DiagramDetailLog-timeline-text" style={{ color: '#7696FF' }}>{entry.L3}</span></Col>}
+                                        {entry.value && <Col span={24}><span className="DiagramDetailLog-timeline-text">{entry.value}</span></Col>}
                                     </Row>
                                 </Col>
                             </Row>

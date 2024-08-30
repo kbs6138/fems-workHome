@@ -481,7 +481,7 @@ const DiagramDetail = () => {
             <Row>
                 <Col className="gutter-row" span={24}>
                     <Card bordered={false} style={{ padding: 0, background: 'transparent', color: 'white', marginTop: '-15px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div className='DiagramDetail_TitleTime' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '20px' }}>상세조회</span>
                             <span style={{ fontSize: '16px' }}>{currentTime}</span> {/* 현재 시간 표시 */}
 

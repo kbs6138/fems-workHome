@@ -23,7 +23,6 @@ const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeF
                 }
             });
 
-            console.log('Filtered Data:', filteredData);
 
             const formattedData = filteredData.map(item => {
                 let rValue, sValue, tValue, value;
@@ -44,11 +43,8 @@ const DiagramAlertStep = ({ TrendData, selectedData, selectedTimeUnit, dataTypeF
                 };
             });
 
-            console.log('Formatted Data:', formattedData);
             setData(formattedData);
-        } else {
-            console.error('TrendData is not an array');
-        }
+        } 
     }, [TrendData, selectedTimeUnit, dataTypeForChart, selectedData]);
 
     return (

@@ -38,6 +38,13 @@
     color: rgb(221, 221, 221);
 }
 
+@media (max-width: 1068px) {
+    .DiagramDetailLog_timeline_div {
+        width: 70px;
+    }
+
+}
+
 .DiagramDetailLog-timeline-date {
     color: white;
     font-size: 10px;

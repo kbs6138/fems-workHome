@@ -13,6 +13,13 @@
     }
 }
 
+@media (max-width: 480px) {}
+
+@media (max-width: 1068px) {
+    .DiagramDetail_TitleTime {
+        flex-direction: column !important;
+    }
+}
 
 .DiagramInfoTable_RateOfChange_animate,
 .DiagramInfoMinuteTable_RateOfChange_animate {
@@ -100,11 +107,7 @@
     font-family: 'NanumSquareNeoBold' !important;
 }
 
-.ant-table-wrapper .ant-table-thead>tr>th {
-    text-align: center !important;
-    font-family: 'NanumSquareNeoLight' !important;
-    font-weight: lighter !important;
-}
+
 
 
 .DiagramInfoTable {
@@ -289,7 +292,7 @@
 .DiagramDetail_W_DiagramDetailLog_Card,
 .DiagramDetail_PF_DiagramDetailLog_Card,
 .DiagramDetail_OutDeg_DiagramDetailLog_Card,
-.DiagramDetail_InnerDeg_DiagramDetailLog_Card{
+.DiagramDetail_InnerDeg_DiagramDetailLog_Card {
     background-color: rgb(38, 55, 82);
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
 }
@@ -337,7 +340,8 @@
 .DiagramDetailVWTable_RateOfChange,
 .DiagramDetailVWTable_phase {
     text-align: center !important;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: lighter !important;
 }
 
 
@@ -356,7 +360,7 @@
 }
 
 .DiagramDetail_V_RSTChart_Card,
-.DiagramDetail_A_RSTChart_Card{
+.DiagramDetail_A_RSTChart_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: rgb(38, 55, 82);
     color: white;

@@ -307,14 +307,14 @@ const OverCurrentTrendCurve = () => {
                   <Select
                     className='selectCss'
                     id="timeUnit"
-                    style={{ width: '90px' }}
-                    value={timeUnit === 60 ? "한시간" : timeUnit} // 여기에서 조건부로 값을 설정
+                    style={{ width: '80px' }}
+                    value={timeUnit === 60 ? "시간" : timeUnit} // 여기에서 조건부로 값을 설정
                     onChange={(value) => setTimeUnit(value === "한 시간" ? 60 : value)} // 선택된 값을 업데이트
                   >
                     <Option value="1">1분</Option>
                     <Option value="5">5분</Option>
                     <Option value="15">15분</Option>
-                    <Option value="60">한시간</Option>
+                    <Option value="60">시간</Option>
                   </Select>
 
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>

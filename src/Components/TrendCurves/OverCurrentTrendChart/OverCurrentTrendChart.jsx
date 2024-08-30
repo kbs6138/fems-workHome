@@ -6,7 +6,6 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }
   const chartDomRef = useRef(null);
   const timeUnit = selectedTimeUnit.timeUnit;
 
-  console.log(TrendData)
 
   useEffect(() => {
     if (Array.isArray(TrendData)) {
