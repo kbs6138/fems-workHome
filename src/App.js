@@ -16,8 +16,6 @@ import DiagramDetail from './Components/DiagramInfo/DiagramDetail/DiagramDetail'
 import OverCurrentTrendCurveDay from './Components/TrendCurves/OverCurrentTrendCurveDay';
 import OverCurrentTrendCurveMonth from './Components/TrendCurves/OverCurrentTrendCurveMonth';
 
-
-
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -28,23 +26,26 @@ const App = () => {
       <ThemeProvider>
         <Router>
           <Layout style={{ minHeight: '100vh' }}>
-            <AppSider />
+            <AppHeader />
             <Layout>
-              <AppHeader />
-              <Routes>
-                <Route path="/" element={<AppMain />} /> {/* 통합 모니터링 페이지 */}
-                <Route path="/MonitorFirst" element={<MonitorFirst />} /> {/* 모니터링 페이지 */}
-                <Route path="/LeakageCurrentCurve" element={<LeakageCurrentCurve />} /> {/* 누설전류 */}
-                <Route path="/OverCurrentTrendCurve" element={<OverCurrentTrendCurve />} /> {/* 과전류 */}
-                <Route path="/OverCurrentTrendCurveDay" element={<OverCurrentTrendCurveDay />} /> {/* 과전류 일별 */}
-                <Route path="/OverCurrentTrendCurveMonth" element={<OverCurrentTrendCurveMonth />} /> {/* 과전류 월별 */}
-                <Route path="/UnbalanceRatioCurve" element={<UnbalanceRatioCurve />} /> {/* 불평형률 */}
-                <Route path="/DiagramInfo" element={<DiagramInfo />} /> {/* 장비상세정보 */}
-                <Route path="/DiagramDetail" element={<DiagramDetail />} />
-
-              </Routes>
-              <AppFooter />
+              <AppSider />
+              <Layout style={{ flex: 1, paddingBottom: '50px' }}> {/* Footer 높이만큼 padding 추가 */}
+                <Layout.Content>
+                  <Routes>
+                    <Route path="/" element={<AppMain />} /> {/* 통합 모니터링 페이지 */}
+                    <Route path="/MonitorFirst" element={<MonitorFirst />} /> {/* 모니터링 페이지 */}
+                    <Route path="/LeakageCurrentCurve" element={<LeakageCurrentCurve />} /> {/* 누설전류 */}
+                    <Route path="/OverCurrentTrendCurve" element={<OverCurrentTrendCurve />} /> {/* 과전류 */}
+                    <Route path="/OverCurrentTrendCurveDay" element={<OverCurrentTrendCurveDay />} /> {/* 과전류 일별 */}
+                    <Route path="/OverCurrentTrendCurveMonth" element={<OverCurrentTrendCurveMonth />} /> {/* 과전류 월별 */}
+                    <Route path="/UnbalanceRatioCurve" element={<UnbalanceRatioCurve />} /> {/* 불평형률 */}
+                    <Route path="/DiagramInfo" element={<DiagramInfo />} /> {/* 장비상세정보 */}
+                    <Route path="/DiagramDetail" element={<DiagramDetail />} />
+                  </Routes>
+                </Layout.Content>
+              </Layout>
             </Layout>
+            <AppFooter style={{ position: 'absolute', bottom: 0, width: '100%', height: '40px', textAlign: 'center' }} />
           </Layout>
         </Router>
       </ThemeProvider>

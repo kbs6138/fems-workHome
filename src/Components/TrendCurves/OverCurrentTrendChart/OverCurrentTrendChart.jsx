@@ -129,7 +129,7 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }
       tooltip: {
         trigger: 'axis',
         textStyle: { color: 'black', fontFamily: 'NanumSquareNeoBold' },
-        formatter: function(params) {
+        formatter: function (params) {
           let tooltipText = `<div style="font-family: 'NanumSquareNeoBold';">${params[0].axisValueLabel}</div>`;
           params.forEach(param => {
             tooltipText += `
@@ -146,7 +146,7 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }
       xAxis: {
         type: 'category',
         data: xData,
-        axisLabel: { color: 'white', fontFamily: 'NanumSquareNeoBold' },
+        axisLabel: { color: 'white', fontFamily: 'NanumSquareNeoBold', fontSize:'10px'  },
         splitLine: {
           show: true,
           lineStyle: {
@@ -156,7 +156,7 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }
         }
       },
       yAxis: {
-        axisLabel: { color: 'white', fontFamily: 'NanumSquareNeoBold' },
+        axisLabel: { color: 'white', fontFamily: 'NanumSquareNeoBold', fontSize: '10px' },
         splitLine: {
           show: true,
           lineStyle: {
@@ -171,7 +171,7 @@ const OverCurrentTrendChart = ({ TrendData, selectedTimeUnit, dataTypeForChart }
       ],
       legend: {
         data: legendData,
-        textStyle: { color: 'white', fontFamily: 'NanumSquareNeoBold' },
+        textStyle: { color: 'white', fontFamily: 'NanumSquareNeoBold', fontSize: '10px' },
         itemWidth: 30,
         itemHeight: 15,
         orient: 'horizontal',

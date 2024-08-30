@@ -192,23 +192,20 @@ const OverCurrentTrendCurve = () => {
         <Col span={24}>
           <Row>
             <Col span={24}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 5px 10px 5px', alignItems: 'center' }}>
+              <div className='OverCurrentTrendCurve_TitlePop_div'>
                 <span className='OverCurrentTrendCurve_Title'>{indicatorLabel} 추이그래프 - 시간별</span>
                 <Popover
                   content={
-                    <div>
+                    <div className="popover-content">
                       <span>
                         정격전류를 초과하여 연속적으로 흐르는 경우를 과전류라고 한다.
-                      </span>
-                      <span>
+
                         과전류의 원인은 부하 사용 전류가 전선의 허용전류를 초과하거나 전선의 절연 허용 온도를 초과하는 것이며,
                         과부하, 지락, 단락이 과전류의 원인이 될 수 있으며,
-                      </span>
-                      <span>
+   
                         단상 부하가 한 상에 집중되는 경우 그 상에 과전류가 발생할 수 있으며,
                         지속적인 한 상의 과전류는 전선 과열과 화재 위험이 있다.
-                      </span>
-                      <span>
+    
                         정격전류보다 20~30% 이상 연속적으로 흐르는 경우 전선 열화와 화재 위험이 있어 과전류를 관리해야만 한다.
                       </span>
                       <a onClick={hide}>닫기</a>
@@ -219,7 +216,8 @@ const OverCurrentTrendCurve = () => {
                   open={open}
                   onOpenChange={handleOpenChange}
                 >
-                  <Button className='OverCurrentTrendCurve_Button'>과전류 상승에 따른 위험
+                  <Button className='OverCurrentTrendCurve_Button'>
+                    <span className='OverCurrentTrendCurve_Button_Title'>과전류 상승에 따른 위험</span>
                     <AiOutlineWarning size={'22px'} />
                   </Button>
                 </Popover>
@@ -227,14 +225,14 @@ const OverCurrentTrendCurve = () => {
 
               <Card bordered={false} className='OverCurrentTrendCurve_Chart_Card'>
                 <div className='setGraphInfoWrapper' style={{ marginTop: '10px ' }}>
-                  <Select className='selectCss' id="selectYear"
+                  <Select className='selectCss' id="selectYear" style={{ width: '100px' }}
                     value={`${yyyy}년`} // 여기에 "년"을 추가
                     onChange={(value) => setYear(value)}>
                     <Option value="2023">2023년</Option>
                     <Option value="2024">2024년</Option>
                   </Select>
 
-                  <Select className='selectCss' id="selectMonth"
+                  <Select className='selectCss' id="selectMonth" style={{ width: '80px' }}
                     value={`${mm}월`} // 여기에 "월"을 추가
                     onChange={(value) => setMonth(value)}>
                     <Option value="01">01월</Option>
@@ -251,7 +249,7 @@ const OverCurrentTrendCurve = () => {
                     <Option value="12">12월</Option>
                   </Select>
 
-                  <Select className='selectCss' id="selectDay"
+                  <Select className='selectCss' id="selectDay" style={{ width: '80px' }}
                     value={dd} onChange={(value) => setDay(value)}>
                     <Option value="01">1일</Option>
                     <Option value="02">2일</Option>
@@ -286,7 +284,7 @@ const OverCurrentTrendCurve = () => {
                     <Option value="31">31일</Option>
                   </Select>
 
-                  <Select className='selectCss' id="selectLoad"
+                  <Select className='selectCss' id="selectLoad" style={{ width: '100px' }}
                     value={scp_id} onChange={(value) => setScpId(value)}>
                     {deviceData?.map((device) => (
                       <Option key={device.scp_vid} value={device.scp_vid}>
@@ -296,7 +294,7 @@ const OverCurrentTrendCurve = () => {
                   </Select>
 
 
-                  <Select className='selectCss' id="indicator"
+                  <Select className='selectCss' id="indicator" style={{ width: '80px' }}
                     value={indicator} onChange={(value) => setIndicator(value)}>
                     <Option value="voltage">전압</Option>
                     <Option value="overCurrent">전류</Option>
@@ -306,7 +304,7 @@ const OverCurrentTrendCurve = () => {
                     <Option value="Inner_Deg">내부온도</Option>
                   </Select>
 
-                  <Select className='selectCss' id="timeUnit"
+                  <Select className='selectCss' id="timeUnit" style={{ width: '100px' }}
                     value={timeUnit} onChange={(value) => setTimeUnit(value)}>
                     <Option value="1">1분 단위</Option>
                     <Option value="5">5분 단위</Option>
@@ -315,23 +313,28 @@ const OverCurrentTrendCurve = () => {
                   </Select>
                   <Button id="search" className='buttonInTrend' onClick={handleSearch}>조회</Button>
                 </div>
-                <OverCurrentTrendChart TrendData={TrendData} dataTypeForChart={dataTypeForChart} selectedTimeUnit={selectedTimeUnit}
-                />
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <OverCurrentTrendChart TrendData={TrendData} dataTypeForChart={dataTypeForChart} selectedTimeUnit={selectedTimeUnit}
+                    style={{ width: '100%', maxWidth: '100%' }} // 추가된 스타일
+                  />
+                </div>
               </Card>
             </Col>
           </Row>
+
           <Row gutter={[10]} style={{ marginTop: '10px' }}>
-            <Col span={8}>
+            <Col className="gutter-row" xs={24} sm={24} md={8} lg={8}>
               <Card bordered={false} className='OverCurrentTrendCurveLog_Card'>
                 <DiagramAlertStep TrendData={TrendData} selectedData={selectedData} selectedTimeUnit={selectedTimeUnit} dataTypeForChart={dataTypeForChart} />
               </Card>
             </Col>
-            <Col span={16}>
+            <Col className="gutter-row" xs={24} sm={24} md={16} lg={16}>
               <Card bordered={false} className='OverCurrentTrendCurve_LinearRegression_Card'>
                 선형회귀분석
               </Card>
             </Col>
           </Row>
+
         </Col>
       </Card>
     </div>

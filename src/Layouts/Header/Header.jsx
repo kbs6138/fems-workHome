@@ -10,7 +10,7 @@ const AppHeader = () => {
   return (
     <Header
       className="app-header"
-
+      style={{ height: '30px' }}
     />
   );
 };

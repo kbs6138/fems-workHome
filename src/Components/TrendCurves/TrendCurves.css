@@ -39,6 +39,15 @@
     }
 }
 
+.OverCurrentTrendCurve_TitlePop_div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px 10px 5px;
+    align-items: center;
+}
+
+
 /*추이 그래프 내 select css*/
 .selectCss {
     padding: 4px 6px;
@@ -50,8 +59,8 @@
     /* 글자 크기 설정 */
     color: #ffffff;
     /* 글자 색상 설정 */
-
 }
+
 
 /*추이 그래프 내 input text css*/
 .inputText {
@@ -105,10 +114,7 @@
 
 
 /*OverCurrentTrendChart 차트 크기*/
-#OverCurrentTrendChart canvas {
-    top: -15px !important;
-    left: -25px !important;
-}
+
 
 .setGraphInfoWrapper {
     position: relative;
@@ -147,7 +153,7 @@
 .OverCurrentTrendCurveDayLog_Card,
 .OverCurrentTrendCurveDay_LinearRegression_Card,
 .OverCurrentTrendCurveLog_Card,
-.OverCurrentTrendCurve_LinearRegression_Card{
+.OverCurrentTrendCurve_LinearRegression_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: transparent;
     color: white;
@@ -156,9 +162,88 @@
 
 .OverCurrentTrendCurveMonth_Chart_Card,
 .OverCurrentTrendCurveDay_Chart_Card,
-.OverCurrentTrendCurve_Chart_Card{
+.OverCurrentTrendCurve_Chart_Card {
     box-shadow: 0px 0px 10px 2px rgb(22, 42, 69) !important;
     background-color: transparent;
     color: white;
     height: 400px;
+}
+
+.OverCurrentTrendCurve_Button {
+    background: transparent;
+    box-shadow: 0px 0px 15px 2px rgb(15, 25, 45) !important;
+    border: none !important;
+    height: 35px;
+}
+
+/* 화면 크기가 1200px 이하일 때 */
+@media (max-width: 1200px) {}
+
+/* 화면 크기가 992px 이하일 때 */
+@media (max-width: 992px) {}
+
+/* 화면 크기가 768px 이하일 때 */
+@media (max-width: 768px) {}
+
+/* 화면 크기가 576px 이하일 때 */
+@media (max-width: 576px) {
+
+    .selectCss {
+        font-size: 5px !important;
+    }
+
+    .buttonInTrend {
+        border: 0;
+        background: none !important;
+        width: 50px;
+        height: 28px;
+        background-color: #263752;
+        border: 2px solid #374b68 !important;
+        border-radius: 3px;
+        font-size: 12px;
+        color: white !important;
+        cursor: pointer;
+        transition: all 0.25s;
+
+        &:hover {
+            border-color: #306b9b;
+            /* 포커스 시 테두리 색상 변경 */
+        }
+    }
+
+    .OverCurrentTrendCurve_Button {
+        background: transparent;
+        box-shadow: 0px 0px 15px 2px rgb(15, 25, 45) !important;
+        border: none !important;
+        height: 35px;
+        font-size: 5px;
+        width: 200px;
+        margin-top: 5px;
+    }
+
+    .OverCurrentTrendCurve_TitlePop_div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 5px 10px 5px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .OverCurrentTrendCurve_LinearRegression_Card {
+        margin-top: 10px;
+    }
+
+    .OverCurrentTrendCurve_Chart_Card {
+        height: 430px;
+    }
+
+    #OverCurrentTrendChart canvas {
+        position: relative !important;
+        font-size: 10px;
+    }
+
+    .popover-content span {
+        font-size: 8px;
+      }
 }

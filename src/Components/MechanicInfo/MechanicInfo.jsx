@@ -13,7 +13,7 @@ const MechanicInfo = ({ MainDiagramData }) => {
                     lg: 10,
                 }}
             >
-                <Col className="gutter-row" xs={24} sm={24} md={15} lg={15}>
+                <Col className="gutter-row" xs={24} sm={24} md={16} lg={16}>
                     {/* L1 Table */}
                     <thead>
                         <tr>
