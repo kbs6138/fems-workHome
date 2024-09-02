@@ -366,3 +366,31 @@
     color: white;
     height: 237px !important;
 }
+
+
+@media (max-width: 768px) {
+    .DiagramInfo_Minute_Card {
+        height: 230px !important;
+    }
+
+    .DiagramInfo_Minute_V_Card,
+    .DiagramInfo_Minute_A_Card {
+        height: 300px !important;
+    }
+
+    .DiagramInfoTable_CurrentValue,
+    .DiagramInfoTable_PreviousValue,
+    .DiagramInfoTable_DailyMax,
+    .DiagramInfoTable_DailyMin,
+    .DiagramInfoTable_RateOfChange,
+    .DiagramInfoMinuteTable_CurrentValue,
+    .DiagramInfoMinuteTable_PreviousValue,
+    .DiagramInfoMinuteTable_DailyMax,
+    .DiagramInfoMinuteTable_DailyMin,
+    .DiagramInfoMinuteTable_RateOfChange,
+    .DiagramInfoMinuteTable_phase {
+        text-align: center !important;
+        font-family: 'NanumSquareNeoBold' !important;
+        font-size: 10px;
+    }
+}
