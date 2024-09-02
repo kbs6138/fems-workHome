@@ -390,8 +390,8 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.v_data_s}
                         dataT={DiagramInfoData[0]?.v_data_t}
                         rstColor={rstchartColors}
-                        Min={DiagramCurrentData[0].min}
-                        Max={DiagramCurrentData[2].max}
+                        Min={DiagramCurrentData[0].min || 0}
+                        Max={DiagramCurrentData[2].max || 0}
                         /*
                         /*Min={DiagramCurrentData[0].min}
                         Max={DiagramCurrentData[2].max}*/ />
@@ -415,8 +415,8 @@ const DiagramInfo = () => {
                         dataS={DiagramInfoData[0]?.am_data_s}
                         dataT={DiagramInfoData[0]?.am_data_t}
                         rstColor={rstchartColors}
-                        Min={DiagramCurrentData[5].min}
-                        Max={DiagramCurrentData[5].max}
+                        Min={DiagramCurrentData[5].min || 0}
+                        Max={DiagramCurrentData[5].max || 0}
                       /**
                       Min={DiagramCurrentData[5].min}
                       Max={DiagramCurrentData[5].max}  */
@@ -440,8 +440,8 @@ const DiagramInfo = () => {
                       <DiagramInfoMinuteChart key={6}
                         data={DiagramInfoData[0]?.w_data}
                         chartColor={chartColors[2]}
-                        Min={DiagramCurrentData[6].min}
-                        Max={DiagramCurrentData[6].max} />
+                        Min={DiagramCurrentData[6].min || 0}
+                        Max={DiagramCurrentData[6].max || 0} />
                     )}
                   </Col>
                 </Row>
@@ -457,7 +457,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[3]?.min !== undefined && DiagramMinmaxData[3]?.max !== undefined && (
-                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[7].min} Max={DiagramCurrentData[7].max} />
+                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.pf_data} chartColor={chartColors[3]} Min={DiagramCurrentData[7].min || 0} Max={DiagramCurrentData[7].max || 0} />
                     )}
                   </Col>
                 </Row>
@@ -473,7 +473,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[4]?.min !== undefined && DiagramMinmaxData[4]?.max !== undefined && (
-                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[8].min} Max={DiagramCurrentData[8].max} />
+                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.out_data} chartColor={chartColors[4]} Min={DiagramCurrentData[8].min || 0} Max={DiagramCurrentData[8].max || 0} />
                     )}
                   </Col>
                 </Row>
@@ -489,7 +489,7 @@ const DiagramInfo = () => {
                   </Col>
                   <Col span={12}>
                     {DiagramMinmaxData[5]?.min !== undefined && DiagramMinmaxData[5]?.max !== undefined && (
-                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[9].min} Max={DiagramCurrentData[9].max} />
+                      <DiagramInfoMinuteChart key={6} data={DiagramInfoData[0]?.in_data} chartColor={chartColors[5]} Min={DiagramCurrentData[9].min || 0} Max={DiagramCurrentData[9].max || 0} />
                     )}
                   </Col>
                 </Row>
